@@ -57,7 +57,8 @@
 
 				<!--Formulario Modificar alquiler -->
 					<form name="frmModificarAlquiler" id="frmModificarAlquiler">
-
+						<label class="control-label" for="txtNombreAlquiler">Seleccione Alquiler</label>
+						<p>Combo con con todos los alquileres en el sistema </p>
 					</form>
 				</div>
 			</div>
@@ -84,9 +85,52 @@
 					
 					<div class="col-sm-4 text-center">
 						<a href="#menuConductores"><button id="btnMenuConductores" class="btn btn-default btn-block btn-menu sep-inf">Conductores</button></a>
+					</div>	
+				</div>
+				<br>
+				<div id="MenuGestionAutobuses">
+					<div class="row botones">
+						<p>Botones añadir,dar de baja, etc</p>
+
 					</div>
-					
-				</div>				
+				</div>
+				<div id="MenuGestionClientes">
+					<div class="row botones">
+						<div class="col-sm-4 text-center">
+							<a href="#menuClienteAlta"><button id="btnMenuClienteAlta" class="btn btn-default btn-block btn-menu sep-inf">Dar de Alta</button></a>
+						</div>
+						<div class="col-sm-4 text-center">
+							<a href="#menuClienteBaja"><button id="btnMenuClienteBaja" class="btn btn-default btn-block btn-menu sep-inf">Dar de Baja</button></a>
+						</div>
+						<div class="col-sm-4 text-center">
+							<a href="#menuClienteModificar"><button id="btnMenuClienteModificar" class="btn btn-default btn-block btn-menu sep-inf">Modificar Cliente</button></a>
+						</div>
+					</div>
+				</div>
+				<div id="MenuGestionConductores">
+					<div class="row botones">
+						<p>Botones añadir,dar de baja, vacaciones, etc</p>
+
+					</div>
+				</div>
+				<br>
+				<!--FormGestionAutobuses-->
+				
+				<!--formGestionClientes-->
+				<form name="frmClienteAlta" id="frmClienteAlta">
+					<label class="control-label" for="txtNombreCliente">Nombre cliente</label>
+					<p>formulario dar de alta cliente</p>
+				</form>
+				<form name="frmClienteBaja" id="frmClienteBaja">
+					<label class="control-label" for="txtNombreAlquiler">Seleccione cliente</label>
+					<p>combo con nombres de cliente </p>
+				</form>
+				<form name="frmClienteModificar" id="frmClienteModificar">
+					<label class="control-label" for="txtNombreCliente">Seleccione cliente</label>
+					<p>Combo con con todos los alquileres en el sistema </p>
+				</form>
+
+				<!--formGestionConductores-->
 
 			</div>
 
@@ -126,18 +170,19 @@
 
 	</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="css/bootstrap.min.js"></script>
-<script src="js/principal.js"></script>
-<script src="js/clases/alquiler.js"></script>
-<script src="js/clases/apuntes.js"></script>
-<script src="js/clases/autobus.js"></script>
-<script src="js/clases/cliente.js"></script>
-<script src="js/clases/conductor.js"></script>
-<script src="js/clases/cuenta.js"></script>
-<script src="js/clases/gestion.js"></script>
-<script src="js/clases/mantenimiento.js"></script>
-<script src="js/clases/vacaciones.js"></script>
+<script type="text/javascript" src="js/clases/gestion.js"></script>
+<script type="text/javascript" src="js/clases/alquiler.js"></script>
+<script type="text/javascript" src="js/clases/apuntes.js"></script>
+<script type="text/javascript" src="js/clases/autobus.js"></script>
+<script type="text/javascript" src="js/clases/cliente.js"></script>
+<script type="text/javascript" src="js/clases/conductor.js"></script>
+<script type="text/javascript" src="js/clases/cuenta.js"></script>
+<script type="text/javascript" src="js/clases/mantenimiento.js"></script>
+<script type="text/javascript" src="js/clases/vacaciones.js"></script>
+<script type="text/javascript" src="js/principal.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,9 @@
 body {
     background-color: #dce2df;
 }
+button{
+    margin-top:5px;
+}
 
 /*OCULTAR MENU*/
 #menuAlquiler, #menuGestion, #menuListados
@@ -9,15 +12,26 @@ body {
 }
 
 /*Ocultar alquileres*/
-#ffffff rmAlquiler
+#frmNuevoAlquiler, #frmModificarAlquiler
 {
     display:none;
 }
 
+
 /*OCULTAR Autobuses*/
+#MenuGestionAutobuses
+{
+    display:none;
+}
 
 /*OCULTAR Clientes*/
-
+#MenuGestionClientes, #frmClienteAlta, #frmClienteBaja, #frmClienteModificar
+{
+    display:none;
+}
 /*OCULTAR Conductores*/
-
+#MenuGestionConductores
+{
+    display:none;
+}
 /*OCULTAR Listados*/
