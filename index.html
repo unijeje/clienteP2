@@ -8,10 +8,136 @@
 </head>
 <body>
 
+	<div class="container">
+	
+			<div class="row botones">
+				<div class="col-sm-4 text-center">
+					<a href="#menuAlquiler"><button id="btnAlquiler" class="btn btn-default btn-block btn-menu sep-inf">Gestión Alquiler</button></a>
+				</div>
+				<div class="col-sm-4 text-center">
+					<a href="#menuGestion"><button id="btnGestion" class="btn btn-default btn-block btn-menu sep-inf">Administración Datos</button></a>
+				</div>
+				<div class="col-sm-4 text-center">
+					<a href="#menuListados"><button id="btnListados" class="btn btn-default btn-block btn-menu sep-inf">Listados</button></a>
+				</div>
+			</div>
+
+			<!-- Alquiler -->
+
+			<div id="menuAlquiler">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2 class="text-center">Gestión Alquileres</h2>
+					</div>
+				</div>
+				<div class="row botones">
+					<div class="col-sm-6 text-center">
+						<a href="#menuNuevoAlquiler"><button id="btnNuevoAlquiler" class="btn btn-default btn-block btn-menu sep-inf">Nuevo alquiler</button></a>
+					</div>
+					<div class="col-sm-6 text-center">
+						<a href="#menuModificarAlquiler"><button id="btnModificarAlquiler" class="btn btn-default btn-block btn-menu sep-inf">Modificar alquiler</button></a>
+					</div>
+					<!--
+					<div class="col-sm-4 text-center">
+						<a href="#menuPagarAlquiler"><button id="btnPagar Alquiler" class="btn btn-default btn-block btn-menu sep-inf">Pagar alquiler</button></a>
+					</div>
+					-->
+				</div>	
+
+				<div id="frmAlquiler">
+
+				<!--Formulario nuevo Alquiler-->
+				
+					<form name="frmNuevoAlquiler" id="frmNuevoAlquiler">
+						<div class="form-group">
+							<label class="control-label" for="txtNombreCliente">Nombre Cliente</label>
+							<input class="form-control" id="txtNombreCliente" name="txtNombreCliente" placeholder="entre 6 y 24 caracteres" type="text"/>	
+						</div>
+					</form>
+
+				<!--Formulario Modificar alquiler -->
+					<form name="frmModificarAlquiler" id="frmModificarAlquiler">
+
+					</form>
+				</div>
+			</div>
 
 
+
+
+			<!-- Administracion datos -->
+
+
+			<div id="menuGestion">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2 class="text-center">Administracion de Datos</h2>
+					</div>
+				</div>
+				<div class="row botones">
+					<div class="col-sm-4 text-center">
+						<a href="#menuAutobuses"><button id="btnMenuAutobuses" class="btn btn-default btn-block btn-menu sep-inf">Autobuses</button></a>
+					</div>
+					<div class="col-sm-4 text-center">
+						<a href="#menuClientes"><button id="btnMenuClientes" class="btn btn-default btn-block btn-menu sep-inf">Clientes</button></a>
+					</div>
+					
+					<div class="col-sm-4 text-center">
+						<a href="#menuConductores"><button id="btnMenuConductores" class="btn btn-default btn-block btn-menu sep-inf">Conductores</button></a>
+					</div>
+					
+				</div>				
+
+			</div>
+
+			<!-- Listados -->
+			<div id="menuListados">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2 class="text-center">Listados</h2>
+					</div>
+				</div>
+				<div class="row botones">
+					<div class="col-sm-2 text-center">
+						<a href="#listadoAutobuses"><button id="btnListadoAutobuses" class="btn btn-default btn-block btn-menu sep-inf">Autobuses</button></a>
+					</div>
+					<div class="col-sm-2 text-center">
+						<a href="#listadoClientes"><button id="btnListadoClientes" class="btn btn-default btn-block btn-menu sep-inf">Clientes</button></a>
+					</div>
+					
+					<div class="col-sm-2 text-center">
+						<a href="#listadoConductores"><button id="btnListadoConductores" class="btn btn-default btn-block btn-menu sep-inf">Conductores</button></a>
+					</div>
+					<div class="col-sm-2 text-center">
+						<a href="#listadoAlquileres"><button id="btnListadoAlquileres" class="btn btn-default btn-block btn-menu sep-inf">Alquileres</button></a>
+					</div>
+					<div class="col-sm-2 text-center">
+						<a href="#listadoIngresos"><button id="btnListadoIngresos" class="btn btn-default btn-block btn-menu sep-inf">Ingresos</button></a>
+					</div>
+					
+					<div class="col-sm-2 text-center">
+						<a href="#listadoGastos"><button id="btnListadoGastos" class="btn btn-default btn-block btn-menu sep-inf">Gastos</button></a>
+					</div>
+					
+				</div>				
+
+			</div>
+
+
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="css/bootstrap.min.js"></script>
 <script src="js/principal.js"></script>
+<script src="js/clases/alquiler.js"></script>
+<script src="js/clases/apuntes.js"></script>
+<script src="js/clases/autobus.js"></script>
+<script src="js/clases/cliente.js"></script>
+<script src="js/clases/conductor.js"></script>
+<script src="js/clases/cuenta.js"></script>
+<script src="js/clases/gestion.js"></script>
+<script src="js/clases/mantenimiento.js"></script>
+<script src="js/clases/vacaciones.js"></script>
 </body>
 
 </html>

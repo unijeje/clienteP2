@@ -1,6 +1,6 @@
 
 //objeto
-function Servicio()
+function Gestion()
 {
     //atributos
 }

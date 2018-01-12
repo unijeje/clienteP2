@@ -1,3 +1,23 @@
 body {
     background-color: #dce2df;
 }
+
+/*OCULTAR MENU*/
+#menuAlquiler, #menuGestion, #menuListados
+{
+    display:none;
+}
+
+/*Ocultar alquileres*/
+#ffffff rmAlquiler
+{
+    display:none;
+}
+
+/*OCULTAR Autobuses*/
+
+/*OCULTAR Clientes*/
+
+/*OCULTAR Conductores*/
+
+/*OCULTAR Listados*/
