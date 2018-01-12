@@ -74,7 +74,7 @@ function mostrarMenuAlquiler()
     
     oMenuListados.style.display="none";
     oMenuGestion.style.display="none";
-    oBtnClienteModificar.style.display="block";
+    oMenuAlquiler.style.display="block";
 }
 
 function mostrarMenuGestion()
