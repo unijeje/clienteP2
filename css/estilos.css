@@ -6,7 +6,7 @@ button{
 }
 
 /*OCULTAR MENU*/
-#menuAlquiler, #menuGestion, #menuListados
+#menuAlquiler, #menuGestion, #menuListados, #panelMensajes
 {
     display:none;
 }

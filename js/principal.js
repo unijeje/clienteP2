@@ -34,6 +34,17 @@ var oBtnMenuConductores=document.getElementById("btnMenuConductores");
 oBtnMenuConductores.addEventListener("click", mostrarMenuConductores, false);
 
 //botones Autobuses
+var oBtnAutobusAlta=document.getElementById("btnMenuAutobusAlta");
+oBtnAutobusAlta.addEventListener("click", mostrarMenuAltaAutobus, false);
+
+var oBtnAutobusBaja=document.getElementById("btnMenuAutobusBaja");
+oBtnAutobusBaja.addEventListener("click", mostrarMenuBajaAutobus, false);
+
+var oBtnAutobusModificar=document.getElementById("btnMenuAutobusModificar");
+oBtnAutobusModificar.addEventListener("click", mostrarMenuModificarAutobus, false);
+
+var oBtnAutobusMantenimiento=document.getElementById("btnMenuAutobusMantenimiento");
+oBtnAutobusMantenimiento.addEventListener("click", mostrarMenuMantenimientoAutobus, false);
 
 //botones Clientes
 var oBtnClienteAlta=document.getElementById("btnMenuClienteAlta");
@@ -45,14 +56,31 @@ oBtnClienteBaja.addEventListener("click", mostrarMenuBajaCliente, false);
 var oBtnClienteModificar=document.getElementById("btnMenuClienteModificar");
 oBtnClienteModificar.addEventListener("click", mostrarMenuModificarCliente, false);
 
+//botones Conductores
+var oBtnConductorAlta=document.getElementById("btnMenuConductorAlta");
+oBtnConductorAlta.addEventListener("click", mostrarMenuAltaConductor, false);
+
+var oBtnConductorBaja=document.getElementById("btnMenuConductorBaja");
+oBtnConductorBaja.addEventListener("click", mostrarMenuBajaConductor, false);
+
+var oBtnConductorModificar=document.getElementById("btnMenuConductorModificar");
+oBtnConductorModificar.addEventListener("click", mostrarMenuModificarConductor, false);
+
+var oBtnConductorVacaciones=document.getElementById("btnMenuConductorVacaciones");
+oBtnConductorVacaciones.addEventListener("click", mostrarMenuVacacionesConductor, false);
+
 var oMenuGestionAutobuses=document.getElementById("MenuGestionAutobuses");
 var oMenuGestionClientes=document.getElementById("MenuGestionClientes");
 var oMenuGestionConductores=document.getElementById("MenuGestionConductores");
 
-
-//botones Conductores
-
 //botones Listados
+
+
+//botones panel de mensajes
+var oBtnCerrar=document.getElementById("btnCerrar");
+oBtnCerrar.addEventListener("click", cerrar, false);
+var oPanelMensajes=document.getElementById("panelMensajes");
+var oPanelMensajeTexto=document.getElementById("pTextoMensaje");
 
 //ocultar
 
@@ -64,14 +92,10 @@ function ocultarFormularios()
         oTodosFormularios[i].style.display="none";   
   
 }
-
-
 //mostrar
-
 function mostrarMenuAlquiler()
 {
     ocultarFormularios()
-    
     oMenuListados.style.display="none";
     oMenuGestion.style.display="none";
     oMenuAlquiler.style.display="block";
@@ -80,9 +104,17 @@ function mostrarMenuAlquiler()
 function mostrarMenuGestion()
 {
     ocultarFormularios()
+    oBtnAutobusAlta.style.display="none";
+    oBtnAutobusBaja.style.display="none";
+    oBtnAutobusModificar.style.display="none";
+    oBtnAutobusMantenimiento.style.display="none";
     oBtnClienteAlta.style.display="none";
     oBtnClienteBaja.style.display="none";
     oBtnClienteModificar.style.display="none";
+    oBtnConductorAlta.style.display="none";
+    oBtnConductorBaja.style.display="none";
+    oBtnConductorModificar.style.display="none";
+    oBtnConductorVacaciones.style.display="none";
     oMenuListados.style.display="none";    
     oMenuAlquiler.style.display="none";
     oMenuGestion.style.display="block";
@@ -94,6 +126,7 @@ function mostrarMenuListados()
     oMenuGestion.style.display="none";
     oMenuAlquiler.style.display="none";
     oMenuListados.style.display="block";
+    
 }
 
 function mostrarFormNuevoAlquiler()
@@ -112,14 +145,19 @@ function mostrarFormModificarAlquiler()
 //botones administración
 function mostrarMenuAutobuses()
 {
-
+    ocultarFormularios()
     oMenuGestionClientes.style.display="none";
     oMenuGestionConductores.style.display="none";
     oMenuGestionAutobuses.style.display="block";
+    oBtnAutobusAlta.style.display="block";
+    oBtnAutobusBaja.style.display="block";
+    oBtnAutobusModificar.style.display="block";
+    oBtnAutobusMantenimiento.style.display="block";
 }
 
 function mostrarMenuClientes()
 {
+    ocultarFormularios()
     oMenuGestionConductores.style.display="none";
     oMenuGestionAutobuses.style.display="none";
     oMenuGestionClientes.style.display="block";
@@ -130,9 +168,14 @@ function mostrarMenuClientes()
 
 function mostrarMenuConductores()
 {
-    oMenuGestionConductores.style.display="none";
+    ocultarFormularios()
     oMenuGestionAutobuses.style.display="none";
-    oMenuGestionClientes.style.display="block";
+    oMenuGestionClientes.style.display="none";
+    oMenuGestionConductores.style.display="block";
+    oBtnConductorAlta.style.display="block";
+    oBtnConductorBaja.style.display="block";
+    oBtnConductorModificar.style.display="block";
+    oBtnConductorVacaciones.style.display="block";
 }
 //botones administracion cliente
 function mostrarMenuAltaCliente()
@@ -152,4 +195,80 @@ function mostrarMenuModificarCliente()
     document.frmClienteAlta.style.display="none";
     document.frmClienteBaja.style.display="none";
     document.frmClienteModificar.style.display="block";
+}
+
+//botones administración autobuses
+
+function mostrarMenuAltaAutobus()
+{
+    document.frmAutobusBaja.style.display="none";
+    document.frmAutobusModificar.style.display="none";
+    document.frmAutobusMantenimiento.style.display="none";
+    document.frmAutobusAlta.style.display="block";
+}
+function mostrarMenuBajaAutobus()
+{
+    document.frmAutobusModificar.style.display="none";
+    document.frmAutobusMantenimiento.style.display="none";
+    document.frmAutobusAlta.style.display="none";
+    document.frmAutobusBaja.style.display="block";
+}
+function mostrarMenuModificarAutobus()
+{
+    document.frmAutobusMantenimiento.style.display="none";
+    document.frmAutobusAlta.style.display="none";
+    document.frmAutobusBaja.style.display="none";
+    document.frmAutobusModificar.style.display="block";
+}
+function mostrarMenuMantenimientoAutobus()
+{
+    document.frmAutobusModificar.style.display="none";
+    document.frmAutobusAlta.style.display="none";
+    document.frmAutobusBaja.style.display="none";
+    document.frmAutobusMantenimiento.style.display="block";
+}
+
+//botones administración conductores
+function mostrarMenuAltaConductor()
+{
+    document.frmConductorVacaciones.style.display="none";
+    document.frmConductorBaja.style.display="none";
+    document.frmConductorModificar.style.display="none";
+    document.frmConductorAlta.style.display="block";
+}
+
+function mostrarMenuBajaConductor()
+{
+    document.frmConductorVacaciones.style.display="none";
+    document.frmConductorModificar.style.display="none";
+    document.frmConductorAlta.style.display="none";
+    document.frmConductorBaja.style.display="block";
+}
+
+function mostrarMenuModificarConductor()
+{
+    document.frmConductorVacaciones.style.display="none";
+    document.frmConductorAlta.style.display="none";
+    document.frmConductorBaja.style.display="none";
+    document.frmConductorModificar.style.display="block";
+}
+
+function mostrarMenuVacacionesConductor()
+{
+    document.frmConductorAlta.style.display="none";
+    document.frmConductorBaja.style.display="none";
+    document.frmConductorModificar.style.display="none";
+    document.frmConductorVacaciones.style.display="block";
+}
+
+//panel de mensajes
+function mensaje(sTexto)
+{
+	oPanelMensajeTexto.textContent=sTexto;
+	oPanelMensajes.style.display = "block";
+}
+
+function cerrar()
+{
+	oPanelMensajes.style.display = "none";
 }

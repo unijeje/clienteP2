@@ -88,19 +88,29 @@
 					</div>	
 				</div>
 				<br>
-				<div id="MenuGestionAutobuses">
+				<div id="MenuGestionAutobuses"> 
 					<div class="row botones">
-						<p>Botones añadir,dar de baja, etc</p>
-
+						<div class="col-sm-3 text-center">
+							<a href="#menuAutobusAlta"><button id="btnMenuAutobusAlta" class="btn btn-default btn-block btn-menu sep-inf">Dar de alta Autobus</button></a>
+						</div>
+						<div class="col-sm-3 text-center">
+							<a href="#menuAutobusBaja"><button id="btnMenuAutobusBaja" class="btn btn-default btn-block btn-menu sep-inf">Dar de Baja Autobus</button></a>
+						</div>
+						<div class="col-sm-3 text-center">
+							<a href="#menuAutobusModificar"><button id="btnMenuAutobusModificar" class="btn btn-default btn-block btn-menu sep-inf">Modificar Autobus</button></a>
+						</div>
+						<div class="col-sm-3 text-center">
+							<a href="#menuAutobusMantenimiento"><button id="btnMenuAutobusMantenimiento" class="btn btn-default btn-block btn-menu sep-inf">Mantenimiento Autobus</button></a>
+						</div>
 					</div>
 				</div>
 				<div id="MenuGestionClientes">
 					<div class="row botones">
 						<div class="col-sm-4 text-center">
-							<a href="#menuClienteAlta"><button id="btnMenuClienteAlta" class="btn btn-default btn-block btn-menu sep-inf">Dar de Alta</button></a>
+							<a href="#menuClienteAlta"><button id="btnMenuClienteAlta" class="btn btn-default btn-block btn-menu sep-inf">Dar de Alta Cliente</button></a>
 						</div>
 						<div class="col-sm-4 text-center">
-							<a href="#menuClienteBaja"><button id="btnMenuClienteBaja" class="btn btn-default btn-block btn-menu sep-inf">Dar de Baja</button></a>
+							<a href="#menuClienteBaja"><button id="btnMenuClienteBaja" class="btn btn-default btn-block btn-menu sep-inf">Dar de Baja Cliente</button></a>
 						</div>
 						<div class="col-sm-4 text-center">
 							<a href="#menuClienteModificar"><button id="btnMenuClienteModificar" class="btn btn-default btn-block btn-menu sep-inf">Modificar Cliente</button></a>
@@ -109,29 +119,115 @@
 				</div>
 				<div id="MenuGestionConductores">
 					<div class="row botones">
-						<p>Botones añadir,dar de baja, vacaciones, etc</p>
-
+						<div class="col-sm-3 text-center">
+							<a href="#menuConductorAlta"><button id="btnMenuConductorAlta" class="btn btn-default btn-block btn-menu sep-inf">Dar de alta Conductor</button></a>
+						</div>
+						<div class="col-sm-3 text-center">
+							<a href="#menuConductorBaja"><button id="btnMenuConductorBaja" class="btn btn-default btn-block btn-menu sep-inf">Dar de Baja Conductor</button></a>
+						</div>
+						<div class="col-sm-3 text-center">
+							<a href="#menuConductorModificar"><button id="btnMenuConductorModificar" class="btn btn-default btn-block btn-menu sep-inf">Modificar Conductor</button></a>
+						</div>
+						<div class="col-sm-3 text-center">
+							<a href="#menuConductorVacaciones"><button id="btnMenuConductorVacaciones" class="btn btn-default btn-block btn-menu sep-inf">Vacaciones</button></a>
+						</div>
 					</div>
 				</div>
 				<br>
 				<!--FormGestionAutobuses-->
-				
-				<!--formGestionClientes-->
-				<form name="frmClienteAlta" id="frmClienteAlta">
-					<label class="control-label" for="txtNombreCliente">Nombre cliente</label>
-					<p>formulario dar de alta cliente</p>
+				<form name="frmAutobusAlta" id="frmAutobusAlta" class="form-horizontal">
+					<label class="control-label" for="txtNombreAutobus">Nombre Autobus</label>
+					<p>formulario dar de alta Autobus</p>
 				</form>
-				<form name="frmClienteBaja" id="frmClienteBaja">
+				<form name="frmAutobusBaja" id="frmAutobusBaja" class="form-horizontal">
+					<label class="control-label" for="txtNombreAlquiler">Seleccione Autobus</label>
+					<p>combo con nombres de Autobus </p>
+				</form>
+				<form name="frmAutobusModificar" id="frmAutobusModificar" class="form-horizontal">
+					<label class="control-label" for="txtNombreAutobus">Seleccione Autobus</label>
+					<p>Combo con con todos los alquileres en el sistema </p>
+				</form>
+				<form name="frmAutobusMantenimiento" id="frmAutobusMantenimiento" class="form-horizontal">
+					<label class="control-label" for="txtNombreAutobus">Seleccione Autobus</label>
+					<p>Combo con con todos los autobuses en el sistema </p>
+				</form>
+
+				<!--formGestionClientes-->
+				<form name="frmClienteAlta" id="frmClienteAlta" class="form-horizontal">
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteDni">Nif del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteDni" name="txtClienteDni" placeholder="NIF" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteNombre">Nombre del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteNombre" name="txtClienteNombre" placeholder="NOMBRE" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteApellidos">Apellidos del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteApellidos" name="txtClienteApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteTelefono">Teléfono del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteTelefono" name="txtClienteTelefono" placeholder="Telefono" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteCorreo">Correo del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteCorreo" name="txtClienteCorreo" placeholder="Correo" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteCuenta">Número de cuenta del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteSexo">Sexo del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteSexo" name="txtClienteSexo" placeholder="Sexo" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12 col-sm-12">
+						<input type="button" id="btnAltaCliente" name="btnAltaCliente" class="btn btn-block btn-primary" value="Dar de Alta" />
+						</div>
+					</div>
+				</form>
+				<form name="frmClienteBaja" id="frmClienteBaja" class="form-horizontal">
 					<label class="control-label" for="txtNombreAlquiler">Seleccione cliente</label>
 					<p>combo con nombres de cliente </p>
 				</form>
-				<form name="frmClienteModificar" id="frmClienteModificar">
+				<form name="frmClienteModificar" id="frmClienteModificar" class="form-horizontal">
 					<label class="control-label" for="txtNombreCliente">Seleccione cliente</label>
 					<p>Combo con con todos los alquileres en el sistema </p>
 				</form>
 
 				<!--formGestionConductores-->
-
+				<form name="frmConductorAlta" id="frmConductorAlta" class="form-horizontal">
+					<label class="control-label" for="txtNombreConductor">Nombre Conductor</label>
+					<p>formulario dar de alta Conductor</p>
+				</form>
+				<form name="frmConductorBaja" id="frmConductorBaja" class="form-horizontal">
+					<label class="control-label" for="txtNombreAlquiler">Seleccione Conductor</label>
+					<p>combo con nombres de Conductor </p>
+				</form>
+				<form name="frmConductorModificar" id="frmConductorModificar" class="form-horizontal">
+					<label class="control-label" for="txtNombreConductor">Seleccione Conductor</label>
+					<p>Combo con con todos los alquileres en el sistema </p>
+				</form>
+				<form name="frmConductorVacaciones" id="frmConductorVacaciones" class="form-horizontal">
+					<label class="control-label" for="txtNombreConductor">Seleccione Conductor</label>
+					<p>Combo con con todos los Conductores en el sistema </p>
+				</form>
 			</div>
 
 			<!-- Listados -->
@@ -167,6 +263,20 @@
 
 			</div>
 
+			<!-- panel de mensajes -->
+			<div class="panel panel-default" id="panelMensajes">
+				<div class="panel-heading">
+					<h3 class="panel-title text-center">Mensajes</h3>
+				</div>
+				<div class="panel-body" id="divTextoMensaje">
+					<p id="pTextoMensaje">a</p>
+					<div class="form-group">
+						<div class="col-md-4">
+							<input type="button" id="btnCerrar" name="btnCerrar" class="btn btn-primary" value="Cerrar"/>
+						</div>
+					</div>
+				</div>
+			</div>
 
 	</div>
 
@@ -183,6 +293,7 @@
 <script type="text/javascript" src="js/clases/mantenimiento.js"></script>
 <script type="text/javascript" src="js/clases/vacaciones.js"></script>
 <script type="text/javascript" src="js/principal.js"></script>
+<script type="text/javascript" src="js/gestion/gestioncliente.js"></script>
 </body>
 
 </html>
