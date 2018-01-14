@@ -272,3 +272,58 @@ function cerrar()
 {
 	oPanelMensajes.style.display = "none";
 }
+
+
+function comboEstadoInicial() //al iniciar el programa muestra los datos del primero y al borrar/actualizar vuelve a mostrar el primero
+{
+    //alquiler
+
+    //cliente
+    var oComboBajaCliente=document.frmClienteBaja.comboCliente;
+    var oComboModificaCliente=document.frmClienteModificar.comboCliente;
+    if(oComboBajaCliente.firstChild)
+    {
+        oComboBajaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
+        oComboModificaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
+        var oCliente=oGestion.buscarCliente(frmClienteModificar.comboCliente.value);
+        
+        frmClienteModificar.txtClienteDni.value=oCliente.dni;
+        frmClienteModificar.txtClienteNombre.value=oCliente.nombre;
+        frmClienteModificar.txtClienteApellidos.value=oCliente.apellidos;
+        frmClienteModificar.txtClienteTelefono.value=oCliente.tlf;
+        frmClienteModificar.txtClienteCorreo.value=oCliente.correo;
+        frmClienteModificar.txtClienteCuenta.value=oCliente.numCuenta;
+        frmClienteModificar.txtClienteSexo.value=oCliente.sexo;
+
+        frmClienteBaja.txtClienteDni.value=oCliente.dni;
+        frmClienteBaja.txtClienteNombre.value=oCliente.nombre;
+        frmClienteBaja.txtClienteApellidos.value=oCliente.apellidos;
+        frmClienteBaja.txtClienteTelefono.value=oCliente.tlf;
+        frmClienteBaja.txtClienteCorreo.value=oCliente.correo;
+        frmClienteBaja.txtClienteCuenta.value=oCliente.numCuenta;
+        frmClienteBaja.txtClienteSexo.value=oCliente.sexo;
+
+    }  
+    else
+    {
+        frmClienteModificar.txtClienteDni.value=null;
+        frmClienteModificar.txtClienteNombre.value=null;
+        frmClienteModificar.txtClienteApellidos.value=null;
+        frmClienteModificar.txtClienteTelefono.value=null;
+        frmClienteModificar.txtClienteCorreo.value=null;
+        frmClienteModificar.txtClienteCuenta.value=null;
+        frmClienteModificar.txtClienteSexo.value=null;
+
+        frmClienteBaja.txtClienteDni.value=null;
+        frmClienteBaja.txtClienteNombre.value=null;
+        frmClienteBaja.txtClienteApellidos.value=null;
+        frmClienteBaja.txtClienteTelefono.value=null;
+        frmClienteBaja.txtClienteCorreo.value=null;
+        frmClienteBaja.txtClienteCuenta.value=null;
+        frmClienteBaja.txtClienteSexo.value=null;
+    }
+
+    //conductores
+
+    //autobuses
+}

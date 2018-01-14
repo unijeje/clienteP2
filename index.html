@@ -48,7 +48,7 @@
 
 				<!--Formulario nuevo Alquiler-->
 				
-					<form name="frmNuevoAlquiler" id="frmNuevoAlquiler">
+					<form name="frmNuevoAlquiler" id="frmNuevoAlquiler"> <!--Formulario Nuevo Alquiler -->
 						<div class="form-group">
 							<label class="control-label" for="txtNombreCliente">Nombre Cliente</label>
 							<input class="form-control" id="txtNombreCliente" name="txtNombreCliente" placeholder="entre 6 y 24 caracteres" type="text"/>	
@@ -56,7 +56,7 @@
 					</form>
 
 				<!--Formulario Modificar alquiler -->
-					<form name="frmModificarAlquiler" id="frmModificarAlquiler">
+					<form name="frmModificarAlquiler" id="frmModificarAlquiler"> <!--Formulario Modificar alquiler -->
 						<label class="control-label" for="txtNombreAlquiler">Seleccione Alquiler</label>
 						<p>Combo con con todos los alquileres en el sistema </p>
 					</form>
@@ -135,25 +135,25 @@
 				</div>
 				<br>
 				<!--FormGestionAutobuses-->
-				<form name="frmAutobusAlta" id="frmAutobusAlta" class="form-horizontal">
+				<form name="frmAutobusAlta" id="frmAutobusAlta" class="form-horizontal"> <!-- Alta Autobus -->
 					<label class="control-label" for="txtNombreAutobus">Nombre Autobus</label>
 					<p>formulario dar de alta Autobus</p>
 				</form>
-				<form name="frmAutobusBaja" id="frmAutobusBaja" class="form-horizontal">
+				<form name="frmAutobusBaja" id="frmAutobusBaja" class="form-horizontal"> <!-- Baja Autobus -->
 					<label class="control-label" for="txtNombreAlquiler">Seleccione Autobus</label>
 					<p>combo con nombres de Autobus </p>
 				</form>
-				<form name="frmAutobusModificar" id="frmAutobusModificar" class="form-horizontal">
+				<form name="frmAutobusModificar" id="frmAutobusModificar" class="form-horizontal"> <!-- Modificar Autobus -->
 					<label class="control-label" for="txtNombreAutobus">Seleccione Autobus</label>
 					<p>Combo con con todos los alquileres en el sistema </p>
 				</form>
-				<form name="frmAutobusMantenimiento" id="frmAutobusMantenimiento" class="form-horizontal">
+				<form name="frmAutobusMantenimiento" id="frmAutobusMantenimiento" class="form-horizontal"> <!-- Mantenimiento Autobus -->
 					<label class="control-label" for="txtNombreAutobus">Seleccione Autobus</label>
 					<p>Combo con con todos los autobuses en el sistema </p>
 				</form>
 
 				<!--formGestionClientes-->
-				<form name="frmClienteAlta" id="frmClienteAlta" class="form-horizontal">
+				<form name="frmClienteAlta" id="frmClienteAlta" class="form-horizontal"> <!--Alta CLiente-->
 					<div class="form-group">
 						<label class="col-md-2 col-sm-4 control-label" for="txtClienteDni">Nif del Cliente:</label>  
 						<div class="col-md-10 col-sm-8">
@@ -202,36 +202,142 @@
 						</div>
 					</div>
 				</form>
-				<form name="frmClienteBaja" id="frmClienteBaja" class="form-horizontal">
-					<label class="control-label" for="txtNombreAlquiler">Seleccione cliente</label>
-					<p>combo con nombres de cliente </p>
+				<form name="frmClienteBaja" id="frmClienteBaja" class="form-horizontal"> <!--Baja de cliente -->
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="tipoMMulta">Seleccione Cliente</label>
+						<div class="col-md-10 col-sm-8">
+							<select id="comboCliente" name="comboCliente" class="form-control ">
+								<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteDni">Nif del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input disabled id="txtClienteDni" name="txtClienteDni" placeholder="NIF" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteNombre">Nombre del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input disabled id="txtClienteNombre" name="txtClienteNombre" placeholder="NOMBRE" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteApellidos">Apellidos del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input disabled id="txtClienteApellidos" name="txtClienteApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteTelefono">Teléfono del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input disabled id="txtClienteTelefono" name="txtClienteTelefono" placeholder="Telefono" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteCorreo">Correo del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input disabled id="txtClienteCorreo" name="txtClienteCorreo" placeholder="Correo" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteCuenta">Número de cuenta del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input disabled id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteSexo">Sexo del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input disabled id="txtClienteSexo" name="txtClienteSexo" placeholder="Sexo" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12 col-sm-12">
+						<input type="button" id="btnBajaCliente" name="btnBajaCliente" class="btn btn-block btn-primary" value="Dar de Baja" />
+						</div>
+					</div>
 				</form>
-				<form name="frmClienteModificar" id="frmClienteModificar" class="form-horizontal">
-					<label class="control-label" for="txtNombreCliente">Seleccione cliente</label>
-					<p>Combo con con todos los alquileres en el sistema </p>
+				<form name="frmClienteModificar" id="frmClienteModificar" class="form-horizontal"> <!-- Modificar cliente -->
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="tipoMMulta">Seleccione Cliente</label>
+						<div class="col-md-10 col-sm-8">
+							<select id="comboCliente" name="comboCliente" class="form-control">
+								<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteDni">Nif del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteDni" name="txtClienteDni" placeholder="NIF" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteNombre">Nombre del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteNombre" name="txtClienteNombre" placeholder="NOMBRE" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteApellidos">Apellidos del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteApellidos" name="txtClienteApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteTelefono">Teléfono del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteTelefono" name="txtClienteTelefono" placeholder="Telefono" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteCorreo">Correo del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteCorreo" name="txtClienteCorreo" placeholder="Correo" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteCuenta">Número de cuenta del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 col-sm-4 control-label" for="txtClienteSexo">Sexo del Cliente:</label>  
+						<div class="col-md-10 col-sm-8">
+							<input id="txtClienteSexo" name="txtClienteSexo" placeholder="Sexo" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12 col-sm-12">
+						<input type="button" id="btnModificarCliente" name="btnModificarCliente" class="btn btn-block btn-primary" value="Modificar datos" />
+						</div>
+					</div>
 				</form>
 
 				<!--formGestionConductores-->
-				<form name="frmConductorAlta" id="frmConductorAlta" class="form-horizontal">
+				<form name="frmConductorAlta" id="frmConductorAlta" class="form-horizontal"> <!-- Alta Conductor -->
 					<label class="control-label" for="txtNombreConductor">Nombre Conductor</label>
 					<p>formulario dar de alta Conductor</p>
 				</form>
-				<form name="frmConductorBaja" id="frmConductorBaja" class="form-horizontal">
+				<form name="frmConductorBaja" id="frmConductorBaja" class="form-horizontal"> <!-- Baja Conductor -->
 					<label class="control-label" for="txtNombreAlquiler">Seleccione Conductor</label>
 					<p>combo con nombres de Conductor </p>
 				</form>
-				<form name="frmConductorModificar" id="frmConductorModificar" class="form-horizontal">
+				<form name="frmConductorModificar" id="frmConductorModificar" class="form-horizontal"> <!-- Modificar Conductor -->
 					<label class="control-label" for="txtNombreConductor">Seleccione Conductor</label>
 					<p>Combo con con todos los alquileres en el sistema </p>
 				</form>
-				<form name="frmConductorVacaciones" id="frmConductorVacaciones" class="form-horizontal">
+				<form name="frmConductorVacaciones" id="frmConductorVacaciones" class="form-horizontal"> <!-- Vacaciones Conductor -->
 					<label class="control-label" for="txtNombreConductor">Seleccione Conductor</label>
 					<p>Combo con con todos los Conductores en el sistema </p>
 				</form>
 			</div>
 
 			<!-- Listados -->
-			<div id="menuListados">
+			<div id="menuListados"> <!-- LISTADOS -->
 				<div class="row">
 					<div class="col-xs-12">
 						<h2 class="text-center">Listados</h2>

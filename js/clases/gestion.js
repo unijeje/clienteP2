@@ -14,6 +14,9 @@ class Gestion
     }
     //funciones
 
+    //alquiler
+
+
     //clientes
 
     /*Comprueba con DNI si existe ese cliente en los datos */
@@ -31,12 +34,23 @@ class Gestion
     altaCliente(oCliente)
     {
         var res=false;
+        
         if(this.buscarCliente(oCliente.dni)==null)
         {
             this._clientes.push(oCliente);
             res=true;
+            this.actualizaComboCliente();
         }
-
+        else if(this.buscarCliente(oCliente.dni).estado==false) //si ya existe pero esta dado de baja lo da de alta otra vez
+        {
+            for(var i=0;i<this._clientes.length;i++)
+            {
+                if(oCliente.dni==this._clientes[i].dni)
+                    this._clientes[i].estado=true;
+                res=true;
+                this.actualizaComboCliente();
+            }
+        }        
         return res;
     }
     
@@ -45,34 +59,65 @@ class Gestion
     bajaCliente(oCliente)
     {
         var res=false;//no se ha encontrado
-        var oCliente=buscarCliente(oCliente.dni);
-        if(this.buscarCliente(oCliente.dni)!=null)
+        var oCliente=this.buscarCliente(oCliente.dni);
+        if(oCliente!=null)
         {
             oCliente.estado=false;
             res=true;//se ha dado de baja
+            this.actualizaComboCliente();
         }
         return res;
     }
     /*Recibe nuevo Cliente y el DNI antiguo de un combo, busca el cliente y lo reemplaza con el nuevo, comprobando DNI*/
     modificarCliente(oCliente, dniAntiguo)
     {
-        var res="";
+        var res=true;
 
         //comprobar nuevo DNI
-        if(buscarCliente(oCliente.dni)!=null)
-            res="Ya existe un cliente con ese DNI";
-        else //reemplazar
-            for(var i=0;i<this._clientes.length && res==false;i++)
+        if(this.buscarCliente(oCliente.dni)!=null)
+         {
+            res=false
+            oCliente.dni=dniAntiguo;
+         }   
+        //si el dni es incorrecto se deja el mismo que tenia antes y se avisa aunque se cambian los otros datos
+        for(var i=0;i<this._clientes.length;i++)
+        {
+            if(this._clientes[i].dni==dniAntiguo)
             {
-                if(this._clientes[i].dni==dniAntiguo)
-                {
-                    this._clientes[i]=oCliente;
-                    res="Cliente actualizado correctamente";
-                }
-                else
-                    res="No existe el cliente a modificar";//esta opción nunca se va a dar porque va a venir de un combo
+                console.log(i);                    
+                this._clientes[i]=oCliente;
+                this.actualizaComboCliente();
+                
             }
+
+        }
         return res;
        
     }
+    /*actualiza los select con los clientes, no muy eficiente pero funciona para todos los casos*/
+    actualizaComboCliente()
+    {
+        var oComboBajaCliente=document.frmClienteBaja.comboCliente;
+        var oComboModificaCliente=document.frmClienteModificar.comboCliente;
+
+        while (oComboBajaCliente.firstChild) { //tienen el mismo nº de hijos
+            oComboBajaCliente.removeChild(oComboBajaCliente.firstChild);
+            oComboModificaCliente.removeChild(oComboModificaCliente.firstChild);
+        }
+        for(var i=0;i<this._clientes.length;i++)
+        {
+            if(this._clientes[i].estado==true) //solo mostrar los dados de alta
+            {
+                var newSelect=document.createElement("option");
+                newSelect.value=this._clientes[i].dni;
+                newSelect.text=this._clientes[i].dni+" - "+this._clientes[i].nombre+" "+this._clientes[i].apellidos;
+                oComboBajaCliente.appendChild(newSelect);
+                oComboModificaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
+            }    
+        }
+    }
+
+    //conductores
+
+    //autobuses
 }
