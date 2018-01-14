@@ -2,9 +2,10 @@
 //objeto
 class Alquiler
 {
-    constructor(arrayConductores, sID, iHoras, dFecha, iNumPers, sDescripcion, sOrigen, sDestino, iKMS, oCliente)
+    constructor(arrayConductores, arrayAutobuses, sID, iHoras, dFecha, iNumPers, sDescripcion, sOrigen, sDestino, iKMS, oCliente)
     {
         this.conductor=arrayConductores;
+        this.autobuses=arrayAutobuses;
         this.id=sID;
         this.horas=iHoras;
         this.fecha=dFecha;
