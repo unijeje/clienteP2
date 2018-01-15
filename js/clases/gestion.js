@@ -115,10 +115,12 @@ class Gestion
     {
         var oComboBajaCliente=document.frmClienteBaja.comboCliente;
         var oComboModificaCliente=document.frmClienteModificar.comboCliente;
+        var oComboSeleccionaCliente=document.frmNuevoAlquiler.comboCliente;
 
         while (oComboBajaCliente.firstChild) { //tienen el mismo nº de hijos
             oComboBajaCliente.removeChild(oComboBajaCliente.firstChild);
             oComboModificaCliente.removeChild(oComboModificaCliente.firstChild);
+            oComboSeleccionaCliente.removeChild(oComboSeleccionaCliente.firstChild);
         }
         for(var i=0;i<this._clientes.length;i++)
         {
@@ -129,6 +131,7 @@ class Gestion
                 newSelect.text=this._clientes[i].dni+" - "+this._clientes[i].nombre+" "+this._clientes[i].apellidos;
                 oComboBajaCliente.appendChild(newSelect);
                 oComboModificaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
+                oComboSeleccionaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
             }    
         }
     }
