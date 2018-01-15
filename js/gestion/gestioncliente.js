@@ -21,10 +21,15 @@ oComboModificaCliente.addEventListener("change", rellenaCamposCliente, false);
 
 comboEstadoInicial();
 
+var sError="";
 
-function AltaCliente()
+
+function AltaCliente(oEvento)
 {
-    if(validarAltaCliente())
+    var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
+
+    if(validarCliente(oForm))
     {
         var sDniCliente=frmClienteAlta.txtClienteDni.value.trim();
         var sNombreCliente=frmClienteAlta.txtClienteNombre.value.trim();
@@ -50,60 +55,96 @@ function AltaCliente()
     }
     else
     {
-        mensaje("Fallo en la validación");
+        mensaje("Fallo en la validación "+sError);
     }
 }
 
-function validarAltaCliente()
+function validarCliente(oForm)
 {
 
     var bValidacion=true;
-    var sError = "";
-
+    sError = "";
     //DNI
-    var sDniCliente=frmClienteAlta.txtClienteDni.value.trim();
-    frmClienteAlta.txtClienteDni.value=frmClienteAlta.txtClienteDni.value.trim();
+    var sDniCliente=oForm.txtClienteDni.value.trim();
+    oForm.txtClienteDni.value=oForm.txtClienteDni.value.trim();
 
     if(!oExpRegDni.test(sDniCliente))
     {
-        frmClienteAlta.txtClienteDni.style.backgroundColor="red";
-        frmClienteAlta.txtClienteDni.focus();
-        sError +="El DNI tiene que ser 8 caracteres númericos y uno alfabético";
+        oForm.txtClienteDni.style.backgroundColor="red";
+        oForm.txtClienteDni.focus();
+        sError +="El DNI tiene que ser 8 caracteres númericos y uno alfabético \n";
         bValidacion=false;
     }
     else
     {
-        frmClienteAlta.txtClienteDni.style.backgroundColor="white";
+        oForm.txtClienteDni.style.backgroundColor="white";
     }
 
     //NOMBRE
-    var sNombreCliente=frmClienteAlta.txtClienteNombre.value.trim();
-    frmClienteAlta.txtClienteNombre.value=frmClienteAlta.txtClienteNombre.value.trim();
+    var sNombreCliente=oForm.txtClienteNombre.value.trim();
+    oForm.txtClienteNombre.value=oForm.txtClienteNombre.value.trim();
 
     if(!oExpRegNombre.test(sNombreCliente))
     {
-        frmClienteAlta.txtClienteNombre.style.backgroundColor="red";
-        frmClienteAlta.txtClienteNombre.focus();
-        sError +="El nombre del cliente tiene que ser entre 3 y 20 carácteres alfabéticos";
+        oForm.txtClienteNombre.style.backgroundColor="red";
+        if(bValidacion)
+        oForm.txtClienteNombre.focus();
+        sError +="El nombre del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
         bValidacion=false;
     }
     else
-        frmClienteAlta.txtClienteNombre.style.backgroundColor="white";
+    oForm.txtClienteNombre.style.backgroundColor="white";
 
     //Apellidos
-    var sApellidosCliente=frmClienteAlta.txtClienteApellidos.value.trim();
+    var sApellidosCliente=oForm.txtClienteApellidos.value.trim();
+    oForm.txtClienteApellidos.value=oForm.txtClienteApellidos.value.trim();
+
+    if(!oExpRegNombre.test(sApellidosCliente))
+    {
+        oForm.txtClienteApellidos.style.backgroundColor="red";
+        if(bValidacion)
+            oForm.txtClienteApellidos.focus();
+        sError +="El Apellido del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
+        bValidacion=false;
+    }
+    else
+    oForm.txtClienteApellidos.style.backgroundColor="white";
 
     //Tlf
-    var sTlfCliente=frmClienteAlta.txtClienteTelefono.value.trim();
+    var sTlfCliente=oForm.txtClienteTelefono.value.trim();
+    oForm.txtClienteTelefono.value=oForm.txtClienteTelefono.value.trim();
+
+    if(!oExpRegTelefono.test(sTlfCliente))
+    {
+        oForm.txtClienteTelefono.style.backgroundColor="red";
+        if(bValidacion)
+            oForm.txtClienteTelefono.focus();
+        sError +="El Telefono no es correcto \n";
+        bValidacion=false;
+    }
+    else
+        oForm.txtClienteTelefono.style.backgroundColor="white";
 
     //Correo
-    var sCorreoCliente=frmClienteAlta.txtClienteCorreo.value.trim();
+    var sCorreoCliente=oForm.txtClienteCorreo.value.trim();
+    oForm.txtClienteCorreo.value=oForm.txtClienteCorreo.value.trim();
+
+    if(!oExpRegCorreo.test(sCorreoCliente))
+    {
+        oForm.txtClienteCorreo.style.backgroundColor="red";
+        if(bValidacion)
+            oForm.txtClienteCorreo.focus();
+        sError+="El correo no es correcto";
+        bValidacion=false;
+    }
+    else
+        oForm.txtClienteCorreo.style.backgroundColor="white";
 
     //Cuenta
-    var sCuentaCliente=frmClienteAlta.txtClienteCuenta.value.trim();
+    var sCuentaCliente=oForm.txtClienteCuenta.value.trim();
 
     //Genero
-    var sSexoCliente=frmClienteAlta.txtClienteSexo.value.trim();
+    var sSexoCliente=oForm.txtClienteSexo.value.trim();
 
     return bValidacion;
 }
@@ -129,29 +170,37 @@ function bajaCliente()
     }
 }
 
-function actualizaCliente()
+function actualizaCliente(oEvento)
 {
     //console.log("actualziar");
-    var sDniclienteAntiguo=frmClienteModificar.comboCliente.value;
-    var sDniCliente=frmClienteModificar.txtClienteDni.value.trim();
-    var sNombreCliente=frmClienteModificar.txtClienteNombre.value.trim();
-    var sApellidosCliente=frmClienteModificar.txtClienteApellidos.value.trim();
-    var sTlfCliente=frmClienteModificar.txtClienteTelefono.value.trim();
-    var sCorreoCliente=frmClienteModificar.txtClienteCorreo.value.trim();
-    var sCuentaCliente=frmClienteModificar.txtClienteCuenta.value.trim();
-    var sSexoCliente=frmClienteModificar.txtClienteSexo.value.trim();
-
-    var oNuevoCliente=new Cliente(sDniCliente, sNombreCliente, sApellidosCliente, sTlfCliente, sCorreoCliente, sCuentaCliente, sSexoCliente);
-    var bActualizacion=oGestion.modificarCliente(oNuevoCliente, sDniclienteAntiguo);
-    if(bActualizacion)
+    var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
+    if(validarCliente(oForm))
     {
-        mensaje("Cliente actualizado correctamente");
-       
+        var sDniclienteAntiguo=frmClienteModificar.comboCliente.value;
+        var sDniCliente=frmClienteModificar.txtClienteDni.value.trim();
+        var sNombreCliente=frmClienteModificar.txtClienteNombre.value.trim();
+        var sApellidosCliente=frmClienteModificar.txtClienteApellidos.value.trim();
+        var sTlfCliente=frmClienteModificar.txtClienteTelefono.value.trim();
+        var sCorreoCliente=frmClienteModificar.txtClienteCorreo.value.trim();
+        var sCuentaCliente=frmClienteModificar.txtClienteCuenta.value.trim();
+        var sSexoCliente=frmClienteModificar.txtClienteSexo.value.trim();
+
+        var oNuevoCliente=new Cliente(sDniCliente, sNombreCliente, sApellidosCliente, sTlfCliente, sCorreoCliente, sCuentaCliente, sSexoCliente);
+        var bActualizacion=oGestion.modificarCliente(oNuevoCliente, sDniclienteAntiguo);
+        if(bActualizacion)
+        {
+            mensaje("Cliente actualizado correctamente");
+        
+        }
+        else
+            mensaje("Ya existe un cliente con ese DNI");
+        
+        comboEstadoInicial();
     }
     else
-        mensaje("Ya existe un cliente con ese DNI");
+        mensaje("Error en el formulario \n"+sError);
     
-    comboEstadoInicial();
     
 }
 

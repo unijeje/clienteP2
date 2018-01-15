@@ -330,16 +330,9 @@ function comboEstadoInicial() //al iniciar el programa muestra los datos del pri
     //autobuses
 }
 
-
-
-
-
-
-
-
 // EXPRESIONES REGULARES
 
-var oExpRegDni = /^\d{8}[a-zA-Z]$/;
+var oExpRegDni = /^\d{8}[a-zA-Z]$/; //8 num y una letra DNI
 
 var oExpRegNombre = /^[a-z\s]{3,20}$/i; //ENTRE 3 y 20 CARACTERES
 
