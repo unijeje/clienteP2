@@ -45,18 +45,86 @@
 				</div>	
 
 				<div id="frmAlquiler">
-
+				<br>
 				<!--Formulario nuevo Alquiler-->
 				
-					<form name="frmNuevoAlquiler" id="frmNuevoAlquiler"> <!--Formulario Nuevo Alquiler -->
+					<form name="frmNuevoAlquiler" id="frmNuevoAlquiler" class="form-horizontal"> <!--Formulario Nuevo Alquiler -->
 						<div class="form-group">
-							<label class="control-label" for="txtNombreCliente">Nombre Cliente</label>
-							<input class="form-control" id="txtNombreCliente" name="txtNombreCliente" placeholder="entre 6 y 24 caracteres" type="text"/>	
+							<label class="col-md-2 col-sm-4 control-label" for="comboCliente">Seleccione Cliente</label>
+							<div class="col-md-10 col-sm-8">
+								<select id="comboCliente" name="comboCliente" class="form-control ">
+									<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerID">ID Alquiler:</label>  
+							<div class="col-md-10 col-sm-8">
+								<input id="txtAlquilerID" name="txtAlquilerID" placeholder="123" class="form-control input-md" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerHoras">Nº Horas:</label>  
+							<div class="col-md-10 col-sm-8">
+								<input id="txtAlquilerHoras" name="txtAlquilerHoras" placeholder="nº" class="form-control input-md" type="number">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerFecha">Fecha:</label>  
+							<div class="col-md-10 col-sm-8">
+								<input id="txtAlquilerFecha" name="txtAlquilerFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerNumPers">Nº Total Personas:</label>  
+							<div class="col-md-10 col-sm-8">
+								<input id="txtAlquilerNumPers" name="txtAlquilerNumPers" placeholder="nº" class="form-control input-md" type="number">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerDesc">Descripción: </label>  
+							<div class="col-md-10 col-sm-8">
+								<textarea id="txtAlquilerDesc" name="txtAlquilerDesc" placeholder="comentario" class="form-control input-md" type="number"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerOrigen">Origen:</label>  
+							<div class="col-md-10 col-sm-8">
+								<input id="txtAlquilerOrigen" name="txtAlquilerOrigen" placeholder="lugar" class="form-control input-md" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerDestino">Destino:</label>  
+							<div class="col-md-10 col-sm-8">
+								<input id="txtAlquilerDestino" name="txtAlquilerDestino" placeholder="lugar" class="form-control input-md" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="txtAlquilerKms">Nº Total Kilómetros:</label>  
+							<div class="col-md-10 col-sm-8">
+								<input id="txtAlquilerKms" name="txtAlquilerKms" placeholder="kilómetros" class="form-control input-md" type="number">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="comboConductores">Seleccione Conductores: </label>
+							<div class="col-md-10 col-sm-8">
+								<select id="comboConductores" name="comboConductores" class="form-control ">
+									<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="comboAutobuses">Seleccione Autobuses: </label>
+							<div class="col-md-10 col-sm-8">
+								<select id="comboAutobuses" name="comboAutobuses" class="form-control ">
+									<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
+								</select>
+							</div>
 						</div>
 					</form>
 
 				<!--Formulario Modificar alquiler -->
-					<form name="frmModificarAlquiler" id="frmModificarAlquiler"> <!--Formulario Modificar alquiler -->
+					<form name="frmModificarAlquiler" id="frmModificarAlquiler" class="form-horizontal"> <!--Formulario Modificar alquiler -->
 						<label class="control-label" for="txtNombreAlquiler">Seleccione Alquiler</label>
 						<p>Combo con con todos los alquileres en el sistema </p>
 					</form>

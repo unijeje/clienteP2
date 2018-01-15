@@ -281,10 +281,12 @@ function comboEstadoInicial() //al iniciar el programa muestra los datos del pri
     //cliente
     var oComboBajaCliente=document.frmClienteBaja.comboCliente;
     var oComboModificaCliente=document.frmClienteModificar.comboCliente;
+    var oComboSeleccionaCliente=document.frmNuevoAlquiler.comboCliente;
     if(oComboBajaCliente.firstChild)
     {
         oComboBajaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
         oComboModificaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
+        oComboSeleccionaCliente.firstChild.selected;
         var oCliente=oGestion.buscarCliente(frmClienteModificar.comboCliente.value);
         
         frmClienteModificar.txtClienteDni.value=oCliente.dni;
@@ -327,3 +329,20 @@ function comboEstadoInicial() //al iniciar el programa muestra los datos del pri
 
     //autobuses
 }
+
+
+
+
+
+
+
+
+// EXPRESIONES REGULARES
+
+var oExpRegDni = /^\d{8}[a-zA-Z]$/;
+
+var oExpRegNombre = /^[a-z\s]{3,20}$/i; //ENTRE 3 y 20 CARACTERES
+
+var oExpRegCorreo = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i; //EMAIL CORREO
+
+var oExpRegTelefono = /^[6795]\d{8}$/; //TELEFONO

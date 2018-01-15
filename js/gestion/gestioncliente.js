@@ -56,7 +56,56 @@ function AltaCliente()
 
 function validarAltaCliente()
 {
-    return true;
+
+    var bValidacion=true;
+    var sError = "";
+
+    //DNI
+    var sDniCliente=frmClienteAlta.txtClienteDni.value.trim();
+    frmClienteAlta.txtClienteDni.value=frmClienteAlta.txtClienteDni.value.trim();
+
+    if(!oExpRegDni.test(sDniCliente))
+    {
+        frmClienteAlta.txtClienteDni.style.backgroundColor="red";
+        frmClienteAlta.txtClienteDni.focus();
+        sError +="El DNI tiene que ser 8 caracteres númericos y uno alfabético";
+        bValidacion=false;
+    }
+    else
+    {
+        frmClienteAlta.txtClienteDni.style.backgroundColor="white";
+    }
+
+    //NOMBRE
+    var sNombreCliente=frmClienteAlta.txtClienteNombre.value.trim();
+    frmClienteAlta.txtClienteNombre.value=frmClienteAlta.txtClienteNombre.value.trim();
+
+    if(!oExpRegNombre.test(sNombreCliente))
+    {
+        frmClienteAlta.txtClienteNombre.style.backgroundColor="red";
+        frmClienteAlta.txtClienteNombre.focus();
+        sError +="El nombre del cliente tiene que ser entre 3 y 20 carácteres alfabéticos";
+        bValidacion=false;
+    }
+    else
+        frmClienteAlta.txtClienteNombre.style.backgroundColor="white";
+
+    //Apellidos
+    var sApellidosCliente=frmClienteAlta.txtClienteApellidos.value.trim();
+
+    //Tlf
+    var sTlfCliente=frmClienteAlta.txtClienteTelefono.value.trim();
+
+    //Correo
+    var sCorreoCliente=frmClienteAlta.txtClienteCorreo.value.trim();
+
+    //Cuenta
+    var sCuentaCliente=frmClienteAlta.txtClienteCuenta.value.trim();
+
+    //Genero
+    var sSexoCliente=frmClienteAlta.txtClienteSexo.value.trim();
+
+    return bValidacion;
 }
 
 function bajaCliente()
