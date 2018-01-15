@@ -115,12 +115,10 @@ class Gestion
     {
         var oComboBajaCliente=document.frmClienteBaja.comboCliente;
         var oComboModificaCliente=document.frmClienteModificar.comboCliente;
-        var oComboSeleccionaCliente=document.frmNuevoAlquiler.comboCliente;
 
         while (oComboBajaCliente.firstChild) { //tienen el mismo nº de hijos
             oComboBajaCliente.removeChild(oComboBajaCliente.firstChild);
             oComboModificaCliente.removeChild(oComboModificaCliente.firstChild);
-            oComboSeleccionaCliente.removeChild(oComboSeleccionaCliente.firstChild);
         }
         for(var i=0;i<this._clientes.length;i++)
         {
@@ -131,7 +129,6 @@ class Gestion
                 newSelect.text=this._clientes[i].dni+" - "+this._clientes[i].nombre+" "+this._clientes[i].apellidos;
                 oComboBajaCliente.appendChild(newSelect);
                 oComboModificaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
-                oComboSeleccionaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
             }    
         }
     }
@@ -139,4 +136,47 @@ class Gestion
     //conductores
 
     //autobuses
+    altaAutobus(oAutobus)
+    {
+        var esta=false;
+        var introducido=false;
+
+        for (var i=0;i>this._autobuses.length;i++)
+            if(this._autobuses[i].matricula == oAutobus.matricula )
+                esta=true;
+        
+
+        if(!esta){
+            this._autobuses.push(oAutobus);
+            this.actualizaComboAutobus();
+        }
+
+        return introducido;
+    }
+
+    actualizaComboAutobus() ///////////////aun sin terminar
+    {
+        frmAutobusBaja
+        frmAutobusModificar
+
+        var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
+        var oComboModificaCliente=document.frmAutobusModificar.comboAutobus;
+
+        while (oComboBajaCliente.firstChild) { //tienen el mismo nº de hijos
+            oComboBajaCliente.removeChild(oComboBajaCliente.firstChild);
+            oComboModificaCliente.removeChild(oComboModificaCliente.firstChild);
+        }
+        for(var i=0;i<this._clientes.length;i++)
+        {
+            if(this._clientes[i].estado==true) //solo mostrar los dados de alta
+            {
+                var newSelect=document.createElement("option");
+                newSelect.value=this._clientes[i].dni;
+                newSelect.text=this._clientes[i].dni+" - "+this._clientes[i].nombre+" "+this._clientes[i].apellidos;
+                oComboBajaCliente.appendChild(newSelect);
+                oComboModificaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
+            }    
+        }
+
+    }
 }
