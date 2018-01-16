@@ -9,6 +9,7 @@ class Gestion
         this._autobuses=[];
         this._clientes=[];
         this._conductores=[];
+		this._vacaciones=[];
         this.numCuenta="cuentaEmpresa";
         //cuenta/factura falta
     }
