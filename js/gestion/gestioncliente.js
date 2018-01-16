@@ -6,7 +6,7 @@ oGestion.altaCliente(oCliente01);
 oGestion.altaCliente(oCliente02);
 
 var oBtnDarAltaCliente=document.getElementById("btnAltaCliente");
-oBtnDarAltaCliente.addEventListener("click", AltaCliente, false);
+oBtnDarAltaCliente.addEventListener("click", altaCliente, false);
 
 var oBtnDarBajaCliente=document.getElementById("btnBajaCliente");
 oBtnDarBajaCliente.addEventListener("click", bajaCliente, false);
@@ -24,7 +24,7 @@ comboEstadoInicial();
 var sError="";
 
 
-function AltaCliente(oEvento)
+function altaCliente(oEvento)
 {
     var oE = oEvento || windows.event;
     var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton

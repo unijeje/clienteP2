@@ -1,31 +1,64 @@
 
 frmNuevoAlquiler.txtAlquilerNumPers.addEventListener("focusout", gestionCalcularNumConductores);
 frmNuevoAlquiler.txtAlquilerNumPers.addEventListener("focusout", gestionCalcularNumAutobuses);
+frmNuevoAlquiler.txtAlquilerNumPers.addEventListener("focusout", comprobarCero);
+
+var oAltaAlquiler=document.getElementById("btnAltaAlquiler");
+oAltaAlquiler.addEventListener("click", altaAlquiler, false);
 
 
+function altaAlquiler(oEvento)
+{
+    var oE=oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
+
+
+}
+
+function validarAlquiler(oForm)
+{
+    return true;
+}
+
+function comprobarCero(oEvento)
+{
+    var oE=oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
+
+    var iNumPers=oForm.txtAlquilerNumPers.value.trim();
+
+    if(iNumPers<=0)
+    {
+        oForm.txtAlquilerNumPers.style.backgroundColor="red";
+    }
+    else
+    oForm.txtAlquilerNumPers.style.backgroundColor="white";
+}
 
 function gestionCalcularNumConductores(oEvento)
 {
     var oE = oEvento || window.event;
-    var oDivConductores=frmNuevoAlquiler.comboConductores.parentNode.parentNode;
-    var oDivAutobuses=frmNuevoAlquiler.comboAutobuses.parentNode.parentNode;
+    oForm=oE.target.parentNode.parentNode.parentNode;
+    
+    var oDivConductores=oForm.comboConductores.parentNode.parentNode;
+    var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
 
     var iNumMin=1; //nº de personas minimo para poder realizar un alquiler
 
-    var iNumPers=document.frmNuevoAlquiler.txtAlquilerNumPers.value;
+    var iNumPers=oForm.txtAlquilerNumPers.value;
 
         var iAutobuses=oGestion.calcNumAutobuses(iNumPers);
 
         //borrar combo select que haya previamente
-        var oCombosActuales=document.frmNuevoAlquiler.querySelectorAll(".alquilerConductores"); 
-        console.log(oCombosActuales);
+        var oCombosActuales=oForm.querySelectorAll(".alquilerConductores"); 
+        //console.log(oCombosActuales);
         for(var i=0;i<oCombosActuales.length;i++)
         {
             if(oCombosActuales[i].parentNode.parentNode!=null)
                 oCombosActuales[i].parentNode.parentNode.removeChild(oCombosActuales[i].parentNode.parentNode.firstChild);
 
             if(oCombosActuales[i].parentNode.parentNode.firstChild!=null)
-                frmNuevoAlquiler.removeChild(oCombosActuales[i].parentNode.parentNode);
+                oForm.removeChild(oCombosActuales[i].parentNode.parentNode);
         }
 
         //añadir combo select de conductores y autobuses dependiendo del necesario
@@ -41,12 +74,12 @@ function gestionCalcularNumConductores(oEvento)
 
         //div with cols
         var newDiv = document.createElement("div");
-        newDiv.classList.add("col-md-10");
+        newDiv.classList.add("col-md-6");
         newDiv.classList.add("col-sm-8");
 
         var newLabel=document.createElement("label");
-        newLabel.classList.add("col-md-2");
-        newLabel.classList.add("col-sm-4");
+        newLabel.classList.add("col-md-3");
+        newLabel.classList.add("col-sm-3");
         newLabel.classList.add("control-label");
         newLabel.setAttribute("for", "comboConductores"+i);
         newLabel.appendChild(document.createTextNode("Seleccione Conductor: "));
@@ -62,11 +95,10 @@ function gestionCalcularNumConductores(oEvento)
         newDivFormGroup.appendChild(newDiv);
 
 
-        document.frmNuevoAlquiler.insertBefore(newDivFormGroup, oDivConductores);
-
-    
-
+        oForm.insertBefore(newDivFormGroup, oDivConductores);
         
+        //hará una llamada a actualiza comboConductores
+        //ID del Select es comboConductores
 
     }
 }
@@ -74,23 +106,26 @@ function gestionCalcularNumConductores(oEvento)
 function gestionCalcularNumAutobuses(oEvento)
 {
     var oE = oEvento || window.event;
-    var oDivConductores=frmNuevoAlquiler.comboConductores.parentNode.parentNode;
-    var oDivAutobuses=frmNuevoAlquiler.comboAutobuses.parentNode.parentNode;
+    oForm=oE.target.parentNode.parentNode.parentNode;
+
+
+    var oDivConductores=oForm.comboConductores.parentNode.parentNode;
+    var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
 
     var iNumMin=1; //nº de personas minimo para poder realizar un alquiler
 
-    var iNumPers=document.frmNuevoAlquiler.txtAlquilerNumPers.value;
+    var iNumPers=oForm.txtAlquilerNumPers.value;
     var iAutobuses=oGestion.calcNumAutobuses(iNumPers);
     //borrar combo select que haya previamente
-    var oCombosActuales=document.frmNuevoAlquiler.querySelectorAll(".alquilerAutobuses"); 
-    console.log(oCombosActuales);
+    var oCombosActuales=oForm.querySelectorAll(".alquilerAutobuses"); 
+    //console.log(oCombosActuales);
     for(var i=0;i<oCombosActuales.length;i++)
     {
         if(oCombosActuales[i].parentNode.parentNode!=null)
             oCombosActuales[i].parentNode.parentNode.removeChild(oCombosActuales[i].parentNode.parentNode.firstChild);
 
         if(oCombosActuales[i].parentNode.parentNode.firstChild!=null)
-            frmNuevoAlquiler.removeChild(oCombosActuales[i].parentNode.parentNode);
+            oForm.removeChild(oCombosActuales[i].parentNode.parentNode);
     }
 
     //añadir combo select de Autobuses y autobuses dependiendo del necesario
@@ -106,12 +141,12 @@ function gestionCalcularNumAutobuses(oEvento)
 
         //div with cols
         var newDiv = document.createElement("div");
-        newDiv.classList.add("col-md-10");
+        newDiv.classList.add("col-md-6");
         newDiv.classList.add("col-sm-8");
 
         var newLabel=document.createElement("label");
-        newLabel.classList.add("col-md-2");
-        newLabel.classList.add("col-sm-4");
+        newLabel.classList.add("col-md-3");
+        newLabel.classList.add("col-sm-3");
         newLabel.classList.add("control-label");
         newLabel.setAttribute("for", "comboAutobuses"+i);
         newLabel.appendChild(document.createTextNode("Seleccione Autobus: "));
@@ -127,7 +162,10 @@ function gestionCalcularNumAutobuses(oEvento)
         newDivFormGroup.appendChild(newDiv);
 
 
-        document.frmNuevoAlquiler.insertBefore(newDivFormGroup, oDivAutobuses);
+        oForm.insertBefore(newDivFormGroup, oDivAutobuses);
+
+        //hará una llamada a actualiza comboAutobuses
+        //ID del Select es comboAutobuses
 
     }
 
