@@ -264,6 +264,7 @@ function mostrarMenuVacacionesConductor()
 //panel de mensajes
 function mensaje(sTexto)
 {
+    //crear funcion que cree <p> y haga appendChild en este panel 
 	oPanelMensajeTexto.textContent=sTexto;
 	oPanelMensajes.style.display = "block";
 }
