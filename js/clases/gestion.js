@@ -16,19 +16,13 @@ class Gestion
 
     //alquiler
 
-    /*Se le pasa un alquiler y devuelve el nº de autobuses necesario*/
-    calcNumAutobuses(oAlquiler)
+    /*Se le pasa un nº de personas y devuelve el nº de autobuses necesario*/
+    calcNumAutobuses(iNumPers)
     {
         var iCapacidad=30; // cada 30 personas se necesitara un autobus
         var numBuses=0;
-        for(var i=0;i<this._alquileres;i++)
-        {
-            if(this._alquileres[i].id==oAlquiler.id)
-            {
-                var numPersonas=this._alquileres[i].numPers;
-                numBuses=math.ceil(numPersonas/iCapacidad); //redondear a la alta
-            }
-        }
+
+        numBuses=Math.ceil(iNumPers/iCapacidad); //redondear a la alta
 
         return numBuses;
     }

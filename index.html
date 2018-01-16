@@ -105,13 +105,14 @@
 								<input id="txtAlquilerKms" name="txtAlquilerKms" placeholder="kilómetros" class="form-control input-md" type="number">
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-2 col-sm-4 control-label" for="comboConductores">Seleccione Conductores: </label>
+						<div id="AlquilerConductores" class="form-group">
+							<label class="col-md-2 col-sm-4 control-label" for="comboConductores">Seleccione Conductor: </label>
 							<div class="col-md-10 col-sm-8">
-								<select id="comboConductores" name="comboConductores" class="form-control ">
+								<select id="comboConductores" required name="comboConductores" class="form-control ">
 									<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
 								</select>
 							</div>
+
 						</div>
 						<div class="form-group">
 							<label class="col-md-2 col-sm-4 control-label" for="comboAutobuses">Seleccione Autobuses: </label>
@@ -468,6 +469,7 @@
 <script type="text/javascript" src="js/clases/vacaciones.js"></script>
 <script type="text/javascript" src="js/principal.js"></script>
 <script type="text/javascript" src="js/gestion/gestioncliente.js"></script>
+<script type="text/javascript" src="js/gestion/gestionAlquiler.js"></script>
 </body>
 
 </html>
