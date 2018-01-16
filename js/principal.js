@@ -337,6 +337,10 @@ var oExpRegDni = /^\d{8}[a-zA-Z]$/; //8 num y una letra DNI
 
 var oExpRegNombre = /^[a-z\s]{3,20}$/i; //ENTRE 3 y 20 CARACTERES
 
+var oExpRegApellidos = /^[a-z\s]{3,30}$/i; //ENTRE 3 y 30 CARACTERES
+
+var oExpRegDireccion = 
+
 var oExpRegCorreo = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i; //EMAIL CORREO
 
 var oExpRegTelefono = /^[6795]\d{8}$/; //TELEFONO
