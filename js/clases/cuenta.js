@@ -1,6 +1,6 @@
 
 //objeto
-function Cuenta()
+class Cuenta
 {
     //atributos
 }

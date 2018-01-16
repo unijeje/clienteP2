@@ -1,6 +1,6 @@
 
 //objeto
-function Apuntes()
+class Apuntes
 {
     //atributos
 }

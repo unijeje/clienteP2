@@ -1,6 +1,6 @@
 
 //objeto
-function Vacaciones()
+class Vacaciones
 {
     constructor(iIdVacaciones,iDniConductor,dFechaIni,dFechaFin,sDescripcion){
 		this.idVacaciones= iIdVacaciones;

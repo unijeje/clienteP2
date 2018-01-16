@@ -1,6 +1,6 @@
 
 //objeto
-function Conductor()
+class Conductor
 {
     constructor(sDni,sNombre,sApellidos,sSexo,iTlf,sEmail,sDireccion,iNumCuenta){
 		this.dni= sDni;

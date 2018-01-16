@@ -1,6 +1,6 @@
 
 //objeto
-function Mantenimiento()
+class Mantenimiento
 {
     //atributos
 }
