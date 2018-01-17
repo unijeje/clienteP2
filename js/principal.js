@@ -339,8 +339,8 @@ var oExpRegNombre = /^[a-z\s]{3,20}$/i; //ENTRE 3 y 20 CARACTERES
 
 var oExpRegApellidos = /^[a-z\s]{3,30}$/i; //ENTRE 3 y 30 CARACTERES
 
-var oExpRegDireccion = 
-
 var oExpRegCorreo = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i; //EMAIL CORREO
 
 var oExpRegTelefono = /^[6795]\d{8}$/; //TELEFONO
+
+var oExpRegularNumCuenta = /^\d{20}$/; //numero de cuenta 20 numeros fijos

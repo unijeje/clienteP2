@@ -132,7 +132,37 @@ class Gestion
     }
 
     //conductores
+	altaConductor(oConductor){
+		var bEncontrado= false;
+	
+		for(var i=0; i<this._conductores.length && bEncontrado==false; i++){
+			if(this._conductores[i].dni==oConductor.dni){
+				bEncontrado= true;
+			}
+		}
+		
+		if(bEncontrado==false){
+			this._conductores.push(oConductor);
+		}
+			
+		return !bEncontrado;
+	}
 
+	actualizaComboConductores(){
+		var mostarComboActualizadoConductores= "<label class='col-md-3 col-sm-3 control-label' for='comboConductor'>Seleccione Conductor</label>"+
+													"<div class='col-md-6 col-sm-8'>"+
+														"<select id='comboConductor' name='comboConductor' class='form-control'>"+
+															"<option>Seleccione un Conductor..</option>";
+	
+		for(var i=0; i<this._conductores.length; i++){
+			mostarComboActualizadoConductores+= "<option>"+this._conductores[i].sDni+" - "+this._conductores[i].sNombre+" "+this._conductores[i].sApellidos+"</option>";
+		}
+		
+		mostarComboActualizadoConductores+= "</select>";
+		
+		return mostarComboActualizadoConductores;
+	}
+	
     //autobuses
     altaAutobus(oAutobus)
     {
