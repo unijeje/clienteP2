@@ -134,7 +134,7 @@ class Gestion
     //conductores
 	altaConductor(oConductor){
 		var bEncontrado= false;
-	
+		
 		for(var i=0; i<this._conductores.length && bEncontrado==false; i++){
 			if(this._conductores[i].dni==oConductor.dni){
 				bEncontrado= true;
@@ -143,12 +143,44 @@ class Gestion
 		
 		if(bEncontrado==false){
 			this._conductores.push(oConductor);
+			this.actualizaComboConductores();
 		}
 			
 		return !bEncontrado;
 	}
 
-	actualizaComboConductores(){
+	buscarConductor(sDni){
+        var oConductor=null;
+        for(var i=0;i<this._conductores.length && oConductor==null;i++)
+        {
+            if(sDni==this._conductores[i].dni)
+                oConductor=this._conductores[i];
+        }
+        return oConductor;
+    }
+	
+	actualizaComboConductores(){		
+		var oComboBajaConductor=document.frmConductorBaja.comboConductor;
+        var oComboModificaConductor=document.frmConductorModificar.comboConductor;
+        var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
+	
+		 while (oComboBajaConductor.firstChild) { //tienen el mismo nº de hijos
+            oComboBajaConductor.removeChild(oComboBajaConductor.firstChild);
+            oComboModificaConductor.removeChild(oComboModificaConductor.firstChild);
+            oComboSeleccionaConductor.removeChild(oComboSeleccionaConductor.firstChild);
+        }
+		
+        for(var i=0;i<this._conductores.length;i++){
+            if(this._conductores[i].estado==true){
+				var newSelect=document.createElement("option");				
+				newSelect.value=this._conductores[i].dni;
+				newSelect.text=this._conductores[i].dni+" - "+this._conductores[i].nombre+" "+this._conductores[i].apellidos;
+				oComboBajaConductor.appendChild(newSelect);
+				oComboModificaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+				oComboSeleccionaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+            }    
+        }
+		/*
 		var mostarComboActualizadoConductores= "<label class='col-md-3 col-sm-3 control-label' for='comboConductor'>Seleccione Conductor</label>"+
 													"<div class='col-md-6 col-sm-8'>"+
 														"<select id='comboConductor' name='comboConductor' class='form-control'>"+
@@ -161,6 +193,7 @@ class Gestion
 		mostarComboActualizadoConductores+= "</select>";
 		
 		return mostarComboActualizadoConductores;
+		*/
 	}
 	
     //autobuses

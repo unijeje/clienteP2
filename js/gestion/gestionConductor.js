@@ -6,6 +6,11 @@ var error= "";
 var oBtnAltaConductor= document.getElementById("btnAltaConductor");
 oBtnAltaConductor.addEventListener("click",altaConductor,false);
 
+var oComboBajaConductor=document.frmConductorBaja.comboConductor;
+var oComboModificaConductor=document.frmConductorModificar.comboConductor;
+oComboBajaConductor.addEventListener("change", rellenaCamposConductor, false);
+oComboModificaConductor.addEventListener("change", rellenaCamposConductor, false);
+
 function altaConductor(oEvento){
 	var oE= oEvento || windows.event;
 	var formAltaConductor=oE.target.parentNode.parentNode.parentNode;
@@ -145,4 +150,20 @@ function validarConductor(formAltaConductor){
 	}
 	
 	return bValido;
+}
+
+function rellenaCamposConductor(oEvento){
+    var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el combo
+    //console.log(oForm.name);
+    var oConductor=oGestion.buscarConductor(oForm.comboConductor.value);//recupera el conductor a traves del DNI
+
+    oForm.txtConductorDni.value=oConductor.dni;
+    oForm.txtConductorNombre.value=oConductor.nombre;
+    oForm.txtConductorApellidos.value=oConductor.apellidos;
+    oForm.txtConductorTelefono.value=oConductor.tlf;
+    oForm.txtConductorCorreo.value=oConductor.correo;
+    oForm.txtConductorCuenta.value=oConductor.numCuenta;
+    oForm.radioConductorSexo.value=oConductor.sexo;
+	oForm.txtConductorDireccion.value= oConductor.direccion;
 }
