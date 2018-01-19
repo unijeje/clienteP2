@@ -162,14 +162,20 @@ class Gestion
 	actualizaComboConductores(){		
 		var oComboBajaConductor=document.frmConductorBaja.comboConductor;
         var oComboModificaConductor=document.frmConductorModificar.comboConductor;
-        //var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
-        var oComboSeleccionaConductor=document.frmNuevoAlquiler.querySelectorAll("#comboConductores"); //no funcionando
+        var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
+        var oComboSeleccionaConductorExtra=document.frmNuevoAlquiler.querySelectorAll(".AlquilerConductoresExtra"); // todos combos en alquiler
+        console.log(oComboSeleccionaConductor);
 		 while (oComboBajaConductor.firstChild) { //tienen el mismo nº de hijos
             oComboBajaConductor.removeChild(oComboBajaConductor.firstChild);
             oComboModificaConductor.removeChild(oComboModificaConductor.firstChild);
-            for(var i=0;i<oComboSeleccionaConductor.length;i++)
-                oComboSeleccionaConductor[i].removeChild(oComboSeleccionaConductor[i].firstChild);
+            oComboSeleccionaConductor.removeChild(oComboSeleccionaConductor.firstChild);
         }
+        for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
+        {   
+            while(oComboSeleccionaConductorExtra[i].firstChild)
+                oComboSeleccionaConductorExtra[i].removeChild(oComboSeleccionaConductorExtra[i].firstChild);
+        }
+        
 		
         for(var i=0;i<this._conductores.length;i++){
             if(this._conductores[i].estado==true){
@@ -178,10 +184,10 @@ class Gestion
 				newSelect.text=this._conductores[i].dni+" - "+this._conductores[i].nombre+" "+this._conductores[i].apellidos;
 				oComboBajaConductor.appendChild(newSelect);
                 oComboModificaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
-
+                oComboSeleccionaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 //para rellenar todos los combos en alquiler //no funcionando
-                for(var i=0;i<oComboSeleccionaConductor.length;i++)
-				    oComboSeleccionaConductor[i].appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+                for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
+                    oComboSeleccionaConductorExtra[i].appendChild(oComboBajaConductor.lastChild.cloneNode(true));
             }    
         }
 		/*

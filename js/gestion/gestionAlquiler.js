@@ -40,8 +40,11 @@ function gestionCalcularNumConductores(oEvento)
     var oE = oEvento || window.event;
     oForm=oE.target.parentNode.parentNode.parentNode;
     
+    //var oDivConductores=oForm.comboConductores[oForm.comboConductores.length-1].parentNode.parentNode;
     var oDivConductores=oForm.comboConductores.parentNode.parentNode;
     var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
+    //var oDivAutobuses=oForm.comboAutobuses[oForm.comboAutobuses.length-1].parentNode.parentNode; //va a ver que usarlo en el futuro probablemente
+   
 
     var iNumMin=1; //nº de personas minimo para poder realizar un alquiler
 
@@ -69,6 +72,7 @@ function gestionCalcularNumConductores(oEvento)
         //div form-group CONDUCTOR
         var newDivFormGroup=document.createElement("div");
         newDivFormGroup.classList.add("form-group");
+        //newDivFormGroup.classList.add("AlquilerConductoresExtra");
         //newDivFormGroup.classList.add("alquilerConductores");
 
 
@@ -90,10 +94,13 @@ function gestionCalcularNumConductores(oEvento)
         newSelect.classList.add("form-control");
         newSelect.setAttribute("name", "comboConductores"+i);
         newSelect.classList.add("alquilerConductores");
+        newSelect.classList.add("AlquilerConductoresExtra");
         newDiv.appendChild(newSelect);
 
         newDivFormGroup.appendChild(newDiv);
 
+        console.log(newDivFormGroup);
+        console.log(oDivConductores);
 
         oForm.insertBefore(newDivFormGroup, oDivConductores);
         
@@ -111,8 +118,9 @@ function gestionCalcularNumAutobuses(oEvento)
     oForm=oE.target.parentNode.parentNode.parentNode;
 
 
-    var oDivConductores=oForm.comboConductores.parentNode.parentNode;
+    var oDivConductores=oForm.comboConductores[oForm.comboConductores.length-1].parentNode.parentNode;
     var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
+    //var oDivAutobuses=oForm.comboAutobuses[oForm.comboAutobuses.length-1].parentNode.parentNode; //va a ver que usarlo en el futuro probablemente
 
     var iNumMin=1; //nº de personas minimo para poder realizar un alquiler
 
