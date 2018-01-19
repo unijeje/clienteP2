@@ -288,7 +288,6 @@ function validarRadio(arrayRadio)
 
 function comboEstadoInicialClientes() //al iniciar el programa muestra los datos del primero y al borrar/actualizar vuelve a mostrar el primero
 {
-    //alquiler
 
     //cliente
     var oComboBajaCliente=document.frmClienteBaja.comboCliente;
@@ -300,22 +299,24 @@ function comboEstadoInicialClientes() //al iniciar el programa muestra los datos
         oComboModificaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
         oComboSeleccionaCliente.firstChild.selected;
         var oCliente=oGestion.buscarCliente(frmClienteModificar.comboCliente.value);
-        
-        frmClienteModificar.txtClienteDni.value=oCliente.dni;
-        frmClienteModificar.txtClienteNombre.value=oCliente.nombre;
-        frmClienteModificar.txtClienteApellidos.value=oCliente.apellidos;
-        frmClienteModificar.txtClienteTelefono.value=oCliente.tlf;
-        frmClienteModificar.txtClienteCorreo.value=oCliente.correo;
-        frmClienteModificar.txtClienteCuenta.value=oCliente.numCuenta;
-        frmClienteModificar.txtClienteSexo.value=oCliente.sexo;
+        if(oCliente)
+        {   
+            frmClienteModificar.txtClienteDni.value=oCliente.dni;
+            frmClienteModificar.txtClienteNombre.value=oCliente.nombre;
+            frmClienteModificar.txtClienteApellidos.value=oCliente.apellidos;
+            frmClienteModificar.txtClienteTelefono.value=oCliente.tlf;
+            frmClienteModificar.txtClienteCorreo.value=oCliente.correo;
+            frmClienteModificar.txtClienteCuenta.value=oCliente.numCuenta;
+            frmClienteModificar.txtClienteSexo.value=oCliente.sexo;
 
-        frmClienteBaja.txtClienteDni.value=oCliente.dni;
-        frmClienteBaja.txtClienteNombre.value=oCliente.nombre;
-        frmClienteBaja.txtClienteApellidos.value=oCliente.apellidos;
-        frmClienteBaja.txtClienteTelefono.value=oCliente.tlf;
-        frmClienteBaja.txtClienteCorreo.value=oCliente.correo;
-        frmClienteBaja.txtClienteCuenta.value=oCliente.numCuenta;
-        frmClienteBaja.txtClienteSexo.value=oCliente.sexo;
+            frmClienteBaja.txtClienteDni.value=oCliente.dni;
+            frmClienteBaja.txtClienteNombre.value=oCliente.nombre;
+            frmClienteBaja.txtClienteApellidos.value=oCliente.apellidos;
+            frmClienteBaja.txtClienteTelefono.value=oCliente.tlf;
+            frmClienteBaja.txtClienteCorreo.value=oCliente.correo;
+            frmClienteBaja.txtClienteCuenta.value=oCliente.numCuenta;
+            frmClienteBaja.txtClienteSexo.value=oCliente.sexo;
+        }
 
     }  
     else
@@ -349,24 +350,27 @@ function comboEstadoInicialConductores(){
         frmConductorModificar.firstChild.selected;// seleccionar el primero al cargar el programa
         //oComboSeleccionaConductor.firstChild.selected;
         var oConductor= oGestion.buscarConductor(frmConductorModificar.comboConductor.value);
-        console.log(frmConductorModificar.comboConductor);
-        frmConductorModificar.txtConductorDni.value=oConductor.dni;
-        frmConductorModificar.txtConductorNombre.value=oConductor.nombre;
-        frmConductorModificar.txtConductorApellidos.value=oConductor.apellidos;
-        frmConductorModificar.radioConductorSexo.value=oConductor.sexo;
-        frmConductorModificar.txtConductorTelefono.value=oConductor.tlf;
-        frmConductorModificar.txtConductorCorreo.value=oConductor.email;
-		frmConductorModificar.txtConductorDireccion.value= oConductor.direccion;
-        frmConductorModificar.txtConductorCuenta.value=oConductor.numCuenta;
+        if(oConductor)
+        {
+            frmConductorModificar.txtConductorDni.value=oConductor.dni;
+            frmConductorModificar.txtConductorNombre.value=oConductor.nombre;
+            frmConductorModificar.txtConductorApellidos.value=oConductor.apellidos;
+            frmConductorModificar.radioConductorSexo.value=oConductor.sexo;
+            frmConductorModificar.txtConductorTelefono.value=oConductor.tlf;
+            frmConductorModificar.txtConductorCorreo.value=oConductor.email;
+            frmConductorModificar.txtConductorDireccion.value= oConductor.direccion;
+            frmConductorModificar.txtConductorCuenta.value=oConductor.numCuenta;
+    
+            frmConductorBaja.txtConductorDni.value=oConductor.dni;
+            frmConductorBaja.txtConductorNombre.value=oConductor.nombre;
+            frmConductorBaja.txtConductorApellidos.value=oConductor.apellidos;
+            frmConductorBaja.radioConductorSexo.value=oConductor.sexo;
+            frmConductorBaja.txtConductorTelefono.value=oConductor.tlf;
+            frmConductorBaja.txtConductorCorreo.value=oConductor.email;
+            frmConductorBaja.txtConductorDireccion.value= oConductor.direccion;
+            frmConductorBaja.txtConductorCuenta.value=oConductor.numCuenta;
+        }
 
-        frmConductorBaja.txtConductorDni.value=oConductor.dni;
-        frmConductorBaja.txtConductorNombre.value=oConductor.nombre;
-        frmConductorBaja.txtConductorApellidos.value=oConductor.apellidos;
-        frmConductorBaja.radioConductorSexo.value=oConductor.sexo;
-        frmConductorBaja.txtConductorTelefono.value=oConductor.tlf;
-        frmConductorBaja.txtConductorCorreo.value=oConductor.email;
-		frmConductorBaja.txtConductorDireccion.value= oConductor.direccion;
-        frmConductorBaja.txtConductorCuenta.value=oConductor.numCuenta;
 
     } else{
         frmConductorModificar.txtConductorDni.value=null;

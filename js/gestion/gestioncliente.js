@@ -180,7 +180,7 @@ function bajaCliente()
         {
             mensaje("Cliente "+sDniCliente+" dado de baja correctamente");
             document.frmClienteBaja.style.display="none";
-            comboEstadoInicial(); //vuelve a seleccionar el primero del combo
+            comboEstadoInicialClientes(); //vuelve a seleccionar el primero del combo
         }
         else
             mensaje("Error al dar de baja: "+sDniCliente);
@@ -214,7 +214,7 @@ function actualizaCliente(oEvento)
         else
             mensaje("Ya existe un cliente con ese DNI");
         
-        comboEstadoInicial();
+        comboEstadoInicialClientes();
     }
     else
         mensaje("Error en el formulario \n"+sError);
