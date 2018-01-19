@@ -98,7 +98,9 @@ function gestionCalcularNumConductores(oEvento)
         oForm.insertBefore(newDivFormGroup, oDivConductores);
         
         //hará una llamada a actualiza comboConductores
+        oGestion.actualizaComboConductores();
         //ID del Select es comboConductores
+
 
     }
 }

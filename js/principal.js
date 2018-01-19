@@ -274,6 +274,17 @@ function cerrar()
 	oPanelMensajes.style.display = "none";
 }
 
+function validarRadio(arrayRadio)
+{
+    var res=false;
+    for(var i=0;i<arrayRadio.length && res==false;i++)
+    {
+        if(arrayRadio[i].checked)
+            res=true;
+    }
+    return res;
+}
+
 
 function comboEstadoInicial() //al iniciar el programa muestra los datos del primero y al borrar/actualizar vuelve a mostrar el primero
 {
@@ -341,6 +352,6 @@ var oExpRegApellidos = /^[a-z\s]{3,30}$/i; //ENTRE 3 y 30 CARACTERES
 
 var oExpRegCorreo = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i; //EMAIL CORREO
 
-var oExpRegTelefono = /^[6795]\d{8}$/; //TELEFONO
+var oExpRegTelefono = /^(\+34|0034|34)?[6|7|9][0-9]{8}$/; //TELEFONO
 
 var oExpRegularNumCuenta = /^\d{20}$/; //numero de cuenta 20 numeros fijos

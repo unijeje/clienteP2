@@ -70,14 +70,14 @@ function validarCliente(oForm)
 
     if(!oExpRegDni.test(sDniCliente))
     {
-        oForm.txtClienteDni.style.backgroundColor="red";
+        oForm.txtClienteDni.parentNode.parentNode.classList.add("has-error");
         oForm.txtClienteDni.focus();
         sError +="El DNI tiene que ser 8 caracteres númericos y uno alfabético \n";
         bValidacion=false;
     }
     else
     {
-        oForm.txtClienteDni.style.backgroundColor="white";
+        oForm.txtClienteDni.parentNode.parentNode.classList.remove("has-error");
     }
 
     //NOMBRE
@@ -86,14 +86,14 @@ function validarCliente(oForm)
 
     if(!oExpRegNombre.test(sNombreCliente))
     {
-        oForm.txtClienteNombre.style.backgroundColor="red";
+        oForm.txtClienteNombre.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
         oForm.txtClienteNombre.focus();
         sError +="El nombre del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
         bValidacion=false;
     }
     else
-    oForm.txtClienteNombre.style.backgroundColor="white";
+    oForm.txtClienteNombre.parentNode.parentNode.classList.remove("has-error");
 
     //Apellidos
     var sApellidosCliente=oForm.txtClienteApellidos.value.trim();
@@ -101,14 +101,14 @@ function validarCliente(oForm)
 
     if(!oExpRegNombre.test(sApellidosCliente))
     {
-        oForm.txtClienteApellidos.style.backgroundColor="red";
+        oForm.txtClienteApellidos.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
             oForm.txtClienteApellidos.focus();
         sError +="El Apellido del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
         bValidacion=false;
     }
     else
-    oForm.txtClienteApellidos.style.backgroundColor="white";
+    oForm.txtClienteApellidos.parentNode.parentNode.classList.remove("has-error");
 
     //Tlf
     var sTlfCliente=oForm.txtClienteTelefono.value.trim();
@@ -116,14 +116,14 @@ function validarCliente(oForm)
 
     if(!oExpRegTelefono.test(sTlfCliente))
     {
-        oForm.txtClienteTelefono.style.backgroundColor="red";
+        oForm.txtClienteTelefono.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
             oForm.txtClienteTelefono.focus();
         sError +="El Telefono no es correcto \n";
         bValidacion=false;
     }
     else
-        oForm.txtClienteTelefono.style.backgroundColor="white";
+        oForm.txtClienteTelefono.parentNode.parentNode.classList.remove("has-error");
 
     //Correo
     var sCorreoCliente=oForm.txtClienteCorreo.value.trim();
@@ -131,20 +131,38 @@ function validarCliente(oForm)
 
     if(!oExpRegCorreo.test(sCorreoCliente))
     {
-        oForm.txtClienteCorreo.style.backgroundColor="red";
+        oForm.txtClienteCorreo.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
             oForm.txtClienteCorreo.focus();
         sError+="El correo no es correcto";
         bValidacion=false;
     }
     else
-        oForm.txtClienteCorreo.style.backgroundColor="white";
+        oForm.txtClienteCorreo.parentNode.parentNode.classList.remove("has-error");
+
 
     //Cuenta
     var sCuentaCliente=oForm.txtClienteCuenta.value.trim();
 
     //Genero
-    var sSexoCliente=oForm.txtClienteSexo.value.trim();
+    var sSexoCliente=oForm.radioClienteSexo.value;
+    var bSexoCliente=validarRadio(oForm.radioClienteSexo);
+    /*var bSexoCliente=false;
+    for(var i=0;i<oForm.radioClienteSexo.length && bSexoCliente==false;i++)
+    {
+        if(oForm.radioClienteSexo[i].checked)
+            bSexoCliente=true;
+    }
+    */
+    if(!bSexoCliente)
+    {
+        oForm.radioClienteSexo[0].parentNode.parentNode.classList.add("has-error");
+        sError+="Debe seleccionar un genero";
+        bValidacion=false;
+    }
+    else
+        oForm.radioClienteSexo[0].parentNode.parentNode.classList.remove("has-error");
+    
 
     return bValidacion;
 }

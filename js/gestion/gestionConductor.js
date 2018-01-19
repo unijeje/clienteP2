@@ -83,7 +83,7 @@ function validarConductor(formAltaConductor){
 	}
 	
 	//campo sexo conductor
-	var seleccionado= false;
+	/*var seleccionado= false;
 	
 	for(var i=0; i<1; i++) {
 		if (formAltaConductor.radioConductorSexo[i].checked) {
@@ -95,7 +95,16 @@ function validarConductor(formAltaConductor){
 	if (seleccionado==false) {
 		error+= "Debe seleccionar un tipo de sexo \n";		
 	}
-	
+	*/
+	if(!validarRadio(formAltaConductor.radioConductorSexo))
+	{
+		formAltaConductor.radioConductorSexo[0].parentNode.parentNode.classList.add("has-error");
+		sError+="Debe seleccionar un tipo de sexo \n";
+		bValido=false;
+	}
+	else
+		formAltaConductor.radioConductorSexo[0].parentNode.parentNode.classList.remove("has-error");
+		
 	//campo telefono conductor
 	var tlfConductor= formAltaConductor.txtConductorTelefono.value.trim();
 	formAltaConductor.txtConductorTelefono.value= formAltaConductor.txtConductorTelefono.value.trim();
