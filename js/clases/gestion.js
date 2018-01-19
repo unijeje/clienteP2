@@ -155,8 +155,8 @@ class Gestion
 		for(var i=0; i<this._conductores.length && bEncontrado==false; i++){
 			if(this._conductores[i].dni==oConductor.dni){
 				bEncontrado= true; 
-				this._conductores[i].estado=true;
-				actualizaComboConductores();				
+				this._conductores[i].estado=false; //false es dado de baja
+				this.actualizaComboConductores();				
 			}
 		}
 		

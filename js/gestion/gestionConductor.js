@@ -48,13 +48,14 @@ function altaConductor(oEvento){
 }
 
 function bajaConductor(){
-	var oConductor= frmConductorBaja.txtConductorDni.value.trim(); console.log(oConductor); //recoge bien el campo dni pero luego no lo envia 
+	var sDNI= frmConductorBaja.txtConductorDni.value.trim(); console.log(oConductor); //recoge bien el campo dni pero luego no lo envia 
+	var oConductor=oGestion.buscarConductor(sDNI);
 	var darDeBaja= oGestion.bajaConductor(oConductor);
 	console.log(darDeBaja);
 	if(oGestion.bajaConductor(oConductor)==true){
-		mensaje("Cliente "+oConductor+" dado de baja correctamente");
+		mensaje("Cliente "+oConductor.dni+" dado de baja correctamente");
 		document.frmConductorBaja.style.display="none";
-		comboEstadoInicialClientes();
+		comboEstadoInicialConductores();
 	} else{
 		mensaje("Error al dar de baja");
 	}
