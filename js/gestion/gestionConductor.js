@@ -8,6 +8,9 @@ var error= "";
 var oBtnAltaConductor= document.getElementById("btnAltaConductor");
 oBtnAltaConductor.addEventListener("click",altaConductor,false);
 
+var oBtnBajaConductor= document.getElementById("btnBajaConductor");
+oBtnBajaConductor.addEventListener("click",bajaConductor,false);
+
 var oComboBajaConductor=document.frmConductorBaja.comboConductor;
 var oComboModificaConductor=document.frmConductorModificar.comboConductor;
 oComboBajaConductor.addEventListener("change", rellenaCamposConductor, false);
@@ -42,6 +45,19 @@ function altaConductor(oEvento){
 		mensaje("Fallo en la validación "+error);
 	}
 	
+}
+
+function bajaConductor(){
+	var oConductor= frmConductorBaja.txtConductorDni.value.trim(); console.log(oConductor); //recoge bien el campo dni pero luego no lo envia 
+	var darDeBaja= oGestion.bajaConductor(oConductor);
+	console.log(darDeBaja);
+	if(oGestion.bajaConductor(oConductor)==true){
+		mensaje("Cliente "+oConductor+" dado de baja correctamente");
+		document.frmConductorBaja.style.display="none";
+		comboEstadoInicialClientes();
+	} else{
+		mensaje("Error al dar de baja");
+	}
 }
 
 function validarConductor(formAltaConductor){

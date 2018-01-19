@@ -343,12 +343,12 @@ function comboEstadoInicialConductores(){
     //conductores
 	var oComboBajaConductor=document.frmConductorBaja.comboConductor;
     var oComboModificaConductor=document.frmConductorModificar.comboConductor;
-    //var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
+    var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
     
 	if(oComboBajaConductor.firstChild){
         oComboBajaConductor.firstChild.selected;// seleccionar el primero al cargar el programa
         frmConductorModificar.firstChild.selected;// seleccionar el primero al cargar el programa
-        //oComboSeleccionaConductor.firstChild.selected;
+        oComboSeleccionaConductor.firstChild.selected;
         var oConductor= oGestion.buscarConductor(frmConductorModificar.comboConductor.value);
         if(oConductor)
         {

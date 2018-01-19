@@ -148,6 +148,20 @@ class Gestion
 			
 		return !bEncontrado;
 	}
+	
+	bajaConductor(oConductor){ //no recibe dni y nose el porque
+		var bEncontrado= false;  console.log(oConductor.dni);
+		
+		for(var i=0; i<this._conductores.length && bEncontrado==false; i++){
+			if(this._conductores[i].dni==oConductor.dni){
+				bEncontrado= true; 
+				this._conductores[i].estado=true;
+				actualizaComboConductores();				
+			}
+		}
+		
+		return bEncontrado;
+	}
 
 	buscarConductor(sDni){
         var oConductor=null;
@@ -163,17 +177,20 @@ class Gestion
 		var oComboBajaConductor=document.frmConductorBaja.comboConductor;
         var oComboModificaConductor=document.frmConductorModificar.comboConductor;
         var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
+        var oComboVacacionesConductor=document.frmConductorVacaciones.comboConductor;
         var oComboSeleccionaConductorExtra=document.frmNuevoAlquiler.querySelectorAll(".AlquilerConductoresExtra"); // todos combos en alquiler
         //console.log(oComboSeleccionaConductor);
 		 while (oComboBajaConductor.firstChild) { //tienen el mismo nº de hijos
             oComboBajaConductor.removeChild(oComboBajaConductor.firstChild);
             oComboModificaConductor.removeChild(oComboModificaConductor.firstChild);
             oComboSeleccionaConductor.removeChild(oComboSeleccionaConductor.firstChild);
+            oComboVacacionesConductor.removeChild(oComboVacacionesConductor.firstChild);
         }
+		
         for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
         {   
             while(oComboSeleccionaConductorExtra[i].firstChild)
-                oComboSeleccionaConductorExtra[i].removeChild(oComboSeleccionaConductorExtra[i].firstChild);
+               oComboSeleccionaConductorExtra[i].removeChild(oComboSeleccionaConductorExtra[i].firstChild);
         }
         
 		
@@ -185,18 +202,18 @@ class Gestion
 				oComboBajaConductor.appendChild(newSelect);
                 oComboModificaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 oComboSeleccionaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+                oComboVacacionesConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 //para rellenar todos los combos en alquiler //no funcionando
                 
-                //for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
-                console.log(oComboSeleccionaConductorExtra);
-                /*
+                /*for(var i=0;i<oComboSeleccionaConductorExtra.length && oComboSeleccionaConductorExtra[l]!=null;i++){
+                console.log(oComboSeleccionaConductorExtra); l++;
+                
                 if(oComboSeleccionaConductorExtra[0]!=null)
                 {
                     console.log("clonando nodo");
                     for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
                         oComboSeleccionaConductorExtra[i].appendChild(oComboSeleccionaConductor.lastChild.cloneNode(true));
-                }
-                */
+                }*/
                     
             }       
         }
