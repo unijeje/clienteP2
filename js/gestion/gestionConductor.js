@@ -11,6 +11,8 @@ var oComboModificaConductor=document.frmConductorModificar.comboConductor;
 oComboBajaConductor.addEventListener("change", rellenaCamposConductor, false);
 oComboModificaConductor.addEventListener("change", rellenaCamposConductor, false);
 
+comboEstadoInicialConductores();
+
 function altaConductor(oEvento){
 	var oE= oEvento || windows.event;
 	var formAltaConductor=oE.target.parentNode.parentNode.parentNode;

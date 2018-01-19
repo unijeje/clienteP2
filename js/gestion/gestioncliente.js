@@ -19,7 +19,7 @@ var oComboModificaCliente=document.frmClienteModificar.comboCliente;
 oComboBajaCliente.addEventListener("change", rellenaCamposCliente, false);
 oComboModificaCliente.addEventListener("change", rellenaCamposCliente, false);
 
-comboEstadoInicial();
+comboEstadoInicialClientes();
 
 var sError="";
 

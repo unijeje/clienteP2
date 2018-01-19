@@ -286,7 +286,7 @@ function validarRadio(arrayRadio)
 }
 
 
-function comboEstadoInicial() //al iniciar el programa muestra los datos del primero y al borrar/actualizar vuelve a mostrar el primero
+function comboEstadoInicialClientes() //al iniciar el programa muestra los datos del primero y al borrar/actualizar vuelve a mostrar el primero
 {
     //alquiler
 
@@ -336,9 +336,57 @@ function comboEstadoInicial() //al iniciar el programa muestra los datos del pri
         frmClienteBaja.txtClienteCuenta.value=null;
         frmClienteBaja.txtClienteSexo.value=null;
     }
+}
 
+function comboEstadoInicialConductores(){
     //conductores
+	var oComboBajaConductor=document.frmConductorBaja.comboConductor;
+    var oComboModificaConductor=document.frmConductorModificar.comboConductor;
+    //var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
+    
+	if(oComboBajaConductor.firstChild){
+        oComboBajaConductor.firstChild.selected;// seleccionar el primero al cargar el programa
+        frmConductorModificar.firstChild.selected;// seleccionar el primero al cargar el programa
+        //oComboSeleccionaConductor.firstChild.selected;
+        var oConductor= oGestion.buscarConductor(frmConductorModificar.comboConductor.value);
+        console.log(frmConductorModificar.comboConductor);
+        frmConductorModificar.txtConductorDni.value=oConductor.dni;
+        frmConductorModificar.txtConductorNombre.value=oConductor.nombre;
+        frmConductorModificar.txtConductorApellidos.value=oConductor.apellidos;
+        frmConductorModificar.radioConductorSexo.value=oConductor.sexo;
+        frmConductorModificar.txtConductorTelefono.value=oConductor.tlf;
+        frmConductorModificar.txtConductorCorreo.value=oConductor.email;
+		frmConductorModificar.txtConductorDireccion.value= oConductor.direccion;
+        frmConductorModificar.txtConductorCuenta.value=oConductor.numCuenta;
 
+        frmConductorBaja.txtConductorDni.value=oConductor.dni;
+        frmConductorBaja.txtConductorNombre.value=oConductor.nombre;
+        frmConductorBaja.txtConductorApellidos.value=oConductor.apellidos;
+        frmConductorBaja.radioConductorSexo.value=oConductor.sexo;
+        frmConductorBaja.txtConductorTelefono.value=oConductor.tlf;
+        frmConductorBaja.txtConductorCorreo.value=oConductor.email;
+		frmConductorBaja.txtConductorDireccion.value= oConductor.direccion;
+        frmConductorBaja.txtConductorCuenta.value=oConductor.numCuenta;
+
+    } else{
+        frmConductorModificar.txtConductorDni.value=null;
+        frmConductorModificar.txtConductorNombre.value=null;
+        frmConductorModificar.txtConductorApellidos.value=null;
+        frmConductorModificar.radioConductorSexo.value=null;
+        frmConductorModificar.txtConductorTelefono.value=null;
+        frmConductorModificar.txtConductorCorreo.value=null;
+		frmConductorModificar.txtConductorDireccion.value= null;
+        frmConductorModificar.txtConductorCuenta.value=null;
+
+        frmConductorBaja.txtConductorDni.value=null;
+        frmConductorBaja.txtConductorNombre.value=null;
+        frmConductorBaja.txtConductorApellidos.value=null;
+        frmConductorBaja.radioConductorSexo.value=null;
+        frmConductorBaja.txtConductorTelefono.value=null;
+        frmConductorBaja.txtConductorCorreo.value=null;
+		frmConductorBaja.txtConductorDireccion.value= null;
+        frmConductorBaja.txtConductorCuenta.value=null;
+    }
     //autobuses
 }
 
