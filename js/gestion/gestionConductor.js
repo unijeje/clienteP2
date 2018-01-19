@@ -24,8 +24,8 @@ function altaConductor(oEvento){
 		var emailConductor= frmConductorAlta.txtConductorCorreo.value.trim();
 		var direccionConductor= frmConductorAlta.txtConductorDireccion.value.trim();
 		var numCuentaConductor= frmConductorAlta.txtConductorCuenta.value.trim();
-		
-		var oConductor= new Conductor(dniConductor,nombreConductor,apellidosConductor,sexoConductor,tlfConductor,emailConductor,numCuentaConductor);
+		//sDni,sNombre,sApellidos,sSexo,iTlf,sEmail,sDireccion,iNumCuenta
+		var oConductor= new Conductor(dniConductor,nombreConductor,apellidosConductor,sexoConductor,tlfConductor,emailConductor,direccionConductor, numCuentaConductor);
 				
 		if(oGestion.altaConductor(oConductor)==true){
 			document.frmConductorAlta.reset();
@@ -93,7 +93,6 @@ function validarConductor(formAltaConductor){
 	}
 	
 	if (seleccionado==false) {
-		formAltaConductor.radioConductorSexo.focus();
 		error+= "Debe seleccionar un tipo de sexo \n";		
 	}
 	
@@ -161,9 +160,10 @@ function rellenaCamposConductor(oEvento){
     oForm.txtConductorDni.value=oConductor.dni;
     oForm.txtConductorNombre.value=oConductor.nombre;
     oForm.txtConductorApellidos.value=oConductor.apellidos;
-    oForm.txtConductorTelefono.value=oConductor.tlf;
-    oForm.txtConductorCorreo.value=oConductor.correo;
-    oForm.txtConductorCuenta.value=oConductor.numCuenta;
+    oForm.txtConductorTelefono.value=oConductor.tlf;    
     oForm.radioConductorSexo.value=oConductor.sexo;
+	oForm.txtConductorCorreo.value=oConductor.email;
 	oForm.txtConductorDireccion.value= oConductor.direccion;
+    oForm.txtConductorCuenta.value=oConductor.numCuenta;
+	
 }
