@@ -99,8 +99,8 @@ function gestionCalcularNumConductores(oEvento)
 
         newDivFormGroup.appendChild(newDiv);
 
-        console.log(newDivFormGroup);
-        console.log(oDivConductores);
+        //console.log(newDivFormGroup);
+        //console.log(oDivConductores);
 
         oForm.insertBefore(newDivFormGroup, oDivConductores);
         

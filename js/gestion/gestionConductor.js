@@ -1,5 +1,7 @@
 var oConductor1= new Conductor("1235678F","Alejandro","Nuñez","Masculino","987654321","ale@gmail.com","C/javascript","1111111111111111");
 oGestion.altaConductor(oConductor1);
+var oConductor2= new Conductor("1235678Z","test2","test2","Masculino","987654322","al2@gmail.com","C/javascript","2222222222222222");
+oGestion.altaConductor(oConductor2);
 
 var error= "";
 

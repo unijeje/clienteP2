@@ -164,7 +164,7 @@ class Gestion
         var oComboModificaConductor=document.frmConductorModificar.comboConductor;
         var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
         var oComboSeleccionaConductorExtra=document.frmNuevoAlquiler.querySelectorAll(".AlquilerConductoresExtra"); // todos combos en alquiler
-        console.log(oComboSeleccionaConductor);
+        //console.log(oComboSeleccionaConductor);
 		 while (oComboBajaConductor.firstChild) { //tienen el mismo nº de hijos
             oComboBajaConductor.removeChild(oComboBajaConductor.firstChild);
             oComboModificaConductor.removeChild(oComboModificaConductor.firstChild);
@@ -186,9 +186,19 @@ class Gestion
                 oComboModificaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 oComboSeleccionaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 //para rellenar todos los combos en alquiler //no funcionando
-                for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
-                    oComboSeleccionaConductorExtra[i].appendChild(oComboBajaConductor.lastChild.cloneNode(true));
-            }    
+                
+                //for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
+                console.log(oComboSeleccionaConductorExtra);
+                /*
+                if(oComboSeleccionaConductorExtra[0]!=null)
+                {
+                    console.log("clonando nodo");
+                    for(var i=0;i<oComboSeleccionaConductorExtra.length;i++)
+                        oComboSeleccionaConductorExtra[i].appendChild(oComboSeleccionaConductor.lastChild.cloneNode(true));
+                }
+                */
+                    
+            }       
         }
 		/*
 		var mostarComboActualizadoConductores= "<label class='col-md-3 col-sm-3 control-label' for='comboConductor'>Seleccione Conductor</label>"+
