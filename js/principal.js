@@ -307,6 +307,21 @@ function cerrar()
 	oPanelMensajes.style.display = "none";
 }
 
+function falloValidacion(sTexto, oInput)
+{
+    //console.log(oInput);
+    var oTexto=document.createTextNode(sTexto);
+    var oDiv=document.createElement("div");
+    oDiv.setAttribute("id", "error");
+    oDiv.appendChild(oTexto);
+    var oAnterior=oInput.parentNode.querySelector("#error");
+
+    if(oAnterior)
+        oAnterior.textContent=sTexto;
+    else
+        oInput.parentNode.appendChild(oDiv);
+}
+
 function validarRadio(arrayRadio)
 {
     var res=false;
@@ -476,3 +491,5 @@ var oExpRegCorreo = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a
 var oExpRegTelefono = /^(\+34|0034|34)?[6|7|9][0-9]{8}$/; //TELEFONOS ESPAÑOLES
 
 var oExpRegularNumCuenta = /^\d{20}$/; //numero de cuenta 20 numeros fijos //ej: 09876543211234567890
+
+var oExpRegEsNumero=/^\d{1,20}$/; //es un numero entre 1 y 20

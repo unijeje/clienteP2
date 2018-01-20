@@ -28,6 +28,35 @@ class Gestion
         return numBuses;
     }
 
+    buscarAlquiler(sID)
+    {
+        var oAlquiler=null;
+        for(var i=0;i<this._alquileres.length && oAlquiler==null;i++)
+        {
+            if(sID==this._alquileres[i].id)
+                oAlquiler=this._alquileres[i];
+        }
+        return oAlquiler;
+    }
+
+    altaAlquiler(oAlquiler)
+    {
+        var res=false;
+        if(this.buscarAlquiler(oAlquiler.id)==null)
+        {
+            this._alquileres.push(oAlquiler);
+            res=true;
+            this.actualizaComboAlquileres();
+        }
+        return res;
+    }
+
+
+    actualizaComboAlquileres()
+    {
+        //console.log("actualizaComboAlquileres");
+    }
+
     //clientes
 
     /*Comprueba con DNI si existe ese cliente en los datos */
