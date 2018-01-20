@@ -21,7 +21,7 @@ oComboModificaCliente.addEventListener("change", rellenaCamposCliente, false);
 
 comboEstadoInicialClientes();
 
-var sError="";
+
 
 
 function altaCliente(oEvento)
@@ -55,15 +55,15 @@ function altaCliente(oEvento)
     }
     else
     {
-        mensaje("Fallo en la validación "+sError);
+        mensaje("Fallo en la validación");
     }
 }
 
 function validarCliente(oForm)
 {
-
     var bValidacion=true;
-    sError = "";
+    var sError="";
+
     //DNI
     var sDniCliente=oForm.txtClienteDni.value.trim();
     oForm.txtClienteDni.value=oForm.txtClienteDni.value.trim();
@@ -72,12 +72,14 @@ function validarCliente(oForm)
     {
         oForm.txtClienteDni.parentNode.parentNode.classList.add("has-error");
         oForm.txtClienteDni.focus();
-        sError +="El DNI tiene que ser 8 caracteres númericos y uno alfabético \n";
+        sError="El DNI tiene que ser 8 caracteres númericos y uno alfabético";
+        falloValidacion(sError, oForm.txtClienteDni);
         bValidacion=false;
     }
     else
     {
         oForm.txtClienteDni.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtClienteDni); //vuelve a eliminar el mensaje
     }
 
     //NOMBRE
@@ -88,13 +90,16 @@ function validarCliente(oForm)
     {
         oForm.txtClienteNombre.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
-        oForm.txtClienteNombre.focus();
-        sError +="El nombre del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
+            oForm.txtClienteNombre.focus();
+        sError="El nombre del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
+        falloValidacion(sError, oForm.txtClienteNombre);
         bValidacion=false;
     }
     else
-    oForm.txtClienteNombre.parentNode.parentNode.classList.remove("has-error");
-
+    {
+        oForm.txtClienteNombre.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtClienteNombre);
+    }
     //Apellidos
     var sApellidosCliente=oForm.txtClienteApellidos.value.trim();
     oForm.txtClienteApellidos.value=oForm.txtClienteApellidos.value.trim();
@@ -104,12 +109,15 @@ function validarCliente(oForm)
         oForm.txtClienteApellidos.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
             oForm.txtClienteApellidos.focus();
-        sError +="El Apellido del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
+        sError="El Apellido del cliente tiene que ser entre 3 y 20 carácteres alfabéticos \n";
+        falloValidacion(sError, oForm.txtClienteApellidos);
         bValidacion=false;
     }
     else
-    oForm.txtClienteApellidos.parentNode.parentNode.classList.remove("has-error");
-
+    {
+        falloValidacion("", oForm.txtClienteApellidos);
+        oForm.txtClienteApellidos.parentNode.parentNode.classList.remove("has-error");
+    }
     //Tlf
     var sTlfCliente=oForm.txtClienteTelefono.value.trim();
     oForm.txtClienteTelefono.value=oForm.txtClienteTelefono.value.trim();
@@ -119,12 +127,15 @@ function validarCliente(oForm)
         oForm.txtClienteTelefono.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
             oForm.txtClienteTelefono.focus();
-        sError +="El Telefono no es correcto \n";
+        sError="El Telefono no es correcto \n";
+        falloValidacion(sError, oForm.txtClienteTelefono);
         bValidacion=false;
     }
     else
+    {
         oForm.txtClienteTelefono.parentNode.parentNode.classList.remove("has-error");
-
+        falloValidacion("", oForm.txtClienteTelefono);
+    }
     //Correo
     var sCorreoCliente=oForm.txtClienteCorreo.value.trim();
     oForm.txtClienteCorreo.value=oForm.txtClienteCorreo.value.trim();
@@ -134,35 +145,49 @@ function validarCliente(oForm)
         oForm.txtClienteCorreo.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)
             oForm.txtClienteCorreo.focus();
-        sError+="El correo no es correcto";
+        sError="El correo no es correcto";
+        falloValidacion(sError, oForm.txtClienteCorreo);
         bValidacion=false;
     }
     else
+    {
         oForm.txtClienteCorreo.parentNode.parentNode.classList.remove("has-error");
-
+        falloValidacion("", oForm.txtClienteCorreo);
+    }
 
     //Cuenta
     var sCuentaCliente=oForm.txtClienteCuenta.value.trim();
-
-    //Genero
-    var sSexoCliente=oForm.radioClienteSexo.value;
-    var bSexoCliente=validarRadio(oForm.radioClienteSexo);
-    /*var bSexoCliente=false;
-    for(var i=0;i<oForm.radioClienteSexo.length && bSexoCliente==false;i++)
+    oForm.txtClienteCuenta.value==oForm.txtClienteCuenta.value.trim();
+    if(!oExpRegularNumCuenta.test(sCuentaCliente))
     {
-        if(oForm.radioClienteSexo[i].checked)
-            bSexoCliente=true;
-    }
-    */
-    if(!bSexoCliente)
-    {
-        oForm.radioClienteSexo[0].parentNode.parentNode.classList.add("has-error");
-        sError+="Debe seleccionar un genero";
+        oForm.txtClienteCuenta.parentNode.parentNode.classList.add("has-error");
+        if(bValidacion)
+            oForm.txtClienteCuenta.focus();
+        sError="El numero de cuenta tiene que tener 20 dígitos";
+        falloValidacion(sError, oForm.txtClienteCuenta);
         bValidacion=false;
     }
     else
+    {
+        oForm.txtClienteCuenta.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtClienteCuenta);
+    }
+    //Genero
+    var sSexoCliente=oForm.radioClienteSexo.value;
+    var bSexoCliente=validarRadio(oForm.radioClienteSexo);
+
+    if(!bSexoCliente)
+    {
+        oForm.radioClienteSexo[0].parentNode.parentNode.classList.add("has-error");
+        sError="Debe seleccionar un genero";
+        bValidacion=false;
+        falloValidacion(sError, oForm.radioClienteSexo[0].parentNode);
+    }
+    else
+    {   
         oForm.radioClienteSexo[0].parentNode.parentNode.classList.remove("has-error");
-    
+        falloValidacion("", oForm.radioClienteSexo[0].parentNode);
+    }
 
     return bValidacion;
 }

@@ -64,7 +64,7 @@ function altaAlquiler(oEvento)
 function validarAlquiler(oForm)
 {
     var bValidacion=true;
-
+    var sError="";
     /*IDALQUILER*/
     var sIDAlquiler=oForm.txtAlquilerID.value.trim();
 
@@ -77,8 +77,10 @@ function validarAlquiler(oForm)
         bValidacion=false;
     }
     else
+    {
         oForm.txtAlquilerID.parentNode.parentNode.classList.remove("has-error");
-
+        falloValidacion("", oForm.txtAlquilerID);
+    }
 
     /*Combo Conductores no se repite*/
     var oComboConductores=oForm.querySelectorAll("#comboConductores");
@@ -95,6 +97,7 @@ function validarAlquiler(oForm)
     {
         for(var i=0;i<oComboConductores.length;i++)
             oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1]);
     }
 
     /*Combo Autobuses no se repite*/
@@ -104,6 +107,7 @@ function validarAlquiler(oForm)
         bValidacion=false;
         for(var i=0;i<oComboAutobuses.length;i++)
             oComboAutobuses[i].parentNode.parentNode.classList.add("has-error");
+        sError="Valor del combo repetido";
         var oComboConductorOrig=oForm.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
         falloValidacion(sError, oComboConductorOrig);
     }
@@ -111,6 +115,7 @@ function validarAlquiler(oForm)
     {
         for(var i=0;i<oComboAutobuses.length;i++)
             oComboAutobuses[i].parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1]);
     }
 
 
