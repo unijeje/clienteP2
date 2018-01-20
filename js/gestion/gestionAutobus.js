@@ -14,10 +14,20 @@ oBtnDarBajaAutobus.addEventListener("click",fBajaAutobus,false);
 var oBtnModificarAutobus=document.getElementById("btnModificarAutobus");
 oBtnModificarAutobus.addEventListener("click",fModificarAutobus,false);
 
+var oBtnAltaMantenimiento=document.getElementById("btnAltaMantenimiento");
+oBtnAltaMantenimiento.addEventListener("click",fAltaMantenimiento,false);
+
+
 var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
 var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
+var oComboAltaMantenimiento=document.frmAltaMantenimiento.comboAutobus;
+var oComboModificarMantenimiento=document.frmModificarMantenimiento.comboAutobus;
+var oRadioMantenimientoSeleccion=document.frmAutobusMantenimiento.rdMantenimientoSeleccion;
+
 oComboBajaAutobus.addEventListener("change", rellenaCamposAutobus, false);
 oComboModificaAutobus.addEventListener("change", rellenaCamposAutobus, false);
+oRadioMantenimientoSeleccion.addEventListener("click", muestraFormsMantenimiento, false);
+
 
 comboEstadoInicialAutubuses();
 
@@ -84,6 +94,28 @@ function fModificarAutobus()
         mensaje("No se ha podido modificar el autobús");
 }
 
+function fAltaMantenimiento()
+{
+    var sDescripcion=frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim();
+    var fImporte=parseFloat(frmAltaMantenimiento.txtImporteMantenimiento.value.trim());
+    var dFecha=Date(frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim());
+    var sMatricula=frmAltaMantenimiento.comboAutobus.value.trim();
+
+    console.log(sMatricula);
+    var oNuevoMantenimiento=new Mantenimiento(sDescripcion,fImporte,dFecha,sMatricula);
+    var bInsercion=oGestion.altaMantenimiento(oNuevoMantenimiento);
+    if(bInsercion){
+        document.frmAltaMantenimiento.reset();
+        document.frmAltaMantenimiento.style.display="none";
+        document.frmAutobusMantenimiento.style.display="none";
+        
+        mensaje("Mantenimiento añadido correctamente");
+        //actualizar combo mantenimientos
+    }
+    else
+        mensaje("El autobús seleccionado ya tiene pasado el mantenimiento");
+
+}
 
 function rellenaCamposAutobus(oEvento) //actualiza
 {
@@ -97,4 +129,23 @@ function rellenaCamposAutobus(oEvento) //actualiza
      oForm.txtAutobusModelo.value=oAutobus.modelo;
      oForm.txtAutobusConsumo.value=oAutobus.consumo;
 
+}
+
+function muestraFormsMantenimiento()
+{
+    if(oRadioMantenimientoSeleccion.value=="Alta"){
+        document.frmAltaMantenimiento.style.display="block";
+        document.frmBajaMantenimiento.style.display="none";
+        document.frmModificarMantenimiento.style.display="none";
+    }
+    else if(oRadioMantenimientoSeleccion.value=="Baja"){
+            document.frmAltaMantenimiento.style.display="none";
+            document.frmBajaMantenimiento.style.display="block";
+            document.frmModificarMantenimiento.style.display="none";
+        }
+        else{
+            document.frmAltaMantenimiento.style.display="none";
+            document.frmBajaMantenimiento.style.display="none";
+            document.frmModificarMantenimiento.style.display="block";
+        }
 }

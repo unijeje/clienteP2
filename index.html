@@ -343,8 +343,111 @@
 
 
 				<form name="frmAutobusMantenimiento" id="frmAutobusMantenimiento" class="form-horizontal"> <!-- Mantenimiento Autobus -->
-					<label class="control-label" for="txtNombreAutobus">Seleccione Autobus</label>
-					<p>Combo con con todos los autobuses en el sistema </p>
+
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="rdMantenimientoSeleccion">¿Qué operación desea realizar?</label>  
+						<div class="col-md-6 col-sm-8">
+							<label class="radio-inline"><input id="rdMantenimientoSeleccion" name="rdMantenimientoSeleccion" value="Alta" type="radio" checked />Alta mantenimiento</label>
+							<label class="radio-inline"><input id="rdMantenimientoSeleccion" name="rdMantenimientoSeleccion" value="Baja" type="radio"/>Baja mantenimiento</label>
+							<label class="radio-inline"><input id="rdMantenimientoSeleccion" name="rdMantenimientoSeleccion" value="Modificar" type="radio"/>Modificar mantenimiento</label>
+						</div>
+					</div>
+				</form>
+
+
+				<!-- Alta Mantenimiento -->
+				<form name="frmAltaMantenimiento" id="frmAltaMantenimiento" class="form-horizontal"> 
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="comboAutobus">Seleccione Autobus</label>
+						<div class="col-md-6 col-sm-8">
+							<select id="comboAutobus" name="comboAutobus" class="form-control ">
+								<!--se rellenan con actualizaComboAutobus al dar de alta uno nuevo -->
+							</select>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtImporteMantenimiento">Importe:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtImporteMantenimiento" name="txtImporteMantenimiento" placeholder="Importe" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtMantenimientoFecha">Fecha:</label>
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAltaMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="date">
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+							<input type="button" id="btnAltaMantenimiento" name="btnAltaMantenimiento" class="btn btn-block btn-primary" value="Dar de Alta" />
+						</div>
+			
+						<div class="col-md-3 col-sm-3">
+							<input type="reset" id="btnLimpiarCampos" name="btnLimpiarCampos" class="btn btn-block btn-danger" value="Limpiar Campos" />
+						</div>
+					</div>
+					
+
+				</form>
+
+				<!-- Baja Mantenimiento -->
+				<form name="frmBajaMantenimiento" id="frmBajaMantenimiento" class="form-horizontal"> 
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtImporteMantenimiento">Importe:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtImporteMantenimiento" name="txtImporteMantenimiento" placeholder="Importe" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtMantenimientoFecha">Fecha:</label>
+						<div class="col-md-6 col-sm-8">
+							<input id="txtBajaMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="date">
+						</div>
+					</div>
+					
+
+				</form>
+
+				<!-- Modificar Mantenimiento -->
+				<form name="frmModificarMantenimiento" id="frmModificarMantenimiento" class="form-horizontal"> 
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtImporteMantenimiento">Importe2:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtImporteMantenimiento" name="txtImporteMantenimiento" placeholder="Importe" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtMantenimientoFecha">Fecha:</label>
+						<div class="col-md-6 col-sm-8">
+							<input id="txtModificarMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="date">
+						</div>
+					</div>
+
+					
+
 				</form>
 
 				<!--formGestionClientes-->
@@ -878,10 +981,12 @@
 <script type="text/javascript" src="js/listados/autobuses.js"></script>
 <script type="text/javascript" src="js/listados/clientes.js"></script>
 <script type="text/javascript" src="js/listados/conductores.js"></script>
+<script type="text/javascript" src="js/listados/alquileres.js"></script>
 <script> //datepicker
 	$( function(){
 		$("#fechaIni").datepicker();
 		$("#fechaFin").datepicker();
+		$("txtAltaMantenimientoFecha").datepicker();
 		}
 	);
 </script>

@@ -10,6 +10,7 @@ class Gestion
         this._clientes=[];
         this._conductores=[];
 		this._vacaciones=[];
+        this._mantenimientos=[];
         this.numCuenta="cuentaEmpresa";
         //cuenta/factura falta
     }
@@ -311,11 +312,13 @@ class Gestion
         var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
         var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
         var oComboSeleccionaAutobus=document.frmNuevoAlquiler.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
+        var oComboAutobusMantenimiento=document.frmAltaMantenimiento.comboAutobus;
 
         while (oComboBajaAutobus.firstChild) { //tienen el mismo nº de hijos
             oComboBajaAutobus.removeChild(oComboBajaAutobus.firstChild);
             oComboModificaAutobus.removeChild(oComboModificaAutobus.firstChild);
             oComboSeleccionaAutobus.removeChild(oComboSeleccionaAutobus.firstChild);
+            oComboAutobusMantenimiento.removeChild(oComboAutobusMantenimiento.firstChild);
         }
         for(var i=0;i<this._autobuses.length;i++)
         {
@@ -327,8 +330,32 @@ class Gestion
                 oComboBajaAutobus.appendChild(newSelect);
                 oComboModificaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
                 oComboSeleccionaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
+                oComboAutobusMantenimiento.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
             }    
         }
 
+    }
+
+
+    //mantenimiento
+    altaMantenimiento(oMantenimiento)
+    {
+        var revisado=false;
+        var introducido=false;
+
+        for (var i=0;i<this._autobuses.length;i++)
+            if(this._autobuses[i].matricula == oMantenimiento.matriculaAutobus )
+                if (this._autobuses[i].itv)
+                    revisado=true;
+                else
+                    this._autobuses[i].pasarRevision();
+        
+
+        if(!revisado){
+            this._mantenimientos.push(oMantenimiento);
+            introducido=true;
+        }
+
+        return introducido;
     }
 }

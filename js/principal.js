@@ -83,6 +83,9 @@ oBtnListadoClientes.addEventListener("click",mostrarListadoClientes,false);
 var oBtnListadoConductores=document.getElementById("btnListadoConductores");
 oBtnListadoConductores.addEventListener("click",mostrarListadoConductores,false);
 
+var oBtnListadoAlquileres=document.getElementById("btnListadoAlquileres");
+oBtnListadoAlquileres.addEventListener("click",mostrarListadoAlquileres,false);
+
 var oCapaListado=document.getElementById("resultadoListados");
 
 //botones panel de mensajes
@@ -237,6 +240,7 @@ function mostrarMenuMantenimientoAutobus()
     document.frmAutobusAlta.style.display="none";
     document.frmAutobusBaja.style.display="none";
     document.frmAutobusMantenimiento.style.display="block";
+    document.frmAltaMantenimiento.style.display="block";
 }
 
 //botones administración conductores
@@ -289,6 +293,12 @@ function mostrarListadoClientes()
 function mostrarListadoConductores()
 {
     listadoConductores();
+    oCapaListado.style.display="block";
+}
+
+function mostrarListadoAlquileres()
+{
+    listadoAlquileres();
     oCapaListado.style.display="block";
 }
 
@@ -446,10 +456,12 @@ function comboEstadoInicialAutubuses()
 {
     var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
     var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
+    var oComboAutobusMantenimiento=document.frmAltaMantenimiento.comboAutobus;
 
     if(oComboBajaAutobus.firstChild){
         oComboBajaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
         oComboModificaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
+        oComboAutobusMantenimiento.firstChild.selected;
 
         var oAutobus=oGestion.buscarAutobus(frmAutobusModificar.comboAutobus.value);
 
