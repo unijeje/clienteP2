@@ -234,7 +234,7 @@ class Gestion
         var esta=false;
         var introducido=false;
 
-        for (var i=0;i>this._autobuses.length;i++)
+        for (var i=0;i<this._autobuses.length;i++)
             if(this._autobuses[i].matricula == oAutobus.matricula )
                 esta=true;
         
@@ -242,6 +242,7 @@ class Gestion
         if(!esta){
             this._autobuses.push(oAutobus);
             this.actualizaComboAutobus();
+            introducido=true;
         }
 
         return introducido;
@@ -251,9 +252,9 @@ class Gestion
     {
         var res=false;//no se ha dado de baja
 
-        for (var i=0;i>this._autobuses.length;i++)
+        for (var i=0;i<this._autobuses.length;i++)
             if(this._autobuses[i].matricula == oAutobus.matricula ){
-                this._autobuses[i].estado=false;
+                this._autobuses[i].darBaja();
                 res=true;// se ha dado de baja
                 this.actualizaComboAutobus();
             }
@@ -265,7 +266,7 @@ class Gestion
     {
         var res=false;//no se ha modificado
 
-        for (var i=0;i>this._autobuses.length;i++)
+        for (var i=0;i<this._autobuses.length;i++)
             if(this._autobuses[i].matricula == oAutobus.matricula ){
                 this._autobuses[i]=oAutobus;
                 res=true;// se ha modificado

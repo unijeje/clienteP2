@@ -45,7 +45,8 @@ function fAltaAutobus(){
 
 function fBajaAutobus()
 {
-	var sMatriculaAutobus=frmAutobusAlta.txtAutobusMatricula.value.trim();
+	var sMatriculaAutobus=frmAutobusBaja.txtAutobusMatricula.value.trim();
+    //console.log(sMatriculaAutobus);
 
 	var oNuevoAutobus=new Autobus(sMatriculaAutobus,"","","");
 
@@ -55,7 +56,7 @@ function fBajaAutobus()
         {
             mensaje("Autobus con matricula "+sMatriculaAutobus+" dado de baja correctamente");
             document.frmAutobusBaja.style.display="none";
-            comboEstadoInicial(); //vuelve a seleccionar el primero del combo
+            comboEstadoInicialAutubuses(); //vuelve a seleccionar el primero del combo
         }
         else
             mensaje("Error al dar de baja: "+sMatriculaAutobus);      
@@ -64,7 +65,23 @@ function fBajaAutobus()
 
 function fModificarAutobus()
 {
+    var sMatriculaAutobus=frmAutobusModificar.txtAutobusMatricula.value.trim();
+    var iAsientosAutobus=parseInt(frmAutobusModificar.txtAutobusAsientos.value.trim());
+    var sModeloAutobus=frmAutobusModificar.txtAutobusModelo.value.trim();
+    var iConsumoAutobus=parseInt(frmAutobusModificar.txtAutobusConsumo.value.trim());
 
+     var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
+
+    var bInsercion=oGestion.modificarAutobus(oNuevoAutobus);
+    if (bInsercion)
+    {
+        document.frmAutobusModificar.reset();
+        document.frmAutobusModificar.style.display="none";
+        mensaje("Autobús modificado correctamente");
+        comboEstadoInicialAutubuses();
+    }
+    else
+        mensaje("No se ha podido modificar el autobús");
 }
 
 
