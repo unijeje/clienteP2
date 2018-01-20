@@ -214,17 +214,134 @@
 				<br>
 				<!--FormGestionAutobuses-->
 				<form name="frmAutobusAlta" id="frmAutobusAlta" class="form-horizontal"> <!-- Alta Autobus -->
-					<label class="control-label" for="txtNombreAutobus">Nombre Autobus</label>
-					<p>formulario dar de alta Autobus</p>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusMatricula">Matrícula del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAutobusMatricula" name="txtAutobusMatricula" placeholder="Matrícula" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusAsientos">Nº de Asientos:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAutobusAsientos" name="txtAutobusAsientos" placeholder="Nº Asientos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Marca del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusConsumo">Consumo del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+							<input type="button" id="btnAltaAutobus" name="btnAltaAutobus" class="btn btn-block btn-primary" value="Dar de Alta" />
+						</div>
+			
+						<div class="col-md-3 col-sm-3">
+							<input type="reset" id="btnLimpiarCampos" name="btnLimpiarCampos" class="btn btn-block btn-danger" value="Limpiar Campos" />
+						</div>
+					</div>
 				</form>
+
+
+
 				<form name="frmAutobusBaja" id="frmAutobusBaja" class="form-horizontal"> <!-- Baja Autobus -->
-					<label class="control-label" for="txtNombreAlquiler">Seleccione Autobus</label>
-					<p>combo con nombres de Autobus </p>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="comboAutobus">Seleccione Autobus</label>
+						<div class="col-md-6 col-sm-8">
+							<select id="comboAutobus" name="comboAutobus" class="form-control ">
+								<!--se rellenan con actualizaComboAutobus al dar de alta uno nuevo -->
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusMatricula">Matrícula del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input disabled id="txtAutobusMatricula" name="txtAutobusMatricula" placeholder="Matrícula" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusAsientos">Nº de Asientos:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input disabled id="txtAutobusAsientos" name="txtAutobusAsientos" placeholder="Nº Asientos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Marca del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input disabled id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusConsumo">Consumo del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input disabled id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-12 col-sm-12">
+						<input type="button" id="btnBajaAutobus" name="btnBajaAutobus" class="btn btn-block btn-primary" value="Dar de Baja" />
+						</div>
+					</div>
 				</form>
+
+
+
 				<form name="frmAutobusModificar" id="frmAutobusModificar" class="form-horizontal"> <!-- Modificar Autobus -->
-					<label class="control-label" for="txtNombreAutobus">Seleccione Autobus</label>
-					<p>Combo con con todos los alquileres en el sistema </p>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="comboAutobus">Seleccione Autobus</label>
+						<div class="col-md-6 col-sm-8">
+							<select id="comboAutobus" name="comboAutobus" class="form-control ">
+								<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusMatricula">Matrícula del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input readonly id="txtAutobusMatricula" name="txtAutobusMatricula" placeholder="Matrícula" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusAsientos">Nº de Asientos:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAutobusAsientos" name="txtAutobusAsientos" placeholder="Nº Asientos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Marca del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusConsumo">Consumo del Autobus:</label>  
+						<div class="col-md-6 col-sm-8">
+							<input id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-12 col-sm-12">
+						<input type="button" id="btnModificarAutobus" name="btnModificarAutobus" class="btn btn-block btn-primary" value="Modificar datos" />
+						</div>
+					</div>
 				</form>
+
+
+
+
 				<form name="frmAutobusMantenimiento" id="frmAutobusMantenimiento" class="form-horizontal"> <!-- Mantenimiento Autobus -->
 					<label class="control-label" for="txtNombreAutobus">Seleccione Autobus</label>
 					<p>Combo con con todos los autobuses en el sistema </p>
@@ -752,6 +869,7 @@
 <script type="text/javascript" src="js/clases/vacaciones.js"></script>
 <script type="text/javascript" src="js/principal.js"></script>
 <script type="text/javascript" src="js/gestion/gestioncliente.js"></script>
+<script type="text/javascript" src="js/gestion/gestionAutobus.js"></script>
 
 <script type="text/javascript" src="js/gestion/gestionConductor.js"></script>
 
@@ -762,6 +880,7 @@
 		$("#fechaFin").datepicker();
 		}
 	);
+</script>
 </body>
 
 </html>

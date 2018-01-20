@@ -391,8 +391,44 @@ function comboEstadoInicialConductores(){
 		frmConductorBaja.txtConductorDireccion.value= null;
         frmConductorBaja.txtConductorCuenta.value=null;
     }
-    //autobuses
+   
 }
+ //autobuses
+function comboEstadoInicialAutubuses()
+{
+    var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
+    var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
+
+    if(oComboBajaAutobus.firstChild){
+        oComboBajaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
+        oComboModificaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
+
+        var oAutobus=oGestion.buscarAutobus(frmAutobusModificar.comboAutobus.value);
+
+        frmAutobusModificar.txtAutobusMatricula.value=oAutobus.matricula;
+        frmAutobusModificar.txtAutobusAsientos.value=oAutobus.asientos;
+        frmAutobusModificar.txtAutobusModelo.value=oAutobus.modelo;
+        frmAutobusModificar.txtAutobusConsumo.value=oAutobus.consumo;
+
+        frmAutobusBaja.txtAutobusMatricula.value=oAutobus.matricula;
+        frmAutobusBaja.txtAutobusAsientos.value=oAutobus.asientos;
+        frmAutobusBaja.txtAutobusModelo.value=oAutobus.modelo;
+        frmAutobusBaja.txtAutobusConsumo.value=oAutobus.consumo;
+    }
+    else
+    {
+        frmAutobusModificar.txtAutobusMatricula.value=null;
+        frmAutobusModificar.txtAutobusAsientos.value=null;
+        frmAutobusModificar.txtAutobusModelo.value=null;
+        frmAutobusModificar.txtAutobusConsumo.value=null;
+
+        frmAutobusBaja.txtAutobusMatricula.value=null;
+        frmAutobusBaja.txtAutobusAsientos.value=null;
+        frmAutobusBaja.txtAutobusModelo.value=null;
+        frmAutobusBaja.txtAutobusConsumo.value=null;
+    }
+}
+
 
 // EXPRESIONES REGULARES
 

@@ -217,6 +217,18 @@ class Gestion
 	}
 	
     //autobuses
+    buscarAutobus(sMatricula)
+    {
+        var oAutobus=null;
+        for(var i=0;i<this._autobuses.length && oAutobus==null;i++)
+        {
+            if(sMatricula==this._autobuses[i].matricula)
+                oAutobus=this._autobuses[i];
+        }
+        return oAutobus;
+    }
+
+
     altaAutobus(oAutobus)
     {
         var esta=false;
@@ -235,27 +247,53 @@ class Gestion
         return introducido;
     }
 
-    actualizaComboAutobus() ///////////////aun sin terminar
+    bajaAutobus(oAutobus)
     {
-        frmAutobusBaja
-        frmAutobusModificar
+        var res=false;//no se ha dado de baja
+
+        for (var i=0;i>this._autobuses.length;i++)
+            if(this._autobuses[i].matricula == oAutobus.matricula ){
+                this._autobuses[i].estado=false;
+                res=true;// se ha dado de baja
+                this.actualizaComboAutobus();
+            }
+
+        return res;
+    }
+
+    modificarAutobus(oAutobus)
+    {
+        var res=false;//no se ha modificado
+
+        for (var i=0;i>this._autobuses.length;i++)
+            if(this._autobuses[i].matricula == oAutobus.matricula ){
+                this._autobuses[i]=oAutobus;
+                res=true;// se ha modificado
+                this.actualizaComboAutobus();
+            }
+
+        return res;
+    }
+
+    actualizaComboAutobus() 
+    {
 
         var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
-        var oComboModificaCliente=document.frmAutobusModificar.comboAutobus;
+        var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
 
-        while (oComboBajaCliente.firstChild) { //tienen el mismo nº de hijos
-            oComboBajaCliente.removeChild(oComboBajaCliente.firstChild);
-            oComboModificaCliente.removeChild(oComboModificaCliente.firstChild);
+        while (oComboBajaAutobus.firstChild) { //tienen el mismo nº de hijos
+            oComboBajaAutobus.removeChild(oComboBajaAutobus.firstChild);
+            oComboModificaAutobus.removeChild(oComboModificaAutobus.firstChild);
         }
-        for(var i=0;i<this._clientes.length;i++)
+        for(var i=0;i<this._autobuses.length;i++)
         {
-            if(this._clientes[i].estado==true) //solo mostrar los dados de alta
+            if(this._autobuses[i].estado==true) //solo mostrar los dados de alta
             {
                 var newSelect=document.createElement("option");
-                newSelect.value=this._clientes[i].dni;
-                newSelect.text=this._clientes[i].dni+" - "+this._clientes[i].nombre+" "+this._clientes[i].apellidos;
-                oComboBajaCliente.appendChild(newSelect);
-                oComboModificaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
+                newSelect.value=this._autobuses[i].matricula;
+                newSelect.text=this._autobuses[i].matricula+" - "+this._autobuses[i].modelo+" "+this._autobuses[i].asientos;
+                oComboBajaAutobus.appendChild(newSelect);
+                oComboModificaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
             }    
         }
 

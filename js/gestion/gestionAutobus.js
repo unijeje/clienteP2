@@ -19,7 +19,7 @@ var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
 oComboBajaAutobus.addEventListener("change", rellenaCamposAutobus, false);
 oComboModificaAutobus.addEventListener("change", rellenaCamposAutobus, false);
 
-comboEstadoInicial();
+comboEstadoInicialAutubuses();
 
 function fAltaAutobus(){
 
