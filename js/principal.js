@@ -74,7 +74,16 @@ var oMenuGestionClientes=document.getElementById("MenuGestionClientes");
 var oMenuGestionConductores=document.getElementById("MenuGestionConductores");
 
 //botones Listados
+var oBtnListadoAutobuses=document.getElementById("btnListadoAutobuses");
+oBtnListadoAutobuses.addEventListener("click",mostrarListadoAutobuses,false);
 
+var oBtnListadoClientes=document.getElementById("btnListadoClientes");
+oBtnListadoClientes.addEventListener("click",mostrarListadoClientes,false);
+
+var oBtnListadoConductores=document.getElementById("btnListadoConductores");
+oBtnListadoConductores.addEventListener("click",mostrarListadoConductores,false);
+
+var oCapaListado=document.getElementById("resultadoListados");
 
 //botones panel de mensajes
 var oBtnCerrar=document.getElementById("btnCerrar");
@@ -89,7 +98,9 @@ function ocultarFormularios()
     //todos los formularios
     oTodosFormularios=document.querySelectorAll("form");
     for(var i=0;i<oTodosFormularios.length;i++)
-        oTodosFormularios[i].style.display="none";   
+        oTodosFormularios[i].style.display="none";
+
+    oCapaListado.style.display="none";
   
 }
 //mostrar
@@ -260,6 +271,28 @@ function mostrarMenuVacacionesConductor()
     document.frmConductorModificar.style.display="none";
     document.frmConductorVacaciones.style.display="block";
 }
+
+//Listados
+
+function mostrarListadoAutobuses()
+{
+    listadoAutobuses();
+    oCapaListado.style.display="block";
+}
+
+function mostrarListadoClientes()
+{
+    listadoClientes();
+    oCapaListado.style.display="block";
+}
+
+function mostrarListadoConductores()
+{
+    listadoConductores();
+    oCapaListado.style.display="block";
+}
+
+
 
 //panel de mensajes
 function mensaje(sTexto)
