@@ -48,7 +48,7 @@ function altaConductor(oEvento){
 }
 
 function bajaConductor(){
-	var sDNI= frmConductorBaja.txtConductorDni.value.trim(); console.log(oConductor); //recoge bien el campo dni pero luego no lo envia 
+	var sDNI= frmConductorBaja.txtConductorDni.value.trim(); //console.log(oConductor); //recoge bien el campo dni pero luego no lo envia 
 	var oConductor=oGestion.buscarConductor(sDNI);
 	var darDeBaja= oGestion.bajaConductor(oConductor);
 	console.log(darDeBaja);

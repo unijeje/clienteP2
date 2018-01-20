@@ -343,7 +343,7 @@ function comboEstadoInicialConductores(){
     //conductores
 	var oComboBajaConductor=document.frmConductorBaja.comboConductor;
     var oComboModificaConductor=document.frmConductorModificar.comboConductor;
-    var oComboSeleccionaConductor=document.frmNuevoAlquiler.comboConductores;
+    var oComboSeleccionaConductor=document.frmNuevoAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
     
 	if(oComboBajaConductor.firstChild){
         oComboBajaConductor.firstChild.selected;// seleccionar el primero al cargar el programa

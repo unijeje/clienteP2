@@ -39,75 +39,35 @@ function gestionCalcularNumConductores(oEvento)
 {
     var oE = oEvento || window.event;
     oForm=oE.target.parentNode.parentNode.parentNode;
-    
-    //var oDivConductores=oForm.comboConductores[oForm.comboConductores.length-1].parentNode.parentNode;
-    var oDivConductores=oForm.comboConductores.parentNode.parentNode;
-    var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
-    //var oDivAutobuses=oForm.comboAutobuses[oForm.comboAutobuses.length-1].parentNode.parentNode; //va a ver que usarlo en el futuro probablemente
-   
 
     var iNumMin=1; //nº de personas minimo para poder realizar un alquiler
 
     var iNumPers=oForm.txtAlquilerNumPers.value;
 
-        var iAutobuses=oGestion.calcNumAutobuses(iNumPers);
+    var iAutobuses=oGestion.calcNumAutobuses(iNumPers);
 
-        //borrar combo select que haya previamente
-        var oCombosActuales=oForm.querySelectorAll(".alquilerConductores"); 
-        //console.log(oCombosActuales);
-        for(var i=0;i<oCombosActuales.length;i++)
-        {
-            if(oCombosActuales[i].parentNode.parentNode!=null)
-                oCombosActuales[i].parentNode.parentNode.removeChild(oCombosActuales[i].parentNode.parentNode.firstChild);
+    //borrar combo select que haya previamente
+    var oCombosActuales=oForm.querySelectorAll(".alquilerConductores"); 
 
-            if(oCombosActuales[i].parentNode.parentNode.firstChild!=null)
-                oForm.removeChild(oCombosActuales[i].parentNode.parentNode);
-        }
+    for(var i=0;i<oCombosActuales.length;i++)
+    {
+        oCombosActuales[i].parentNode.removeChild(oCombosActuales[i]);
+    }
+    /*
+    var oDivConductores=oForm.comboConductores.parentNode.parentNode;
+    var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
+    */
+    //recuperamos el combo original
+    var oComboOriginal=frmNuevoAlquiler.querySelector(".alquilerConductoresOriginal");
 
-        //añadir combo select de conductores y autobuses dependiendo del necesario
+    //copiamos el original y le cambiamos las clases
 
-        for(var i=1;i<iAutobuses;i++)
-        {
-
-        //div form-group CONDUCTOR
-        var newDivFormGroup=document.createElement("div");
-        newDivFormGroup.classList.add("form-group");
-        //newDivFormGroup.classList.add("AlquilerConductoresExtra");
-        //newDivFormGroup.classList.add("alquilerConductores");
-
-
-        //div with cols
-        var newDiv = document.createElement("div");
-        newDiv.classList.add("col-md-6");
-        newDiv.classList.add("col-sm-8");
-
-        var newLabel=document.createElement("label");
-        newLabel.classList.add("col-md-3");
-        newLabel.classList.add("col-sm-3");
-        newLabel.classList.add("control-label");
-        newLabel.setAttribute("for", "comboConductores"+i);
-        newLabel.appendChild(document.createTextNode("Seleccione Conductor: "));
-        newDivFormGroup.appendChild(newLabel);
-
-        var newSelect=document.createElement("select");
-        newSelect.setAttribute("id", "comboConductores"+i);
-        newSelect.classList.add("form-control");
-        newSelect.setAttribute("name", "comboConductores"+i);
-        newSelect.classList.add("alquilerConductores");
-        newSelect.classList.add("AlquilerConductoresExtra");
-        newDiv.appendChild(newSelect);
-
-        newDivFormGroup.appendChild(newDiv);
-
-        //console.log(newDivFormGroup);
-        //console.log(oDivConductores);
-
-        oForm.insertBefore(newDivFormGroup, oDivConductores);
-        
-        //hará una llamada a actualiza comboConductores
-        oGestion.actualizaComboConductores();
-        //ID del Select es comboConductores
-
+    for(var i=1;i<iAutobuses;i++)
+    {
+        var oNodoClonado=oComboOriginal.cloneNode(true);
+        oNodoClonado.classList.add("alquilerConductores");
+        oNodoClonado.classList.remove("alquilerConductoresOriginal");
+        oForm.insertBefore(oNodoClonado, oComboOriginal);
 
     }
 }
@@ -117,66 +77,29 @@ function gestionCalcularNumAutobuses(oEvento)
     var oE = oEvento || window.event;
     oForm=oE.target.parentNode.parentNode.parentNode;
 
-
-    var oDivConductores=oForm.comboConductores[oForm.comboConductores.length-1].parentNode.parentNode;
-    var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
-    //var oDivAutobuses=oForm.comboAutobuses[oForm.comboAutobuses.length-1].parentNode.parentNode; //va a ver que usarlo en el futuro probablemente
-
     var iNumMin=1; //nº de personas minimo para poder realizar un alquiler
 
     var iNumPers=oForm.txtAlquilerNumPers.value;
     var iAutobuses=oGestion.calcNumAutobuses(iNumPers);
     //borrar combo select que haya previamente
     var oCombosActuales=oForm.querySelectorAll(".alquilerAutobuses"); 
-    //console.log(oCombosActuales);
+
     for(var i=0;i<oCombosActuales.length;i++)
     {
-        if(oCombosActuales[i].parentNode.parentNode!=null)
-            oCombosActuales[i].parentNode.parentNode.removeChild(oCombosActuales[i].parentNode.parentNode.firstChild);
-
-        if(oCombosActuales[i].parentNode.parentNode.firstChild!=null)
-            oForm.removeChild(oCombosActuales[i].parentNode.parentNode);
+        oCombosActuales[i].parentNode.removeChild(oCombosActuales[i]);
     }
-
-    //añadir combo select de Autobuses y autobuses dependiendo del necesario
+    //var oDivAutobuses=oForm.comboAutobuses.parentNode.parentNode;
+    //recuperamos el combo original
+    var oComboOriginal=frmNuevoAlquiler.querySelector(".alquilerAutobusesOriginal");
+    
 
     for(var i=1;i<iAutobuses;i++)
     {
 
-        //div form-group Autobus
-        var newDivFormGroup=document.createElement("div");
-        newDivFormGroup.classList.add("form-group");
-        //newDivFormGroup.classList.add("alquilerAutobuses");
-
-
-        //div with cols
-        var newDiv = document.createElement("div");
-        newDiv.classList.add("col-md-6");
-        newDiv.classList.add("col-sm-8");
-
-        var newLabel=document.createElement("label");
-        newLabel.classList.add("col-md-3");
-        newLabel.classList.add("col-sm-3");
-        newLabel.classList.add("control-label");
-        newLabel.setAttribute("for", "comboAutobuses"+i);
-        newLabel.appendChild(document.createTextNode("Seleccione Autobus: "));
-        newDivFormGroup.appendChild(newLabel);
-
-        var newSelect=document.createElement("select");
-        newSelect.setAttribute("id", "comboAutobuses"+i);
-        newSelect.classList.add("form-control");
-        newSelect.setAttribute("name", "comboAutobuses"+i);
-        newSelect.classList.add("alquilerAutobuses");
-        newDiv.appendChild(newSelect);
-
-        newDivFormGroup.appendChild(newDiv);
-
-
-        oForm.insertBefore(newDivFormGroup, oDivAutobuses);
-
-        //hará una llamada a actualiza comboAutobuses
-        //ID del Select es comboAutobuses
-
+        var oNodoClonado=oComboOriginal.cloneNode(true);
+        oNodoClonado.classList.add("alquilerAutobuses");
+        oNodoClonado.classList.remove("alquilerConductoresOriginal");
+        oForm.insertBefore(oNodoClonado, oComboOriginal);
     }
 
 
