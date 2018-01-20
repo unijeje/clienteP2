@@ -98,7 +98,7 @@ function gestionCalcularNumAutobuses(oEvento)
 
         var oNodoClonado=oComboOriginal.cloneNode(true);
         oNodoClonado.classList.add("alquilerAutobuses");
-        oNodoClonado.classList.remove("alquilerConductoresOriginal");
+        oNodoClonado.classList.remove("alquilerAutobusesOriginal");
         oForm.insertBefore(oNodoClonado, oComboOriginal);
     }
 

@@ -281,10 +281,12 @@ class Gestion
 
         var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
         var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
+        var oComboSeleccionaAutobus=document.frmNuevoAlquiler.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
 
         while (oComboBajaAutobus.firstChild) { //tienen el mismo nº de hijos
             oComboBajaAutobus.removeChild(oComboBajaAutobus.firstChild);
             oComboModificaAutobus.removeChild(oComboModificaAutobus.firstChild);
+            oComboSeleccionaAutobus.removeChild(oComboSeleccionaAutobus.firstChild);
         }
         for(var i=0;i<this._autobuses.length;i++)
         {
@@ -295,6 +297,7 @@ class Gestion
                 newSelect.text=this._autobuses[i].matricula+" - "+this._autobuses[i].modelo+" "+this._autobuses[i].asientos;
                 oComboBajaAutobus.appendChild(newSelect);
                 oComboModificaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
+                oComboSeleccionaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
             }    
         }
 
