@@ -101,7 +101,7 @@ function fAltaMantenimiento()
     var dFecha=Date(frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim());
     var sMatricula=frmAltaMantenimiento.comboAutobus.value.trim();
 
-    console.log(sMatricula);
+    //console.log(sMatricula);
     var oNuevoMantenimiento=new Mantenimiento(sDescripcion,fImporte,dFecha,sMatricula);
     var bInsercion=oGestion.altaMantenimiento(oNuevoMantenimiento);
     if(bInsercion){
