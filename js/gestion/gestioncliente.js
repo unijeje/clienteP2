@@ -37,7 +37,7 @@ function altaCliente(oEvento)
         var sTlfCliente=frmClienteAlta.txtClienteTelefono.value.trim();
         var sCorreoCliente=frmClienteAlta.txtClienteCorreo.value.trim();
         var sCuentaCliente=frmClienteAlta.txtClienteCuenta.value.trim();
-        var sSexoCliente=frmClienteAlta.txtClienteSexo.value.trim();
+        var sSexoCliente=frmClienteAlta.radioClienteSexo.value;
 
         var oCliente=new Cliente(sDniCliente, sNombreCliente, sApellidosCliente, sTlfCliente, sCorreoCliente, sCuentaCliente, sSexoCliente);
         
@@ -47,6 +47,7 @@ function altaCliente(oEvento)
             document.frmClienteAlta.reset();
             document.frmClienteAlta.style.display="none";
             mensaje("Cliente Insertado Correctamente");
+            comboEstadoInicialClientes(); //vuelve a seleccionar el primero del combo
         }
         else
         {

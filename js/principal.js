@@ -494,4 +494,4 @@ var oExpRegularNumCuenta = /^\d{20}$/; //numero de cuenta 20 numeros fijos //ej:
 
 var oExpRegEsNumero=/^\d{1,20}$/; //es un numero entre 1 y 20
 
-var oExpRegFecha = /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/; //mm/dd/yyyy
+//var oExpRegFecha = /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/; //mm/dd/yyyy

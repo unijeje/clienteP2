@@ -65,8 +65,29 @@ function validarAlquiler(oForm)
 {
     var bValidacion=true;
     var sError="";
+
+    /*Cliente*/
+    var sDniCliente=oForm.comboCliente.value;
+    //console.log(sDniCliente);
+    if(sDniCliente=="")
+    {
+        
+        oForm.comboCliente.parentNode.parentNode.classList.add("has-error");
+        //console.log(oForm.comboCliente);
+        oForm.comboCliente.focus();
+        sError="Cliente no seleccionado";
+        falloValidacion(sError, oForm.comboCliente);
+        bValidacion=false;
+    }
+    else
+    {
+        falloValidacion("", oForm.comboCliente);
+        oForm.comboCliente.parentNode.parentNode.classList.remove("has-error");
+    }
+
     /*IDALQUILER*/
     var sIDAlquiler=oForm.txtAlquilerID.value.trim();
+    oForm.txtAlquilerID.value=oForm.txtAlquilerID.value.trim();
 
     if(!oExpRegEsNumero.test(sIDAlquiler))
     {
@@ -82,8 +103,172 @@ function validarAlquiler(oForm)
         falloValidacion("", oForm.txtAlquilerID);
     }
 
-    /*Combo Conductores no se repite*/
+    /*NºHoras*/
+    var iAlquilerHoras=oForm.txtAlquilerHoras.value.trim();
+    oForm.txtAlquilerHoras.value=oForm.txtAlquilerHoras.value.trim();
+
+    if(!oExpRegEsNumero.test(iAlquilerHoras))
+    {
+        oForm.txtAlquilerHoras.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAlquilerHoras.focus();
+        sError="El nº de horas tiene que ser un número";
+        falloValidacion(sError, oForm.txtAlquilerHoras);
+        bValidacion=false;
+    }
+    else
+    {
+        oForm.txtAlquilerHoras.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtAlquilerHoras);
+    }
+
+    /*Fecha*/
+    var iAlquilerFecha=oForm.txtAlquilerFecha.value.trim();
+    oForm.txtAlquilerFecha.value=oForm.txtAlquilerFecha.value.trim();
+
+    if(iAlquilerFecha=="")
+    {
+        oForm.txtAlquilerFecha.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAlquilerFecha.focus();
+        sError="formato de fecha incorrecto, tiene que ser: mm/dd/yyyy";
+        falloValidacion(sError, oForm.txtAlquilerFecha);
+        bValidacion=false;
+    }
+    else
+    {
+        oForm.txtAlquilerFecha.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtAlquilerFecha);
+    }
+
+    /*Nº Personas*/
+    var iAlquilerNumPers=oForm.txtAlquilerNumPers.value.trim();
+    oForm.txtAlquilerNumPers.value=oForm.txtAlquilerNumPers.value.trim();
+
+    if(!oExpRegEsNumero.test(iAlquilerNumPers) || iAlquilerNumPers<1)
+    {
+        oForm.txtAlquilerNumPers.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAlquilerNumPers.focus();
+        sError="Tiene que ser un numero mayor que 0";
+        falloValidacion(sError, oForm.txtAlquilerNumPers);
+        bValidacion=false;
+    }
+    else
+    {
+        oForm.txtAlquilerNumPers.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtAlquilerNumPers);
+    }
+
+    /*Descripción*/
+    var txtAlquilerDesc=oForm.txtAlquilerDesc.value.trim();
+    oForm.txtAlquilerDesc.value=oForm.txtAlquilerDesc.value.trim();
+
+    if(txtAlquilerDesc=="")
+    {
+        oForm.txtAlquilerDesc.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAlquilerDesc.focus();
+        sError="Tiene que añadir una descripción";
+        falloValidacion(sError, oForm.txtAlquilerDesc);
+        bValidacion=false;
+    }
+    else
+    {
+        oForm.txtAlquilerDesc.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtAlquilerDesc);
+    }
+
+    /*Origen*/
+    var txtAlquilerOrigen=oForm.txtAlquilerOrigen.value.trim();
+    oForm.txtAlquilerOrigen.value=oForm.txtAlquilerOrigen.value.trim();
+
+    if(txtAlquilerOrigen=="")
+    {
+        oForm.txtAlquilerOrigen.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAlquilerOrigen.focus();
+        sError="Tiene que añadir una dirección de origen";
+        falloValidacion(sError, oForm.txtAlquilerOrigen);
+        bValidacion=false;
+    }
+    else
+    {
+        oForm.txtAlquilerOrigen.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtAlquilerOrigen);
+    }
+
+    /*Destino*/
+    var txtAlquilerDestino=oForm.txtAlquilerDestino.value.trim();
+    oForm.txtAlquilerDestino.value=oForm.txtAlquilerDestino.value.trim();
+
+    if(txtAlquilerDestino=="")
+    {
+        oForm.txtAlquilerDestino.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAlquilerDestino.focus();
+        sError="Tiene que añadir una dirección de destino";
+        falloValidacion(sError, oForm.txtAlquilerDestino);
+        bValidacion=false;
+    }
+    else
+    {
+        oForm.txtAlquilerDestino.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtAlquilerDestino);
+    }
+
+    /*Num de kms*/
+    var txtAlquilerKms=parseInt(oForm.txtAlquilerKms.value.trim());
+    oForm.txtAlquilerKms.value=oForm.txtAlquilerKms.value.trim();
+   
+    if(!oExpRegEsNumero.test(txtAlquilerKms) || txtAlquilerKms<1)
+    {
+        oForm.txtAlquilerKms.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAlquilerKms.focus();
+        sError="Tiene que introducir un número de kilómetros";
+        falloValidacion(sError, oForm.txtAlquilerKms);
+        bValidacion=false;
+    }
+    else
+    {
+        oForm.txtAlquilerKms.parentNode.parentNode.classList.remove("has-error");
+        falloValidacion("", oForm.txtAlquilerKms);
+    }
+
     var oComboConductores=oForm.querySelectorAll("#comboConductores");
+    var oComboAutobuses=oForm.querySelectorAll("#comboAutobuses");
+
+    /*Combo Conductores no esta vacio*/
+    
+    for(var i=0;i<oComboConductores.length;i++)
+    {
+        if(oComboConductores[i].value=="")
+        {
+            oComboConductores[i].parentNode.parentNode.classList.add("has-error");
+            sError="Conductor no seleccionado";
+            falloValidacion(sError, oComboConductores[i]);
+            bValidacion=false;
+        }
+        else
+        {
+            //falloValidacion("", oComboConductores[i]);
+            oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
+        }
+    }
+    
+    /*Combo Autobuses no esta vacio*/
+    for(var i=0;i<oComboAutobuses.length;i++)
+    {
+        if(oComboAutobuses[i].value=="")
+        {
+            oComboAutobuses[i].parentNode.parentNode.classList.add("has-error");
+            sError="Conductor no seleccionado";
+            falloValidacion(sError, oComboAutobuses[i]);
+            bValidacion=false;
+        }
+        else
+        {
+            //falloValidacion("", oComboAutobuses[i]);
+            oComboAutobuses[i].parentNode.parentNode.classList.remove("has-error");
+        }
+    }
+
+    /*Combo Conductores no se repite*/
+    
     if(comprobarRepetido(oComboConductores))
     {
         bValidacion=false;
@@ -101,7 +286,7 @@ function validarAlquiler(oForm)
     }
 
     /*Combo Autobuses no se repite*/
-    var oComboAutobuses=oForm.querySelectorAll("#comboAutobuses");
+    
     if(comprobarRepetido(oComboAutobuses))
     {
         bValidacion=false;
@@ -117,6 +302,8 @@ function validarAlquiler(oForm)
             oComboAutobuses[i].parentNode.parentNode.classList.remove("has-error");
         falloValidacion("", oForm.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1]);
     }
+
+    
 
 
     return bValidacion;
@@ -155,10 +342,10 @@ function comprobarCero(oEvento)
 
     if(iNumPers<=0)
     {
-        oForm.txtAlquilerNumPers.style.backgroundColor="red";
+        oForm.txtAlquilerNumPers.parentNode.parentNode.classList.add("has-error");
     }
     else
-    oForm.txtAlquilerNumPers.style.backgroundColor="white";
+        oForm.txtAlquilerNumPers.parentNode.parentNode.classList.remove("has-error");
 }
 
 function gestionCalcularNumConductores(oEvento)
