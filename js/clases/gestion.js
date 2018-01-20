@@ -51,11 +51,55 @@ class Gestion
         }
         return res;
     }
+    bajaAlquiler(oAlquiler)
+    {
+        var res=false;
+        for(var i=0;i<this._alquileres.length;i++)
+        {
+            if(oAlquiler.id==this._alquileres[i].id)
+            {
+                this._alquileres.splice(i, 1);
+                res=true;
+                this.actualizaComboAlquileres();
+            }
+        }
+        return res;
+    }
+    modificarAlquiler(oAlquiler)
+    {
+        var res=false;
+        for(var i=0;i<this._alquileres.length;i++)
+        {
+            if(this._alquileres[i].id==oAlquiler.id)
+            {
+                this._alquileres[i]=oAlquiler;
+                this.actualizaComboAlquileres();
+                res=true;
+            }
+        }
+        return res;
+    }
 
 
     actualizaComboAlquileres()
     {
         //console.log("actualizaComboAlquileres");
+        var oComboModificaAlquiler=document.frmModificarAlquiler.comboAlquiler;
+        var oComboBorrarAlquiler=document.frmBorraAlquiler.comboAlquiler;
+
+        while (oComboModificaAlquiler.firstChild) { //tienen el mismo nº de hijos
+            oComboModificaAlquiler.removeChild(oComboModificaAlquiler.firstChild);
+            oComboBorrarAlquiler.removeChild(oComboBorrarAlquiler.firstChild);
+        }
+        for(var i=0;i<this._alquileres.length;i++)
+        {
+            var newSelect=document.createElement("option");
+            newSelect.value=this._alquileres[i].id;
+            newSelect.text=this._alquileres[i].id+" - "+this._alquileres[i].origen+" > "+this._alquileres[i].destino+" "+this._alquileres[i].fecha;
+            oComboModificaAlquiler.appendChild(newSelect);
+            oComboBorrarAlquiler.appendChild(oComboModificaAlquiler.lastChild.cloneNode(true));
+            
+        }
     }
 
     //clientes
@@ -141,11 +185,15 @@ class Gestion
         var oComboBajaCliente=document.frmClienteBaja.comboCliente;
         var oComboModificaCliente=document.frmClienteModificar.comboCliente;
         var oComboSeleccionaCliente=document.frmNuevoAlquiler.comboCliente;
+        var oComboBorrarAlquiler=document.frmBorraAlquiler.comboCliente;
+        var oComboModificarAlquiler=document.frmModificarAlquiler.comboCliente;
 
         while (oComboBajaCliente.firstChild) { //tienen el mismo nº de hijos
             oComboBajaCliente.removeChild(oComboBajaCliente.firstChild);
             oComboModificaCliente.removeChild(oComboModificaCliente.firstChild);
             oComboSeleccionaCliente.removeChild(oComboSeleccionaCliente.firstChild);
+            oComboBorrarAlquiler.removeChild(oComboBorrarAlquiler.firstChild);
+            oComboModificarAlquiler.removeChild(oComboModificarAlquiler.firstChild);
         }
         for(var i=0;i<this._clientes.length;i++)
         {
@@ -157,6 +205,8 @@ class Gestion
                 oComboBajaCliente.appendChild(newSelect);
                 oComboModificaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
                 oComboSeleccionaCliente.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
+                oComboBorrarAlquiler.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
+                oComboModificarAlquiler.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
             }    
         }
     }
@@ -208,13 +258,17 @@ class Gestion
 		var oComboBajaConductor=document.frmConductorBaja.comboConductor;
         var oComboModificaConductor=document.frmConductorModificar.comboConductor;
         var oComboSeleccionaConductor=document.frmNuevoAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
+        var oComboModificarAlquiler=document.frmModificarAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
+        var oComboBorrarAlquiler=document.frmBorraAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
         var oComboVacacionesConductor=document.frmConductorVacaciones.comboConductor;
 
 		 while (oComboBajaConductor.firstChild) { //tienen el mismo nº de hijos
             oComboBajaConductor.removeChild(oComboBajaConductor.firstChild);
             oComboModificaConductor.removeChild(oComboModificaConductor.firstChild);
             oComboSeleccionaConductor.removeChild(oComboSeleccionaConductor.firstChild);
+            oComboModificarAlquiler.removeChild(oComboModificarAlquiler.firstChild);
             oComboVacacionesConductor.removeChild(oComboVacacionesConductor.firstChild);
+            oComboBorrarAlquiler.removeChild(oComboBorrarAlquiler.firstChild);
         }
 
 		
@@ -227,23 +281,11 @@ class Gestion
                 oComboModificaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 oComboSeleccionaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 oComboVacacionesConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+                oComboModificarAlquiler.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+                oComboBorrarAlquiler.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                     
             }       
         }
-		/*
-		var mostarComboActualizadoConductores= "<label class='col-md-3 col-sm-3 control-label' for='comboConductor'>Seleccione Conductor</label>"+
-													"<div class='col-md-6 col-sm-8'>"+
-														"<select id='comboConductor' name='comboConductor' class='form-control'>"+
-															"<option>Seleccione un Conductor..</option>";
-	
-		for(var i=0; i<this._conductores.length; i++){
-			mostarComboActualizadoConductores+= "<option>"+this._conductores[i].sDni+" - "+this._conductores[i].sNombre+" "+this._conductores[i].sApellidos+"</option>";
-		}
-		
-		mostarComboActualizadoConductores+= "</select>";
-		
-		return mostarComboActualizadoConductores;
-		*/
 	}
 	
     //autobuses
@@ -312,12 +354,16 @@ class Gestion
         var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
         var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
         var oComboSeleccionaAutobus=document.frmNuevoAlquiler.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
+        var oComboModificaAlquiler=document.frmModificarAlquiler.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
+        var oComboBorraAlquiler=document.frmBorraAlquiler.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
         var oComboAutobusMantenimiento=document.frmAltaMantenimiento.comboAutobus;
 
         while (oComboBajaAutobus.firstChild) { //tienen el mismo nº de hijos
             oComboBajaAutobus.removeChild(oComboBajaAutobus.firstChild);
             oComboModificaAutobus.removeChild(oComboModificaAutobus.firstChild);
             oComboSeleccionaAutobus.removeChild(oComboSeleccionaAutobus.firstChild);
+            oComboModificaAlquiler.removeChild(oComboModificaAlquiler.firstChild);
+            oComboBorraAlquiler.removeChild(oComboBorraAlquiler.firstChild);
             oComboAutobusMantenimiento.removeChild(oComboAutobusMantenimiento.firstChild);
         }
         for(var i=0;i<this._autobuses.length;i++)
@@ -330,6 +376,8 @@ class Gestion
                 oComboBajaAutobus.appendChild(newSelect);
                 oComboModificaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
                 oComboSeleccionaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
+                oComboModificaAlquiler.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
+                oComboBorraAlquiler.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
                 oComboAutobusMantenimiento.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
             }    
         }

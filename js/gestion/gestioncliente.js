@@ -243,7 +243,7 @@ function actualizaCliente(oEvento)
         comboEstadoInicialClientes();
     }
     else
-        mensaje("Error en el formulario \n"+sError);
+        mensaje("Error en el formulario");
     
     
 }

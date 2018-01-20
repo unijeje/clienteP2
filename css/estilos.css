@@ -12,7 +12,7 @@ button{
 }
 
 /*Ocultar alquileres*/
-#frmNuevoAlquiler, #frmModificarAlquiler
+#frmNuevoAlquiler, #frmModificarAlquiler, #frmBorraAlquiler
 {
     display:none;
 }
