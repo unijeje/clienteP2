@@ -1,4 +1,4 @@
-var oConductor1= new Conductor("1235678F","Alejandro","Nuñez","Masculino","987654321","ale@gmail.com","C/javascript","1111111111111111");
+var oConductor1= new Conductor("12345678F","Alejandro","Nuñez","Masculino","987654321","ale@gmail.com","C/javascript","12345678987654321234");
 oGestion.altaConductor(oConductor1);
 var oConductor2= new Conductor("1235678Z","test2","test2","Masculino","987654322","al2@gmail.com","C/javascript","2222222222222222");
 oGestion.altaConductor(oConductor2);
@@ -10,6 +10,9 @@ oBtnAltaConductor.addEventListener("click",altaConductor,false);
 
 var oBtnBajaConductor= document.getElementById("btnBajaConductor");
 oBtnBajaConductor.addEventListener("click",bajaConductor,false);
+
+var oBtnModificarConductor= document.getElementById("btnModificarConductor");
+oBtnModificarConductor.addEventListener("click",modificarConductor,false);
 
 var oComboBajaConductor=document.frmConductorBaja.comboConductor;
 var oComboModificaConductor=document.frmConductorModificar.comboConductor;
@@ -58,6 +61,34 @@ function bajaConductor(){
 		comboEstadoInicialConductores();
 	} else{
 		mensaje("Error al dar de baja");
+	}
+}
+
+function modificarConductor(oEvento){
+	var oE = oEvento || windows.event;
+	var frmModificar=oE.target.parentNode.parentNode.parentNode;
+	
+	if(validarConductor(frmModificar)){
+		var dniConductor= frmConductorAlta.txtConductorDni.value.trim();
+		var nombreConductor= frmConductorAlta.txtConductorNombre.value.trim();
+		var apellidosConductor= frmConductorAlta.txtConductorApellidos.value.trim();
+		var sexoConductor= frmConductorAlta.radioConductorSexo.value;
+		var tlfConductor= frmConductorAlta.txtConductorTelefono.value.trim();
+		var emailConductor= frmConductorAlta.txtConductorCorreo.value.trim();
+		var direccionConductor= frmConductorAlta.txtConductorDireccion.value.trim();
+		var numCuentaConductor= frmConductorAlta.txtConductorCuenta.value.trim();
+		//sDni,sNombre,sApellidos,sSexo,iTlf,sEmail,sDireccion,iNumCuenta
+		var oNuevoConductor= new Conductor(dniConductor,nombreConductor,apellidosConductor,sexoConductor,tlfConductor,emailConductor,direccionConductor, numCuentaConductor);
+		var bActualizacion=oGestion.modificarConductor(oNuevoConductor);
+		
+		if(oGestion.altaConductor(oNuevoConductor)==false){
+			document.frmConductorAlta.style.display="none";
+			mensaje("Conductor Modificado Correctamente");
+		} else{
+			mensaje("Este conductor ya existe");
+		}
+	} else{
+		mensaje("Fallo al modificar el conductor "+error);
 	}
 }
 
