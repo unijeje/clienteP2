@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gestion>
+    <!-- CLIENTES-->
+    <cliente id="001">
+        <dni>12345678A</dni>
+        <nombre>Aabraham</nombre>
+        <apellidos>Arriola</apellidos>
+        <tlf>688452541</tlf>
+        <correo>Correo001@gmail.com</correo>
+        <numCuenta>09898767654534322110</numCuenta>
+        <sexo>Masculino</sexo>
+    </cliente>
+    <cliente id="002">
+        <dni>12345678Z</dni>
+        <nombre>Aada</nombre>
+        <apellidos>Aldana</apellidos>
+        <tlf>688452512</tlf>
+        <correo>Correo002@gmail.com</correo>
+        <numCuenta>01122334455667788990</numCuenta>
+        <sexo>Femenino</sexo>
+    </cliente>
+    <cliente id="003">
+        <dni>98765432A</dni>
+        <nombre>Javier</nombre>
+        <apellidos>Bermúdez</apellidos>
+        <tlf>681245245</tlf>
+        <correo>Correo031@gmail.com</correo>
+        <numCuenta>01122334400667788990</numCuenta>
+        <sexo>Masculino</sexo>
+    </cliente>
+    <cliente id="004">
+        <dni>98765432Z</dni>
+        <nombre>Miguel</nombre>
+        <apellidos>Benitez</apellidos>
+        <tlf>681245097</tlf>
+        <correo>Correo101@gmail.com</correo>
+        <numCuenta>01122334409867788990</numCuenta>
+        <sexo>Femenino</sexo>
+    </cliente>
+    <cliente id="005">
+        <dni>98765498F</dni>
+        <nombre>Carlos</nombre>
+        <apellidos>Costa</apellidos>
+        <tlf>681240097</tlf>
+        <correo>Correo501@gmail.com</correo>
+        <numCuenta>60522334409867788990</numCuenta>
+        <sexo>Masculino</sexo>
+    </cliente>
+    <!-- CONDUCTORES -->
+    <conductor id="001">
+        <dni>09876543F</dni>
+        <nombre>Julio</nombre>
+        <apellidos>Cuéllar</apellidos>
+        <sexo>Masculino</sexo>
+        <tlf>680752541</tlf>
+        <correo>Correo749@gmail.com</correo>
+        <numCuenta>09898767654470322110</numCuenta>
+    </conductor>
+    <conductor id="002">
+        <dni>09872543G</dni>
+        <nombre>Pepe</nombre>
+        <apellidos>De leon</apellidos>
+        <sexo>Masculino</sexo>
+        <tlf>682552541</tlf>
+        <correo>Correo052@gmail.com</correo>
+        <numCuenta>09898767654534322110</numCuenta>
+    </conductor>
+    <conductor id="003">
+        <dni>09876098Z</dni>
+        <nombre>Maria</nombre>
+        <apellidos>Espinosa</apellidos>
+        <sexo>Femenino</sexo>
+        <tlf>688092541</tlf>
+        <correo>Correo001@gmail.com</correo>
+        <numCuenta>09898767654534322110</numCuenta>
+    </conductor>
+    <conductor id="004">
+        <dni>09876589K</dni>
+        <nombre>Cristina</nombre>
+        <apellidos>Flores</apellidos>
+        <sexo>Femenino</sexo>
+        <tlf>688452001</tlf>
+        <correo>Correo571@gmail.com</correo>
+        <numCuenta>09898767654534322110</numCuenta>
+    </conductor>
+    <conductor id="005">
+        <dni>09876509P</dni>
+        <nombre>Pablo</nombre>
+        <apellidos>Etxebarria</apellidos>
+        <sexo>Masculino</sexo>
+        <tlf>688453141</tlf>
+        <correo>Correo071@gmail.com</correo>
+        <numCuenta>09898767654534322110</numCuenta>
+    </conductor>
+    <!-- AUTOBUS -->
+    <autobus id="001">
+        <matricula>1234BBB</matricula>
+        <asientos>30</asientos>
+        <modelo>Mercedes-Benz</modelo>
+        <consumo>Gasolina</consumo>
+    </autobus>
+    <autobus id="002">
+        <matricula>4321ZAF</matricula>
+        <asientos>35</asientos>
+        <modelo>Tussam</modelo>
+        <consumo>Diesel</consumo>
+    </autobus>
+    <autobus id="003">
+        <matricula>3297PQE</matricula>
+        <asientos>40</asientos>
+        <modelo>Setra</modelo>
+        <consumo>Gasolina</consumo>
+    </autobus>
+    <autobus id="004">
+        <matricula>3857KSH</matricula>
+        <asientos>45</asientos>
+        <modelo>Scania</modelo>
+        <consumo>Diesel</consumo>
+    </autobus>
+    <autobus id="005">
+        <matricula>0748OUH</matricula>
+        <asientos>50</asientos>
+        <modelo>Mercedes-Benz</modelo>
+        <consumo>Gasolina</consumo>
+    </autobus>
+    <!-- ALQUILER -->
+    <alquiler id="001">
+        <conductores>
+            <conductor>09876509P</conductor>
+            <conductor>09876589K</conductor>
+        </conductores>
+        <autobuses>
+            <autobus>3297PQE</autobus>
+            <autobus>3857KSH</autobus>
+        </autobuses>
+        <id>973</id>
+        <horas>4</horas>
+        <fecha>01/01/2018</fecha>
+        <numPers>45</numPers>
+        <descripcion>Excursion</descripcion>
+        <origen>Colegio</origen>
+        <destino>Teatro</destino>
+        <kms>10</kms>
+        <cliente>98765498F</cliente>
+    </alquiler>
+    <alquiler id="002">
+        <conductores>
+            <conductor>09876509P</conductor>
+        </conductores>
+        <autobuses>
+            <autobus>3297PQE</autobus>
+        </autobuses>
+        <id>955</id>
+        <horas>6</horas>
+        <fecha>01/02/2018</fecha>
+        <numPers>25</numPers>
+        <descripcion>Viaje</descripcion>
+        <origen>Sevilla</origen>
+        <destino>Cadiz</destino>
+        <kms>80</kms>
+        <cliente>12345678Z</cliente>
+    </alquiler>
+    <alquiler id="003">
+        <conductores>
+            <conductor>09872543G</conductor>
+            <conductor>09876589K</conductor>
+        </conductores>
+        <autobuses>
+            <autobus>3297PQE</autobus>
+            <autobus>3857KSH</autobus>
+        </autobuses>
+        <id>759</id>
+        <horas>20</horas>
+        <fecha>02/01/2018</fecha>
+        <numPers>45</numPers>
+        <descripcion>VIAJE</descripcion>
+        <origen>ESPAÑA</origen>
+        <destino>FRANCIA</destino>
+        <kms>500</kms>
+        <cliente>12345678A</cliente>
+    </alquiler>
+    <alquiler id="004">
+        <conductores>
+            <conductor>09872543G</conductor>
+            <conductor>09876098Z</conductor>
+            <conductor>09876543F</conductor>
+        </conductores>
+        <autobuses>
+            <autobus>4321ZAF</autobus>
+            <autobus>0748OUH</autobus>
+            <autobus>3297PQE</autobus>
+        </autobuses>
+        <id>123</id>
+        <horas>8</horas>
+        <fecha>01/10/2018</fecha>
+        <numPers>110</numPers>
+        <descripcion>Excursion</descripcion>
+        <origen>Colegio</origen>
+        <destino>Zoo</destino>
+        <kms>30</kms>
+        <cliente>98765432A</cliente>
+    </alquiler>
