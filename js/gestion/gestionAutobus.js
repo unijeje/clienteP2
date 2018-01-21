@@ -26,7 +26,7 @@ var oRadioMantenimientoSeleccion=document.frmAutobusMantenimiento.rdMantenimient
 
 oComboBajaAutobus.addEventListener("change", rellenaCamposAutobus, false);
 oComboModificaAutobus.addEventListener("change", rellenaCamposAutobus, false);
-oRadioMantenimientoSeleccion.addEventListener("click", muestraFormsMantenimiento, false);
+//oRadioMantenimientoSeleccion.addEventListener("click", muestraFormsMantenimiento, false);
 
 
 comboEstadoInicialAutubuses();

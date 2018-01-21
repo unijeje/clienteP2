@@ -243,6 +243,25 @@ class Gestion
 		
 		return bEncontrado;
 	}
+	
+	modificarConductor(oConductor,dniRecibido){
+        var bEncontrado=true;
+
+        if(this.buscarConductor(oConductor.dni)!=null){
+            bEncontrado=false;
+			oConductor.dni= dniRecibido;
+         }   
+        
+        for(var i=0;i<this._conductores.length;i++){
+            if(this._conductores[i].dni==dniRecibido){
+                console.log(i);                    
+                this._conductores[i]=oConductor;
+                this.actualizaComboConductores();                
+            }
+        }
+		
+        return bEncontrado;       
+    }
 
 	buscarConductor(sDni){
         var oConductor=null;
