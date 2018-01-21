@@ -159,7 +159,8 @@ function modificarAlquiler(oEvento)
         {
             mensaje("Alquiler actualizado correctamente");
             oForm.style.display="none";
-            //comboEstadoInicialAlquileres();
+            comboEstadoInicialAlquileres();
+            //rellenaCamposAlquiler();
         }
         else
             mensaje("No se ha encontrado el alquiler");

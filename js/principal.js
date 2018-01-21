@@ -372,18 +372,34 @@ function comboEstadoInicialAlquileres()
 
     if(oComboBorrarAlquiler.firstChild)
     {
-        oComboModificarAlquiler.firstChild.selected;// seleccionar el primero al cargar el programa
-        oComboBorrarAlquiler.firstChild.selected;// seleccionar el primero al cargar el programa
-
+        oComboModificarAlquiler.selectedIndex="0";// seleccionar el primero al cargar el programa
+        oComboBorrarAlquiler.selectedIndex="0";// seleccionar el primero al cargar el programa
+        
         var oAlquiler=oGestion.buscarAlquiler(frmModificarAlquiler.comboAlquiler.value);
         
         if(oAlquiler)
         {   
             //MODIFICAR
             escogeIndexCombo(frmModificarAlquiler.comboCliente, oAlquiler.cliente.dni);
+
+            var oCombosActuales=frmModificarAlquiler.querySelectorAll(".alquilerConductores"); 
+
+            for(var i=0;i<oCombosActuales.length;i++)
+            {
+                oCombosActuales[i].parentNode.removeChild(oCombosActuales[i]);
+            }
+
+            oCombosActuales=frmModificarAlquiler.querySelectorAll(".alquilerAutobuses"); 
+
+            for(var i=0;i<oCombosActuales.length;i++)
+            {
+                oCombosActuales[i].parentNode.removeChild(oCombosActuales[i]);
+            }
             
             var oComboOriginal=frmModificarAlquiler.querySelector(".alquilerConductoresOriginal");
             
+
+
             for(var i=1;i<oAlquiler.conductor.length;i++)
             {
                 var oNodoClonado=oComboOriginal.cloneNode(true);
@@ -425,6 +441,20 @@ function comboEstadoInicialAlquileres()
 
             escogeIndexCombo(frmBorraAlquiler.comboCliente, oAlquiler.cliente.dni);
 
+            oCombosActuales=frmBorraAlquiler.querySelectorAll(".alquilerConductores"); 
+
+            for(var i=0;i<oCombosActuales.length;i++)
+            {
+                oCombosActuales[i].parentNode.removeChild(oCombosActuales[i]);
+            }
+
+            oCombosActuales=frmBorraAlquiler.querySelectorAll(".alquilerAutobuses"); 
+
+            for(var i=0;i<oCombosActuales.length;i++)
+            {
+                oCombosActuales[i].parentNode.removeChild(oCombosActuales[i]);
+            }
+
             oComboOriginal=frmBorraAlquiler.querySelector(".alquilerConductoresOriginal");
             
             for(var i=1;i<oAlquiler.conductor.length;i++)
@@ -464,16 +494,18 @@ function comboEstadoInicialAlquileres()
             frmBorraAlquiler.txtAlquilerDestino.value=oAlquiler.destino;
             frmBorraAlquiler.txtAlquilerKms.value=oAlquiler.kms;
         }
-
+        
     }  
     else
     {
-        var oComboOriginal=frmModificarAlquiler.querySelector("#comboConductores");
+       var oComboConductores=frmModificarAlquiler.querySelectorAll("#comboConductores");
+        var oComboAutobuses=frmModificarAlquiler.querySelectorAll("#comboAutobuses");
+        //console.log(oComboOriginal);
         frmModificarAlquiler.comboCliente.selectedIndex="-1";
-        for(var i=0;i<oComboOriginal.length;i++)
+        for(var i=0;i<oComboConductores.length;i++)
         {
-            frmModificarAlquiler.comboConductores[i].selectedIndex="-1";
-            frmModificarAlquiler.comboAutobuses[i].selectedIndex="-1";
+            oComboConductores[i].selectedIndex="-1";
+            oComboAutobuses[i].selectedIndex="-1";
         }
         frmModificarAlquiler.txtAlquilerID.value=null;
         frmModificarAlquiler.txtAlquilerHoras.value=null;
@@ -484,12 +516,13 @@ function comboEstadoInicialAlquileres()
         frmModificarAlquiler.txtAlquilerDestino.value=null;
         frmModificarAlquiler.txtAlquilerKms.value=null;
         
-        oComboOriginal=frmBorraAlquiler.querySelector("#comboConductores");
+        oComboConductores=frmBorraAlquiler.querySelectorAll("#comboConductores");
+        oComboAutobuses=frmBorraAlquiler.querySelectorAll("#comboAutobuses");
         frmBorraAlquiler.comboCliente.selectedIndex="-1";
-        for(var i=0;i<oComboOriginal.length;i++)
+        for(var i=0;i<oComboConductores.length;i++)
         {
-           frmBorraAlquiler.comboConductores[i].selectedIndex="-1";
-           frmBorraAlquiler.comboAutobuses[i].selectedIndex="-1";
+            oComboConductores[i].selectedIndex="-1";
+            oComboAutobuses[i].selectedIndex="-1";
         }
         frmBorraAlquiler.txtAlquilerID.value=null;
         frmBorraAlquiler.txtAlquilerHoras.value=null;
@@ -500,6 +533,42 @@ function comboEstadoInicialAlquileres()
         frmBorraAlquiler.txtAlquilerDestino.value=null;
         frmBorraAlquiler.txtAlquilerKms.value=null;
     }
+    /*
+    var oComboConductores=frmModificarAlquiler.querySelectorAll("#comboConductores");
+    var oComboAutobuses=frmModificarAlquiler.querySelectorAll("#comboAutobuses");
+    //console.log(oComboOriginal);
+    frmModificarAlquiler.comboCliente.selectedIndex="-1";
+    for(var i=0;i<oComboConductores.length;i++)
+    {
+        oComboConductores[i].selectedIndex="-1";
+        oComboAutobuses[i].selectedIndex="-1";
+    }
+    frmModificarAlquiler.txtAlquilerID.value=null;
+    frmModificarAlquiler.txtAlquilerHoras.value=null;
+    frmModificarAlquiler.txtAlquilerFecha.value=null;
+    frmModificarAlquiler.txtAlquilerNumPers.value=null;
+    frmModificarAlquiler.txtAlquilerDesc.value=null;
+    frmModificarAlquiler.txtAlquilerOrigen.value=null;
+    frmModificarAlquiler.txtAlquilerDestino.value=null;
+    frmModificarAlquiler.txtAlquilerKms.value=null;
+    
+    oComboConductores=frmBorraAlquiler.querySelectorAll("#comboConductores");
+    oComboAutobuses=frmBorraAlquiler.querySelectorAll("#comboAutobuses");
+    frmBorraAlquiler.comboCliente.selectedIndex="-1";
+    for(var i=0;i<oComboConductores.length;i++)
+    {
+        oComboConductores[i].selectedIndex="-1";
+        oComboAutobuses[i].selectedIndex="-1";
+    }
+    frmBorraAlquiler.txtAlquilerID.value=null;
+    frmBorraAlquiler.txtAlquilerHoras.value=null;
+    frmBorraAlquiler.txtAlquilerFecha.value=null;
+    frmBorraAlquiler.txtAlquilerNumPers.value=null;
+    frmBorraAlquiler.txtAlquilerDesc.value=null;
+    frmBorraAlquiler.txtAlquilerOrigen.value=null;
+    frmBorraAlquiler.txtAlquilerDestino.value=null;
+    frmBorraAlquiler.txtAlquilerKms.value=null;
+    */
 }
 
 function comboEstadoInicialClientes() //al iniciar el programa muestra los datos del primero y al borrar/actualizar vuelve a mostrar el primero
