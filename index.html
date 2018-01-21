@@ -1028,7 +1028,7 @@
 				<form name="frmConductorVacaciones" id="frmConductorVacaciones" class="form-horizontal"> <!-- Vacaciones Conductor -->
 					<div class="form-group">
 						<div class="col-md-4 col-sm-4 hidden-xs"></div>
-						<input type="radio" name="radioVacaciones" value="alta" >Alta Vacaciones</input>&nbsp
+						<input type="radio" name="radioVacaciones" value="alta" checked >Alta Vacaciones</input>&nbsp
 						<input type="radio" name="radioVacaciones" value="baja" >Baja Vacaciones</input>&nbsp
 						<input type="radio" name="radioVacaciones" value="modificar" >Modificar Vacaciones</input>
 					</div><br>
@@ -1041,7 +1041,8 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-group" id="frmAltaDeVacaciones">
+				</form>
+				<form name="frmAltaDeVacaciones" id="frmAltaDeVacaciones" class="form-horizontal">
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="fechaIni">Fecha Inicio:</label>
 						<div class="col-md-6 col-sm-8">
@@ -1065,17 +1066,18 @@
 							<input type="button" id="btnAltaVacaciones" name="btnAltaVacaciones" class="btn btn-block btn-primary" value="Alta Vacaciones" />
 						</div>
 					</div>
-					</div>
+				</form>
 					
-					<div class="form-group" id="frmBajaDeVacaciones">
+				<form name="frmBajaDeVacaciones" id="frmBajaDeVacaciones" class="form-horizontal">
 						<br>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 							<input type="button" id="btnBajaVacaciones" name="btnBajaVacaciones" class="btn btn-block btn-primary" value="Baja Vacaciones" />
 						</div>
 					</div>
-					</div>
-					<div class="form-group" id="frmMofificarVacaciones">
+				</form>
+				
+				<form name="frmModificarVacaciones" id="frmModificarVacaciones" class="form-horizontal">
 					<div class="form-group"><div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="fechaIni">Fecha Inicio:</label>
 						<div class="col-md-6 col-sm-8">
@@ -1097,7 +1099,6 @@
 						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 							<input type="button" id="btnMofificarVacaciones" name="btnMofificarVacaciones" class="btn btn-block btn-primary" value="Modificar Vacaciones" />
 						</div>
-					</div>
 					</div>
 				</form>
 			</div>
