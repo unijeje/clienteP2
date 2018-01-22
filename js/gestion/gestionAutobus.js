@@ -47,26 +47,34 @@ oRadioMantenimientoSeleccion2.addEventListener("click", muestraFormsMantenimient
 
 comboEstadoInicialAutubuses();
 
-function fAltaAutobus(){
+function fAltaAutobus(oEvento){
 
+    var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
 	/////////////validar formulario///////////////////
+    if (validarAutobus(oForm)){
 
-	var sMatriculaAutobus=frmAutobusAlta.txtAutobusMatricula.value.trim();
-    var iAsientosAutobus=parseInt(frmAutobusAlta.txtAutobusAsientos.value.trim());
-    var sModeloAutobus=frmAutobusAlta.txtAutobusModelo.value.trim();
-    var iConsumoAutobus=parseInt(frmAutobusAlta.txtAutobusConsumo.value.trim());
+    	var sMatriculaAutobus=frmAutobusAlta.txtAutobusMatricula.value.trim();
+        var iAsientosAutobus=parseInt(frmAutobusAlta.txtAutobusAsientos.value.trim());
+        var sModeloAutobus=frmAutobusAlta.txtAutobusModelo.value.trim();
+        var iConsumoAutobus=parseInt(frmAutobusAlta.txtAutobusConsumo.value.trim());
 
-    var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
+        var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
 
-    var bInsercion=oGestion.altaAutobus(oNuevoAutobus);
-    if (bInsercion)
-    {
-    	document.frmAutobusAlta.reset();
-    	document.frmAutobusAlta.style.display="none";
-    	mensaje("Autobus dado de alta correctamente");
+        var bInsercion=oGestion.altaAutobus(oNuevoAutobus);
+        if (bInsercion)
+        {
+        	document.frmAutobusAlta.reset();
+        	document.frmAutobusAlta.style.display="none";
+        	mensaje("Autobus dado de alta correctamente");
+        }
+        else
+        	mensaje("Ya existe un autobus con esa matrícula");
     }
     else
-    	mensaje("Ya existe un autobus con esa matrícula");
+    {
+        mensaje("Fallo en la validación");
+    }
 }
 
 function fBajaAutobus()
@@ -89,25 +97,32 @@ function fBajaAutobus()
     
 }
 
-function fModificarAutobus()
+function fModificarAutobus(oEvento)
 {
-    var sMatriculaAutobus=frmAutobusModificar.txtAutobusMatricula.value.trim();
-    var iAsientosAutobus=parseInt(frmAutobusModificar.txtAutobusAsientos.value.trim());
-    var sModeloAutobus=frmAutobusModificar.txtAutobusModelo.value.trim();
-    var iConsumoAutobus=parseInt(frmAutobusModificar.txtAutobusConsumo.value.trim());
+    var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
 
-    var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
+    if (validarAutobus(oForm)){
+        var sMatriculaAutobus=frmAutobusModificar.txtAutobusMatricula.value.trim();
+        var iAsientosAutobus=parseInt(frmAutobusModificar.txtAutobusAsientos.value.trim());
+        var sModeloAutobus=frmAutobusModificar.txtAutobusModelo.value.trim();
+        var iConsumoAutobus=parseInt(frmAutobusModificar.txtAutobusConsumo.value.trim());
 
-    var bInsercion=oGestion.modificarAutobus(oNuevoAutobus);
-    if (bInsercion)
-    {
-        document.frmAutobusModificar.reset();
-        document.frmAutobusModificar.style.display="none";
-        mensaje("Autobús modificado correctamente");
-        comboEstadoInicialAutubuses();
+        var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
+
+        var bInsercion=oGestion.modificarAutobus(oNuevoAutobus);
+        if (bInsercion)
+        {
+            document.frmAutobusModificar.reset();
+            document.frmAutobusModificar.style.display="none";
+            mensaje("Autobús modificado correctamente");
+            comboEstadoInicialAutubuses();
+        }
+        else
+            mensaje("No se ha podido modificar el autobús");
     }
     else
-        mensaje("No se ha podido modificar el autobús");
+        mensaje("Fallo en la validación");
 }
 
 function fAltaMantenimiento()
@@ -223,3 +238,69 @@ function muestraFormsMantenimiento2()
     
 }
 
+
+function validarAutobus(oForm)
+{
+    var bValidacion=true;
+    var sError="";
+
+    //Matricula
+    var sMatricula=oForm.txtAutobusMatricula.value.trim();
+    oForm.txtAutobusMatricula.value=oForm.txtAutobusMatricula.value.trim();
+
+    if(!oExpRegMatricula.test(sMatricula))
+    {
+        oForm.txtAutobusMatricula.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAutobusMatricula.focus();
+        sError="La matricula debe tener 4 numeros y 3 letras mayúsculas";
+        falloValidacion(sError,oForm.txtAutobusMatricula);
+        bValidacion=false;
+    }
+    else
+    {
+         oForm.txtAutobusMatricula.parentNode.parentNode.classList.remove("has-error");
+         falloValidacion("",oForm.txtAutobusMatricula);
+    }
+
+    //num asientos
+
+    //MARCA
+    var sModelo=oForm.txtAutobusModelo.value.trim();
+    oForm.txtAutobusModelo.value=oForm.txtAutobusModelo.value.trim();
+
+    if(!oExpRegModelo.test(sModelo))
+    {
+        oForm.txtAutobusModelo.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAutobusModelo.focus();
+        sError="El modelo debe estar entre 3 y 20 caracteres";
+        falloValidacion(sError,oForm.txtAutobusModelo);
+        bValidacion=false;
+    }
+    else
+    {
+         oForm.txtAutobusModelo.parentNode.parentNode.classList.remove("has-error");
+         falloValidacion("",oForm.txtAutobusModelo);
+    }
+
+    //CONSUMO
+    var fConsumo=parseFloat(oForm.txtAutobusConsumo.value.trim());
+    oForm.txtAutobusConsumo.value=oForm.txtAutobusConsumo.value.trim();
+
+    if(!oExpRegConsumo.test(fConsumo))
+    {
+        oForm.txtAutobusConsumo.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAutobusConsumo.focus();
+        sError="El consumo debe tener 1 o 2 caracteres enteros y uno decimal";
+        falloValidacion(sError,oForm.txtAutobusConsumo);
+        bValidacion=false;
+    }
+    else
+    {
+         oForm.txtAutobusConsumo.parentNode.parentNode.classList.remove("has-error");
+         falloValidacion("",oForm.txtAutobusConsumo);
+    }
+
+
+    return bValidacion;
+    
+}
