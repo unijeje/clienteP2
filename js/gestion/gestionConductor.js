@@ -71,26 +71,27 @@ function modificarConductor(oEvento){
 	var frmModificar=oE.target.parentNode.parentNode.parentNode;
 	
 	if(validarConductor(frmModificar)){
-		var dniConductor= frmConductorAlta.txtConductorDni.value.trim();
-		var nombreConductor= frmConductorAlta.txtConductorNombre.value.trim();
-		var apellidosConductor= frmConductorAlta.txtConductorApellidos.value.trim();
-		var sexoConductor= frmConductorAlta.radioConductorSexo.value;
-		var tlfConductor= frmConductorAlta.txtConductorTelefono.value.trim();
-		var emailConductor= frmConductorAlta.txtConductorCorreo.value.trim();
-		var direccionConductor= frmConductorAlta.txtConductorDireccion.value.trim();
-		var numCuentaConductor= frmConductorAlta.txtConductorCuenta.value.trim();
+		var dniConductor= frmConductorModificar.txtConductorDni.value.trim();
+		var nombreConductor= frmConductorModificar.txtConductorNombre.value.trim();
+		var apellidosConductor= frmConductorModificar.txtConductorApellidos.value.trim();
+		var sexoConductor= frmConductorModificar.radioConductorSexo.value;
+		var tlfConductor= frmConductorModificar.txtConductorTelefono.value.trim();
+		var emailConductor= frmConductorModificar.txtConductorCorreo.value.trim();
+		var direccionConductor= frmConductorModificar.txtConductorDireccion.value.trim();
+		var numCuentaConductor= frmConductorModificar.txtConductorCuenta.value.trim();
 		//sDni,sNombre,sApellidos,sSexo,iTlf,sEmail,sDireccion,iNumCuenta
 		var oNuevoConductor= new Conductor(dniConductor,nombreConductor,apellidosConductor,sexoConductor,tlfConductor,emailConductor,direccionConductor, numCuentaConductor);
 		var bActualizacion=oGestion.modificarConductor(oNuevoConductor,dniConductor);
 		
-		if(bActualizacion==false){
-			document.frmConductorAlta.style.display="none";
+		if(bActualizacion){
+			document.frmConductorModificar.style.display="none";
 			mensaje("Conductor Modificado Correctamente");
-		} else{
-			mensaje("Este conductor ya existe");
+		/*} else{
+			mensaje("Este conductor ya existe");*/
+			comboEstadoInicialConductores();
 		}
 	} else{
-		mensaje("Fallo al modificar el conductor "+error);
+		mensaje("Fallo al modificar el conductor, rellene los campos correctamente");
 	}
 }
 

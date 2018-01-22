@@ -221,7 +221,7 @@ class Gestion
         //comprobar nuevo DNI
         if(this.buscarCliente(oCliente.dni)!=null && oCliente.dni!=dniAntiguo)
          {
-            res=false
+            res=false;
             oCliente.dni=dniAntiguo;
          }   
         //si el dni es incorrecto se deja el mismo que tenia antes y se avisa aunque se cambian los otros datos
@@ -309,22 +309,24 @@ class Gestion
 	}
 	
 	modificarConductor(oConductor,dniRecibido){
-        var bEncontrado=true;
-
-        if(this.buscarConductor(oConductor.dni)!=null){
+        var bEncontrado=true; console.log(dniRecibido);
+		/*
+        if(this.buscarConductor(oConductor.dni)!=null && oConductor.dni!=dniRecibido){
             bEncontrado=false;
+			console.log(bEncontrado);
 			oConductor.dni= dniRecibido;
-         }   
+         }  */ 
         
         for(var i=0;i<this._conductores.length;i++){
             if(this._conductores[i].dni==dniRecibido){
+				bEncontrado=false;
                 console.log(i);                    
                 this._conductores[i]=oConductor;
                 this.actualizaComboConductores();                
             }
         }
 		
-        return bEncontrado;       
+        return !bEncontrado;       
     }
 
 	buscarConductor(sDni){
