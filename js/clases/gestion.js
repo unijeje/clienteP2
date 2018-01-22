@@ -11,11 +11,42 @@ class Gestion
         this._conductores=[];
 		this._vacaciones=[];
         this._mantenimientos=[];
-        this.numCuenta="cuentaEmpresa";
+        this.cuentaEmpresa=new Cuenta("00998877665544332211");
+        this._cuentas=[];
         //cuenta/factura falta
     }
     //funciones
+    buscarCuenta(sNumCuenta)
+    {
+        var oCuenta=null;
+        for(var i=0;i<this._cuentas.length && oCuenta==null;i++)
+        {
+            if(sNumCuenta==this._cuentas[i].numCuenta)
+                oCuenta=this._cuentas[i];
+        }
+        return oCuenta;
+    }
 
+    gestionContabilidad(sAsunto, numCuenta, fImporte)
+    {
+        var oCuenta=this.buscarCuenta(numCuenta);
+        if(sAsunto=="nomina")
+        {
+            oCuenta.saldo+=fImporte;
+            this.cuentaEmpresa.saldo=this.cuentaEmpresa.saldo-fImporte;
+            //restarle al num cuenta de gestion
+            //añadirlo al num de cuenta del conductor
+        }
+        if(sAsunto=="mantenimiento")
+        {
+            //restarle al num cuenta de gestion
+        }
+        if(sAsunto=="alquiler")
+        {
+            //sumarle al num cuenta de gestion
+        }
+
+    }
     //alquiler
 
     /*Se le pasa un nº de personas y devuelve el nº de autobuses necesario*/

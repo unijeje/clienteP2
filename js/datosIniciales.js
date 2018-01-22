@@ -131,6 +131,7 @@ for (var i = 0;i<array.length;i++)
 
     var nodoConductores = array[i].children[0];
     var nodoAutobuses = array[i].children[1];
+    var arrayConductores=cargarArrayConductores(nodoConductores);
     /*  
     console.log(array[i].children[0].);
       
@@ -159,7 +160,7 @@ for (var i = 0;i<array.length;i++)
   }
 }
 
-function cargarArrayConductores(oSala, nodoConductores) {
+function cargarArrayConductores(nodoConductores) {
 
       var oConductores=[]; 
   

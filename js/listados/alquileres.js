@@ -38,17 +38,17 @@ function listadoAlquileres(){////// falta mirar si funciona
 		oTexto=document.createTextNode(oGestion._alquileres[i].id);
 		oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
-		oTexto="";
-		for (var j=0;j<oGestion._alquileres[i].conductores.length;j++){
-			oTexto+=document.createTextNode(oGestion._alquileres[i].conductores[j].dni);
-			oTexto+=document.createTextNode(oGestion._alquileres[i].conductores[j].nombre);
+		oTexto=document.createTextNode("");
+		for (var j=0;j<oGestion._alquileres[i].conductor.length;j++){
+			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].dni;
+			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].nombre;
 		}
 		oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
-		oTexto="";
+		oTexto=document.createTextNode("");
 		for (var j=0;j<oGestion._alquileres[i].autobuses.length;j++){
-			oTexto+=document.createTextNode(oGestion._alquileres[i].autobuses[j].matricula);
-			oTexto+=document.createTextNode(oGestion._alquileres[i].autobuses[j].modelo);
+			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].matricula;
+			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].modelo;
 		}
 		oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
@@ -70,9 +70,9 @@ function listadoAlquileres(){////// falta mirar si funciona
 		oTexto=document.createTextNode(oGestion._alquileres[i].kms);
 		oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
-		oTexto="";
-		oTexto+=document.createTextNode(oGestion._alquileres[i].cliente.dni);
-		oTexto+=document.createTextNode(oGestion._alquileres[i].cliente.nombre);
+		oTexto=document.createTextNode("");
+		oTexto.textContent+=oGestion._alquileres[i].cliente.dni;
+		oTexto.textContent+=oGestion._alquileres[i].cliente.nombre;
 		oCelda.appendChild(oTexto);
 	}
 

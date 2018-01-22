@@ -87,6 +87,23 @@ function altaAlquiler(oEvento)
             oForm.reset();
             oForm.style.display="none";
             mensaje("Alquiler insertado Correctamente");
+            for(var i=0;i<oConductores.length;i++)
+            {
+                sAsunto="nomina";
+                fImporte=calcularImporteAlquilerConductor(sHoras);
+                var oApunte= new Apuntes(fImporte, dFecha, sAsunto);
+                var numCuentaConductor=oConductores[i].numCuenta;
+                oGestion.gestionContabilidad(sAsunto, numCuenta, fImporte)
+
+                
+                var oCuenta=oGestion.buscarCuenta(numCuentaConductor);
+                oCuenta.push(oApunte);
+            }
+
+            calcularImporteAlquileEmpresa(oConductores.length, sHoras, kms)
+            
+
+
         }
         else
             mensaje("Ya existe un alquiler con ese ID");

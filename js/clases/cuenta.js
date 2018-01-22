@@ -2,7 +2,13 @@
 //objeto
 class Cuenta
 {
-    //atributos
+    constructor(iNumCuenta)
+    {
+        this.numCuenta=iNumCuenta;
+        this.saldo=0;
+        this.apuntes=[];
+    }
+
+    
 }
 
-//funciones
