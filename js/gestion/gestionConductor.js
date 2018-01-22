@@ -103,12 +103,12 @@ function validarConductor(formAltaConductor){
 	formAltaConductor.txtConductorDni.value= formAltaConductor.txtConductorDni.value.trim();
 	
 	if(!oExpRegDni.test(dniConductor)){
-		formAltaConductor.txtConductorDni.style.backgroundColor="red";
+		formAltaConductor.txtConductorDni.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorDni.focus();
-		error= "El DNI comprender 8 números y una letra \n";
+		falloValidacion(error, formAltaConductor.txtConductorDni);
 		bValido= false;
 	} else{
-		formAltaConductor.txtConductorDni.style.backgroundColor="white";
+		formAltaConductor.txtConductorDni.parentNode.parentNode.classList.remove("has-error");;
 	}
 	
 	//campo nombre conductor
@@ -116,12 +116,12 @@ function validarConductor(formAltaConductor){
 	formAltaConductor.txtConductorNombre.value= formAltaConductor.txtConductorNombre.value.trim();
 	
 	if(!oExpRegNombre.test(nombreConductor)){
-		formAltaConductor.txtConductorNombre.style.backgroundColor="red";
+		formAltaConductor.txtConductorNombre.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorNombre.focus();
-		error+= "El nombre debe tener entre 3 y 20 carácteres \n";
+		falloValidacion(error, formAltaConductor.txtConductorNombre);
 		bValido= false;
 	} else{
-		formAltaConductor.txtConductorNombre.style.backgroundColor="white";
+		formAltaConductor.txtConductorNombre.parentNode.parentNode.classList.remove("has-error");
 	}
 	
 	//campo apellidos conductor
@@ -129,12 +129,12 @@ function validarConductor(formAltaConductor){
 	formAltaConductor.txtConductorApellidos.value= formAltaConductor.txtConductorApellidos.value.trim();
 	
 	if(!oExpRegApellidos.test(apellidosConductor)){
-		formAltaConductor.txtConductorApellidos.style.backgroundColor="red";
+		formAltaConductor.txtConductorApellidos.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorApellidos.focus();
-		error+= "Los apellidos debe tener entre 3 y 30 carácteres \n";
+		falloValidacion(error, formAltaConductor.txtConductorApellidos);
 		bValido= false;
 	} else{
-		formAltaConductor.txtConductorApellidos.style.backgroundColor="white";
+		formAltaConductor.txtConductorApellidos.parentNode.parentNode.classList.remove("has-error");
 	}
 	
 	//campo sexo conductor
@@ -154,7 +154,6 @@ function validarConductor(formAltaConductor){
 	if(!validarRadio(formAltaConductor.radioConductorSexo))
 	{
 		formAltaConductor.radioConductorSexo[0].parentNode.parentNode.classList.add("has-error");
-		sError+="Debe seleccionar un tipo de sexo \n";
 		bValido=false;
 	}
 	else
@@ -165,12 +164,12 @@ function validarConductor(formAltaConductor){
 	formAltaConductor.txtConductorTelefono.value= formAltaConductor.txtConductorTelefono.value.trim();
 	
 	if(!oExpRegTelefono.test(tlfConductor)){
-		formAltaConductor.txtConductorTelefono.style.backgroundColor="red";
+		formAltaConductor.txtConductorTelefono.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorTelefono.focus();
-		error+= "El telefono no es correcto \n";
+		falloValidacion(error, formAltaConductor.txtConductorTelefono);
 		bValido= false;
 	} else{
-		formAltaConductor.txtConductorTelefono.style.backgroundColor="white";
+		formAltaConductor.txtConductorTelefono.parentNode.parentNode.classList.remove("has-error");
 	}
 	
 	//campo email conductor
@@ -178,12 +177,12 @@ function validarConductor(formAltaConductor){
 	formAltaConductor.txtConductorCorreo.value= formAltaConductor.txtConductorCorreo.value.trim();
 	
 	if(!oExpRegCorreo.test(emailConductor)){
-		formAltaConductor.txtConductorCorreo.style.backgroundColor="red";
+		formAltaConductor.txtConductorCorreo.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorCorreo.focus();
-		error+= "El telefono no es correcto \n";
+		falloValidacion(error, formAltaConductor.txtConductorCorreo);
 		bValido= false;
 	} else{
-		formAltaConductor.txtConductorCorreo.style.backgroundColor="white";
+		formAltaConductor.txtConductorCorreo.parentNode.parentNode.classList.remove("has-error");
 	}
 	
 	//campo Direccion
@@ -191,12 +190,12 @@ function validarConductor(formAltaConductor){
 	formAltaConductor.txtConductorDireccion.value= formAltaConductor.txtConductorDireccion.value.trim();
 		
 	if(direccionConductor==""){
-		formAltaConductor.txtConductorDireccion.style.backgroundColor="red";
+		formAltaConductor.txtConductorDireccion.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorDireccion.focus();
-		error+= "Rellene el campo dirección correctamente \n";
+		falloValidacion(error, formAltaConductor.txtConductorDireccion);
 		bValido= false;
 	} else{
-		formAltaConductor.txtConductorDireccion.style.backgroundColor="white";
+		formAltaConductor.txtConductorDireccion.parentNode.parentNode.classList.remove("has-error");
 	}
 	
 	//campo Num Cuenta
@@ -204,12 +203,12 @@ function validarConductor(formAltaConductor){
 	formAltaConductor.txtConductorCuenta.value= formAltaConductor.txtConductorCuenta.value.trim();
 	
 	if(!oExpRegularNumCuenta.test(numCuentaConductor)){
-		formAltaConductor.txtConductorCuenta.style.backgroundColor="red";
+		formAltaConductor.txtConductorCuenta.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorCuenta.focus();
-		error+= "El número de cuenta no es correcto, debe de tener 20 dígitos \n";
+		falloValidacion(error, formAltaConductor.txtConductorCuenta);
 		bValido= false;
 	} else{
-		formAltaConductor.txtConductorCuenta.style.backgroundColor="white";
+		formAltaConductor.txtConductorCuenta.parentNode.parentNode.classList.remove("has-error");
 	}
 	
 	return bValido;
