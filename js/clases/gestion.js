@@ -457,6 +457,7 @@ class Gestion
         var oComboModificaAlquiler=document.frmModificarAlquiler.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
         var oComboBorraAlquiler=document.frmBorraAlquiler.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
         var oComboAutobusMantenimiento=document.frmAltaMantenimiento.comboAutobus;
+       
 
         while (oComboBajaAutobus.firstChild) { //tienen el mismo nº de hijos
             oComboBajaAutobus.removeChild(oComboBajaAutobus.firstChild);
@@ -466,6 +467,8 @@ class Gestion
             oComboBorraAlquiler.removeChild(oComboBorraAlquiler.firstChild);
             oComboAutobusMantenimiento.removeChild(oComboAutobusMantenimiento.firstChild);
         }
+  
+
         for(var i=0;i<this._autobuses.length;i++)
         {
             if(this._autobuses[i].estado==true) //solo mostrar los dados de alta
@@ -484,8 +487,48 @@ class Gestion
 
     }
 
+    actualizaComboRevisado(){
+        var oComboBajaMantenimientoAutobus=document.frmBajaMantenimiento.comboAutobusRevisado;
+         var oComboModificarMantenimientoAutobus=document.frmModificarMantenimiento.comboAutobusRevisado;
+
+        while (oComboBajaMantenimientoAutobus.firstChild) {
+            oComboBajaMantenimientoAutobus.removeChild(oComboBajaMantenimientoAutobus.firstChild);
+            oComboModificarMantenimientoAutobus.removeChild(oComboModificarMantenimientoAutobus.firstChild);
+        }
+
+        for(var i=0;i<this._autobuses.length;i++)
+        {
+            if(this._autobuses[i].estado==true) //solo mostrar los dados de alta
+            {
+                if(this._autobuses[i].itv==true){
+                    var newSelect=document.createElement("option");
+                    newSelect.value=this._autobuses[i].matricula;
+                    newSelect.text=this._autobuses[i].matricula+" - "+this._autobuses[i].modelo+" "+this._autobuses[i].asientos;
+                    oComboBajaMantenimientoAutobus.appendChild(newSelect);
+                    oComboModificarMantenimientoAutobus.appendChild(oComboBajaMantenimientoAutobus.lastChild.cloneNode(true));
+                   // oComboAutobusMantenimiento.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
+                }
+            }    
+        }
+
+    }
+
 
     //mantenimiento
+    buscarMantenimiento(sMatricula)
+    {
+        var oMantenimiento=null;
+
+        for(var i=0;i<this._mantenimientos.length && oMantenimiento==null;i++)
+        {
+            if(sMatricula==this._mantenimientos[i].matriculaAutobus)
+                oMantenimiento=this._mantenimientos[i];
+        }
+        return oMantenimiento;
+
+    }
+
+
     altaMantenimiento(oMantenimiento)
     {
         var revisado=false;
@@ -495,8 +538,10 @@ class Gestion
             if(this._autobuses[i].matricula == oMantenimiento.matriculaAutobus )
                 if (this._autobuses[i].itv)
                     revisado=true;
-                else
+                else{
                     this._autobuses[i].pasarRevision();
+                    this.actualizaComboRevisado();
+                }
         
 
         if(!revisado){
@@ -505,5 +550,21 @@ class Gestion
         }
 
         return introducido;
+    }
+
+    bajaMantenimiento(sMatricula)
+    {
+        var anulado=false;
+
+        for (var i=0;i<this._autobuses.length;i++)
+            if(this._autobuses[i].matricula == sMatricula )
+                if (this._autobuses[i].itv)
+                {
+                    this._autobuses[i].itv=false;
+                    anulado=true;
+                    this.actualizaComboRevisado();
+                }
+
+        return anulado;
     }
 }

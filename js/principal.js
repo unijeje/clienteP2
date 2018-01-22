@@ -744,6 +744,9 @@ function comboEstadoInicialAutubuses()
     var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
     var oComboAutobusMantenimiento=document.frmAltaMantenimiento.comboAutobus;
 
+    var oComboBajaAutobusesRevisados=document.frmBajaMantenimiento.comboAutobusRevisado;
+    var oComboModificarAutobusesRevisados=document.frmModificarMantenimiento.comboAutobusRevisado;
+
     if(oComboBajaAutobus.firstChild){
         oComboBajaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
         oComboModificaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
@@ -773,8 +776,37 @@ function comboEstadoInicialAutubuses()
         frmAutobusBaja.txtAutobusModelo.value=null;
         frmAutobusBaja.txtAutobusConsumo.value=null;
     }
-}
 
+    if (oComboBajaAutobusesRevisados.firstChild)
+    {
+        oComboBajaAutobusesRevisados.firstChild.selected;
+        oComboModificarAutobusesRevisados.firstChild.selected;
+
+        var oMantenimiento=oGestion.buscarMantenimiento(frmBajaMantenimiento.comboAutobusRevisado.value);
+
+        frmModificarMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
+        frmModificarMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
+        frmModificarMantenimiento.txtMantenimientoFecha.value=oMantenimiento.fecha;
+
+        frmBajaMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
+        frmBajaMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
+        frmBajaMantenimiento.txtMantenimientoFecha.value=oMantenimiento.fecha;
+
+     }   
+
+     else{
+        frmModificarMantenimiento.txtDescripcionMantenimiento.value=null;
+        frmModificarMantenimiento.txtImporteMantenimiento.value=null;
+        frmModificarMantenimiento.txtMantenimientoFecha.value=null;
+
+        frmBajaMantenimiento.txtDescripcionMantenimiento.value=null;
+        frmBajaMantenimiento.txtImporteMantenimiento.value=null;
+        frmBajaMantenimiento.txtMantenimientoFecha.value=null;
+     }
+
+
+
+ }
 function calcularImporteAlquilerConductor(sHoras)
 {
     return parseFloat(sHoras*8);

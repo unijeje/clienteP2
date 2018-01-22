@@ -2,8 +2,13 @@
 var oAutobus1=new Autobus("4444HTH",30,"asdasd",8);
 var oAutobus2=new Autobus("5555RGD",25,"PPPPP",7);
 
+var oMantenimiento44=new Mantenimiento("Cambio de aceite",55,"06/02/2018","4444HTH");
+
 oGestion.altaAutobus(oAutobus1);
 oGestion.altaAutobus(oAutobus2);
+oGestion.altaMantenimiento(oMantenimiento44);
+//console.log(oMantenimiento44.fecha);
+
 
 var oBtnDarAltaAutobus=document.getElementById("btnAltaAutobus");
 oBtnDarAltaAutobus.addEventListener("click",fAltaAutobus,false);
@@ -16,16 +21,21 @@ oBtnModificarAutobus.addEventListener("click",fModificarAutobus,false);
 
 var oBtnAltaMantenimiento=document.getElementById("btnAltaMantenimiento");
 oBtnAltaMantenimiento.addEventListener("click",fAltaMantenimiento,false);
+var oBtnBajaMantenimiento=document.getElementById("btnBajaMantenimiento");
+oBtnBajaMantenimiento.addEventListener("click",fBajaMantenimiento,false);
 
 
 var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
 var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
 var oComboAltaMantenimiento=document.frmAltaMantenimiento.comboAutobus;
-var oComboModificarMantenimiento=document.frmModificarMantenimiento.comboAutobus;
+var oComboAutobusRevisado=document.frmBajaMantenimiento.comboAutobusRevisado;
+var oComboAutobusRevisado2=document.frmModificarMantenimiento.comboAutobusRevisado;
 var oRadioMantenimientoSeleccion=document.frmAutobusMantenimiento.rdMantenimientoSeleccion;
 
 oComboBajaAutobus.addEventListener("change", rellenaCamposAutobus, false);
 oComboModificaAutobus.addEventListener("change", rellenaCamposAutobus, false);
+oComboAutobusRevisado.addEventListener("change", rellenaCamposMantenimiento, false);
+oComboAutobusRevisado2.addEventListener("change", rellenaCamposMantenimiento, false);
 
 oRadioMantenimientoSeleccion=document.getElementById("rdMantenimientoSeleccion");
 oRadioMantenimientoSeleccion.addEventListener("click", muestraFormsMantenimiento, false);
@@ -86,7 +96,7 @@ function fModificarAutobus()
     var sModeloAutobus=frmAutobusModificar.txtAutobusModelo.value.trim();
     var iConsumoAutobus=parseInt(frmAutobusModificar.txtAutobusConsumo.value.trim());
 
-     var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
+    var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
 
     var bInsercion=oGestion.modificarAutobus(oNuevoAutobus);
     if (bInsercion)
@@ -104,16 +114,22 @@ function fAltaMantenimiento()
 {
     var sDescripcion=frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim();
     var fImporte=parseFloat(frmAltaMantenimiento.txtImporteMantenimiento.value.trim());
-    var dFecha=Date(frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim());
+    var dFecha=new Date(frmAltaMantenimiento.txtMantenimientoFecha.value.trim());
     var sMatricula=frmAltaMantenimiento.comboAutobus.value.trim();
 
+    dFecha.toLocaleDateString("es-ES");
+    //console.log(dFecha);
     //console.log(sMatricula);
     var oNuevoMantenimiento=new Mantenimiento(sDescripcion,fImporte,dFecha,sMatricula);
+    //console.log(oNuevoMantenimiento.fecha);
     var bInsercion=oGestion.altaMantenimiento(oNuevoMantenimiento);
     if(bInsercion){
         document.frmAltaMantenimiento.reset();
         document.frmAltaMantenimiento.style.display="none";
         document.frmAutobusMantenimiento.style.display="none";
+
+        oGestion.gestionContabilidad("mantenimiento", oGestion.cuentaEmpresa.numCuenta, fImporte, dFecha);
+        oGestion.actualizaComboRevisado();
         
         mensaje("Mantenimiento añadido correctamente");
         //actualizar combo mantenimientos
@@ -122,6 +138,21 @@ function fAltaMantenimiento()
         mensaje("El autobús seleccionado ya tiene pasado el mantenimiento");
 
 }
+
+function fBajaMantenimiento()
+{
+    var sMatricula=frmBajaMantenimiento.comboAutobusRevisado.value.trim();
+
+    var anulado=oGestion.bajaMantenimiento(sMatricula);
+    if (anulado)
+        mensaje("Mantenimiento anulado correctamente");
+    
+    else
+        mensaje("Error al anular el mantenimiento");
+
+}
+
+
 
 function rellenaCamposAutobus(oEvento) //actualiza
 {
@@ -134,6 +165,21 @@ function rellenaCamposAutobus(oEvento) //actualiza
      oForm.txtAutobusAsientos.value=oAutobus.asientos;
      oForm.txtAutobusModelo.value=oAutobus.modelo;
      oForm.txtAutobusConsumo.value=oAutobus.consumo;
+
+}
+
+function rellenaCamposMantenimiento(oEvento) //actualiza
+{
+    var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el combo
+    //console.log(oForm.name);
+    console.log(oForm.comboAutobusRevisado.value);
+    var oMantenimiento=oGestion.buscarMantenimiento(oForm.comboAutobusRevisado.value);//recupera el autobus a traves de la matricula
+
+    console.log(oMantenimiento.fecha);
+     oForm.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
+     oForm.txtImporteMantenimiento.value=oMantenimiento.importe;
+     oForm.txtMantenimientoFecha.value=oMantenimiento.fecha;
 
 }
 
