@@ -83,7 +83,7 @@ function modificarConductor(oEvento){
 		var oNuevoConductor= new Conductor(dniConductor,nombreConductor,apellidosConductor,sexoConductor,tlfConductor,emailConductor,direccionConductor, numCuentaConductor);
 		var bActualizacion=oGestion.modificarConductor(oNuevoConductor,dniConductor);
 		
-		if(oGestion.altaConductor(oNuevoConductor)==false){
+		if(bActualizacion==false){
 			document.frmConductorAlta.style.display="none";
 			mensaje("Conductor Modificado Correctamente");
 		} else{

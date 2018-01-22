@@ -74,6 +74,15 @@ oBtnConductorModificar.addEventListener("click", mostrarMenuModificarConductor, 
 var oBtnConductorVacaciones=document.getElementById("btnMenuConductorVacaciones");
 oBtnConductorVacaciones.addEventListener("click", mostrarMenuVacacionesConductor, false);
 
+var oRadioAltaVacaciones=document.getElementById("radioVacacionesAlta");
+oRadioAltaVacaciones.addEventListener("click", mostrarAltaVacaciones, false);
+
+var oRadioBajaVacaciones=document.getElementById("radioVacacionesBaja");
+oRadioBajaVacaciones.addEventListener("click", mostrarBajaVacaciones, false);
+
+var oRadioModificarVacaciones=document.getElementById("radioVacacionesModificar");
+oRadioModificarVacaciones.addEventListener("click", mostrarModificarVacaciones, false);
+
 var oMenuGestionAutobuses=document.getElementById("MenuGestionAutobuses");
 var oMenuGestionClientes=document.getElementById("MenuGestionClientes");
 var oMenuGestionConductores=document.getElementById("MenuGestionConductores");
@@ -232,6 +241,9 @@ function mostrarMenuAltaAutobus()
     document.frmAutobusModificar.style.display="none";
     document.frmAutobusMantenimiento.style.display="none";
     document.frmAutobusAlta.style.display="block";
+	document.frmAltaMantenimiento.style.display="none";
+    document.frmBajaMantenimiento.style.display="none";
+    document.frmModificarMantenimiento.style.display="none";
 }
 function mostrarMenuBajaAutobus()
 {
@@ -239,6 +251,9 @@ function mostrarMenuBajaAutobus()
     document.frmAutobusMantenimiento.style.display="none";
     document.frmAutobusAlta.style.display="none";
     document.frmAutobusBaja.style.display="block";
+	document.frmAltaMantenimiento.style.display="none";
+    document.frmBajaMantenimiento.style.display="none";
+    document.frmModificarMantenimiento.style.display="none";
 }
 function mostrarMenuModificarAutobus()
 {
@@ -246,6 +261,9 @@ function mostrarMenuModificarAutobus()
     document.frmAutobusAlta.style.display="none";
     document.frmAutobusBaja.style.display="none";
     document.frmAutobusModificar.style.display="block";
+	document.frmAltaMantenimiento.style.display="none";
+    document.frmBajaMantenimiento.style.display="none";
+    document.frmModificarMantenimiento.style.display="none";
 }
 function mostrarMenuMantenimientoAutobus()
 {
@@ -254,6 +272,12 @@ function mostrarMenuMantenimientoAutobus()
     document.frmAutobusBaja.style.display="none";
     document.frmAutobusMantenimiento.style.display="block";
     document.frmAltaMantenimiento.style.display="block";
+	document.frmAltaMantenimiento.style.display="none";
+    document.frmBajaMantenimiento.style.display="none";
+    document.frmModificarMantenimiento.style.display="none";
+	document.getElementById("rdMantenimientoSeleccion").checked=false;
+	document.getElementById("rdMantenimientoSeleccion1").checked=false;
+	document.getElementById("rdMantenimientoSeleccion2").checked=false;
 }
 
 //botones administración conductores
@@ -263,6 +287,9 @@ function mostrarMenuAltaConductor()
     document.frmConductorBaja.style.display="none";
     document.frmConductorModificar.style.display="none";
     document.frmConductorAlta.style.display="block";
+	document.frmAltaDeVacaciones.style.display="none";
+	document.frmBajaDeVacaciones.style.display="none";
+	document.frmModificarVacaciones.style.display="none";
 }
 
 function mostrarMenuBajaConductor()
@@ -271,6 +298,9 @@ function mostrarMenuBajaConductor()
     document.frmConductorModificar.style.display="none";
     document.frmConductorAlta.style.display="none";
     document.frmConductorBaja.style.display="block";
+	document.frmAltaDeVacaciones.style.display="none";
+	document.frmBajaDeVacaciones.style.display="none";
+	document.frmModificarVacaciones.style.display="none";
 }
 
 function mostrarMenuModificarConductor()
@@ -279,6 +309,9 @@ function mostrarMenuModificarConductor()
     document.frmConductorAlta.style.display="none";
     document.frmConductorBaja.style.display="none";
     document.frmConductorModificar.style.display="block";
+	document.frmAltaDeVacaciones.style.display="none";
+	document.frmBajaDeVacaciones.style.display="none";
+	document.frmModificarVacaciones.style.display="none";
 }
 
 function mostrarMenuVacacionesConductor()
@@ -287,6 +320,30 @@ function mostrarMenuVacacionesConductor()
     document.frmConductorBaja.style.display="none";
     document.frmConductorModificar.style.display="none";
     document.frmConductorVacaciones.style.display="block";
+	document.frmAltaDeVacaciones.style.display="none";
+	document.frmBajaDeVacaciones.style.display="none";
+	document.frmModificarVacaciones.style.display="none";
+	document.getElementById("radioVacacionesAlta").checked=false;
+	document.getElementById("radioVacacionesBaja").checked=false;
+	document.getElementById("radioVacacionesModificar").checked=false;
+}
+
+function mostrarAltaVacaciones(){
+	document.frmAltaDeVacaciones.style.display="block";
+	document.frmBajaDeVacaciones.style.display="none";
+	document.frmModificarVacaciones.style.display="none";
+}
+
+function mostrarBajaVacaciones(){
+	document.frmAltaDeVacaciones.style.display="none";
+	document.frmBajaDeVacaciones.style.display="block";
+	document.frmModificarVacaciones.style.display="none";
+}
+
+function mostrarModificarVacaciones(){
+	document.frmAltaDeVacaciones.style.display="none";
+	document.frmBajaDeVacaciones.style.display="none";
+	document.frmModificarVacaciones.style.display="block";
 }
 
 //Listados
@@ -594,7 +651,7 @@ function comboEstadoInicialClientes() //al iniciar el programa muestra los datos
             frmClienteModificar.txtClienteTelefono.value=oCliente.tlf;
             frmClienteModificar.txtClienteCorreo.value=oCliente.correo;
             frmClienteModificar.txtClienteCuenta.value=oCliente.numCuenta;
-            frmClienteModificar.txtClienteSexo.value=oCliente.sexo;
+            frmClienteModificar.radioClienteSexo.value=oCliente.sexo;
 
             frmClienteBaja.txtClienteDni.value=oCliente.dni;
             frmClienteBaja.txtClienteNombre.value=oCliente.nombre;

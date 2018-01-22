@@ -228,7 +228,7 @@ function actualizaCliente(oEvento)
         var sTlfCliente=frmClienteModificar.txtClienteTelefono.value.trim();
         var sCorreoCliente=frmClienteModificar.txtClienteCorreo.value.trim();
         var sCuentaCliente=frmClienteModificar.txtClienteCuenta.value.trim();
-        var sSexoCliente=frmClienteModificar.txtClienteSexo.value.trim();
+        var sSexoCliente=frmClienteModificar.radioClienteSexo.value.trim();
 
         var oNuevoCliente=new Cliente(sDniCliente, sNombreCliente, sApellidosCliente, sTlfCliente, sCorreoCliente, sCuentaCliente, sSexoCliente);
         var bActualizacion=oGestion.modificarCliente(oNuevoCliente, sDniclienteAntiguo);

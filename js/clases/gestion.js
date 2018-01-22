@@ -343,14 +343,18 @@ class Gestion
         var oComboSeleccionaConductor=document.frmNuevoAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
         var oComboModificarAlquiler=document.frmModificarAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
         var oComboBorrarAlquiler=document.frmBorraAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
-        var oComboVacacionesConductor=document.frmConductorVacaciones.comboConductor;
+        var oComboAltaVacacionesConductor=document.frmAltaDeVacaciones.comboConductor;
+        var oComboBajaVacacionesConductor=document.frmBajaDeVacaciones.comboConductor;
+        var oComboModificarVacacionesConductor=document.frmModificarVacaciones.comboConductor;
 
 		 while (oComboBajaConductor.firstChild) { //tienen el mismo nº de hijos
             oComboBajaConductor.removeChild(oComboBajaConductor.firstChild);
             oComboModificaConductor.removeChild(oComboModificaConductor.firstChild);
             oComboSeleccionaConductor.removeChild(oComboSeleccionaConductor.firstChild);
             oComboModificarAlquiler.removeChild(oComboModificarAlquiler.firstChild);
-            oComboVacacionesConductor.removeChild(oComboVacacionesConductor.firstChild);
+            oComboAltaVacacionesConductor.removeChild(oComboAltaVacacionesConductor.firstChild);
+            //oComboBajaVacacionesConductor.removeChild(oComboBajaVacacionesConductor.firstChild);
+            //oComboModificarVacacionesConductor.removeChild(oComboModificarVacacionesConductor.firstChild);
             oComboBorrarAlquiler.removeChild(oComboBorrarAlquiler.firstChild);
         }
 
@@ -363,11 +367,22 @@ class Gestion
 				oComboBajaConductor.appendChild(newSelect);
                 oComboModificaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 oComboSeleccionaConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
-                oComboVacacionesConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+                oComboAltaVacacionesConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+                //oComboBajaVacacionesConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
+                //oComboModificarVacacionesConductor.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 oComboModificarAlquiler.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
-                oComboBorrarAlquiler.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
-                    
-            }       
+                oComboBorrarAlquiler.appendChild(oComboBajaConductor.lastChild.cloneNode(true));                    
+            }
+			
+			for(var j=0; j<this._vacaciones.length; j++){
+				if(this._conductores[i].dni==this._vacaciones[j].dni){
+					var selectComboVacaciones=document.createElement("option");				
+					selectComboVacaciones.value=this._conductores[i].dni;
+					selectComboVacaciones.text=this._conductores[i].dni+" - "+this._conductores[i].nombre+" "+this._conductores[i].apellidos;
+					oComboBajaVacacionesConductor.appendChild(selectComboVacaciones);
+					oComboModificarVacacionesConductor.appendChild(oComboBajaVacacionesConductor.lastChild.cloneNode(true));
+				}
+			}
         }
 	}
 	
