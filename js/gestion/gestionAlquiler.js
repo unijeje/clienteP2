@@ -87,6 +87,12 @@ function altaAlquiler(oEvento)
             oForm.reset();
             oForm.style.display="none";
             mensaje("Alquiler insertado Correctamente");
+
+
+
+            /* TEST PARA NUM CUENTAS Y PAGOS
+
+            calcularImporteAlquileEmpresa(oConductores.length, sHoras, kms)
             for(var i=0;i<oConductores.length;i++)
             {
                 sAsunto="nomina";
@@ -100,9 +106,9 @@ function altaAlquiler(oEvento)
                 oCuenta.push(oApunte);
             }
 
-            calcularImporteAlquileEmpresa(oConductores.length, sHoras, kms)
             
-
+            
+            */
 
         }
         else
