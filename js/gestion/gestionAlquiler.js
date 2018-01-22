@@ -88,22 +88,24 @@ function altaAlquiler(oEvento)
             oForm.style.display="none";
             mensaje("Alquiler insertado Correctamente");
 
-
+            
+            //añadir pago de alquiler a cuenta de gestion
+            
 
             /* TEST PARA NUM CUENTAS Y PAGOS
 
-            calcularImporteAlquileEmpresa(oConductores.length, sHoras, kms)
+            //añadir pago que recibe cada conductor por el trabajo
             for(var i=0;i<oConductores.length;i++)
             {
                 sAsunto="nomina";
                 fImporte=calcularImporteAlquilerConductor(sHoras);
-                var oApunte= new Apuntes(fImporte, dFecha, sAsunto);
+               // var oApunte= new Apuntes(fImporte, dFecha, sAsunto);
                 var numCuentaConductor=oConductores[i].numCuenta;
-                oGestion.gestionContabilidad(sAsunto, numCuenta, fImporte)
+                oGestion.gestionContabilidad(sAsunto, numCuenta, fImporte, dFecha)
 
                 
-                var oCuenta=oGestion.buscarCuenta(numCuentaConductor);
-                oCuenta.push(oApunte);
+               // var oCuenta=oGestion.buscarCuenta(numCuentaConductor);
+
             }
 
             

@@ -16,6 +16,11 @@ class Gestion
         //cuenta/factura falta
     }
     //funciones
+    añadirCuenta(sNumCuenta)
+    {
+        var oCuenta=new Cuenta(sNumCuenta);
+        this._cuentas.push(oCuenta);
+    }
     buscarCuenta(sNumCuenta)
     {
         var oCuenta=null;
@@ -27,23 +32,33 @@ class Gestion
         return oCuenta;
     }
 
-    gestionContabilidad(sAsunto, numCuenta, fImporte)
+    gestionContabilidad(sAsunto, numCuenta, fImporte, dFecha)
     {
+        var oApunte=new Apuntes(fImporte, dFecha, sAsunto);
         var oCuenta=this.buscarCuenta(numCuenta);
         if(sAsunto=="nomina")
         {
-            oCuenta.saldo+=fImporte;
-            this.cuentaEmpresa.saldo=this.cuentaEmpresa.saldo-fImporte;
             //restarle al num cuenta de gestion
             //añadirlo al num de cuenta del conductor
+            oCuenta.saldo=parseFloat(oCuenta.saldo+fImporte);
+            this.cuentaEmpresa.saldo=parseFloat(this.cuentaEmpresa.saldo-fImporte);
+
+            //añadir apunte a cuenta
+            this.cuentaEmpresa.apuntes.push(oApunte);
+            oCuenta.apuntes.push(new Apuntes(fImporte, dFecha, sAsunto));
+
         }
-        if(sAsunto=="mantenimiento")
+        else if(sAsunto=="mantenimiento")
         {
             //restarle al num cuenta de gestion
+            this.cuentaEmpresa.saldo=parseFloat(this.cuentaEmpresa.saldo-fImporte);
+            this.cuentaEmpresa.apuntes.push(oApunte);
         }
-        if(sAsunto=="alquiler")
+        else if(sAsunto=="alquiler")
         {
             //sumarle al num cuenta de gestion
+            this.cuentaEmpresa.saldo=parseFloat(this.cuentaEmpresa.saldo+fImporte);
+            this.cuentaEmpresa.apuntes.push(oApunte);
         }
 
     }
@@ -79,6 +94,20 @@ class Gestion
             this._alquileres.push(oAlquiler);
             res=true;
             this.actualizaComboAlquileres();
+
+            //cada vez que se añade un alquiler se calcula el precio que se gana con ese viaje
+            var fGanancia=calcularImporteAlquileEmpresa(oAlquiler.conductor.length, oAlquiler.horas, oAlquiler.kms);
+            //se añade a la cuenta de gestion
+            this.gestionContabilidad("alquiler", null, fGanancia, oAlquiler.fecha);
+
+            //para cada conductor se le paga su parte
+            var fImporte=calcularImporteAlquilerConductor(oAlquiler.horas);
+            for(var i=0;i<oAlquiler.conductor.length;i++)
+            {
+                var numCuentaConductor=oAlquiler.conductor[i].numCuenta;
+                oGestion.gestionContabilidad("nomina", numCuentaConductor, fImporte, oAlquiler.fecha);
+            }
+
         }
         return res;
     }
@@ -248,7 +277,8 @@ class Gestion
 		
 		for(var i=0; i<this._conductores.length && bEncontrado==false; i++){
 			if(this._conductores[i].dni==oConductor.dni){
-				bEncontrado= true;
+                bEncontrado= true;
+                
 			}
 		}
 		
@@ -256,6 +286,9 @@ class Gestion
 			this._conductores.push(oConductor);
             this.actualizaComboConductores();
             
+            //se crea una cuenta de banco para ese conductor
+            this.añadirCuenta(oConductor.numCuenta);
+
 		}
 			
 		return !bEncontrado;

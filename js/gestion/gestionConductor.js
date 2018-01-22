@@ -41,7 +41,8 @@ function altaConductor(oEvento){
 			document.frmConductorAlta.reset();
 			document.frmConductorAlta.style.display="none";
 			mensaje("Conductor Dado de Alta Correctamente");
-			//crear cuenta con numCuentaConductor
+			//crear cuenta con numCuentaConductor se hace en Gestion
+			
 		} else{
 			mensaje("Este conductor ya existe");
 		}

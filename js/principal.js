@@ -720,12 +720,12 @@ function comboEstadoInicialAutubuses()
 
 function calcularImporteAlquilerConductor(sHoras)
 {
-    return sHoras*8;
+    return parseFloat(sHoras*8);
 }
 
 function calcularImporteAlquileEmpresa(numAutobuses, sHoras, kms)
 {
-    var precio= (numAutobuses*10*sHoras)+ (2*kms);
+    return parseFloat( (numAutobuses*10*sHoras)+ (2*kms) );
 }
 
 // EXPRESIONES REGULARES
