@@ -128,6 +128,9 @@ function cargarAlquileres(array)
 
 for (var i = 0;i<array.length;i++) 
   {
+
+    var nodoConductores = array[i].children[0];
+    var nodoAutobuses = array[i].children[1];
     /*  
     console.log(array[i].children[0].);
       
@@ -155,3 +158,22 @@ for (var i = 0;i<array.length;i++)
     */
   }
 }
+
+function cargarArrayConductores(oSala, nodoConductores) {
+
+      var oConductores=[]; 
+  
+      for (var i = 0;i<nodoSala.children.length;i++) {
+          var iIdElemento = nodoSala.children[i].attributes["id"].nodeValue;
+          var sNombre = nodoSala.children[i].children[0].textContent;
+          var sTipo = nodoSala.children[i].children[1].textContent;
+          var sConsumible = nodoSala.children[i].children[2].textContent;
+          var iPrecio = nodoSala.children[i].children[3].textContent;
+  
+          var oElemento = new ElementoSala(iIdElemento,sNombre,sTipo,sConsumible,iPrecio);
+  
+          oSala.anadirElemento(oElemento);
+      }
+
+      return 
+  }

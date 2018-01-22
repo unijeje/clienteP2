@@ -26,7 +26,13 @@ var oRadioMantenimientoSeleccion=document.frmAutobusMantenimiento.rdMantenimient
 
 oComboBajaAutobus.addEventListener("change", rellenaCamposAutobus, false);
 oComboModificaAutobus.addEventListener("change", rellenaCamposAutobus, false);
-//oRadioMantenimientoSeleccion.addEventListener("click", muestraFormsMantenimiento, false);
+
+oRadioMantenimientoSeleccion=document.getElementById("rdMantenimientoSeleccion");
+oRadioMantenimientoSeleccion.addEventListener("click", muestraFormsMantenimiento, false);
+oRadioMantenimientoSeleccion1=document.getElementById("rdMantenimientoSeleccion1");
+oRadioMantenimientoSeleccion1.addEventListener("click", muestraFormsMantenimiento1, false);
+oRadioMantenimientoSeleccion2=document.getElementById("rdMantenimientoSeleccion2");
+oRadioMantenimientoSeleccion2.addEventListener("click", muestraFormsMantenimiento2, false);
 
 
 comboEstadoInicialAutubuses();
@@ -133,6 +139,10 @@ function rellenaCamposAutobus(oEvento) //actualiza
 
 function muestraFormsMantenimiento()
 {
+    document.frmAltaMantenimiento.style.display="block";
+    document.frmBajaMantenimiento.style.display="none";
+    document.frmModificarMantenimiento.style.display="none";
+    /*
     if(oRadioMantenimientoSeleccion.value=="Alta"){
         document.frmAltaMantenimiento.style.display="block";
         document.frmBajaMantenimiento.style.display="none";
@@ -148,4 +158,22 @@ function muestraFormsMantenimiento()
             document.frmBajaMantenimiento.style.display="none";
             document.frmModificarMantenimiento.style.display="block";
         }
+
+    */
 }
+
+function muestraFormsMantenimiento1()
+{
+    document.frmAltaMantenimiento.style.display="none";
+    document.frmBajaMantenimiento.style.display="block";
+    document.frmModificarMantenimiento.style.display="none";
+    
+}
+function muestraFormsMantenimiento2()
+{
+    document.frmAltaMantenimiento.style.display="none";
+    document.frmBajaMantenimiento.style.display="none";
+    document.frmModificarMantenimiento.style.display="block";
+    
+}
+
