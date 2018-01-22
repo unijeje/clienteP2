@@ -744,6 +744,9 @@ function comboEstadoInicialAutubuses()
     var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
     var oComboAutobusMantenimiento=document.frmAltaMantenimiento.comboAutobus;
 
+    var oComboBajaAutobusesRevisados=document.frmBajaMantenimiento.comboAutobusRevisado;
+    var oComboModificarAutobusesRevisados=document.frmModificarMantenimiento.comboAutobusRevisado;
+
     if(oComboBajaAutobus.firstChild){
         oComboBajaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
         oComboModificaCliente.firstChild.selected;// seleccionar el primero al cargar el programa
@@ -773,8 +776,37 @@ function comboEstadoInicialAutubuses()
         frmAutobusBaja.txtAutobusModelo.value=null;
         frmAutobusBaja.txtAutobusConsumo.value=null;
     }
-}
 
+    if (oComboBajaAutobusesRevisados.firstChild)
+    {
+        oComboBajaAutobusesRevisados.firstChild.selected;
+        oComboModificarAutobusesRevisados.firstChild.selected;
+
+        var oMantenimiento=oGestion.buscarMantenimiento(frmBajaMantenimiento.comboAutobusRevisado.value);
+
+        frmModificarMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
+        frmModificarMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
+        frmModificarMantenimiento.txtMantenimientoFecha.value=oMantenimiento.fecha;
+
+        frmBajaMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
+        frmBajaMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
+        frmBajaMantenimiento.txtMantenimientoFecha.value=oMantenimiento.fecha;
+
+     }   
+
+     else{
+        frmModificarMantenimiento.txtDescripcionMantenimiento.value=null;
+        frmModificarMantenimiento.txtImporteMantenimiento.value=null;
+        frmModificarMantenimiento.txtMantenimientoFecha.value=null;
+
+        frmBajaMantenimiento.txtDescripcionMantenimiento.value=null;
+        frmBajaMantenimiento.txtImporteMantenimiento.value=null;
+        frmBajaMantenimiento.txtMantenimientoFecha.value=null;
+     }
+
+
+
+ }
 function calcularImporteAlquilerConductor(sHoras)
 {
     return parseFloat(sHoras*8);
@@ -800,5 +832,13 @@ var oExpRegTelefono = /^(\+34|0034|34)?[6|7|9][0-9]{8}$/; //TELEFONOS ESPAÑOLES
 var oExpRegularNumCuenta = /^\d{20}$/; //numero de cuenta 20 numeros fijos //ej: 09876543211234567890
 
 var oExpRegEsNumero=/^\d{1,20}$/; //es un numero entre 1 y 20
+
+var oExpRegMatricula=/^\d{4}[A-Z]{3}/; // 4 numeros y 3 letras mayusculas
+
+var oExpRegModelo=/^[a-z\s\d-]{3,20}$/i; // entre 3 y 20 caracteres con numeros
+
+// falta la del num de asientos
+//var oExpRegConsumo=/^\d{1,2}/;
+var oExpRegConsumo=/^[0-9]{1}([.][0-9])?/; // no funciona como quiero
 
 //var oExpRegFecha = /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/; //mm/dd/yyyy

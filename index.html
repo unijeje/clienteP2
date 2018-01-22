@@ -421,7 +421,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Marca del Autobus:</label>  
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Modelo del Autobus:</label>  
 						<div class="col-md-6 col-sm-8">
 							<input id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
 						</div>
@@ -470,7 +470,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Marca del Autobus:</label>  
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Modelo del Autobus:</label>  
 						<div class="col-md-6 col-sm-8">
 							<input disabled id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
 						</div>
@@ -514,7 +514,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Marca del Autobus:</label>  
+						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Modelo del Autobus:</label>  
 						<div class="col-md-6 col-sm-8">
 							<input id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
 						</div>
@@ -596,31 +596,57 @@
 				</form>
 
 				<!-- Baja Mantenimiento -->
+			
 				<form name="frmBajaMantenimiento" id="frmBajaMantenimiento" class="form-horizontal"> 
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="comboAutobusRevisado">Seleccione Autobus</label>
+						<div class="col-md-6 col-sm-8">
+							<select id="comboAutobusRevisado" name="comboAutobusRevisado" class="form-control ">
+								<!--se rellenan con actualizaComboAutobus al dar de alta uno nuevo -->
+							</select>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+							<input disabled id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtImporteMantenimiento">Importe:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input id="txtImporteMantenimiento" name="txtImporteMantenimiento" placeholder="Importe" class="form-control input-md" type="text">
+							<input disabled id="txtImporteMantenimiento" name="txtImporteMantenimiento" placeholder="Importe" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtMantenimientoFecha">Fecha:</label>
 						<div class="col-md-6 col-sm-8">
-							<input id="txtBajaMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="date">
+							<input disabled id="txtMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="date">
 						</div>
 					</div>
 					
+					<div class="form-group">
+						
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+							<input type="button" id="btnBajaMantenimiento" name="btnBajaMantenimiento" class="btn btn-block btn-primary" value="Dar de Baja" />
+						</div>
+
+					</div>
 
 				</form>
 
 				<!-- Modificar Mantenimiento -->
 				<form name="frmModificarMantenimiento" id="frmModificarMantenimiento" class="form-horizontal"> 
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="comboAutobusRevisado">Seleccione Autobus</label>
+						<div class="col-md-6 col-sm-8">
+							<select id="comboAutobusRevisado" name="comboAutobusRevisado" class="form-control ">
+								<!--se rellenan con actualizaComboAutobus al dar de alta uno nuevo -->
+							</select>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
 						<div class="col-md-6 col-sm-8">
@@ -636,7 +662,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtMantenimientoFecha">Fecha:</label>
 						<div class="col-md-6 col-sm-8">
-							<input id="txtModificarMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="date">
+							<input id="txtMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="date">
 						</div>
 					</div>
 
