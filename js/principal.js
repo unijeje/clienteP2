@@ -1,4 +1,6 @@
-var oGestion=new Gestion();
+//var oGestion=new Gestion();
+var oGestion;
+cargarDatos("datos.xml"); 
 
 //botones principales
 var oBtnAlquiler=document.getElementById("btnAlquiler");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gestion>
+<gestion id="001">
     <!-- CLIENTES-->
     <cliente id="001">
         <dni>12345678A</dni>
@@ -54,6 +54,7 @@
         <sexo>Masculino</sexo>
         <tlf>680752541</tlf>
         <correo>Correo749@gmail.com</correo>
+        <direccion>C/javascript</direccion>
         <numCuenta>09898767654470322110</numCuenta>
     </conductor>
     <conductor id="002">
@@ -63,6 +64,7 @@
         <sexo>Masculino</sexo>
         <tlf>682552541</tlf>
         <correo>Correo052@gmail.com</correo>
+        <direccion>C/php</direccion>
         <numCuenta>09898767654534322110</numCuenta>
     </conductor>
     <conductor id="003">
@@ -72,6 +74,7 @@
         <sexo>Femenino</sexo>
         <tlf>688092541</tlf>
         <correo>Correo001@gmail.com</correo>
+        <direccion>C/java</direccion>
         <numCuenta>09898767654534322110</numCuenta>
     </conductor>
     <conductor id="004">
@@ -81,6 +84,7 @@
         <sexo>Femenino</sexo>
         <tlf>688452001</tlf>
         <correo>Correo571@gmail.com</correo>
+        <direccion>C/c++</direccion>
         <numCuenta>09898767654534322110</numCuenta>
     </conductor>
     <conductor id="005">
@@ -90,6 +94,7 @@
         <sexo>Masculino</sexo>
         <tlf>688453141</tlf>
         <correo>Correo071@gmail.com</correo>
+        <direccion>C/python</direccion>
         <numCuenta>09898767654534322110</numCuenta>
     </conductor>
     <!-- AUTOBUS -->
@@ -200,3 +205,4 @@
         <kms>30</kms>
         <cliente>98765432A</cliente>
     </alquiler>
+</gestion>
