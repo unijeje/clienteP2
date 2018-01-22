@@ -65,7 +65,7 @@
         <tlf>682552541</tlf>
         <correo>Correo052@gmail.com</correo>
         <direccion>C/php</direccion>
-        <numCuenta>09898767654534322110</numCuenta>
+        <numCuenta>09898767614534322110</numCuenta>
     </conductor>
     <conductor id="003">
         <dni>09876098Z</dni>
@@ -75,7 +75,7 @@
         <tlf>688092541</tlf>
         <correo>Correo001@gmail.com</correo>
         <direccion>C/java</direccion>
-        <numCuenta>09898767654534322110</numCuenta>
+        <numCuenta>09898767654532322110</numCuenta>
     </conductor>
     <conductor id="004">
         <dni>09876589K</dni>
@@ -85,7 +85,7 @@
         <tlf>688452001</tlf>
         <correo>Correo571@gmail.com</correo>
         <direccion>C/c++</direccion>
-        <numCuenta>09898767654534322110</numCuenta>
+        <numCuenta>09898667654534322110</numCuenta>
     </conductor>
     <conductor id="005">
         <dni>09876509P</dni>

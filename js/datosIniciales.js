@@ -39,7 +39,7 @@ function cargarDatos(ficheroXml)
     cargarClientes(arrayClientes);   
     cargarConductores(arrayConductores);
     cargarAutobuses(arrayAutobuses);
-    //cargarAlquileres(arrayAlquileres);
+    cargarAlquileres(arrayAlquileres);
     
 }
     
@@ -132,49 +132,62 @@ for (var i = 0;i<array.length;i++)
     var nodoConductores = array[i].children[0];
     var nodoAutobuses = array[i].children[1];
     var arrayConductores=cargarArrayConductores(nodoConductores);
-    /*  
-    console.log(array[i].children[0].);
-      
-    var oConductores=[];
-    for(var i=0;i<array[i].children[0].length;i++)
-    {
-      console.log(array[i].children[0]);
-      //oConductores.push(array[i].children[0].children[i]);
-    }
-    console.log(oConductores);
+    var arrayAutobuses=cargarArrayAutobuses(nodoAutobuses);
+    //console.log(arrayConductores);
+    //console.log(arrayAutobuses);
    
-    var oConductores = array[i].attributes["id"].nodeValue;
-    var oAutobuses = array[i].children[0].textContent;
+    var sIDAlquiler = array[i].children[2].textContent;
+    var sHoras = array[i].children[3].textContent;
+    var dFecha = array[i].children[4].textContent;
+    var iNumPers = array[i].children[5].textContent;
+    var sDesc = array[i].children[6].textContent;
+    var sOrigen = array[i].children[7].textContent;
+    var sDestino = array[i].children[8].textContent;
+    var iKMs = array[i].children[9].textContent;
+    var sDniCliente = array[i].children[10].textContent;
+    oCliente=oGestion.buscarCliente(sDniCliente);
 
 
-    var iTelefono = array[i].children[1].textContent;
+    var oAlquiler=new Alquiler(arrayConductores, arrayAutobuses, sIDAlquiler, sHoras, dFecha, iNumPers, sDesc, sOrigen, sDestino, iKMs, oCliente);
 
-    var nodoSala = array[i].children[2];
-    var iCapacidadSala = nodoSala.attributes["capacidad"].nodeValue;
-
-
-    var oAlquiler=new Alquiler(oConductores, oAutobuses, sIDAlquiler, sHoras, dFecha, iNumPers, sDesc, sOrigen, sDestino, iKMs, oCliente);
-
-    oGestion.altaAlquiler(oTeatro);
-    */
+    if(oGestion.altaAlquiler(oAlquiler))
+      console.log("Alquiler: "+oAlquiler.id+" Introducido correctamente");
+    
   }
 }
 
-function cargarArrayConductores(nodoConductores) {
+function cargarArrayConductores(nodoConductores) 
+{
 
       var oConductores=[]; 
-  
-      for (var i = 0;i<nodoSala.children.length;i++) {
-          var iIdElemento = nodoSala.children[i].attributes["id"].nodeValue;
-          var sNombre = nodoSala.children[i].children[0].textContent;
-          var sTipo = nodoSala.children[i].children[1].textContent;
-          var sConsumible = nodoSala.children[i].children[2].textContent;
-          var iPrecio = nodoSala.children[i].children[3].textContent;
-  
-          var oElemento = new ElementoSala(iIdElemento,sNombre,sTipo,sConsumible,iPrecio);
-  
-          oSala.anadirElemento(oElemento);
+      //console.log(nodoConductores);
+    
+      for (var i = 0;i<nodoConductores.children.length;i++)
+      {
+        var sDNI=nodoConductores.children[i].textContent;
+        var oConductor=oGestion.buscarConductor(sDNI);
+        //console.log(oConductor);
+        oConductores.push(oConductor);
       }
 
-      return 
-  }
+      return oConductores;
+      
+}
+
+function cargarArrayAutobuses(nodoAutobuses) 
+{
+
+      var oAutobuses=[]; 
+      //console.log(nodoConductores);
+    
+      for (var i = 0;i<nodoAutobuses.children.length;i++)
+      {
+        var sMatricula=nodoAutobuses.children[i].textContent;
+        var oAutobus=oGestion.buscarAutobus(sMatricula);
+        //console.log(oConductor);
+        oAutobuses.push(oAutobus);
+      }
+
+      return oAutobuses;
+      
+}
