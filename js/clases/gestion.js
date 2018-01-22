@@ -219,7 +219,7 @@ class Gestion
         var res=true;
 
         //comprobar nuevo DNI
-        if(this.buscarCliente(oCliente.dni)!=null)
+        if(this.buscarCliente(oCliente.dni)!=null && oCliente.dni!=dniAntiguo)
          {
             res=false
             oCliente.dni=dniAntiguo;
