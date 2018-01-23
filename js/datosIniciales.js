@@ -103,29 +103,6 @@ function cargarAutobuses(array)
 
 function cargarAlquileres(array) 
 {
-
-  /*
-  <alquiler id="001">
-        <conductores>
-            <conductor>09876509P</conductor>
-            <conductor>09876589K</conductor>
-        </conductores>
-        <autobuses>
-            <autobus>3297PQE</autobus>
-            <autobus>3857KSH</autobus>
-        </autobuses>
-        <id>973</id>
-        <horas>4</horas>
-        <fecha>01/01/2018</fecha>
-        <numPers>45</numPers>
-        <descripcion>Excursion</descripcion>
-        <origen>Colegio</origen>
-        <destino>Teatro</destino>
-        <kms>10</kms>
-        <cliente>98765498F</cliente>
-    </alquiler>
-  */
-
 for (var i = 0;i<array.length;i++) 
   {
 
@@ -138,7 +115,7 @@ for (var i = 0;i<array.length;i++)
    
     var sIDAlquiler = array[i].children[2].textContent;
     var sHoras = array[i].children[3].textContent;
-    var dFecha = array[i].children[4].textContent;
+    var dFecha = new Date(array[i].children[4].textContent).toLocaleDateString("es-ES");
     var iNumPers = array[i].children[5].textContent;
     var sDesc = array[i].children[6].textContent;
     var sOrigen = array[i].children[7].textContent;

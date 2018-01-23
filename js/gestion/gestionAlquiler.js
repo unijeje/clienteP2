@@ -1,5 +1,5 @@
 
-/*DATOS INICIALES */
+/*DATOS INICIALES 
 var arrayConductores01=[oConductor1];
 var arrayAutobuses01=[oAutobus1];
 var oAlquiler01=new Alquiler(arrayConductores01, arrayAutobuses01, "999", "5", new Date("01/01/2018") , 20, "Excursion", "Colegio", "Teatro", 10, oCliente02);
@@ -56,7 +56,7 @@ function altaAlquiler(oEvento)
         //console.log(oCliente);
         var sIDAlquiler=oForm.txtAlquilerID.value.trim();
         var sHoras=oForm.txtAlquilerHoras.value.trim();
-        var dFecha=new Date(oForm.txtAlquilerFecha.value.trim());
+        var dFecha=new Date(oForm.txtAlquilerFecha.value.trim()).toLocaleDateString("es-ES");
         var iNumPers=oForm.txtAlquilerNumPers.value.trim();
         var sDesc=oForm.txtAlquilerDesc.value.trim();
         var sOrigen=oForm.txtAlquilerOrigen.value.trim();
@@ -87,30 +87,6 @@ function altaAlquiler(oEvento)
             oForm.reset();
             oForm.style.display="none";
             mensaje("Alquiler insertado Correctamente");
-
-            
-            //añadir pago de alquiler a cuenta de gestion
-            
-
-            /* TEST PARA NUM CUENTAS Y PAGOS
-
-            //añadir pago que recibe cada conductor por el trabajo
-            for(var i=0;i<oConductores.length;i++)
-            {
-                sAsunto="nomina";
-                fImporte=calcularImporteAlquilerConductor(sHoras);
-               // var oApunte= new Apuntes(fImporte, dFecha, sAsunto);
-                var numCuentaConductor=oConductores[i].numCuenta;
-                oGestion.gestionContabilidad(sAsunto, numCuenta, fImporte, dFecha)
-
-                
-               // var oCuenta=oGestion.buscarCuenta(numCuentaConductor);
-
-            }
-
-            
-            
-            */
 
         }
         else

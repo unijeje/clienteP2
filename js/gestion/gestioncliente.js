@@ -1,9 +1,11 @@
 
-//datos prueba
+/*datos prueba
 var oCliente01=new Cliente("123", "nombre", "ape", "98765", "correo@gmail.com", "abc", "m");
 var oCliente02=new Cliente("1234", "nombre2", "ape2", "298765", "correo1@gmail.com", "abdc", "f");
 oGestion.altaCliente(oCliente01);
 oGestion.altaCliente(oCliente02);
+/*DatosPrueba*/
+
 
 var oBtnDarAltaCliente=document.getElementById("btnAltaCliente");
 oBtnDarAltaCliente.addEventListener("click", altaCliente, false);
