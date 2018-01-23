@@ -143,8 +143,13 @@ function fAltaMantenimiento()
         document.frmAltaMantenimiento.style.display="none";
         document.frmAutobusMantenimiento.style.display="none";
 
-        oGestion.gestionContabilidad("mantenimiento", oGestion.cuentaEmpresa.numCuenta, fImporte, dFecha);
+
         oGestion.actualizaComboRevisado();
+        /*
+        oGestion.gestionContabilidad("mantenimiento", oGestion.cuentaEmpresa.numCuenta, fImporte, dFecha);
+        */
+        
+        
         
         mensaje("Mantenimiento añadido correctamente");
         //actualizar combo mantenimientos

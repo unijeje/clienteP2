@@ -547,6 +547,11 @@ class Gestion
         if(!revisado){
             this._mantenimientos.push(oMantenimiento);
             introducido=true;
+
+            //hacer gestion de pago
+            this.gestionContabilidad("mantenimiento", null, oMantenimiento.importe, oMantenimiento.fecha);
+            this.actualizaComboRevisado();
+
         }
 
         return introducido;
