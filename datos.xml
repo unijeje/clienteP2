@@ -140,7 +140,7 @@
         </autobuses>
         <id>973</id>
         <horas>4</horas>
-        <fecha>01/01/2018</fecha>
+        <fecha>06/01/2018</fecha>
         <numPers>45</numPers>
         <descripcion>Excursion</descripcion>
         <origen>Colegio</origen>
@@ -157,7 +157,7 @@
         </autobuses>
         <id>955</id>
         <horas>6</horas>
-        <fecha>01/02/2018</fecha>
+        <fecha>05/02/2018</fecha>
         <numPers>25</numPers>
         <descripcion>Viaje</descripcion>
         <origen>Sevilla</origen>
@@ -208,13 +208,13 @@
     <mantenimiento>
         <descripcion>Pintar</descripcion>
         <importe>100</importe>
-        <fecha>10/10/2018</fecha>
+        <fecha>12/12/2018</fecha>
         <matricula>0748OUH</matricula>
     </mantenimiento>
     <mantenimiento>
         <descripcion>Fallo de motor</descripcion>
         <importe>500</importe>
-        <fecha>10/25/2018</fecha>
+        <fecha>5/10/2018</fecha>
         <matricula>4321ZAF</matricula>
     </mantenimiento>
 </gestion>

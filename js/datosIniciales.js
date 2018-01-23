@@ -115,6 +115,7 @@ function cargarMantenimientos(array)
       var sDescripcionMant = array[i].children[0].textContent;
       var fImporteMant = array[i].children[1].textContent;
       var dFechaMant = new Date(array[i].children[2].textContent).toLocaleDateString("es-ES");
+      //var dFechaMant = new Date(array[i].children[2].textContent);
       var sMatriculaMant = array[i].children[3].textContent;
 
       var oNuevoMant=new Mantenimiento(sDescripcionMant, fImporteMant, dFechaMant, sMatriculaMant);
@@ -139,6 +140,7 @@ for (var i = 0;i<array.length;i++)
     var sIDAlquiler = array[i].children[2].textContent;
     var sHoras = array[i].children[3].textContent;
     var dFecha = new Date(array[i].children[4].textContent).toLocaleDateString("es-ES");
+    //var dFecha = new Date(array[i].children[4].textContent);
     var iNumPers = array[i].children[5].textContent;
     var sDesc = array[i].children[6].textContent;
     var sOrigen = array[i].children[7].textContent;

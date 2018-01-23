@@ -32,6 +32,7 @@ function listadoCuenta()
     var oTexto;
 
     var oTabla=document.createElement("TABLE");
+    
 	var oFila=oTabla.insertRow();
 	oFila.classList.add("thead-dark");
 
@@ -46,7 +47,7 @@ function listadoCuenta()
     var n=arrayCuenta.length;
     for(var i=0;i<n;i++) 
     {
-        console.log(saldoMomento);
+        //console.log(saldoMomento);
         if(arrayCuenta[i].asunto=="alquiler")
         {
             ganancia=true;
@@ -56,6 +57,7 @@ function listadoCuenta()
         
         //ASUNTO
         oFila=oTabla.insertRow(1);
+        oFila.dataset.fecha=arrayCuenta[i].fecha;
 
         oCelda=oFila.insertCell();
         oTexto=document.createTextNode(arrayCuenta[i].asunto); 
@@ -94,8 +96,64 @@ function listadoCuenta()
 
     
 }
+/*Falla algo, el sort en oFecha lo hace bien, pero a la hora de insertar las filas en orden no lo hace bien*/
 
 function listadoCuentaPorFecha()
 {
-    alert("ordenar por fecha");
+    //alert("ordenar por fecha");
+    var oFilas=document.querySelectorAll("#resultadoListados table tbody tr");
+    var oFecha=[];
+    var oFilasOrdenado=[];
+    //console.log(oFilas);
+
+    for(var i=1;i<oFilas.length;i++)//coger datafecha
+    {
+        oFecha.push(new Date(oFilas[i].dataset.fecha));
+    }
+
+    oFecha.sort(date_sort_desc); //ordenar array
+    for(var i=0;i<oFecha.length;i++)
+    console.log(oFecha[i].toDateString());
+
+    for(var i=0;i<oFecha.length;i++)
+    {
+        var bMetido=false;
+        //console.log(oFecha[i].toDateString());
+        for(var j=1;j<oFilas.length && bMetido==false;j++)
+        {
+            
+            console.log(i);
+            console.log("fila: "+new Date(oFilas[j].dataset.fecha));
+            console.log("array: "+oFecha[i]);
+            
+            if(new Date(oFilas[j].dataset.fecha).toDateString()==oFecha[i].toDateString())
+            {
+                oFilasOrdenado.push(oFilas[j]);
+                
+                bMetido=true;
+            }
+        }
+            
+    }
+//    for (var i=0;i<oFilasOrdenado.length;i++)
+        console.log(oFilasOrdenado);
+
+    var oBodyTable=document.querySelector("#resultadoListados table tbody");
+    for(var i=0;i<oFilasOrdenado.length;i++) //insertar
+    {
+        
+        oBodyTable.appendChild(oFilasOrdenado[i]);
+    }
+    
 }
+
+function sortNumber(a,b) {
+    return new Date(b.date).toLocaleDateString("es-ES") - new Date(a.date).toLocaleDateString("es-ES");
+}
+var date_sort_desc = function (date1, date2) {
+    // This is a comparison function that will result in dates being sorted in
+    // ASCENDING order.
+    if (date1 > date2) return 1;
+    if (date1 < date2) return -1;
+    return 0;
+  };

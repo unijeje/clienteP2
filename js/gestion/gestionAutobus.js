@@ -1,4 +1,4 @@
-//datos de prueba
+/*datos de prueba
 var oAutobus1=new Autobus("4444HTH",30,"asdasd",8);
 var oAutobus2=new Autobus("5555RGD",25,"PPPPP",7);
 
@@ -8,6 +8,7 @@ oGestion.altaAutobus(oAutobus1);
 oGestion.altaAutobus(oAutobus2);
 oGestion.altaMantenimiento(oMantenimiento44);
 //console.log(oMantenimiento44.fecha);
+*/
 
 
 var oBtnDarAltaAutobus=document.getElementById("btnAltaAutobus");

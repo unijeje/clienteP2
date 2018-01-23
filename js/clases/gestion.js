@@ -34,6 +34,8 @@ class Gestion
 
     gestionContabilidad(sAsunto, numCuenta, fImporte, dFecha)
     {
+        var dFecha=new Date(dFecha).toLocaleDateString("es-ES");
+        //var dFecha=new Date(dFecha);
         var oApunte=new Apuntes(fImporte, dFecha, sAsunto);
         var oCuenta=this.buscarCuenta(numCuenta);
         if(sAsunto=="nomina")
