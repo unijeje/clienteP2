@@ -205,4 +205,16 @@
         <kms>30</kms>
         <cliente>98765432A</cliente>
     </alquiler>
+    <mantenimiento>
+        <descripcion>Pintar</descripcion>
+        <importe>100</importe>
+        <fecha>10/10/2018</fecha>
+        <matricula>0748OUH</matricula>
+    </mantenimiento>
+    <mantenimiento>
+        <descripcion>Fallo de motor</descripcion>
+        <importe>500</importe>
+        <fecha>10/25/2018</fecha>
+        <matricula>4321ZAF</matricula>
+    </mantenimiento>
 </gestion>

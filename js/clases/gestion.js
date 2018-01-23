@@ -550,7 +550,6 @@ class Gestion
 
             //hacer gestion de pago
             this.gestionContabilidad("mantenimiento", null, oMantenimiento.importe, oMantenimiento.fecha);
-            this.actualizaComboRevisado();
 
         }
 

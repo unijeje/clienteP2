@@ -33,6 +33,7 @@ function cargarDatos(ficheroXml)
     var arrayConductores=oXML.querySelectorAll("gestion > conductor");
     var arrayAutobuses=oXML.querySelectorAll("gestion > autobus");
     var arrayAlquileres=oXML.querySelectorAll("gestion > alquiler");
+    var arrayMantenimiento=oXML.querySelectorAll("gestion > mantenimiento");
     /*
     console.log(arrayClientes);
     console.log(arrayTrabajadores);
@@ -45,6 +46,7 @@ function cargarDatos(ficheroXml)
     cargarConductores(arrayConductores);
     cargarAutobuses(arrayAutobuses);
     cargarAlquileres(arrayAlquileres);
+    cargarMantenimientos(arrayMantenimiento);
     
 }
     
@@ -103,6 +105,22 @@ function cargarAutobuses(array)
 
       if(oGestion.altaAutobus(oNuevoAutobus))
         console.log("Autobus: "+oNuevoAutobus.matricula+" Introducido correctamente");
+  }
+}
+
+function cargarMantenimientos(array)
+{
+  for(var i=0;i<array.length;i++)
+  {
+      var sDescripcionMant = array[i].children[0].textContent;
+      var fImporteMant = array[i].children[1].textContent;
+      var dFechaMant = new Date(array[i].children[2].textContent).toLocaleDateString("es-ES");
+      var sMatriculaMant = array[i].children[3].textContent;
+
+      var oNuevoMant=new Mantenimiento(sDescripcionMant, fImporteMant, dFechaMant, sMatriculaMant);
+      if(oGestion.altaMantenimiento(oNuevoMant))
+        console.log("Mantenimiento: "+sMatriculaMant+" - "+dFechaMant+" Introducida correctamente");
+
   }
 }
 
