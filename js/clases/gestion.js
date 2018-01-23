@@ -2,7 +2,7 @@
 //objeto
 class Gestion
 {
-    constructor()
+    constructor(iNumCuenta)
     {
         //atributos
         this._alquileres=[];
@@ -11,7 +11,7 @@ class Gestion
         this._conductores=[];
 		this._vacaciones=[];
         this._mantenimientos=[];
-        this.cuentaEmpresa=new Cuenta("00998877665544332211");
+        this.cuentaEmpresa=new Cuenta(iNumCuenta);
         this._cuentas=[];
         //cuenta/factura falta
     }

@@ -6,7 +6,7 @@ class Apuntes
     {
         this.importe=fImporte;
         this.fecha=dFecha;
-        this.pagado=false;
+        //this.pagado=false;
         this.asunto=sAsunto;
     }
     

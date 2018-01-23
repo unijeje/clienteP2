@@ -22,7 +22,12 @@ function cargarDatos(ficheroXml)
     var oXML = loadXMLDoc(ficheroXml);
 
     //oGestion = new Gestion(oXML.getElementsByTagName("gestion")[0].attributes["id"].nodeValue);
-    oGestion = new Gestion();
+
+    var gestionCuenta=parseInt(oXML.getElementsByTagName("gestion")[0].attributes["cuenta"].nodeValue);
+
+
+
+    oGestion = new Gestion(gestionCuenta);
 
     var arrayClientes = oXML.querySelectorAll("gestion > cliente");
     var arrayConductores=oXML.querySelectorAll("gestion > conductor");
