@@ -100,6 +100,9 @@ oBtnListadoConductores.addEventListener("click",mostrarListadoConductores,false)
 var oBtnListadoAlquileres=document.getElementById("btnListadoAlquileres");
 oBtnListadoAlquileres.addEventListener("click",mostrarListadoAlquileres,false);
 
+var oBtnListadoCuenta=document.getElementById("btnListadoCuenta");
+oBtnListadoCuenta.addEventListener("click",mostrarListadoCuenta,false);
+
 var oCapaListado=document.getElementById("resultadoListados");
 
 //botones panel de mensajes
@@ -372,6 +375,11 @@ function mostrarListadoAlquileres()
     oCapaListado.style.display="block";
 }
 
+function mostrarListadoCuenta()
+{
+    listadoCuenta();
+    oCapaListado.style.display="block";
+}
 
 
 //panel de mensajes
