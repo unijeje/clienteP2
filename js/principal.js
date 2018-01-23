@@ -350,35 +350,41 @@ function mostrarModificarVacaciones(){
 }
 
 //Listados
-
+var campoCuenta=document.getElementById("panelCuenta");
 function mostrarListadoAutobuses()
 {
     listadoAutobuses();
     oCapaListado.style.display="block";
+    campoCuenta.style.display="none";
 }
 
 function mostrarListadoClientes()
 {
     listadoClientes();
     oCapaListado.style.display="block";
+    campoCuenta.style.display="none";
 }
 
 function mostrarListadoConductores()
 {
     listadoConductores();
     oCapaListado.style.display="block";
+    campoCuenta.style.display="none";
 }
 
 function mostrarListadoAlquileres()
 {
     listadoAlquileres();
     oCapaListado.style.display="block";
+    campoCuenta.style.display="none";
 }
 
 function mostrarListadoCuenta()
 {
     listadoCuenta();
     oCapaListado.style.display="block";
+    campoCuenta.style.display="block";
+
 }
 
 

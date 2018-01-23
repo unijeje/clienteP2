@@ -1,16 +1,22 @@
 //muestra todos los ingresos y gastos de gestion Cuenta
 
+var btnOrdenarFecha=document.getElementById("btnOrdenarCuentaFecha");
+btnOrdenarFecha.addEventListener("click", listadoCuentaPorFecha, false);
+
 function listadoCuenta()
 {
     var tablaEliminar=document.querySelector("TABLE");
 	if(tablaEliminar!=null) //si hay una tabla en el div de listados la quita para reemplazarla
         tablaEliminar.remove();
+    var h1Eliminar=document.querySelector("H1");
+    if(h1Eliminar!=null) //si hay una tabla en el div de listados la quita para reemplazarla
+        h1Eliminar.remove();
     var oNumCuenta=document.createTextNode("Cuenta: "+oGestion.cuentaEmpresa.numCuenta);
     var oH1=document.createElement("h1");
     oH1.classList.add("text-center");
     oH1.classList.add("lead");
     oH1.appendChild(oNumCuenta);
-    oCapaListado.appendChild(oH1);
+    campoCuenta.appendChild(oH1);
 
     var saldoMomento=0;
     var arrayCuenta=oGestion.cuentaEmpresa.apuntes; //todos los apuntes que se han realizado
@@ -38,7 +44,7 @@ function listadoCuenta()
     }
 
     var n=arrayCuenta.length;
-    for(var i=n-1;i>=0;i--) 
+    for(var i=0;i<n;i++) 
     {
         console.log(saldoMomento);
         if(arrayCuenta[i].asunto=="alquiler")
@@ -87,4 +93,9 @@ function listadoCuenta()
 	oCapaListado.appendChild(oTabla);
 
     
+}
+
+function listadoCuentaPorFecha()
+{
+    alert("ordenar por fecha");
 }

@@ -129,10 +129,10 @@ function fAltaMantenimiento()
 {
     var sDescripcion=frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim();
     var fImporte=parseFloat(frmAltaMantenimiento.txtImporteMantenimiento.value.trim());
-    var dFecha=new Date(frmAltaMantenimiento.txtMantenimientoFecha.value.trim());
+    var dFecha=new Date(frmAltaMantenimiento.txtMantenimientoFecha.value.trim()).toLocaleDateString("es-ES");
     var sMatricula=frmAltaMantenimiento.comboAutobus.value.trim();
 
-    dFecha.toLocaleDateString("es-ES");
+    //dFecha.toLocaleDateString("es-ES");
     //console.log(dFecha);
     //console.log(sMatricula);
     var oNuevoMantenimiento=new Mantenimiento(sDescripcion,fImporte,dFecha,sMatricula);

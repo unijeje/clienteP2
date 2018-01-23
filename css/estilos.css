@@ -35,7 +35,17 @@ button{
     display:none;
 }
 /*OCULTAR Listados*/
+#panelCuenta
+{
+    display:none;
+    
+}
 
+#panelCuenta input
+{
+    float:left;
+    margin-left: 25%;
+}
 
 /*************/
 
