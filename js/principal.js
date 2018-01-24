@@ -104,6 +104,8 @@ var oBtnListadoCuenta=document.getElementById("btnListadoCuenta");
 oBtnListadoCuenta.addEventListener("click",mostrarListadoCuenta,false);
 
 var oCapaListado=document.getElementById("resultadoListados");
+var oCapaListadoAlquileres=document.getElementById("frmListadoAlquileres");
+oCapaListadoAlquileres.style.display="none";
 
 //botones panel de mensajes
 var oBtnCerrar=document.getElementById("btnCerrar");
@@ -121,6 +123,7 @@ function ocultarFormularios()
         oTodosFormularios[i].style.display="none";
 
     oCapaListado.style.display="none";
+    oCapaListadoAlquileres.style.display="none";
   
 }
 //mostrar
@@ -359,6 +362,7 @@ function mostrarListadoAutobuses()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="none";
+    oCapaListadoAlquileres.style.display="none";
 }
 
 function mostrarListadoClientes()
@@ -367,6 +371,7 @@ function mostrarListadoClientes()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="none";
+    oCapaListadoAlquileres.style.display="none";
 }
 
 function mostrarListadoConductores()
@@ -375,6 +380,7 @@ function mostrarListadoConductores()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="block";
+    oCapaListadoAlquileres.style.display="none";
 }
 
 function mostrarListadoAlquileres()
@@ -383,6 +389,7 @@ function mostrarListadoAlquileres()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="none";
+    oCapaListadoAlquileres.style.display="block";
 }
 
 function mostrarListadoCuenta()
@@ -391,6 +398,7 @@ function mostrarListadoCuenta()
     oCapaListado.style.display="block";
     campoCuenta.style.display="block";
     campoConductor.style.display="none";
+    oCapaListadoAlquileres.style.display="none";
 
 
 }
@@ -654,7 +662,6 @@ function comboEstadoInicialAlquileres()
 
 function comboEstadoInicialClientes() //al iniciar el programa muestra los datos del primero y al borrar/actualizar vuelve a mostrar el primero
 {
-
     //cliente
     var oComboBajaCliente=document.frmClienteBaja.comboCliente;
     var oComboModificaCliente=document.frmClienteModificar.comboCliente;

@@ -279,6 +279,23 @@ class Gestion
                 oComboModificarAlquiler.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
             }    
         }
+
+
+        var oComboAlquilerCliente=document.frmListadoAlquileres.comboCliente;
+        var oCliente=null;
+         while (oComboAlquilerCliente.firstChild)
+             oComboAlquilerCliente.removeChild(oComboAlquilerCliente.firstChild);
+
+        for(var i=0;i<this._alquileres.length;i++)//solo mostrar los que tienen alquileres asignados
+        { 
+            //console.log("entra");
+            oCliente=this.buscarCliente(this._alquileres[i].cliente.dni);
+            var newSelect=document.createElement("option");
+            newSelect.value=oCliente.dni;
+            newSelect.text=oCliente.dni+" - "+oCliente.nombre+" "+oCliente.apellidos;
+            oComboAlquilerCliente.appendChild(newSelect);
+        }
+        
     }
 
     //conductores

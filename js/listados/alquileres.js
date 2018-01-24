@@ -1,6 +1,10 @@
 //
+var oComboAlquilerCliente=document.frmListadoAlquileres.comboCliente;
+oComboAlquilerCliente.addEventListener("change", listadoAlquileres,false);
 
-function listadoAlquileres(){////// falta mirar si funciona
+function listadoAlquileres(){
+	
+	var dniCliente=oComboAlquilerCliente.value;
 
 	var tablaEliminar=document.querySelector("TABLE");
 	if(tablaEliminar!=null) //si hay una tabla en el div de listados la quita para reemplazarla
@@ -36,57 +40,59 @@ function listadoAlquileres(){////// falta mirar si funciona
 	}
 
 	for ( var i=0;i<oGestion._alquileres.length;i++){
-		oFila=oTabla.insertRow(1);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._alquileres[i].id);
-		oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode("");
-		for (var j=0;j<oGestion._alquileres[i].conductor.length;j++){
-			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].dni;
-			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].nombre;
-			oTexto=document.createTextNode(oGestion._alquileres[i].conductor[j].dni+" - ");
+		if (oGestion._alquileres[i].cliente.dni==dniCliente){
+			oFila=oTabla.insertRow(1);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode(oGestion._alquileres[i].id);
 			oCelda.appendChild(oTexto);
-			oTexto=document.createTextNode(oGestion._alquileres[i].conductor[j].nombre);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode("");
+			for (var j=0;j<oGestion._alquileres[i].conductor.length;j++){
+				//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].dni;
+				//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].nombre;
+				oTexto=document.createTextNode(oGestion._alquileres[i].conductor[j].dni+" - ");
+				oCelda.appendChild(oTexto);
+				oTexto=document.createTextNode(oGestion._alquileres[i].conductor[j].nombre);
+				oCelda.appendChild(oTexto);
+				oCelda.appendChild(document.createElement("BR"));
+			}
+			//oCelda.appendChild(oTexto);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode("");
+			for (var j=0;j<oGestion._alquileres[i].autobuses.length;j++){
+				//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].matricula;
+				oTexto=document.createTextNode(oGestion._alquileres[i].autobuses[j].matricula+" - ");
+				oCelda.appendChild(oTexto);
+				//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].modelo;
+				oTexto=document.createTextNode(oGestion._alquileres[i].autobuses[j].modelo);
+				oCelda.appendChild(oTexto);
+				oCelda.appendChild(document.createElement("BR"));
+			}
+			//oCelda.appendChild(oTexto);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode(oGestion._alquileres[i].fecha);
 			oCelda.appendChild(oTexto);
-			oCelda.appendChild(document.createElement("BR"));
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode(oGestion._alquileres[i].numPers);
+			oCelda.appendChild(oTexto);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode(oGestion._alquileres[i].descripcion);
+			oCelda.appendChild(oTexto);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode(oGestion._alquileres[i].origen);
+			oCelda.appendChild(oTexto);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode(oGestion._alquileres[i].destino);
+			oCelda.appendChild(oTexto);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode(oGestion._alquileres[i].kms);
+			oCelda.appendChild(oTexto);
+			oCelda=oFila.insertCell();
+			oTexto=document.createTextNode("");
+			oTexto.textContent+=oGestion._alquileres[i].cliente.dni;
+			oTexto.textContent+=oGestion._alquileres[i].cliente.nombre;
+			oCelda.appendChild(oTexto);
 		}
-		//oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode("");
-		for (var j=0;j<oGestion._alquileres[i].autobuses.length;j++){
-			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].matricula;
-			oTexto=document.createTextNode(oGestion._alquileres[i].autobuses[j].matricula+" - ");
-			oCelda.appendChild(oTexto);
-			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].modelo;
-			oTexto=document.createTextNode(oGestion._alquileres[i].autobuses[j].modelo);
-			oCelda.appendChild(oTexto);
-			oCelda.appendChild(document.createElement("BR"));
-		}
-		//oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._alquileres[i].fecha);
-		oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._alquileres[i].numPers);
-		oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._alquileres[i].descripcion);
-		oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._alquileres[i].origen);
-		oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._alquileres[i].destino);
-		oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._alquileres[i].kms);
-		oCelda.appendChild(oTexto);
-		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode("");
-		oTexto.textContent+=oGestion._alquileres[i].cliente.dni;
-		oTexto.textContent+=oGestion._alquileres[i].cliente.nombre;
-		oCelda.appendChild(oTexto);
 	}
 
 	oTabla.classList.add("table");
