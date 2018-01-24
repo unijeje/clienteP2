@@ -25,6 +25,7 @@ function listadoAlquileres(){////// falta mirar si funciona
 	var oTabla=document.createElement("TABLE");
 	var oFila=oTabla.insertRow();
 	oFila.classList.add("thead-dark");
+	oFila.classList.add("text-center");
 	for ( var i=0;i<10;i++){// crea la cabecera la tabla
 		oCelda=document.createElement("TH");
 		oTexto=document.createTextNode(cabeceras[i]);
@@ -40,17 +41,27 @@ function listadoAlquileres(){////// falta mirar si funciona
 		oCelda=oFila.insertCell();
 		oTexto=document.createTextNode("");
 		for (var j=0;j<oGestion._alquileres[i].conductor.length;j++){
-			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].dni;
-			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].nombre;
+			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].dni;
+			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].conductor[j].nombre;
+			oTexto=document.createTextNode(oGestion._alquileres[i].conductor[j].dni+" - ");
+			oCelda.appendChild(oTexto);
+			oTexto=document.createTextNode(oGestion._alquileres[i].conductor[j].nombre);
+			oCelda.appendChild(oTexto);
+			oCelda.appendChild(document.createElement("BR"));
 		}
-		oCelda.appendChild(oTexto);
+		//oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
 		oTexto=document.createTextNode("");
 		for (var j=0;j<oGestion._alquileres[i].autobuses.length;j++){
-			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].matricula;
-			oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].modelo;
+			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].matricula;
+			oTexto=document.createTextNode(oGestion._alquileres[i].autobuses[j].matricula+" - ");
+			oCelda.appendChild(oTexto);
+			//oTexto.textContent=oTexto.textContent+oGestion._alquileres[i].autobuses[j].modelo;
+			oTexto=document.createTextNode(oGestion._alquileres[i].autobuses[j].modelo);
+			oCelda.appendChild(oTexto);
+			oCelda.appendChild(document.createElement("BR"));
 		}
-		oCelda.appendChild(oTexto);
+		//oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
 		oTexto=document.createTextNode(oGestion._alquileres[i].fecha);
 		oCelda.appendChild(oTexto);
