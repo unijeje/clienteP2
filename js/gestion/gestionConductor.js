@@ -29,6 +29,11 @@ var oComboModificaConductor=document.frmConductorModificar.comboConductor;
 oComboBajaConductor.addEventListener("change", rellenaCamposConductor, false);
 oComboModificaConductor.addEventListener("change", rellenaCamposConductor, false);
 
+var oComboBajaVacaciones=document.frmBajaDeVacaciones.comboConductorVacaciones;
+var oComboModificaVacaciones=document.frmModificarVacaciones.comboConductorVacaciones;
+oComboBajaVacaciones.addEventListener("change", rellenaCamposVacaciones, false);
+oComboModificaVacaciones.addEventListener("change", rellenaCamposVacaciones, false);
+
 comboEstadoInicialConductores();
 
 function altaConductor(oEvento){
@@ -340,10 +345,10 @@ function rellenaCamposConductor(oEvento){
 	
 }
 
-function rellenaCamposVacaciones(){
+function rellenaCamposVacaciones(oEvento){
 	var oE = oEvento || windows.event;
 	var formVacaciones= oE.target.parentNode.parentNode.parentNode;
-	var oConductor= oGestion.buscarVacaciones(formVacaciones.comboConductor.value);
+	var oConductor= oGestion.buscarVacaciones(formVacaciones.comboConductorVacaciones.value);
 	
 	formVacaciones.fechaInicio.value= oConductor.fechaIni;
 	formVacaciones.fechaInicio.value= oConductor.fechaIni;

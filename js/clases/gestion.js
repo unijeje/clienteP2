@@ -383,7 +383,7 @@ class Gestion
 		
 		if(bEncontrado==false){
 			this._vacaciones.push(oVacaciones);  console.log("he entrado");
-            this.actualizaComboConductores();
+            this.actualizaComboVacaciones();
 		}
 		
 		return bEncontrado;
@@ -399,6 +399,16 @@ class Gestion
         return oConductor;
     }
 	
+	buscarVacaciones(sDni){
+		var oConductor=null;
+        for(var i=0;i<this._vacaciones.length && oConductor==null;i++)
+        {
+            if(sDni==this._vacaciones[i].dni)
+                oConductor=this._vacaciones[i];
+        }
+        return oConductor;
+	}
+	
 	actualizaComboConductores(){		
 		var oComboBajaConductor=document.frmConductorBaja.comboConductor;
         var oComboModificaConductor=document.frmConductorModificar.comboConductor;
@@ -406,8 +416,6 @@ class Gestion
         var oComboModificarAlquiler=document.frmModificarAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
         var oComboBorrarAlquiler=document.frmBorraAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
         var oComboAltaVacacionesConductor=document.frmAltaDeVacaciones.comboConductor;
-        var oComboBajaVacacionesConductor=document.frmBajaDeVacaciones.comboConductor;
-        var oComboModificarVacacionesConductor=document.frmModificarVacaciones.comboConductor;
 
 		 while (oComboBajaConductor.firstChild) { //tienen el mismo nº de hijos
             oComboBajaConductor.removeChild(oComboBajaConductor.firstChild);
@@ -435,17 +443,29 @@ class Gestion
                 oComboModificarAlquiler.appendChild(oComboBajaConductor.lastChild.cloneNode(true));
                 oComboBorrarAlquiler.appendChild(oComboBajaConductor.lastChild.cloneNode(true));                    
             }
-			
-			for(var j=0; j<this._vacaciones.length; j++){
-				if(this._conductores[i].dni==this._vacaciones[j].dni){
+		}
+	}
+	
+	actualizaComboVacaciones(){
+		var oComboBajaVacacionesConductor=document.frmBajaDeVacaciones.comboConductorVacaciones;
+        var oComboModificarVacacionesConductor=document.frmModificarVacaciones.comboConductorVacaciones;
+		
+		while (oComboBajaVacacionesConductor.firstChild) {
+            oComboBajaVacacionesConductor.removeChild(oComboBajaVacacionesConductor.firstChild);
+            oComboModificarVacacionesConductor.removeChild(oComboModificarVacacionesConductor.firstChild);
+        }
+		
+		for(var j=0; j<this._vacaciones.length; j++){
+			for(var l=0; l<this._conductores.length;l++){
+				if(this._conductores[l].dni==this._vacaciones[j].dni){
 					var selectComboVacaciones=document.createElement("option");				
-					selectComboVacaciones.value=this._conductores[i].dni;
-					selectComboVacaciones.text=this._conductores[i].dni+" - "+this._conductores[i].nombre+" "+this._conductores[i].apellidos;
+					selectComboVacaciones.value=this._conductores[l].dni;
+					selectComboVacaciones.text=this._conductores[l].dni+" - "+this._conductores[l].nombre+" "+this._conductores[l].apellidos;
 					oComboBajaVacacionesConductor.appendChild(selectComboVacaciones);
 					oComboModificarVacacionesConductor.appendChild(oComboBajaVacacionesConductor.lastChild.cloneNode(true));
 				}
 			}
-        }
+		}
 	}
 	
     //autobuses
