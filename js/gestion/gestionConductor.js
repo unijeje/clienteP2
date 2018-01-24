@@ -56,10 +56,7 @@ function altaConductor(oEvento){
 		} else{
 			mensaje("Este conductor ya existe");
 		}
-	} else{
-		mensaje("Fallo en la validación.");
-	}
-	
+	}	
 }
 
 function bajaConductor(){
@@ -71,9 +68,7 @@ function bajaConductor(){
 		mensaje("Cliente "+oConductor.dni+" dado de baja correctamente");
 		document.frmConductorBaja.style.display="none";
 		comboEstadoInicialConductores();
-	} else{
-		mensaje("Error al dar de baja");
-	}
+	} 
 }
 
 function modificarConductor(oEvento){
@@ -100,16 +95,33 @@ function modificarConductor(oEvento){
 			mensaje("Este conductor ya existe");*/
 			comboEstadoInicialConductores();
 		}
-	} else{
-		mensaje("Fallo al modificar el conductor, rellene los campos correctamente");
 	}
 }
+
+var idVacaciones=0;
 
 function altaVacaciones(oEvento){
 	var oE = oEvento || windows.event;
 	var formVacaciones=oE.target.parentNode.parentNode.parentNode;
 	
-	
+	if(validarVacaciones(formVacaciones)){
+		var dniConductor= frmAltaDeVacaciones.comboConductor.value.trim();
+		var fechaInicio= new Date(frmAltaDeVacaciones.fechaIni.value.trim());
+		var fechaFin= new Date(frmAltaDeVacaciones.fechaFin.value.trim());
+		var descripcion= frmAltaDeVacaciones.descripcion.value.trim();
+		idVacaciones++;
+		
+		var oVacaciones= new Vacaciones(idVacaciones,dniConductor,fechaInicio,fechaFin,descripcion);
+		console.log(oVacaciones);
+		
+		if(oGestion.altaVacaciones(oVacaciones)==true){
+			document.frmAltaDeVacaciones.reset();
+			document.frmAltaDeVacaciones.style.display="none";
+			mensaje("Vacaciones Aceptadas");
+		} else{
+			mensaje("Ese conductor ya tiene vacaciones");
+		}			
+	} 
 }
 
 function bajaVacaciones(){
@@ -131,8 +143,8 @@ function validarConductor(formAltaConductor){
 	if(!oExpRegDni.test(dniConductor)){
 		formAltaConductor.txtConductorDni.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorDni.focus();
-		sError="El DNI tiene que ser 8 caracteres númericos y uno alfabético";
-		falloValidacion(sError, formAltaConductor.txtConductorDni);
+		error= "El DNI tiene que ser 8 caracteres númericos y uno alfabético";
+		falloValidacion(error, formAltaConductor.txtConductorDni);
 		bValido= false;
 	} else{
 		formAltaConductor.txtConductorDni.parentNode.parentNode.classList.remove("has-error");
@@ -146,8 +158,8 @@ function validarConductor(formAltaConductor){
 	if(!oExpRegNombre.test(nombreConductor)){
 		formAltaConductor.txtConductorNombre.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorNombre.focus();
-		sError="El nombre del conductor tiene que ser entre 3 y 20 carácteres alfabéticos \n";
-		falloValidacion(sError, formAltaConductor.txtConductorNombre);
+		error= "El nombre tiene que ser entre 3 y 20 carácteres alfabéticos";
+		falloValidacion(error, formAltaConductor.txtConductorNombre);
 		bValido= false;
 	} else{
 		formAltaConductor.txtConductorNombre.parentNode.parentNode.classList.remove("has-error");
@@ -161,8 +173,8 @@ function validarConductor(formAltaConductor){
 	if(!oExpRegApellidos.test(apellidosConductor)){
 		formAltaConductor.txtConductorApellidos.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorApellidos.focus();
-		sError="El Apellido del conductor tiene que ser entre 3 y 20 carácteres alfabéticos \n";
-		falloValidacion(sError, formAltaConductor.txtConductorApellidos);
+		error= "El Apellido tiene que ser entre 3 y 20 carácteres alfabéticos";
+		falloValidacion(error, formAltaConductor.txtConductorApellidos);
 		bValido= false;
 	} else{
 		formAltaConductor.txtConductorApellidos.parentNode.parentNode.classList.remove("has-error");
@@ -186,11 +198,15 @@ function validarConductor(formAltaConductor){
 	if(!validarRadio(formAltaConductor.radioConductorSexo))
 	{
 		formAltaConductor.radioConductorSexo[0].parentNode.parentNode.classList.add("has-error");
+		error= "Debe seleccionar un género";
 		bValido=false;
+		falloValidacion(error, formAltaConductor.radioConductorSexo[0].parentNode);
 	}
-	else
+	else {
 		formAltaConductor.radioConductorSexo[0].parentNode.parentNode.classList.remove("has-error");
-		
+		falloValidacion("", formAltaConductor.radioConductorSexo[0].parentNode);
+	}
+	
 	//campo telefono conductor
 	var tlfConductor= formAltaConductor.txtConductorTelefono.value.trim();
 	formAltaConductor.txtConductorTelefono.value= formAltaConductor.txtConductorTelefono.value.trim();
@@ -198,8 +214,8 @@ function validarConductor(formAltaConductor){
 	if(!oExpRegTelefono.test(tlfConductor)){
 		formAltaConductor.txtConductorTelefono.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorTelefono.focus();
-		sError="El Telefono no es correcto \n";
-		falloValidacion(sError, formAltaConductor.txtConductorTelefono);
+		error= "El Telefono no es correcto";
+		falloValidacion(error, formAltaConductor.txtConductorTelefono);
 		bValido= false;
 	} else{
 		formAltaConductor.txtConductorTelefono.parentNode.parentNode.classList.remove("has-error");
@@ -213,8 +229,8 @@ function validarConductor(formAltaConductor){
 	if(!oExpRegCorreo.test(emailConductor)){
 		formAltaConductor.txtConductorCorreo.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorCorreo.focus();
-		sError="El correo no es valido \n";
-		falloValidacion(sError, formAltaConductor.txtConductorCorreo);
+		error= "El email no es correcto";
+		falloValidacion(error, formAltaConductor.txtConductorCorreo);
 		bValido= false;
 	} else{
 		formAltaConductor.txtConductorCorreo.parentNode.parentNode.classList.remove("has-error");
@@ -228,8 +244,8 @@ function validarConductor(formAltaConductor){
 	if(direccionConductor==""){
 		formAltaConductor.txtConductorDireccion.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorDireccion.focus();
-		sError="Tiene que introducir una dirección \n";
-		falloValidacion(sError, formAltaConductor.txtConductorDireccion);
+		error= "Escriba una direccion";
+		falloValidacion(error, formAltaConductor.txtConductorDireccion);
 		bValido= false;
 	} else{
 		formAltaConductor.txtConductorDireccion.parentNode.parentNode.classList.remove("has-error");
@@ -243,8 +259,8 @@ function validarConductor(formAltaConductor){
 	if(!oExpRegularNumCuenta.test(numCuentaConductor)){
 		formAltaConductor.txtConductorCuenta.parentNode.parentNode.classList.add("has-error");
 		formAltaConductor.txtConductorCuenta.focus();
-		sError="El numero de cuenta tiene que tener 20 dígitos";
-		falloValidacion(sError, formAltaConductor.txtConductorCuenta);
+		error= "El numero de cuenta debe de tener 20 dígitos";
+		falloValidacion(error, formAltaConductor.txtConductorCuenta);
 		bValido= false;
 	} else{
 		formAltaConductor.txtConductorCuenta.parentNode.parentNode.classList.remove("has-error");
@@ -255,7 +271,50 @@ function validarConductor(formAltaConductor){
 }
 
 function validarVacaciones(formVacaciones){
+	var bValido= true;
 	
+	//fecha inicio
+	var fechaInicio= formVacaciones.fechaIni.value.trim();
+	formVacaciones.fechaIni.value= formVacaciones.fechaIni.value.trim();
+	
+	if(fechaInicio==""){
+		formVacaciones.fechaIni.parentNode.parentNode.classList.add("has-error");
+		formVacaciones.fechaIni.focus();
+		error= "Seleccione una fecha de inicio";
+		falloValidacion(error, formVacaciones.fechaIni);
+	} else{
+		formVacaciones.fechaIni.parentNode.parentNode.classList.remove("has-error");
+		falloValidacion("", formVacaciones.fechaIni);
+	}
+	
+	//fecha fin
+	var fechaFin= formVacaciones.fechaFin.value.trim();
+	formVacaciones.fechaFin.value= formVacaciones.fechaFin.value.trim();
+	
+	if(fechaInicio==""){
+		formVacaciones.fechaFin.parentNode.parentNode.classList.add("has-error");
+		formVacaciones.fechaFin.focus();
+		error= "Seleccione una fecha fin";
+		falloValidacion(error, formVacaciones.fechaFin);
+	} else{
+		formVacaciones.fechaFin.parentNode.parentNode.classList.remove("has-error");
+		falloValidacion("", formVacaciones.fechaFin);
+	}
+	
+	//descripcion
+	var descripcionVacaciones= formVacaciones.descripcion.value.trim();
+	formVacaciones.descripcion.value= formVacaciones.descripcion.value.trim();
+		
+	if(descripcionVacaciones==""){
+		formVacaciones.descripcion.parentNode.parentNode.classList.add("has-error");
+		formVacaciones.descripcion.focus();
+		error= "Escriba el motivo de las vacaciones";
+		falloValidacion(error, formVacaciones.descripcion);
+		bValido= false;
+	} else{
+		formVacaciones.descripcion.parentNode.parentNode.classList.remove("has-error");
+		falloValidacion("", formVacaciones.descripcion);
+	}
 }
 
 function rellenaCamposConductor(oEvento){
@@ -272,5 +331,9 @@ function rellenaCamposConductor(oEvento){
 	oForm.txtConductorCorreo.value=oConductor.email;
 	oForm.txtConductorDireccion.value= oConductor.direccion;
     oForm.txtConductorCuenta.value=oConductor.numCuenta;
+	
+}
+
+function rellenaCamposVacaciones(){
 	
 }

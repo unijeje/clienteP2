@@ -338,6 +338,10 @@ class Gestion
 		
         return !bEncontrado;       
     }
+	
+	altaVacaciones(oVacaciones){
+		
+	}
 
 	buscarConductor(sDni){
         var oConductor=null;
