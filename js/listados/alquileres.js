@@ -20,7 +20,7 @@ function listadoAlquileres(){
 	cabeceras[6]="Origen";
 	cabeceras[7]="Destino";
 	cabeceras[8]="KMS";
-	cabeceras[9]="Cliente";
+	//cabeceras[9]="Cliente";
 
 	var oCelda;
 	var oTexto;
@@ -30,7 +30,7 @@ function listadoAlquileres(){
 	var oFila=oTabla.insertRow();
 	oFila.classList.add("thead-dark");
 	oFila.classList.add("text-center");
-	for ( var i=0;i<10;i++){// crea la cabecera la tabla
+	for ( var i=0;i<9;i++){// crea la cabecera la tabla
 		oCelda=document.createElement("TD");
 		oTexto=document.createTextNode(cabeceras[i]);
 		oCelda.appendChild(oTexto);
@@ -87,11 +87,11 @@ function listadoAlquileres(){
 			oCelda=oFila.insertCell();
 			oTexto=document.createTextNode(oGestion._alquileres[i].kms);
 			oCelda.appendChild(oTexto);
-			oCelda=oFila.insertCell();
-			oTexto=document.createTextNode("");
-			oTexto.textContent+=oGestion._alquileres[i].cliente.dni;
-			oTexto.textContent+=oGestion._alquileres[i].cliente.nombre;
-			oCelda.appendChild(oTexto);
+			//oCelda=oFila.insertCell();
+			//oTexto=document.createTextNode("");
+			//oTexto.textContent+=oGestion._alquileres[i].cliente.dni;
+			//oTexto.textContent+=oGestion._alquileres[i].cliente.nombre;
+			//oCelda.appendChild(oTexto);
 		}
 	}
 
