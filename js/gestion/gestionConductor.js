@@ -102,25 +102,29 @@ var idVacaciones=0;
 
 function altaVacaciones(oEvento){
 	var oE = oEvento || windows.event;
-	var formVacaciones=oE.target.parentNode.parentNode.parentNode;
+	var formVacaciones=oE.target.parentNode.parentNode.parentNode; console.log(formVacaciones);
 	
 	if(validarVacaciones(formVacaciones)){
-		var dniConductor= frmAltaDeVacaciones.comboConductor.value.trim();
+		var dniConductor= frmAltaDeVacaciones.comboConductor.value.trim();  console.log(dniConductor);
 		var fechaInicio= new Date(frmAltaDeVacaciones.fechaIni.value.trim());
 		var fechaFin= new Date(frmAltaDeVacaciones.fechaFin.value.trim());
 		var descripcion= frmAltaDeVacaciones.descripcion.value.trim();
-		idVacaciones++;
-		
-		var oVacaciones= new Vacaciones(idVacaciones,dniConductor,fechaInicio,fechaFin,descripcion);
-		console.log(oVacaciones);
-		
-		if(oGestion.altaVacaciones(oVacaciones)==true){
-			document.frmAltaDeVacaciones.reset();
-			document.frmAltaDeVacaciones.style.display="none";
-			mensaje("Vacaciones Aceptadas");
+				
+		if((fechaFin-fechaInicio)>=0){
+			idVacaciones++;
+			var oVacaciones= new Vacaciones(idVacaciones,dniConductor,fechaInicio,fechaFin,descripcion);
+			console.log(oVacaciones);
+				
+			if(oGestion.altaVacaciones(oVacaciones)==false){
+				document.frmAltaDeVacaciones.reset();
+				document.frmAltaDeVacaciones.style.display="none";
+				mensaje("Vacaciones Aceptadas");
+			} else{
+				mensaje("Ese conductor ya tiene vacaciones");
+			}			
 		} else{
-			mensaje("Ese conductor ya tiene vacaciones");
-		}			
+			mensaje("Fechas erroneas");
+		}
 	} 
 }
 
@@ -314,6 +318,8 @@ function validarVacaciones(formVacaciones){
 		formVacaciones.descripcion.parentNode.parentNode.classList.remove("has-error");
 		falloValidacion("", formVacaciones.descripcion);
 	}
+	
+	return bValido;
 }
 
 function rellenaCamposConductor(oEvento){
@@ -334,5 +340,12 @@ function rellenaCamposConductor(oEvento){
 }
 
 function rellenaCamposVacaciones(){
+	var oE = oEvento || windows.event;
+	var formVacaciones= oE.target.parentNode.parentNode.parentNode;
+	var oConductor= oGestion.buscarVacaciones(formVacaciones.comboConductor.value);
 	
+	formVacaciones.fechaInicio.value= oConductor.fechaIni;
+	formVacaciones.fechaInicio.value= oConductor.fechaIni;
+	formVacaciones.fechaInicio.value= oConductor.fechaIni;
+	formVacaciones.descripcion.value= oConductor.descripcion;
 }

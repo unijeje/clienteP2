@@ -332,7 +332,20 @@ class Gestion
     }
 	
 	altaVacaciones(oVacaciones){
+		var bEncontrado= false;
 		
+		for(var i=0;i<this._vacaciones.length && bEncontrado==false;i++){
+			if(this._vacaciones[i].dni==oVacaciones.dni){
+				bEncontrado=true;
+			}
+		}
+		
+		if(bEncontrado==false){
+			this._vacaciones.push(oVacaciones);  console.log("he entrado");
+            this.actualizaComboConductores();
+		}
+		
+		return bEncontrado;
 	}
 
 	buscarConductor(sDni){
