@@ -138,6 +138,7 @@ function modificarVacaciones(){
 
 function validarConductor(formAltaConductor){
 	var bValido= true;
+	var sError="";
 	
 	//campo dni conductor
 	var dniConductor= formAltaConductor.txtConductorDni.value.trim();

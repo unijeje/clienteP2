@@ -27,9 +27,11 @@ function listadoAlquileres(){////// falta mirar si funciona
 	oFila.classList.add("thead-dark");
 	oFila.classList.add("text-center");
 	for ( var i=0;i<10;i++){// crea la cabecera la tabla
-		oCelda=document.createElement("TH");
+		oCelda=document.createElement("TD");
 		oTexto=document.createTextNode(cabeceras[i]);
 		oCelda.appendChild(oTexto);
+		oCelda.classList.add("lead");
+		
 		oFila.appendChild(oCelda);
 	}
 

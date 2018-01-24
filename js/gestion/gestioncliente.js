@@ -107,7 +107,7 @@ function validarCliente(oForm)
     var sApellidosCliente=oForm.txtClienteApellidos.value.trim();
     oForm.txtClienteApellidos.value=oForm.txtClienteApellidos.value.trim();
 
-    if(!oExpRegNombre.test(sApellidosCliente))
+    if(!oExpRegApellidos.test(sApellidosCliente))
     {
         oForm.txtClienteApellidos.parentNode.parentNode.classList.add("has-error");
         if(bValidacion)

@@ -21,9 +21,10 @@ function listadoAutobuses()
 	var oFila=oTabla.insertRow();
 	oFila.classList.add("thead-dark");
 	for ( var i=0;i<6;i++){// crea la cabecera la tabla
-		oCelda=document.createElement("TH");
+		oCelda=document.createElement("TD");
 		oTexto=document.createTextNode(cabeceras[i]);
 		oCelda.appendChild(oTexto);
+		oCelda.classList.add("lead");
 		oFila.appendChild(oCelda);
 	}
 

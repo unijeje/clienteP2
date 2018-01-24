@@ -18,8 +18,16 @@ class Gestion
     //funciones
     añadirCuenta(sNumCuenta)
     {
-        var oCuenta=new Cuenta(sNumCuenta);
-        this._cuentas.push(oCuenta);
+        var bExiste=this.buscarCuenta(sNumCuenta);
+        if(!bExiste)
+        {
+            var oCuenta=new Cuenta(sNumCuenta);
+            this._cuentas.push(oCuenta);
+        }
+        else
+        {
+            mensaje("Ya existe una cuenta con ese número. No se ha añadido");
+        }
     }
     buscarCuenta(sNumCuenta)
     {

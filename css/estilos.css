@@ -35,10 +35,10 @@ button{
     display:none;
 }
 /*OCULTAR Listados*/
-#panelCuenta
+#panelCuenta, #panelConductor
 {
     display:none;
-    
+    width:100%;
 }
 
 #panelCuenta input
@@ -46,6 +46,11 @@ button{
     float:left;
     margin-left: 25%;
 }
+
+.invisible{
+    display:none;
+}
+
 
 /*************/
 

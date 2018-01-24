@@ -22,7 +22,7 @@
     <cliente id="003">
         <dni>98765432A</dni>
         <nombre>Javier</nombre>
-        <apellidos>Bermúdez</apellidos>
+        <apellidos>Bermudez</apellidos>
         <tlf>681245245</tlf>
         <correo>Correo031@gmail.com</correo>
         <numCuenta>01122334400667788990</numCuenta>
@@ -50,7 +50,7 @@
     <conductor id="001">
         <dni>09876543F</dni>
         <nombre>Julio</nombre>
-        <apellidos>Cuéllar</apellidos>
+        <apellidos>Cuellar</apellidos>
         <sexo>Masculino</sexo>
         <tlf>680752541</tlf>
         <correo>Correo749@gmail.com</correo>
