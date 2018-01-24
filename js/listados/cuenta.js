@@ -129,7 +129,7 @@ function listadoCuentaPorFecha()
             if(new Date(oFilas[j].dataset.fecha).toDateString()==oFecha[i].toDateString())
             {
                 oFilasOrdenado.push(oFilas[j]);
-                
+                oFilas[j].dataset.fecha=""; //para que no vuelva a coger repetidas
                 bMetido=true;
             }
         }
