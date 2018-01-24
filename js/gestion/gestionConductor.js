@@ -103,7 +103,7 @@ function modificarConductor(oEvento){
 	}
 }
 
-var idVacaciones=0;
+//var idVacaciones=0;
 
 function altaVacaciones(oEvento){
 	var oE = oEvento || windows.event;
@@ -116,13 +116,14 @@ function altaVacaciones(oEvento){
 		var descripcion= frmAltaDeVacaciones.descripcion.value.trim();
 				
 		if((fechaFin-fechaInicio)>=0){
-			idVacaciones++;
-			var oVacaciones= new Vacaciones(idVacaciones,dniConductor,fechaInicio,fechaFin,descripcion);
+			//idVacaciones++;
+			var oVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaFin,descripcion);
 			console.log(oVacaciones);
 				
 			if(oGestion.altaVacaciones(oVacaciones)==false){
 				document.frmAltaDeVacaciones.reset();
-				document.frmAltaDeVacaciones.style.display="none";
+				document.frmAltaDeVacaciones.style.display= "none";
+				document.frmConductorVacaciones.radioVacacionesAlta.checked= false;
 				mensaje("Vacaciones Aceptadas");
 			} else{
 				mensaje("Ese conductor ya tiene vacaciones");
@@ -134,11 +135,45 @@ function altaVacaciones(oEvento){
 }
 
 function bajaVacaciones(){
+	var dniConductor= frmBajaDeVacaciones.comboConductorVacaciones.value;
+	var oConductorVacaciones= oGestion.buscarVacaciones(dniConductor);
+	var darDeBajaVacaciones= oGestion.bajaVacaciones(oConductorVacaciones);
 	
+	if(darDeBajaVacaciones==true){
+		mensaje("Vacaciones Anuladas");
+		document.frmBajaDeVacaciones.style.display= "none";
+		document.frmConductorVacaciones.radioVacacionesBaja.checked= false;
+		oGestion.actualizaComboVacaciones();
+	}
 }
 
 function modificarVacaciones(){
+	var oE = oEvento || windows.event;
+	var formVacaciones=oE.target.parentNode.parentNode.parentNode; console.log(formVacaciones);
 	
+	if(validarVacaciones(formVacaciones)){
+		var dniConductor= frmModificarVacaciones.comboConductor.value.trim();  console.log(dniConductor);
+		var fechaInicio= new Date(frmModificarVacaciones.fechaIniModificada.value.trim());
+		var fechaFin= new Date(frmModificarVacaciones.fechaFinModificada.value.trim());
+		var descripcion= frmModificarVacaciones.descripcion.value.trim();
+				
+		if((fechaFin-fechaInicio)>=0){
+			//idVacaciones++;
+			var oNuevasVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaFin,descripcion);
+			console.log(oVacaciones);
+				
+			if(oGestion.modificarVacaciones(oNuevasVacaciones)==false){
+				document.frmModificarVacaciones.reset();
+				document.frmModificarVacaciones.style.display= "none";
+				document.frmConductorVacaciones.radioVacacionesModificar.checked= false;
+				mensaje("Vacaciones Modificadas");
+			} else{
+				mensaje("Fechas Incorrectas/Modificacion no completada");
+			}			
+		} else{
+			mensaje("Fechas erroneas");
+		}
+	}
 }
 
 function validarConductor(formAltaConductor){
@@ -351,7 +386,6 @@ function rellenaCamposVacaciones(oEvento){
 	var oConductor= oGestion.buscarVacaciones(formVacaciones.comboConductorVacaciones.value);
 	
 	formVacaciones.fechaInicio.value= oConductor.fechaIni;
-	formVacaciones.fechaInicio.value= oConductor.fechaIni;
-	formVacaciones.fechaInicio.value= oConductor.fechaIni;
+	formVacaciones.fechaFin.value= oConductor.fechaFin;
 	formVacaciones.descripcion.value= oConductor.descripcion;
 }
