@@ -816,7 +816,7 @@ function comboEstadoInicialAutubuses()
 
         frmModificarMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
         frmModificarMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
-        frmModificarMantenimiento.txtMantenimientoFecha.value=oMantenimiento.fecha;
+        frmModificarMantenimiento.txtMantenimientoFechaA.value=oMantenimiento.fecha;
 
         frmBajaMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
         frmBajaMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
