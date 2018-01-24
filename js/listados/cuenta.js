@@ -112,20 +112,22 @@ function listadoCuentaPorFecha()
     }
 
     oFecha.sort(date_sort_desc); //ordenar array
+
+    /*
     for(var i=0;i<oFecha.length;i++)
     console.log(oFecha[i].toDateString());
-
+    */
     for(var i=0;i<oFecha.length;i++)
     {
         var bMetido=false;
         //console.log(oFecha[i].toDateString());
         for(var j=1;j<oFilas.length && bMetido==false;j++)
         {
-            
+            /*
             console.log(i);
             console.log("fila: "+new Date(oFilas[j].dataset.fecha));
             console.log("array: "+oFecha[i]);
-            
+            */
             if(new Date(oFilas[j].dataset.fecha).toDateString()==oFecha[i].toDateString())
             {
                 oFilasOrdenado.push(oFilas[j]);
@@ -135,8 +137,11 @@ function listadoCuentaPorFecha()
         }
             
     }
-//    for (var i=0;i<oFilasOrdenado.length;i++)
-        console.log(oFilasOrdenado);
+    for (var i=0;i<oFilasOrdenado.length;i++)
+    {
+        oFilasOrdenado[i].dataset.fecha=oFecha[i];
+    }
+    console.log(oFilasOrdenado);
 
     var oBodyTable=document.querySelector("#resultadoListados table tbody");
     for(var i=0;i<oFilasOrdenado.length;i++) //insertar
