@@ -32,15 +32,18 @@ function listadoCuenta()
     var oTexto;
 
     var oTabla=document.createElement("TABLE");
-    
-	var oFila=oTabla.insertRow();
+    var oTHead=oTabla.createTHead();
+	var oFila=oTHead.insertRow();
 	oFila.classList.add("thead-dark");
 
     for(var i=0;i<cabeceras.length;i++)
     {
-        oCelda=document.createElement("TH");
-		oTexto=document.createTextNode(cabeceras[i]);
-		oCelda.appendChild(oTexto);
+        oCelda=document.createElement("TD");
+        oTexto=document.createTextNode(cabeceras[i]);
+        
+        oCelda.appendChild(oTexto);
+        oCelda.classList.add("bg-info");
+        oCelda.classList.add("lead");
 		oFila.appendChild(oCelda);
     }
 
