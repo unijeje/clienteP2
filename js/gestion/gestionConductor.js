@@ -15,6 +15,15 @@ oBtnBajaConductor.addEventListener("click",bajaConductor,false);
 var oBtnModificarConductor= document.getElementById("btnModificarConductor");
 oBtnModificarConductor.addEventListener("click",modificarConductor,false);
 
+var oBtnAltaVacaciones= document.getElementById("btnAltaVacaciones");
+oBtnAltaVacaciones.addEventListener("click",altaVacaciones,false);
+
+var oBtnBajaVacaciones= document.getElementById("btnBajaVacaciones");
+oBtnBajaVacaciones.addEventListener("click",bajaVacaciones,false);
+
+var oBtnModificarVacaciones= document.getElementById("btnMofificarVacaciones");
+oBtnModificarVacaciones.addEventListener("click",modificarVacaciones,false);
+
 var oComboBajaConductor=document.frmConductorBaja.comboConductor;
 var oComboModificaConductor=document.frmConductorModificar.comboConductor;
 oComboBajaConductor.addEventListener("change", rellenaCamposConductor, false);
@@ -94,6 +103,21 @@ function modificarConductor(oEvento){
 	} else{
 		mensaje("Fallo al modificar el conductor, rellene los campos correctamente");
 	}
+}
+
+function altaVacaciones(oEvento){
+	var oE = oEvento || windows.event;
+	var formVacaciones=oE.target.parentNode.parentNode.parentNode;
+	
+	
+}
+
+function bajaVacaciones(){
+	
+}
+
+function modificarVacaciones(){
+	
 }
 
 function validarConductor(formAltaConductor){
@@ -213,6 +237,10 @@ function validarConductor(formAltaConductor){
 	}
 	
 	return bValido;
+}
+
+function validarVacaciones(formVacaciones){
+	
 }
 
 function rellenaCamposConductor(oEvento){
