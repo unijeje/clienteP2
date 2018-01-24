@@ -32,8 +32,8 @@ function listadoCuenta()
     var oTexto;
 
     var oTabla=document.createElement("TABLE");
-    var oTHead=oTabla.createTHead();
-	var oFila=oTHead.insertRow();
+    //var oTHead=oTabla.createTHead();
+	var oFila=oTabla.insertRow();
 	oFila.classList.add("thead-dark");
 
     for(var i=0;i<cabeceras.length;i++)

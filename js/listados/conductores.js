@@ -1,5 +1,8 @@
 //todos y vacaciones
 
+var btnMostrarActivos=document.getElementById("btnOrdenarConductoresActivos");
+btnMostrarActivos.addEventListener("click", mostrarConductoresActivos, false);
+
 function listadoConductores()
 {
 	
@@ -71,4 +74,18 @@ function listadoConductores()
 	oTabla.classList.add("text-center");
 	oCapaListado.appendChild(oTabla);
 	
+}
+
+function mostrarConductoresActivos()
+{
+	var oFilas=document.querySelectorAll("#resultadoListados table tbody tr");
+	console.log(oFilas);
+	for(var i=1;i<oFilas.length;i++)
+	{
+		console.log(oFilas[i].lastChild.textContent);
+		if(oFilas[i].lastChild.textContent=="Activo")
+			oFilas[i].classList.remove("invisible");
+		else
+			oFilas[i].classList.add("invisible");
+	}
 }

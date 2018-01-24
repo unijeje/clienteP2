@@ -351,11 +351,14 @@ function mostrarModificarVacaciones(){
 
 //Listados
 var campoCuenta=document.getElementById("panelCuenta");
+var campoConductor=document.getElementById("panelConductor");
+
 function mostrarListadoAutobuses()
 {
     listadoAutobuses();
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
+    campoConductor.style.display="none";
 }
 
 function mostrarListadoClientes()
@@ -363,6 +366,7 @@ function mostrarListadoClientes()
     listadoClientes();
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
+    campoConductor.style.display="none";
 }
 
 function mostrarListadoConductores()
@@ -370,6 +374,7 @@ function mostrarListadoConductores()
     listadoConductores();
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
+    campoConductor.style.display="block";
 }
 
 function mostrarListadoAlquileres()
@@ -377,6 +382,7 @@ function mostrarListadoAlquileres()
     listadoAlquileres();
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
+    campoConductor.style.display="none";
 }
 
 function mostrarListadoCuenta()
@@ -384,6 +390,8 @@ function mostrarListadoCuenta()
     listadoCuenta();
     oCapaListado.style.display="block";
     campoCuenta.style.display="block";
+    campoConductor.style.display="none";
+
 
 }
 
@@ -837,7 +845,7 @@ var oExpRegDni = /^\d{8}[a-zA-Z]$/; //8 num y una letra DNI
 
 var oExpRegNombre = /^[a-z\s]{3,20}$/i; //ENTRE 3 y 20 CARACTERES
 
-var oExpRegApellidos = /^[a-z\s]{3,30}$/i; //ENTRE 3 y 30 CARACTERES
+var oExpRegApellidos = /^([a-zA-Z]\s?)+\s*$/; //puede tener un espacio
 
 var oExpRegCorreo = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i; //EMAIL CORREO
 
