@@ -105,13 +105,14 @@ oBtnListadoCuenta.addEventListener("click",mostrarListadoCuenta,false);
 
 var oCapaListado=document.getElementById("resultadoListados");
 var oCapaListadoAlquileres=document.getElementById("frmListadoAlquileres");
-oCapaListadoAlquileres.style.display="none";
+
 
 //botones panel de mensajes
 var oBtnCerrar=document.getElementById("btnCerrar");
 oBtnCerrar.addEventListener("click", cerrar, false);
 var oPanelMensajes=document.getElementById("panelMensajes");
 var oPanelMensajeTexto=document.getElementById("pTextoMensaje");
+
 
 //ocultar
 

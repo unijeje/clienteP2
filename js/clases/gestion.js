@@ -104,6 +104,7 @@ class Gestion
             this._alquileres.push(oAlquiler);
             res=true;
             this.actualizaComboAlquileres();
+            this.actualizaComboClientesConAlquiler();
 
             //cada vez que se añade un alquiler se calcula el precio que se gana con ese viaje
             var fGanancia=calcularImporteAlquileEmpresa(oAlquiler.conductor.length, oAlquiler.horas, oAlquiler.kms);
@@ -278,24 +279,39 @@ class Gestion
                 oComboBorrarAlquiler.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
                 oComboModificarAlquiler.appendChild(oComboBajaCliente.lastChild.cloneNode(true));
             }    
-        }
+        }      
 
+    }
 
+    actualizaComboClientesConAlquiler()
+    {
         var oComboAlquilerCliente=document.frmListadoAlquileres.comboCliente;
         var oCliente=null;
+        var clientesAnadidos=[];//guarda los dnis de los clientes que se van añadiendo al combo, para que no se repitan
+        var esta=false;
+
          while (oComboAlquilerCliente.firstChild)
              oComboAlquilerCliente.removeChild(oComboAlquilerCliente.firstChild);
 
         for(var i=0;i<this._alquileres.length;i++)//solo mostrar los que tienen alquileres asignados
         { 
-            //console.log("entra");
             oCliente=this.buscarCliente(this._alquileres[i].cliente.dni);
-            var newSelect=document.createElement("option");
-            newSelect.value=oCliente.dni;
-            newSelect.text=oCliente.dni+" - "+oCliente.nombre+" "+oCliente.apellidos;
-            oComboAlquilerCliente.appendChild(newSelect);
+            esta=false;
+            for (var j=0;j<clientesAnadidos.length;j++)
+            { 
+                if(oCliente.dni==clientesAnadidos[j])
+                    esta=true;   
+            }
+            if (!esta)
+            {
+                clientesAnadidos.push(oCliente.dni);
+                var newSelect=document.createElement("option");
+                newSelect.value=oCliente.dni;
+                newSelect.text=oCliente.dni+" - "+oCliente.nombre+" "+oCliente.apellidos;
+                oComboAlquilerCliente.appendChild(newSelect);
+            }
+            
         }
-        
     }
 
     //conductores

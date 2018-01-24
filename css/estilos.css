@@ -35,7 +35,7 @@ button{
     display:none;
 }
 /*OCULTAR Listados*/
-#panelCuenta, #panelConductor
+#panelCuenta, #panelConductor, #frmListadoAlquileres
 {
     display:none;
     width:100%;
