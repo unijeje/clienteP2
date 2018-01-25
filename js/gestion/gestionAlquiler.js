@@ -361,7 +361,7 @@ function validarAlquiler(oForm)
             oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
         }
     }
-	
+	/*
 	for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].value);
 			if(oGestion.comprobarConductorVacaciones(oComboConductores[i].value,fechaDeComprobacion)==true){
 				oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
@@ -373,7 +373,8 @@ function validarAlquiler(oForm)
 				alert("Conductor de vacaciones en esa fecha");
 				bValidacion= false;
 			}
-		}
+        }
+        */
     
     /*Combo Autobuses no esta vacio*/
     
