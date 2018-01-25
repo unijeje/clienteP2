@@ -123,7 +123,7 @@ function altaVacaciones(oEvento){
 			//idVacaciones++;
 			var fechaInicio= new Date(frmAltaDeVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES");
 			var fechaFin= new Date(frmAltaDeVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES");
-			var oVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaFin,descripcion);
+			var oVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaInicioParaComprobar,fechaFin,fechaFinParaComprobar,descripcion);
 			console.log(oVacaciones);
 				
 			if(oGestion.altaVacaciones(oVacaciones)==false){
@@ -178,7 +178,7 @@ function modificarVacaciones(oEvento){
 			
 			var fechaInicio= new Date(frmModificarVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES"); console.log(fechaInicio);
 			var fechaFin= new Date(frmModificarVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES"); console.log(fechaFin);
-			var oNuevasVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaFin,descripcion);
+			var oNuevasVacaciones= new new Vacaciones(dniConductor,fechaInicio,fechaInicioParaComprobar,fechaFin,fechaFinParaComprobar,descripcion);
 			console.log(oNuevasVacaciones);
 				
 			if(oGestion.modificarVacaciones(oNuevasVacaciones,dniConductor)==false){

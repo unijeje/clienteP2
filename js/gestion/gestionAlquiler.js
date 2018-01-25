@@ -57,6 +57,7 @@ function altaAlquiler(oEvento)
         var sIDAlquiler=oForm.txtAlquilerID.value.trim();
         var sHoras=oForm.txtAlquilerHoras.value.trim();
         var dFecha=new Date(oForm.txtAlquilerFecha.value.trim()).toLocaleDateString("es-ES");
+        var dFechaParaComprobar=new Date(oForm.txtAlquilerFecha.value.trim());
         var iNumPers=oForm.txtAlquilerNumPers.value.trim();
         var sDesc=oForm.txtAlquilerDesc.value.trim();
         var sOrigen=oForm.txtAlquilerOrigen.value.trim();
@@ -66,8 +67,9 @@ function altaAlquiler(oEvento)
         //conductores
         var oConductores=[];
         var oComboConductores=oForm.querySelectorAll("#comboConductores");
-        for (var i=0;i<oComboConductores.length;i++)
-            oConductores.push(oGestion.buscarConductor(oComboConductores[i].value));
+        for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].parentNode.parentNode);
+			oConductores.push(oGestion.buscarConductor(oComboConductores[i].value));			
+		}
         /*
         for (var i=0;i<oComboConductores.length;i++)
             console.log(oConductores[i]);
@@ -359,6 +361,20 @@ function validarAlquiler(oForm)
             oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
         }
     }
+	
+	var fechaDeComprobacion= new Date(oForm.txtAlquilerFecha.value.trim()); 
+	//oForm.dFechaParaComprobar=new Date(oForm.txtAlquilerFecha.value.trim()); 
+	
+	for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].value);
+			if(oGestion.comprobarConductorVacaciones(oComboConductores[i].value,fechaDeComprobacion)==true){
+				oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
+			} else{
+				oComboConductores[i].parentNode.parentNode.classList.add("has-error"); 
+				oComboConductores[i].focus(); console.log("estoy de vacaciones");
+				alert("Conductor de vacaciones en esa fecha");
+				bValidacion= false;
+			}
+		}
     
     /*Combo Autobuses no esta vacio*/
     for(var i=0;i<oComboAutobuses.length;i++)

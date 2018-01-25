@@ -95,6 +95,20 @@ class Gestion
         }
         return oAlquiler;
     }
+	
+	comprobarConductorVacaciones(dniConductor,fechaAlquiler){ //FALLA POR EL TO LOCATE
+		var bVacaciones= true;
+		
+		for(var i=0;i<this._vacaciones.length;i++){
+			if(this._vacaciones[i].dni==dniConductor){ console.log(dniConductor,fechaAlquiler);
+				if(this._vacaciones[i].fechaIniSinConver<=fechaAlquiler && this._vacaciones[i].fechaFinSinConver>=fechaAlquiler){
+					bVacaciones= false; console.log("entro en el if de comparar fechas");
+				}
+			}
+		}
+		
+		return bVacaciones;
+	}
 
     altaAlquiler(oAlquiler)
     {
