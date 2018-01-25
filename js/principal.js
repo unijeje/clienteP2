@@ -925,8 +925,8 @@ var oExpRegModelo=/^[a-z\s\d-]{3,20}$/i; // entre 3 y 20 caracteres con numeros
 
 
 
-// falta la del num de asientos
-var oExpRegNumAsientos=/^[30-60]{1}/;
+
+var oExpRegNumAsientos=/^[3-4-5]+[\d]+/;  // numero entre 30 y 60 sin incluir el 60
 
 var oExpRegConsumo=/^\d{1,2}([.]\d{1})?$/; // un numero entero y posibilidad de un decimal separado por .
 

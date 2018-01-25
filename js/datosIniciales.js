@@ -100,9 +100,9 @@ function cargarAutobuses(array)
       var sMatriculaAutobus = array[i].children[0].textContent;
       var iAsientosAutobus = array[i].children[1].textContent;
       var sModeloAutobus = array[i].children[2].textContent;
-      var iConsumoAutobus = array[i].children[3].textContent;
+      var fConsumoAutobus = array[i].children[3].textContent;
 
-      var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
+      var oNuevoAutobus=new Autobus(sMatriculaAutobus,parseInt(iAsientosAutobus),sModeloAutobus,parseFloat(fConsumoAutobus));
 
       if(oGestion.altaAutobus(oNuevoAutobus))
         console.log("Autobus: "+oNuevoAutobus.matricula+" Introducido correctamente");

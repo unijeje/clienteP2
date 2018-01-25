@@ -372,7 +372,22 @@ function validarAutobus(oForm)
     }
 
     //num asientos
+    var iNumAsientos=oForm.txtAutobusAsientos.value.trim();
+    oForm.txtAutobusAsientos.value=oForm.txtAutobusAsientos.value.trim();
 
+    if(!oExpRegNumAsientos.test(iNumAsientos))
+    {
+        oForm.txtAutobusAsientos.parentNode.parentNode.classList.add("has-error");
+        oForm.txtAutobusAsientos.focus();
+        sError="El número de asientos debe estar entre 30 y 60";
+        falloValidacion(sError,oForm.txtAutobusAsientos);
+        bValidacion=false;
+    }
+    else
+    {
+         oForm.txtAutobusAsientos.parentNode.parentNode.classList.remove("has-error");
+         falloValidacion("",oForm.txtAutobusAsientos);
+    }
 
     //MARCA
     var sModelo=oForm.txtAutobusModelo.value.trim();
