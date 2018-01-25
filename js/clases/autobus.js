@@ -2,13 +2,13 @@
 //objeto
 class Autobus
 {
-	constructor(sMatricula,iNumAsientos,sModelo,iConsumo)
+	constructor(sMatricula,iNumAsientos,sModelo,fConsumo)
 	{
 	//atributos
 		this.matricula=sMatricula;
 		this.asientos=iNumAsientos;
 		this.modelo=sModelo;
-		this.consumo=iConsumo;
+		this.consumo=fConsumo;
 		this.itv=false;
 		this.estado=true; //para saber si esta o no de baja
 	}
