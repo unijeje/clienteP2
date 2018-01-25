@@ -362,8 +362,6 @@ function validarAlquiler(oForm)
         }
     }
 	
-	
-<<<<<<< HEAD
 	for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].value);
 			if(oGestion.comprobarConductorVacaciones(oComboConductores[i].value,fechaDeComprobacion)==true){
 				oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
@@ -376,8 +374,6 @@ function validarAlquiler(oForm)
 				bValidacion= false;
 			}
 		}
-=======
->>>>>>> 7a2d6bf047d9aa817cb5d5169e9c647c23d808fd
     
     /*Combo Autobuses no esta vacio*/
     

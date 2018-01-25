@@ -35,6 +35,7 @@ oComboBajaVacaciones.addEventListener("change", rellenaCamposBajaVacaciones, fal
 oComboModificaVacaciones.addEventListener("change", rellenaCamposModificarVacaciones, false);
 
 comboEstadoInicialConductores();
+estadoInicialComboVacaciones();
 
 function altaConductor(oEvento){
 	var oE= oEvento || windows.event;
@@ -131,6 +132,7 @@ function altaVacaciones(oEvento){
 				document.frmAltaDeVacaciones.style.display= "none";
 				document.frmConductorVacaciones.radioVacacionesAlta.checked= false;
 				mensaje("Vacaciones Aceptadas");
+				estadoInicialComboVacaciones();
 			} else{
 				mensaje("Ese conductor ya tiene vacaciones");
 			}			
@@ -156,6 +158,7 @@ function bajaVacaciones(){
 		document.frmBajaDeVacaciones.style.display= "none";
 		document.frmConductorVacaciones.radioVacacionesBaja.checked= false;
 		oGestion.actualizaComboVacaciones();
+		estadoInicialComboVacaciones();
 	}
 }
 

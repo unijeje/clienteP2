@@ -718,8 +718,6 @@ function comboEstadoInicialConductores(){
 	var oComboBajaConductor=document.frmConductorBaja.comboConductor;
     var oComboModificaConductor=document.frmConductorModificar.comboConductor;
     var oComboSeleccionaConductor=document.frmNuevoAlquiler.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
-    var oComboBajaDeVacaciones= document.frmBajaDeVacaciones.comboConductorVacaciones;
-    var oComboModificarVacaciones= document.frmBajaDeVacaciones.comboConductorVacaciones;
 	
 	if(oComboBajaConductor.firstChild){
         oComboBajaConductor.firstChild.selected;// seleccionar el primero al cargar el programa
@@ -767,32 +765,38 @@ function comboEstadoInicialConductores(){
 		frmConductorBaja.txtConductorDireccion.value= null;
         frmConductorBaja.txtConductorCuenta.value=null;
     }
+}
    
-   if(oComboBajaDeVacaciones.firstChild){
-        oComboBajaDeVacaciones.firstChild.selected;
-        frmModificarVacaciones.firstChild.selected;
+function estadoInicialComboVacaciones(){	
+    var oComboBajaDeVacaciones= document.frmBajaDeVacaciones.comboConductorVacaciones;
+    var oComboModificarVacaciones= document.frmBajaDeVacaciones.comboConductorVacaciones;
+	
+	if(oComboBajaDeVacaciones.firstChild){
+		oComboBajaDeVacaciones.firstChild.selected;
+		frmModificarVacaciones.firstChild.selected;
 		
-        var oVacaciones= oGestion.buscarVacaciones(frmBajaDeVacaciones.comboConductorVacaciones.value);
+		var oVacaciones= oGestion.buscarVacaciones(frmBajaDeVacaciones.comboConductorVacaciones.value);
 		
 		if(oVacaciones){
 			frmBajaDeVacaciones.fechaIni.value= oVacaciones.fechaIni;
 			frmBajaDeVacaciones.fechaFin.value= oVacaciones.fechaFin;
 			frmBajaDeVacaciones.descripcion.value= oVacaciones.descripcion;
 			
-			frmModificarVacaciones.fechaIni.value= oVacaciones.fechaIni;
-			frmModificarVacaciones.fechaFin.value= oVacaciones.fechaFin;
+			frmModificarVacaciones.fechaInicioAntigua.value= oVacaciones.fechaIni;
+			frmModificarVacaciones.fechaFinAntigua.value= oVacaciones.fechaFin;
 			frmModificarVacaciones.descripcion.value= oVacaciones.descripcion;
 		} else{
 			frmBajaDeVacaciones.fechaIni.value= null;
 			frmBajaDeVacaciones.fechaFin.value= null;
 			frmBajaDeVacaciones.descripcion.value= null;
 			
-			frmModificarVacaciones.fechaIni.value= null;
-			frmModificarVacaciones.fechaFin.value= null;
+			frmModificarVacaciones.fechaInicioAntigua.value= null;
+			frmModificarVacaciones.fechaFinAntigua.value= null;
 			frmModificarVacaciones.descripcion.value= null;
 		}
-   }
+	}
 }
+
  //autobuses
 function comboEstadoInicialAutubuses()
 {
