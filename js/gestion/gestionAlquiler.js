@@ -357,7 +357,7 @@ function validarAlquiler(oForm)
         }
         else
         {
-            //falloValidacion("", oComboConductores[i]);
+            falloValidacion("", oComboConductores[i]);
             oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
         }
     }
@@ -389,7 +389,7 @@ function validarAlquiler(oForm)
         }
         else
         {
-            //falloValidacion("", oComboAutobuses[i]);
+            falloValidacion("", oComboAutobuses[i]);
             oComboAutobuses[i].parentNode.parentNode.classList.remove("has-error");
         }
     }
@@ -403,13 +403,13 @@ function validarAlquiler(oForm)
             oComboConductores[i].parentNode.parentNode.classList.add("has-error");
         sError="Valor del combo repetido";
         var oComboConductorOrig=oForm.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1];
-        falloValidacion(sError, oComboConductorOrig);
+        falloValidacionAgregar(sError, oComboConductorOrig);
     }
     else
     {
         for(var i=0;i<oComboConductores.length;i++)
             oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
-        falloValidacion("", oForm.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1]);
+        //falloValidacion("", oForm.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1]);
     }
     
 
@@ -422,13 +422,13 @@ function validarAlquiler(oForm)
             oComboAutobuses[i].parentNode.parentNode.classList.add("has-error");
         sError="Valor del combo repetido";
         var oComboConductorOrig=oForm.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1];
-        falloValidacion(sError, oComboConductorOrig);
+        falloValidacionAgregar(sError, oComboConductorOrig);
     }
     else
     {
         for(var i=0;i<oComboAutobuses.length;i++)
             oComboAutobuses[i].parentNode.parentNode.classList.remove("has-error");
-        falloValidacion("", oForm.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1]);
+        //falloValidacion("", oForm.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1]);
     }
 
     
@@ -439,13 +439,13 @@ function validarAlquiler(oForm)
 	for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].value);
 			if(oGestion.comprobarConductorVacaciones(oComboConductores[i].value,fechaDeComprobacion)==true){
                 oComboConductores[i].parentNode.classList.remove("has-error");
-                falloValidacion("", oComboConductores[i].parentNode);
+                //falloValidacion("", oComboConductores[i].parentNode);
 			} else{
 				oComboConductores[i].parentNode.classList.add("has-error"); 
 				oComboConductores[i].focus(); console.log("estoy de vacaciones");
 				//alert("Conductor de vacaciones en esa fecha");
                 bValidacion= false;
-                falloValidacion("Conductor de vacaciones en esa fecha", oComboConductores[i].parentNode);
+                falloValidacionAgregar("Conductor de vacaciones en esa fecha", oComboConductores[i].parentNode);
 			}
 		}
 

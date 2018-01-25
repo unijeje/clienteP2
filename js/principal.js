@@ -433,6 +433,21 @@ function falloValidacion(sTexto, oInput)
         oInput.parentNode.appendChild(oDiv);
 }
 
+function falloValidacionAgregar(sTexto, oInput)
+{
+    //console.log(oInput);
+    var oTexto=document.createTextNode(sTexto);
+    var oDiv=document.createElement("div");
+    oDiv.setAttribute("id", "error");
+    oDiv.appendChild(oTexto);
+    var oAnterior=oInput.parentNode.querySelector("#error");
+
+    if(oAnterior)
+        oAnterior.textContent+=" "+sTexto;
+    else
+        oInput.parentNode.appendChild(oDiv);
+}
+
 function validarRadio(arrayRadio)
 {
     var res=false;
