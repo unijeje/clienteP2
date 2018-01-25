@@ -22,9 +22,12 @@ oBtnModificarAutobus.addEventListener("click",fModificarAutobus,false);
 
 var oBtnAltaMantenimiento=document.getElementById("btnAltaMantenimiento");
 oBtnAltaMantenimiento.addEventListener("click",fAltaMantenimiento,false);
+
 var oBtnBajaMantenimiento=document.getElementById("btnBajaMantenimiento");
 oBtnBajaMantenimiento.addEventListener("click",fBajaMantenimiento,false);
 
+var oBtnModificarMantenimiento=document.getElementById("btnModificarMantenimiento");
+oBtnModificarMantenimiento.addEventListener("click",fModificarMantenimiento,false);
 
 var oComboBajaAutobus=document.frmAutobusBaja.comboAutobus;
 var oComboModificaAutobus=document.frmAutobusModificar.comboAutobus;
@@ -58,7 +61,7 @@ function fAltaAutobus(oEvento){
     	var sMatriculaAutobus=frmAutobusAlta.txtAutobusMatricula.value.trim();
         var iAsientosAutobus=parseInt(frmAutobusAlta.txtAutobusAsientos.value.trim());
         var sModeloAutobus=frmAutobusAlta.txtAutobusModelo.value.trim();
-        var iConsumoAutobus=parseInt(frmAutobusAlta.txtAutobusConsumo.value.trim());
+        var iConsumoAutobus=parseFloat(frmAutobusAlta.txtAutobusConsumo.value.trim());
 
         var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
 
@@ -107,7 +110,7 @@ function fModificarAutobus(oEvento)
         var sMatriculaAutobus=frmAutobusModificar.txtAutobusMatricula.value.trim();
         var iAsientosAutobus=parseInt(frmAutobusModificar.txtAutobusAsientos.value.trim());
         var sModeloAutobus=frmAutobusModificar.txtAutobusModelo.value.trim();
-        var iConsumoAutobus=parseInt(frmAutobusModificar.txtAutobusConsumo.value.trim());
+        var iConsumoAutobus=parseFloat(frmAutobusModificar.txtAutobusConsumo.value.trim());
 
         var oNuevoAutobus=new Autobus(sMatriculaAutobus,iAsientosAutobus,sModeloAutobus,iConsumoAutobus);
 
@@ -126,38 +129,42 @@ function fModificarAutobus(oEvento)
         mensaje("Fallo en la validación");
 }
 
-function fAltaMantenimiento()
+function fAltaMantenimiento(oEvento)
 {
-    var sDescripcion=frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim();
-    var fImporte=parseFloat(frmAltaMantenimiento.txtImporteMantenimiento.value.trim());
-    var dFecha=new Date(frmAltaMantenimiento.txtMantenimientoFecha.value.trim()).toLocaleDateString("es-ES");
-    var sMatricula=frmAltaMantenimiento.comboAutobus.value.trim();
+    var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
 
-    //dFecha.toLocaleDateString("es-ES");
-    //console.log(dFecha);
-    //console.log(sMatricula);
-    var oNuevoMantenimiento=new Mantenimiento(sDescripcion,fImporte,dFecha,sMatricula);
-    //console.log(oNuevoMantenimiento.fecha);
-    var bInsercion=oGestion.altaMantenimiento(oNuevoMantenimiento);
-    if(bInsercion){
-        document.frmAltaMantenimiento.reset();
-        document.frmAltaMantenimiento.style.display="none";
-        document.frmAutobusMantenimiento.style.display="none";
+    if (validarMantenimiento(oForm)){
+        var sDescripcion=frmAltaMantenimiento.txtDescripcionMantenimiento.value.trim();
+        var fImporte=parseFloat(frmAltaMantenimiento.txtImporteMantenimiento.value.trim());
+        var dFecha=new Date(frmAltaMantenimiento.txtMantenimientoFecha.value.trim()).toLocaleDateString("es-ES");
+        var sMatricula=frmAltaMantenimiento.comboAutobus.value.trim();
 
+        //dFecha.toLocaleDateString("es-ES");
+        //console.log(dFecha);
+        //console.log(sMatricula);
+        var oNuevoMantenimiento=new Mantenimiento(sDescripcion,fImporte,dFecha,sMatricula);
+        //console.log(oNuevoMantenimiento.fecha);
+        var bInsercion=oGestion.altaMantenimiento(oNuevoMantenimiento);
+        if(bInsercion){
+            document.frmAltaMantenimiento.reset();
+            document.frmAltaMantenimiento.style.display="none";
+            document.frmAutobusMantenimiento.style.display="none";
 
-        oGestion.actualizaComboRevisado();
-        /*
-        oGestion.gestionContabilidad("mantenimiento", oGestion.cuentaEmpresa.numCuenta, fImporte, dFecha);
-        */
-        
-        
-        
-        mensaje("Mantenimiento añadido correctamente");
-        //actualizar combo mantenimientos
+            comboEstadoInicialAutubuses(); 
+            //oGestion.actualizaComboRevisado();
+            /*
+            oGestion.gestionContabilidad("mantenimiento", oGestion.cuentaEmpresa.numCuenta, fImporte, dFecha);
+            */
+            
+            mensaje("Mantenimiento añadido correctamente");
+            //actualizar combo mantenimientos
+        }
+        else
+            mensaje("El autobús seleccionado ya tiene pasado el mantenimiento");
     }
     else
-        mensaje("El autobús seleccionado ya tiene pasado el mantenimiento");
-
+         mensaje("Fallo en la validación");
 }
 
 function fBajaMantenimiento()
@@ -166,11 +173,53 @@ function fBajaMantenimiento()
 
     var anulado=oGestion.bajaMantenimiento(sMatricula);
     if (anulado)
+    {
         mensaje("Mantenimiento anulado correctamente");
+        comboEstadoInicialAutubuses();
+    }
     
     else
         mensaje("Error al anular el mantenimiento");
 
+}
+
+function fModificarMantenimiento(oEvento)
+{
+     var oE = oEvento || windows.event;
+    var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el boton
+
+    if (validarMantenimiento(oForm)){
+        var sDescripcion=frmModificarMantenimiento.txtDescripcionMantenimiento.value.trim();
+        var sMatricula=frmModificarMantenimiento.comboAutobusRevisado.value.trim();
+        var fImporte=parseFloat(frmModificarMantenimiento.txtImporteMantenimiento.value.trim());
+        var dFecha=frmModificarMantenimiento.txtMantenimientoFechaN.value.trim();
+        //console.log(sMatricula);
+        if(dFecha=="")
+        {
+            dFecha=new Date(frmModificarMantenimiento.txtMantenimientoFecha.value.trim()).toLocaleDateString("es-ES");
+        }
+        else{
+             dFecha=new Date(dFecha).toLocaleDateString("es-ES");
+        }
+        //console.log(dFecha);
+        var oMantenimiento=new Mantenimiento(sDescripcion,fImporte,dFecha,sMatricula);
+        var bModificado=oGestion.modificarMantenimiento(oMantenimiento);
+        if( bModificado)
+        {
+            document.frmModificarMantenimiento.reset();
+            document.frmModificarMantenimiento.style.display="none";
+            document.frmAutobusMantenimiento.style.display="none";
+            mensaje("Mantenimiento modificado correctamente");
+
+            comboEstadoInicialAutubuses();
+            //oGestion.actualizaComboRevisado();
+
+        }
+        else
+            mensaje("Error al modificar el mantenimiento");
+    }
+    else
+        mensaje("Fallo en la validación");
 }
 
 
@@ -194,10 +243,10 @@ function rellenaCamposMantenimiento(oEvento) //actualiza
     var oE = oEvento || windows.event;
     var oForm=oE.target.parentNode.parentNode.parentNode; //recupera el formulario padre sobre el que esta el combo
     //console.log(oForm.name);
-    console.log(oForm.comboAutobusRevisado.value);
+    //console.log(oForm.comboAutobusRevisado.value);
     var oMantenimiento=oGestion.buscarMantenimiento(oForm.comboAutobusRevisado.value);//recupera el autobus a traves de la matricula
 
-    console.log(oMantenimiento.fecha);
+    //console.log(oMantenimiento.fecha);
      oForm.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
      oForm.txtImporteMantenimiento.value=oMantenimiento.importe;
      oForm.txtMantenimientoFecha.value=oMantenimiento.fecha;
@@ -244,6 +293,70 @@ function muestraFormsMantenimiento2()
     
 }
 
+function validarMantenimiento(oForm)
+{
+    var bValidacion=true;
+    var sError="";
+
+    //Descripcion
+    var sDescripcion=oForm.txtDescripcionMantenimiento.value.trim();
+    oForm.txtDescripcionMantenimiento.value=oForm.txtDescripcionMantenimiento.value.trim();
+
+    if(!oExpRegDescripcion.test(sDescripcion))
+    {
+        oForm.txtDescripcionMantenimiento.parentNode.parentNode.classList.add("has-error");
+        oForm.txtDescripcionMantenimiento.focus();
+        sError="La descripción debe tener entre 3 y 50 caracteres incluyendo números y -";
+        falloValidacion(sError,oForm.txtDescripcionMantenimiento);
+        bValidacion=false;
+    }
+    else
+    {
+         oForm.txtDescripcionMantenimiento.parentNode.parentNode.classList.remove("has-error");
+         falloValidacion("",oForm.txtDescripcionMantenimiento);
+    }
+
+    var fImporte=oForm.txtImporteMantenimiento.value.trim();
+    oForm.txtImporteMantenimiento.value=oForm.txtImporteMantenimiento.value.trim();
+
+    if(!oExpRegImporte.test(fImporte))
+    {
+        oForm.txtImporteMantenimiento.parentNode.parentNode.classList.add("has-error");
+        oForm.txtImporteMantenimiento.focus();
+        sError="El importe debe constar de como máximo 3 números enteros y 2 decimales";
+        falloValidacion(sError,oForm.txtImporteMantenimiento);
+        bValidacion=false;
+    }
+    else
+    {
+         oForm.txtImporteMantenimiento.parentNode.parentNode.classList.remove("has-error");
+         falloValidacion("",oForm.txtImporteMantenimiento);
+    }
+
+
+    if(oForm.name=="frmAltaMantenimiento"){
+        var fecha=oForm.txtAltaMantenimientoFecha.value.trim();
+        oForm.txtAltaMantenimientoFecha.value=oForm.txtAltaMantenimientoFecha.value.trim();
+
+
+            if(fecha=="")
+            {
+                oForm.txtAltaMantenimientoFecha.parentNode.parentNode.classList.add("has-error");
+                oForm.txtAltaMantenimientoFecha.focus();
+                sError="Debe seleccionar una fecha";
+                falloValidacion(sError,oForm.txtAltaMantenimientoFecha);
+                bValidacion=false;
+            }
+            else
+            {
+                 oForm.txtAltaMantenimientoFecha.parentNode.parentNode.classList.remove("has-error");
+                 falloValidacion("",oForm.txtAltaMantenimientoFecha);
+            }
+    }
+
+     return bValidacion;
+}
+
 
 function validarAutobus(oForm)
 {
@@ -269,6 +382,7 @@ function validarAutobus(oForm)
     }
 
     //num asientos
+
 
     //MARCA
     var sModelo=oForm.txtAutobusModelo.value.trim();

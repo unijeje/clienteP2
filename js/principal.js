@@ -812,11 +812,11 @@ function comboEstadoInicialAutubuses()
         oComboBajaAutobusesRevisados.firstChild.selected;
         oComboModificarAutobusesRevisados.firstChild.selected;
 
-        var oMantenimiento=oGestion.buscarMantenimiento(frmBajaMantenimiento.comboAutobusRevisado.value);
+        var oMantenimiento=oGestion.buscarMantenimiento(frmModificarMantenimiento.comboAutobusRevisado.value);
 
         frmModificarMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
         frmModificarMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
-        frmModificarMantenimiento.txtMantenimientoFechaA.value=oMantenimiento.fecha;
+        frmModificarMantenimiento.txtMantenimientoFecha.value=oMantenimiento.fecha;
 
         frmBajaMantenimiento.txtDescripcionMantenimiento.value=oMantenimiento.descripcion;
         frmBajaMantenimiento.txtImporteMantenimiento.value=oMantenimiento.importe;
@@ -867,8 +867,15 @@ var oExpRegMatricula=/^\d{4}[A-Z]{3}/; // 4 numeros y 3 letras mayusculas
 
 var oExpRegModelo=/^[a-z\s\d-]{3,20}$/i; // entre 3 y 20 caracteres con numeros
 
+
+
 // falta la del num de asientos
-//var oExpRegConsumo=/^\d{1,2}/;
-var oExpRegConsumo=/^[0-9]{1}([.][0-9])?/; // no funciona como quiero
+var oExpRegNumAsientos=/^[30-60]{1}/;
+
+var oExpRegConsumo=/^\d{1,2}([.]\d{1})?$/; // un numero entero y posibilidad de un decimal separado por .
+
+var oExpRegDescripcion=/^[a-z\s\d-]{3,50}$/i; // entre 3 y 50 caracteres con numeros
+
+var oExpRegImporte=/^\d{1,3}([.]\d{1}\d?)?$/; // un numero entero y posibilidad de un decimal separado por .
 
 //var oExpRegFecha = /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/; //mm/dd/yyyy

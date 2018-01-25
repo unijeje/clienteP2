@@ -43,7 +43,10 @@ function listadoAutobuses()
 		oTexto=document.createTextNode(oGestion._autobuses[i].consumo);
 		oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
-		oTexto=document.createTextNode(oGestion._autobuses[i].itv);
+		if(oGestion._autobuses[i].itv)
+			oTexto=document.createTextNode("Revisado");
+		else
+			oTexto=document.createTextNode("No revisado");
 		oCelda.appendChild(oTexto);
 		oCelda=oFila.insertCell();
 		if(oGestion._autobuses[i].estado)// para que no salga true o false en la tabla

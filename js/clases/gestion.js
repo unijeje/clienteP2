@@ -599,7 +599,8 @@ class Gestion
     {
         var oMantenimiento=null;
 
-        for(var i=0;i<this._mantenimientos.length && oMantenimiento==null;i++)
+        //for(var i=0;i<this._mantenimientos.length && oMantenimiento==null;i++)
+        for (var i=this._mantenimientos.length-1;i>=0 && oMantenimiento==null;i--)
         {
             if(sMatricula==this._mantenimientos[i].matriculaAutobus)
                 oMantenimiento=this._mantenimientos[i];
@@ -650,5 +651,21 @@ class Gestion
                 }
 
         return anulado;
+    }
+
+    modificarMantenimiento(oMantenimiento)
+    {
+        var res=false;//no se ha modificado
+
+        //for (var i=0;i<this._mantenimientos.length;i++)
+        for (var i=this._mantenimientos.length-1;i>=0;i--)
+            if(this._mantenimientos[i].matriculaAutobus == oMantenimiento.matriculaAutobus ){
+                this._mantenimientos[i]=oMantenimiento;
+                res=true;// se ha modificado
+                this.actualizaComboRevisado();
+                //comboEstadoInicialAutubuses();
+            }
+
+        return res;
     }
 }
