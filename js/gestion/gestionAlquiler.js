@@ -95,8 +95,6 @@ function altaAlquiler(oEvento)
             mensaje("Ya existe un alquiler con ese ID");
 
     }
-    else
-        mensaje("Fallo en la validación");
     
 }
 
@@ -169,8 +167,6 @@ function modificarAlquiler(oEvento)
             mensaje("No se ha encontrado el alquiler");
             
     }
-    else
-        mensaje("Error en el formulario");
 }
 
 function validarAlquiler(oForm)

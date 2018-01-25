@@ -75,10 +75,6 @@ function fAltaAutobus(oEvento){
         else
         	mensaje("Ya existe un autobus con esa matrícula");
     }
-    else
-    {
-        mensaje("Fallo en la validación");
-    }
 }
 
 function fBajaAutobus()
@@ -125,8 +121,6 @@ function fModificarAutobus(oEvento)
         else
             mensaje("No se ha podido modificar el autobús");
     }
-    else
-        mensaje("Fallo en la validación");
 }
 
 function fAltaMantenimiento(oEvento)
@@ -163,8 +157,6 @@ function fAltaMantenimiento(oEvento)
         else
             mensaje("El autobús seleccionado ya tiene pasado el mantenimiento");
     }
-    else
-         mensaje("Fallo en la validación");
 }
 
 function fBajaMantenimiento()
@@ -218,8 +210,6 @@ function fModificarMantenimiento(oEvento)
         else
             mensaje("Error al modificar el mantenimiento");
     }
-    else
-        mensaje("Fallo en la validación");
 }
 
 

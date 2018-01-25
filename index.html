@@ -9,10 +9,17 @@
 <body>
 
 	<div class="container">
-	
+			<div id="cabecera">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<img src="imagenes/cabecera.jpg" name="imgCabecera" id="imgCabecera" href="index.html"/>
+					</div>
+				</div>
+			</div>
+				<br>
 			<div class="row botones">
 				<div class="col-sm-4 text-center">
-					<a href="#menuAlquiler"><button id="btnAlquiler" class="btn btn-default btn-block btn-menu sep-inf">Gestión Alquiler</button></a>
+					<a href="#menuAlquiler"><button id="btnAlquiler" class="btn btn-default btn-block btn-menu sep-inf">Gestión Alquileres</button></a>
 				</div>
 				<div class="col-sm-4 text-center">
 					<a href="#menuGestion"><button id="btnGestion" class="btn btn-default btn-block btn-menu sep-inf">Administración Datos</button></a>
@@ -57,6 +64,7 @@
 							<h2 class="text-center">Añadir Nuevo Alquiler</h2>
 						</div>
 					</div>
+						<br>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="comboCliente">Seleccione Cliente</label>
 						<div class="col-md-6 col-sm-8">
@@ -130,12 +138,13 @@
 							</select>
 						</div>
 					</div>
+						<br>
 					<div class="form-group">
-						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-2 col-sm-4">
 							<input type="button" id="btnAltaAlquiler" name="btnAltaAlquiler" class="btn btn-block btn-primary" value="Dar de Alta" />
 						</div>
 			
-						<div class="col-md-3 col-sm-3">
+						<div class="col-md-2 col-sm-4">
 							<input type="reset" id="btnLimpiarCampos" name="btnLimpiarCampos" class="btn btn-block btn-danger" value="Limpiar Campos" />
 						</div>
 					</div>
@@ -146,9 +155,10 @@
 				<form name="frmBorraAlquiler" id="frmBorraAlquiler" class="form-horizontal"> <!--Formulario Borrar alquiler -->
 					<div class="row">
 						<div class="col-xs-12">
-							<h2 class="text-center">Borar Alquiler</h2>
+							<h2 class="text-center">Borrar Alquiler</h2>
 						</div>
 					</div>
+						<br>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="comboAlquiler">Seleccione Alquiler</label>
 						<div class="col-md-6 col-sm-8">
@@ -230,8 +240,9 @@
 							</select>
 						</div>
 					</div>
+						<br>
 					<div class="form-group">
-						<div class="col-sm-offset-0 col-md-offset-0 col-md-12 col-sm-12">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 							<input type="button" id="btnBorrarAlquiler" name="btnBorrarAlquiler" class="btn btn-block btn-primary" value="Borrar Alquiler" />
 						</div>
 					</div>
@@ -245,6 +256,7 @@
 							<h2 class="text-center">Modificar Alquiler</h2>
 						</div>
 					</div>
+						<br>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="comboAlquiler">Seleccione Alquiler</label>
 						<div class="col-md-6 col-sm-8">
@@ -326,8 +338,9 @@
 							</select>
 						</div>
 					</div>
+						<br>
 					<div class="form-group">
-						<div class="col-sm-offset-0 col-md-offset-0 col-md-12 col-sm-12">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 							<input type="button" id="btnModificarAlquiler" name="btnModificarAlquiler" class="btn btn-block btn-primary" value="Actualizar Alquiler" />
 						</div>
 					</div>
@@ -407,6 +420,7 @@
 				</div>
 				<br>
 				<!--FormGestionAutobuses-->
+				<br><br>
 				<form name="frmAutobusAlta" id="frmAutobusAlta" class="form-horizontal"> <!-- Alta Autobus -->
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusMatricula">Matrícula del Autobus:</label>  
@@ -432,14 +446,14 @@
 							<input id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
 						</div>
 					</div>
-					
+						<br>
 					<div class="form-group">
 						
-						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-2 col-sm-4">
 							<input type="button" id="btnAltaAutobus" name="btnAltaAutobus" class="btn btn-block btn-primary" value="Dar de Alta" />
 						</div>
 			
-						<div class="col-md-3 col-sm-3">
+						<div class="col-md-2 col-sm-4">
 							<input type="reset" id="btnLimpiarCampos" name="btnLimpiarCampos" class="btn btn-block btn-danger" value="Limpiar Campos" />
 						</div>
 					</div>
@@ -481,9 +495,9 @@
 							<input disabled id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
 						</div>
 					</div>
-
+						<br>
 					<div class="form-group">
-						<div class="col-md-12 col-sm-12">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 						<input type="button" id="btnBajaAutobus" name="btnBajaAutobus" class="btn btn-block btn-primary" value="Dar de Baja" />
 						</div>
 					</div>
@@ -525,9 +539,9 @@
 							<input id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
 						</div>
 					</div>
-
+						<br>
 					<div class="form-group">
-						<div class="col-md-12 col-sm-12">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 						<input type="button" id="btnModificarAutobus" name="btnModificarAutobus" class="btn btn-block btn-primary" value="Modificar datos" />
 						</div>
 					</div>
@@ -867,7 +881,7 @@
 				</form>
 
 				<!--formGestionConductores-->
-					<br><br>
+					
 				<form name="frmConductorAlta" id="frmConductorAlta" class="form-horizontal"> <!-- Alta Conductor -->
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorDni">Nif:</label>  

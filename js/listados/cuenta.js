@@ -131,7 +131,7 @@ function listadoCuentaPorFecha()
             console.log("fila: "+new Date(oFilas[j].dataset.fecha));
             console.log("array: "+oFecha[i]);
             */
-            if(new Date((oFilas[j].dataset.fecha).toDateString()==oFecha[i].toDateString()).toLocaleDateString("es-ES"))
+            if(new Date(oFilas[j].dataset.fecha).toDateString()==oFecha[i].toDateString())
             {
                 oFilasOrdenado.push(oFilas[j]);
                 oFilas[j].dataset.fecha=""; //para que no vuelva a coger repetidas

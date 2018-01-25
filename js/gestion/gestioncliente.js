@@ -56,10 +56,6 @@ function altaCliente(oEvento)
             mensaje("Ese cliente ya existe");
         }   
     }
-    else
-    {
-        mensaje("Fallo en la validación");
-    }
 }
 
 function validarCliente(oForm)
@@ -244,8 +240,6 @@ function actualizaCliente(oEvento)
         
         comboEstadoInicialClientes();
     }
-    else
-        mensaje("Error en el formulario");
     
     
 }
