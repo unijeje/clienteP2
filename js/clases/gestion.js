@@ -388,6 +388,20 @@ class Gestion
 		
 		return bEncontrado;
 	}
+	
+	bajaVacaciones(oVacaciones){
+		var bEncontrado= false;
+		
+		for(var i=0; i<this._vacaciones.length && bEncontrado==false; i++){
+			if(this._vacaciones[i].dni==oVacaciones.dni){
+				bEncontrado= true; 
+				this._vacaciones[i].estado=false; //false es dado de baja
+				this.actualizaComboVacaciones();				
+			}
+		}
+		
+		return bEncontrado;
+	}
 
 	buscarConductor(sDni){
         var oConductor=null;
@@ -455,9 +469,9 @@ class Gestion
             oComboModificarVacacionesConductor.removeChild(oComboModificarVacacionesConductor.firstChild);
         }
 		
-		for(var j=0; j<this._vacaciones.length; j++){
+		for(var j=0; j<this._vacaciones.length ; j++){
 			for(var l=0; l<this._conductores.length;l++){
-				if(this._conductores[l].dni==this._vacaciones[j].dni){
+				if(this._conductores[l].dni==this._vacaciones[j].dni && this._vacaciones[j].estado==true){
 					var selectComboVacaciones=document.createElement("option");				
 					selectComboVacaciones.value=this._conductores[l].dni;
 					selectComboVacaciones.text=this._conductores[l].dni+" - "+this._conductores[l].nombre+" "+this._conductores[l].apellidos;

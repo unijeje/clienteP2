@@ -2,12 +2,13 @@
 //objeto
 class Vacaciones
 {
-    constructor(iIdVacaciones,iDniConductor,dFechaIni,dFechaFin,sDescripcion){
-		this.idVacaciones= iIdVacaciones;
+    constructor(iDniConductor,dFechaIni,dFechaFin,sDescripcion){
+		//this.idVacaciones= iIdVacaciones;
 		this.dni= iDniConductor;
 		this.fechaIni= dFechaIni;
 		this.fechaFin= dFechaFin;
 		this.descripcion= sDescripcion;
+		this.estado=true;
 	}
 }
 
