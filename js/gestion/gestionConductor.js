@@ -97,6 +97,7 @@ function modificarConductor(oEvento){
 		if(bActualizacion){
 			document.frmConductorModificar.style.display="none";
 			mensaje("Conductor Modificado Correctamente");
+			comboEstadoInicialConductores();
 		/*} else{
 			mensaje("Este conductor ya existe");*/
 			comboEstadoInicialConductores();
@@ -181,14 +182,15 @@ function modificarVacaciones(oEvento){
 			
 			var fechaInicio= new Date(frmModificarVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES"); console.log(fechaInicio);
 			var fechaFin= new Date(frmModificarVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES"); console.log(fechaFin);
-			var oNuevasVacaciones= new new Vacaciones(dniConductor,fechaInicio,fechaInicioParaComprobar,fechaFin,fechaFinParaComprobar,descripcion);
+			var oNuevasVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaInicioParaComprobar,fechaFin,fechaFinParaComprobar,descripcion);
 			console.log(oNuevasVacaciones);
 				
 			if(oGestion.modificarVacaciones(oNuevasVacaciones,dniConductor)==false){
 				document.frmModificarVacaciones.reset();
 				document.frmModificarVacaciones.style.display= "none";
 				document.frmConductorVacaciones.radioVacacionesModificar.checked= false;
-				mensaje("Vacaciones Modificadas");
+				mensaje("Vacaciones Modificadas");				
+				estadoInicialComboVacaciones();
 			} else{
 				mensaje("Fechas Incorrectas/Modificacion no completada");
 			}			

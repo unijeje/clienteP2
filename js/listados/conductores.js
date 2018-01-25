@@ -1,4 +1,4 @@
-//todos y vacaciones
+//todos 
 
 var btnMostrarActivos=document.getElementById("btnOrdenarConductoresActivos");
 btnMostrarActivos.addEventListener("click", mostrarConductoresActivos, false);
@@ -18,7 +18,7 @@ function listadoConductores()
 	cabeceras[4]="Correo";
 	cabeceras[5]="Nº Cuenta";
 	cabeceras[6]="Sexo";
-	cabeceras[7]="Direccion";
+	cabeceras[7]="Dirección";
 	cabeceras[8]="Estado";
 	var oCelda;
 	var oTexto;

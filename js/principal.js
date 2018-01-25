@@ -97,6 +97,9 @@ oBtnListadoClientes.addEventListener("click",mostrarListadoClientes,false);
 var oBtnListadoConductores=document.getElementById("btnListadoConductores");
 oBtnListadoConductores.addEventListener("click",mostrarListadoConductores,false);
 
+var oBtnListadoVacaciones=document.getElementById("btnListadoVacaciones");
+oBtnListadoVacaciones.addEventListener("click",mostrarListadoVacaciones,false);
+
 var oBtnListadoAlquileres=document.getElementById("btnListadoAlquileres");
 oBtnListadoAlquileres.addEventListener("click",mostrarListadoAlquileres,false);
 
@@ -381,6 +384,14 @@ function mostrarListadoConductores()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="block";
+    oCapaListadoAlquileres.style.display="none";
+}
+
+function mostrarListadoVacaciones(){
+	listadoVacaciones();
+	oCapaListado.style.display="block";
+    campoCuenta.style.display="none";
+    campoConductor.style.display="none";
     oCapaListadoAlquileres.style.display="none";
 }
 

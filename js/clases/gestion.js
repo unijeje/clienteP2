@@ -396,7 +396,7 @@ class Gestion
 		}
 		
 		if(bEncontrado==false){
-			this._vacaciones.push(oVacaciones);  console.log("he entrado");
+			this._vacaciones.push(oVacaciones);
             this.actualizaComboVacaciones();
 		}
 		
