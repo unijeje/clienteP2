@@ -371,6 +371,8 @@ function validarAlquiler(oForm)
 			} else{
 				oComboConductores[i].parentNode.parentNode.classList.add("has-error"); 
 				oComboConductores[i].focus(); console.log("estoy de vacaciones");
+				//sError="Conductor de vacaciones";
+				//falloValidacion(sError, oComboConductores[i]);
 				alert("Conductor de vacaciones en esa fecha");
 				bValidacion= false;
 			}

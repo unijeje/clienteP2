@@ -96,7 +96,7 @@ class Gestion
         return oAlquiler;
     }
 	
-	comprobarConductorVacaciones(dniConductor,fechaAlquiler){ //FALLA POR EL TO LOCATE
+	comprobarConductorVacaciones(dniConductor,fechaAlquiler){
 		var bVacaciones= true;
 		
 		for(var i=0;i<this._vacaciones.length;i++){
