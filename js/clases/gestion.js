@@ -402,6 +402,20 @@ class Gestion
 		
 		return bEncontrado;
 	}
+	
+	modificarVacaciones(oVacaciones,dniConductor){
+		var bEncontrado= true;
+		
+		for(var i=0;i<this._vacaciones.length;i++){
+			if(this._vacaciones[i].dni==dniConductor){
+				bEncontrado= false;
+				this._vacaciones[i]= oVacaciones;
+				this.actualizaComboVacaciones();
+			}
+		}
+		
+		return bEncontrado;
+	}
 
 	buscarConductor(sDni){
         var oConductor=null;

@@ -31,8 +31,8 @@ oComboModificaConductor.addEventListener("change", rellenaCamposConductor, false
 
 var oComboBajaVacaciones=document.frmBajaDeVacaciones.comboConductorVacaciones;
 var oComboModificaVacaciones=document.frmModificarVacaciones.comboConductorVacaciones;
-oComboBajaVacaciones.addEventListener("change", rellenaCamposVacaciones, false);
-oComboModificaVacaciones.addEventListener("change", rellenaCamposVacaciones, false);
+oComboBajaVacaciones.addEventListener("change", rellenaCamposBajaVacaciones, false);
+oComboModificaVacaciones.addEventListener("change", rellenaCamposModificarVacaciones, false);
 
 comboEstadoInicialConductores();
 
@@ -109,14 +109,20 @@ function altaVacaciones(oEvento){
 	var oE = oEvento || windows.event;
 	var formVacaciones=oE.target.parentNode.parentNode.parentNode; console.log(formVacaciones);
 	
-	if(validarVacaciones(formVacaciones)){
+	if(validarVacaciones(formVacaciones)){		
 		var dniConductor= frmAltaDeVacaciones.comboConductor.value.trim();  console.log(dniConductor);
-		var fechaInicio= new Date(frmAltaDeVacaciones.fechaIni.value.trim());
-		var fechaFin= new Date(frmAltaDeVacaciones.fechaFin.value.trim());
+		var fechaInicioParaComprobar= new Date(frmAltaDeVacaciones.fechaIni.value.trim());
+		var fechaFinParaComprobar= new Date(frmAltaDeVacaciones.fechaFin.value.trim());
 		var descripcion= frmAltaDeVacaciones.descripcion.value.trim();
 				
-		if((fechaFin-fechaInicio)>=0){
+		if((fechaFinParaComprobar-fechaInicioParaComprobar)>=0){
+			frmAltaDeVacaciones.fechaIni.parentNode.parentNode.classList.remove("has-error");
+			frmAltaDeVacaciones.fechaFin.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmAltaDeVacaciones.fechaIni);
+			falloValidacion("", frmAltaDeVacaciones.fechaFin);
 			//idVacaciones++;
+			var fechaInicio= new Date(frmAltaDeVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES");
+			var fechaFin= new Date(frmAltaDeVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES");
 			var oVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaFin,descripcion);
 			console.log(oVacaciones);
 				
@@ -129,7 +135,13 @@ function altaVacaciones(oEvento){
 				mensaje("Ese conductor ya tiene vacaciones");
 			}			
 		} else{
-			mensaje("Fechas erroneas");
+			frmAltaDeVacaciones.fechaIni.parentNode.parentNode.classList.add("has-error");
+			frmAltaDeVacaciones.fechaFin.parentNode.parentNode.classList.add("has-error");
+			frmAltaDeVacaciones.fechaIni.focus();
+			frmAltaDeVacaciones.fechaFin.focus();
+			var error= "Rango de fechas incorrecto";
+			falloValidacion(error, frmAltaDeVacaciones.fechaIni);
+			falloValidacion(error, frmAltaDeVacaciones.fechaFin);
 		}
 	} 
 }
@@ -147,22 +159,29 @@ function bajaVacaciones(){
 	}
 }
 
-function modificarVacaciones(){
+function modificarVacaciones(oEvento){
 	var oE = oEvento || windows.event;
 	var formVacaciones=oE.target.parentNode.parentNode.parentNode; console.log(formVacaciones);
 	
 	if(validarVacaciones(formVacaciones)){
-		var dniConductor= frmModificarVacaciones.comboConductor.value.trim();  console.log(dniConductor);
-		var fechaInicio= new Date(frmModificarVacaciones.fechaIniModificada.value.trim());
-		var fechaFin= new Date(frmModificarVacaciones.fechaFinModificada.value.trim());
+		var dniConductor= frmModificarVacaciones.comboConductorVacaciones.value.trim();  console.log(dniConductor);
+		var fechaInicioParaComprobar= new Date(frmModificarVacaciones.fechaIni.value.trim());
+		var fechaFinParaComprobar= new Date(frmModificarVacaciones.fechaFin.value.trim());
 		var descripcion= frmModificarVacaciones.descripcion.value.trim();
 				
-		if((fechaFin-fechaInicio)>=0){
+		if((fechaFinParaComprobar-fechaInicioParaComprobar)>=0){
 			//idVacaciones++;
+			frmModificarVacaciones.fechaIni.parentNode.parentNode.classList.remove("has-error");
+			frmModificarVacaciones.fechaFin.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmModificarVacaciones.fechaIni);
+			falloValidacion("", frmModificarVacaciones.fechaFin);
+			
+			var fechaInicio= new Date(frmModificarVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES"); console.log(fechaInicio);
+			var fechaFin= new Date(frmModificarVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES"); console.log(fechaFin);
 			var oNuevasVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaFin,descripcion);
-			console.log(oVacaciones);
+			console.log(oNuevasVacaciones);
 				
-			if(oGestion.modificarVacaciones(oNuevasVacaciones)==false){
+			if(oGestion.modificarVacaciones(oNuevasVacaciones,dniConductor)==false){
 				document.frmModificarVacaciones.reset();
 				document.frmModificarVacaciones.style.display= "none";
 				document.frmConductorVacaciones.radioVacacionesModificar.checked= false;
@@ -171,14 +190,19 @@ function modificarVacaciones(){
 				mensaje("Fechas Incorrectas/Modificacion no completada");
 			}			
 		} else{
-			mensaje("Fechas erroneas");
+			frmModificarVacaciones.fechaIni.parentNode.parentNode.classList.add("has-error");
+			frmModificarVacaciones.fechaFin.parentNode.parentNode.classList.add("has-error");
+			frmModificarVacaciones.fechaIni.focus();
+			frmModificarVacaciones.fechaFin.focus();
+			var error= "Rango de fechas incorrecto";
+			falloValidacion(error, frmModificarVacaciones.fechaIni);
+			falloValidacion(error, frmModificarVacaciones.fechaFin);
 		}
 	}
 }
 
 function validarConductor(formAltaConductor){
 	var bValido= true;
-	var sError="";
 	
 	//campo dni conductor
 	var dniConductor= formAltaConductor.txtConductorDni.value.trim();
@@ -335,7 +359,7 @@ function validarVacaciones(formVacaciones){
 	var fechaFin= formVacaciones.fechaFin.value.trim();
 	formVacaciones.fechaFin.value= formVacaciones.fechaFin.value.trim();
 	
-	if(fechaInicio==""){
+	if(fechaFin==""){
 		formVacaciones.fechaFin.parentNode.parentNode.classList.add("has-error");
 		formVacaciones.fechaFin.focus();
 		error= "Seleccione una fecha fin";
@@ -344,6 +368,19 @@ function validarVacaciones(formVacaciones){
 		formVacaciones.fechaFin.parentNode.parentNode.classList.remove("has-error");
 		falloValidacion("", formVacaciones.fechaFin);
 	}
+	
+	/*rango de fechas
+	if(fechaInicio!="" && fechaFin!=""){
+		if((fechaFin-fechaInicio)>=0){			
+			formVacaciones.fechaFin.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", formVacaciones.fechaFin);
+		} else{
+			formVacaciones.fechaFin.parentNode.parentNode.classList.add("has-error");
+			formVacaciones.fechaFin.focus();
+			error= "Rango de fechas incorrecto";
+			falloValidacion(error, formVacaciones.fechaFin);
+		}*/
+	//}
 	
 	//descripcion
 	var descripcionVacaciones= formVacaciones.descripcion.value.trim();
@@ -380,12 +417,24 @@ function rellenaCamposConductor(oEvento){
 	
 }
 
-function rellenaCamposVacaciones(oEvento){
+function rellenaCamposModificarVacaciones(oEvento){
 	var oE = oEvento || windows.event;
 	var formVacaciones= oE.target.parentNode.parentNode.parentNode;
 	var oConductor= oGestion.buscarVacaciones(formVacaciones.comboConductorVacaciones.value);
 	
-	formVacaciones.fechaInicio.value= oConductor.fechaIni;
+	formVacaciones.fechaIni.value= oConductor.fechaIni;
+	formVacaciones.fechaFin.value= oConductor.fechaFin;
+	formVacaciones.fechaInicioAntigua.value= oConductor.fechaIni;
+	formVacaciones.fechaFinAntigua.value= oConductor.fechaFin;
+	formVacaciones.descripcion.value= oConductor.descripcion;
+}
+
+function rellenaCamposBajaVacaciones(oEvento){
+	var oE = oEvento || windows.event;
+	var formVacaciones= oE.target.parentNode.parentNode.parentNode;
+	var oConductor= oGestion.buscarVacaciones(formVacaciones.comboConductorVacaciones.value);
+	
+	formVacaciones.fechaIni.value= oConductor.fechaIni;
 	formVacaciones.fechaFin.value= oConductor.fechaFin;
 	formVacaciones.descripcion.value= oConductor.descripcion;
 }

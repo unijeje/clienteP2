@@ -775,20 +775,20 @@ function comboEstadoInicialConductores(){
         var oVacaciones= oGestion.buscarVacaciones(frmBajaDeVacaciones.comboConductorVacaciones.value);
 		
 		if(oVacaciones){
-			frmBajaDeVacaciones.fechaInicio.value= oVacaciones.fechaIni;
+			frmBajaDeVacaciones.fechaIni.value= oVacaciones.fechaIni;
 			frmBajaDeVacaciones.fechaFin.value= oVacaciones.fechaFin;
 			frmBajaDeVacaciones.descripcion.value= oVacaciones.descripcion;
 			
-			frmModificarVacaciones.fechaIniModificada.value= oVacaciones.fechaIni;
-			frmModificarVacaciones.fechaFinModificada.value= oVacaciones.fechaFin;
+			frmModificarVacaciones.fechaIni.value= oVacaciones.fechaIni;
+			frmModificarVacaciones.fechaFin.value= oVacaciones.fechaFin;
 			frmModificarVacaciones.descripcion.value= oVacaciones.descripcion;
 		} else{
-			frmBajaDeVacaciones.fechaInicio.value= null;
+			frmBajaDeVacaciones.fechaIni.value= null;
 			frmBajaDeVacaciones.fechaFin.value= null;
 			frmBajaDeVacaciones.descripcion.value= null;
 			
-			frmModificarVacaciones.fechaIniModificada.value= null;
-			frmModificarVacaciones.fechaFinModificada.value= null;
+			frmModificarVacaciones.fechaIni.value= null;
+			frmModificarVacaciones.fechaFin.value= null;
 			frmModificarVacaciones.descripcion.value= null;
 		}
    }
