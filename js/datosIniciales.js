@@ -34,6 +34,7 @@ function cargarDatos(ficheroXml)
     var arrayAutobuses=oXML.querySelectorAll("gestion > autobus");
     var arrayAlquileres=oXML.querySelectorAll("gestion > alquiler");
     var arrayMantenimiento=oXML.querySelectorAll("gestion > mantenimiento");
+	var arrayVacaciones= oXML.querySelectorAll("gestion > vacaciones");
     /*
     console.log(arrayClientes);
     console.log(arrayTrabajadores);
@@ -47,7 +48,7 @@ function cargarDatos(ficheroXml)
     cargarAutobuses(arrayAutobuses);
     cargarAlquileres(arrayAlquileres);
     cargarMantenimientos(arrayMantenimiento);
-    
+    cargarVacaciones(arrayVacaciones);
 }
     
 function cargarClientes(array)
@@ -123,6 +124,21 @@ function cargarMantenimientos(array)
         console.log("Mantenimiento: "+sMatriculaMant+" - "+dFechaMant+" Introducida correctamente");
 
   }
+}
+
+function cargarVacaciones(array){
+	for(var i=0;i<array.length;i++){
+		var dniConductor = array[i].children[0].textContent;
+		var fechaIni = new Date(array[i].children[1].textContent).toLocaleDateString("es-ES");
+		var fechaIniSinConver = new Date(array[i].children[2].textContent);
+		var fechaFin = new Date(array[i].children[3].textContent).toLocaleDateString("es-ES");
+		var fechaFinSinConver = new Date(array[i].children[4].textContent);
+		var descripcion = array[i].children[5].textContent;
+	
+		var oNuevoVacaciones=new Vacaciones(dniConductor, fechaIni, fechaIniSinConver, fechaFin, fechaFinSinConver, descripcion);
+		if(oGestion.altaVacaciones(oNuevoVacaciones))
+			console.log("Vacaciones: "+dniConductor+" - "+fechaIni+" - "+fechaFinSinConver+" Introducida correctamente");
+	}
 }
 
 function cargarAlquileres(array) 

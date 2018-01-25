@@ -217,4 +217,20 @@
         <fecha>5/10/2018</fecha>
         <matricula>4321ZAF</matricula>
     </mantenimiento>
+	<vacaciones>
+        <dniConductor>09876543F</dniConductor>
+        <fechaIni>12/21/2017</fechaIni>
+        <fechaIniSinConver>12/21/2017</fechaIniSinConver>
+        <fechaFin>01/12/2018</fechaFin>
+        <fechaFinSinConver>2018-01-12T00:00:00.000Z</fechaFinSinConver>
+        <descripcion>Navidades</descripcion>
+    </vacaciones>
+	<vacaciones>
+        <dniConductor>09876098Z</dniConductor>
+        <fechaIni>01/01/2018</fechaIni>
+        <fechaIniSinConver>2018-01-01T00:00:00.000Z</fechaIniSinConver>
+        <fechaFin>02/04/2018</fechaFin>
+        <fechaFinSinConver>2018-02-04T00:00:00.000Z</fechaFinSinConver>
+        <descripcion>Enfermedad</descripcion>
+    </vacaciones>
 </gestion>
