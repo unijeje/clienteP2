@@ -102,31 +102,31 @@
         <matricula>1234BBB</matricula>
         <asientos>30</asientos>
         <modelo>Mercedes-Benz</modelo>
-        <consumo>Gasolina</consumo>
+        <consumo>10.5</consumo>
     </autobus>
     <autobus id="002">
         <matricula>4321ZAF</matricula>
         <asientos>35</asientos>
         <modelo>Tussam</modelo>
-        <consumo>Diesel</consumo>
+        <consumo>11</consumo>
     </autobus>
     <autobus id="003">
         <matricula>3297PQE</matricula>
         <asientos>40</asientos>
         <modelo>Setra</modelo>
-        <consumo>Gasolina</consumo>
+        <consumo>13.2</consumo>
     </autobus>
     <autobus id="004">
         <matricula>3857KSH</matricula>
         <asientos>45</asientos>
         <modelo>Scania</modelo>
-        <consumo>Diesel</consumo>
+        <consumo>15</consumo>
     </autobus>
     <autobus id="005">
         <matricula>0748OUH</matricula>
         <asientos>50</asientos>
         <modelo>Mercedes-Benz</modelo>
-        <consumo>Gasolina</consumo>
+        <consumo>15.5</consumo>
     </autobus>
     <!-- ALQUILER -->
     <alquiler id="001">
