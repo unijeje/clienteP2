@@ -362,21 +362,10 @@ function validarAlquiler(oForm)
         }
     }
 	
-	var fechaDeComprobacion= new Date(oForm.txtAlquilerFecha.value.trim()); 
-	//oForm.dFechaParaComprobar=new Date(oForm.txtAlquilerFecha.value.trim()); 
 	
-	for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].value);
-			if(oGestion.comprobarConductorVacaciones(oComboConductores[i].value,fechaDeComprobacion)==true){
-				oComboConductores[i].parentNode.parentNode.classList.remove("has-error");
-			} else{
-				oComboConductores[i].parentNode.parentNode.classList.add("has-error"); 
-				oComboConductores[i].focus(); console.log("estoy de vacaciones");
-				alert("Conductor de vacaciones en esa fecha");
-				bValidacion= false;
-			}
-		}
     
     /*Combo Autobuses no esta vacio*/
+    
     for(var i=0;i<oComboAutobuses.length;i++)
     {
         if(oComboAutobuses[i].value=="")
@@ -411,7 +400,7 @@ function validarAlquiler(oForm)
         falloValidacion("", oForm.querySelector(".alquilerConductoresOriginal").childNodes[3].childNodes[1]);
     }
 
-    /*Combo Autobuses no se repite*/
+    /*Combo Autobuses no se repite
     
     if(comprobarRepetido(oComboAutobuses))
     {
@@ -429,7 +418,23 @@ function validarAlquiler(oForm)
         falloValidacion("", oForm.querySelector(".alquilerAutobusesOriginal").childNodes[3].childNodes[1]);
     }
 
-    
+    */
+
+    var fechaDeComprobacion= new Date(oForm.txtAlquilerFecha.value.trim()); 
+	//oForm.dFechaParaComprobar=new Date(oForm.txtAlquilerFecha.value.trim()); 
+	
+	for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].value);
+			if(oGestion.comprobarConductorVacaciones(oComboConductores[i].value,fechaDeComprobacion)==true){
+                oComboConductores[i].parentNode.classList.remove("has-error");
+                falloValidacion("", oComboConductores[i].parentNode);
+			} else{
+				oComboConductores[i].parentNode.classList.add("has-error"); 
+				oComboConductores[i].focus(); console.log("estoy de vacaciones");
+				//alert("Conductor de vacaciones en esa fecha");
+                bValidacion= false;
+                falloValidacion("Conductor de vacaciones en esa fecha", oComboConductores[i].parentNode);
+			}
+		}
 
 
     return bValidacion;
