@@ -140,7 +140,7 @@ function listadoCuentaPorFecha()
         }
             
     }
-    for (var i=0;i<oFilasOrdenado.length;i++)
+    for (var i=0;i<oFilasOrdenado.length;i++) //vuelvo a meter dataset en las filas
     {
         oFilasOrdenado[i].dataset.fecha=oFecha[i];
     }
@@ -156,7 +156,7 @@ function listadoCuentaPorFecha()
 }
 
 function sortNumber(a,b) {
-    return new Date(b.date).toLocaleDateString("es-ES") - new Date(a.date).toLocaleDateString("es-ES");
+    return b-a;
 }
 var date_sort_desc = function (date1, date2) {
     // This is a comparison function that will result in dates being sorted in
