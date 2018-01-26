@@ -100,9 +100,9 @@ class Gestion
 		var bVacaciones= true;
 		
 		for(var i=0;i<this._vacaciones.length;i++){
-			if(this._vacaciones[i].dni==dniConductor){ console.log(dniConductor,fechaAlquiler);
+			if(this._vacaciones[i].dni==dniConductor){ //console.log(dniConductor,fechaAlquiler);
 				if(this._vacaciones[i].fechaIniSinConver<=fechaAlquiler && this._vacaciones[i].fechaFinSinConver>=fechaAlquiler){
-					bVacaciones= false; console.log("entro en el if de comparar fechas");
+					bVacaciones= false; //console.log("entro en el if de comparar fechas");
 				}
 			}
 		}
@@ -254,7 +254,7 @@ class Gestion
         {
             if(this._clientes[i].dni==dniAntiguo)
             {
-                console.log(i);                    
+                //console.log(i);                    
                 this._clientes[i]=oCliente;
                 this.actualizaComboCliente();
                 
@@ -366,7 +366,7 @@ class Gestion
 	}
 	
 	modificarConductor(oConductor,dniRecibido){
-        var bEncontrado=true; console.log(dniRecibido);
+        var bEncontrado=true; //console.log(dniRecibido);
 		/*
         if(this.buscarConductor(oConductor.dni)!=null && oConductor.dni!=dniRecibido){
             bEncontrado=false;
@@ -377,7 +377,7 @@ class Gestion
         for(var i=0;i<this._conductores.length;i++){
             if(this._conductores[i].dni==dniRecibido){
 				bEncontrado=false;
-                console.log(i);                    
+                //console.log(i);                    
                 this._conductores[i]=oConductor;
                 this.actualizaComboConductores();                
             }
@@ -400,7 +400,7 @@ class Gestion
             this.actualizaComboVacaciones();
 		}
 		
-		return bEncontrado;
+		return !bEncontrado;
 	}
 	
 	bajaVacaciones(oVacaciones){

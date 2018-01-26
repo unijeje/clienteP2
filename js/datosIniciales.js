@@ -135,7 +135,7 @@ function cargarVacaciones(array){
 		var fechaFinSinConver = new Date(array[i].children[4].textContent);
 		var descripcion = array[i].children[5].textContent;
 	
-		var oNuevoVacaciones=new Vacaciones(dniConductor, fechaIni, fechaIniSinConver, fechaFin, fechaFinSinConver, descripcion);
+    var oNuevoVacaciones=new Vacaciones(dniConductor, fechaIni, fechaIniSinConver, fechaFin, fechaFinSinConver, descripcion);
 		if(oGestion.altaVacaciones(oNuevoVacaciones)){
 			console.log("Vacaciones: "+dniConductor+" - "+fechaIni+" - "+fechaFinSinConver+" Introducida correctamente");
 		}

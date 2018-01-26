@@ -67,7 +67,7 @@ function altaAlquiler(oEvento)
         //conductores
         var oConductores=[];
         var oComboConductores=oForm.querySelectorAll("#comboConductores");
-        for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].parentNode.parentNode);
+        for (var i=0;i<oComboConductores.length;i++){ //console.log(oComboConductores[i].parentNode.parentNode);
 			oConductores.push(oGestion.buscarConductor(oComboConductores[i].value));			
 		}
         /*
@@ -432,13 +432,13 @@ function validarAlquiler(oForm)
     var fechaDeComprobacion= new Date(oForm.txtAlquilerFecha.value.trim()); 
 	//oForm.dFechaParaComprobar=new Date(oForm.txtAlquilerFecha.value.trim()); 
 	
-	for (var i=0;i<oComboConductores.length;i++){ console.log(oComboConductores[i].value);
+	for (var i=0;i<oComboConductores.length;i++){ //console.log(oComboConductores[i].value);
 			if(oGestion.comprobarConductorVacaciones(oComboConductores[i].value,fechaDeComprobacion)==true){
                 oComboConductores[i].parentNode.classList.remove("has-error");
                 //falloValidacion("", oComboConductores[i].parentNode);
 			} else{
 				oComboConductores[i].parentNode.classList.add("has-error"); 
-				oComboConductores[i].focus(); console.log("estoy de vacaciones");
+				oComboConductores[i].focus(); //console.log("estoy de vacaciones");
 				//alert("Conductor de vacaciones en esa fecha");
                 bValidacion= false;
                 falloValidacionAgregar("Conductor de vacaciones en esa fecha", oComboConductores[i].parentNode);
