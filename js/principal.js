@@ -923,7 +923,6 @@ var oExpRegMatricula=/^\d{4}[A-Z]{3}/; // 4 numeros y 3 letras mayusculas
 
 var oExpRegModelo=/^[a-z\s\d-]{3,20}$/i; // entre 3 y 20 caracteres con numeros
 
-
 var oExpRegDate=/^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{4})*$/; //mm/dd/yyyy
 
 var oExpRegNumAsientos=/^[3-4-5]+[\d]+/;  // numero entre 30 y 60 sin incluir el 60
