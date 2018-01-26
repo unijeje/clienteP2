@@ -33,10 +33,10 @@ En caso de no activar esto introducir las fechas como viene en el placeholder mm
 Al crear una gestion se le introduce el nº de cuenta de la empresa que lo este utilizando, este se recoge del XML.
 Gestion tendra una cuenta donde se agregaran apuntes, cada apunte es una transacción realizada:
 
-    Cada vez que se realiza un alquiler Gestion recibira un ingreso dependiendo del número de horas y kilómetros, así como el número de autobuses que se ha tenido que usar. > calcularImporteAlquileEmpresa(numAutobuses, sHoras, kms)
-    
-    Con cada alquiler Gestion hará un pago a cada conductor por igual dependiendo del número de horas del alquiler >  calcularImporteAlquilerConductor(sHoras)
+Cada vez que se realiza un alquiler Gestion recibira un ingreso dependiendo del número de horas y kilómetros, así como el número de autobuses que se ha tenido que usar. > calcularImporteAlquileEmpresa(numAutobuses, sHoras, kms)
 
-    Cada mantenimiento se restará el coste de este a Gestion.
+Con cada alquiler Gestion hará un pago a cada conductor por igual dependiendo del número de horas del alquiler >  calcularImporteAlquilerConductor(sHoras)
+
+Cada mantenimiento se restará el coste de este a Gestion.
 
 Cada conductor también tendrá una cuenta guardada en el sistema con todos los pagos recibidos.
