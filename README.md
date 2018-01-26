@@ -37,6 +37,6 @@ Cada vez que se realiza un alquiler Gestion recibira un ingreso dependiendo del 
 
 Con cada alquiler Gestion hará un pago a cada conductor por igual dependiendo del número de horas del alquiler >  calcularImporteAlquilerConductor(sHoras)
 
-Cada mantenimiento se restará el coste de este a Gestion.
+Cada mantenimiento restará el coste de este a Gestion.
 
 Cada conductor también tendrá una cuenta guardada en el sistema con todos los pagos recibidos.
