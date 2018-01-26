@@ -29,7 +29,7 @@ No hay validación de fecha en expresión regular porque se espera que el usuari
 Para activar esto en firefox: escribir about:config en el navegador, buscar dom.forms.datetime y set a true.
 En caso de no activar esto introducir las fechas como viene en el placeholder mm/dd/yyyy
 
-#Cuenta y apuntes
+# Cuenta y apuntes
 Al crear una gestion se le introduce el nº de cuenta de la empresa que lo este utilizando, este se recoge del XML.
 Gestion tendra una cuenta donde se agregaran apuntes, cada apunte es una transacción realizada:
 
