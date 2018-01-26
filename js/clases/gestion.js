@@ -597,7 +597,7 @@ class Gestion
             {
                 var newSelect=document.createElement("option");
                 newSelect.value=this._autobuses[i].matricula;
-                newSelect.text=this._autobuses[i].matricula+" - "+this._autobuses[i].modelo+" "+this._autobuses[i].asientos;
+                newSelect.text=this._autobuses[i].matricula+" - "+this._autobuses[i].modelo;
                 oComboBajaAutobus.appendChild(newSelect);
                 oComboModificaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));
                 oComboSeleccionaAutobus.appendChild(oComboBajaAutobus.lastChild.cloneNode(true));

@@ -1,5 +1,6 @@
 https://github.com/unijeje/clienteP2
-# clienteP2
+# Clientes Segunda Practica
+
 Al usar XML sin base de datos, no funciona en Chrome.
 
 index.html – Contiene todo el código HTML de la aplicación, distribuido por capas que se irán ocultando o mostrando a conveniencia.
