@@ -100,9 +100,9 @@ class Gestion
 		var bVacaciones= true;
 		
 		for(var i=0;i<this._vacaciones.length;i++){
-			if(this._vacaciones[i].dni==dniConductor){ console.log(dniConductor,fechaAlquiler);
+			if(this._vacaciones[i].dni==dniConductor){ //console.log(dniConductor,fechaAlquiler);
 				if(this._vacaciones[i].fechaIniSinConver<=fechaAlquiler && this._vacaciones[i].fechaFinSinConver>=fechaAlquiler){
-					bVacaciones= false; console.log("entro en el if de comparar fechas");
+					bVacaciones= false; //console.log("entro en el if de comparar fechas");
 				}
 			}
 		}
@@ -254,7 +254,7 @@ class Gestion
         {
             if(this._clientes[i].dni==dniAntiguo)
             {
-                console.log(i);                    
+                //console.log(i);                    
                 this._clientes[i]=oCliente;
                 this.actualizaComboCliente();
                 

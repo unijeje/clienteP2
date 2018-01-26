@@ -69,7 +69,7 @@ function bajaConductor(){
 	var sDNI= frmConductorBaja.txtConductorDni.value.trim(); //console.log(oConductor); //recoge bien el campo dni pero luego no lo envia 
 	var oConductor=oGestion.buscarConductor(sDNI);
 	var darDeBaja= oGestion.bajaConductor(oConductor);
-	console.log(darDeBaja);
+	//console.log(darDeBaja);
 	if(oGestion.bajaConductor(oConductor)==true){
 		mensaje("Cliente "+oConductor.dni+" dado de baja correctamente");
 		document.frmConductorBaja.style.display="none";
@@ -109,10 +109,10 @@ function modificarConductor(oEvento){
 
 function altaVacaciones(oEvento){
 	var oE = oEvento || windows.event;
-	var formVacaciones=oE.target.parentNode.parentNode.parentNode; console.log(formVacaciones);
+	var formVacaciones=oE.target.parentNode.parentNode.parentNode; //console.log(formVacaciones);
 	
 	if(validarVacaciones(formVacaciones)){		
-		var dniConductor= frmAltaDeVacaciones.comboConductor.value.trim();  console.log(dniConductor);
+		var dniConductor= frmAltaDeVacaciones.comboConductor.value.trim();  //console.log(dniConductor);
 		var fechaInicioParaComprobar= new Date(frmAltaDeVacaciones.fechaIni.value.trim());
 		var fechaFinParaComprobar= new Date(frmAltaDeVacaciones.fechaFin.value.trim());
 		var descripcion= frmAltaDeVacaciones.descripcion.value.trim();
@@ -165,10 +165,10 @@ function bajaVacaciones(){
 
 function modificarVacaciones(oEvento){
 	var oE = oEvento || windows.event;
-	var formVacaciones=oE.target.parentNode.parentNode.parentNode; console.log(formVacaciones);
+	var formVacaciones=oE.target.parentNode.parentNode.parentNode; //console.log(formVacaciones);
 	
 	if(validarVacaciones(formVacaciones)){
-		var dniConductor= frmModificarVacaciones.comboConductorVacaciones.value.trim();  console.log(dniConductor);
+		var dniConductor= frmModificarVacaciones.comboConductorVacaciones.value.trim();  //console.log(dniConductor);
 		var fechaInicioParaComprobar= new Date(frmModificarVacaciones.fechaIni.value.trim());
 		var fechaFinParaComprobar= new Date(frmModificarVacaciones.fechaFin.value.trim());
 		var descripcion= frmModificarVacaciones.descripcion.value.trim();
@@ -180,10 +180,10 @@ function modificarVacaciones(oEvento){
 			falloValidacion("", frmModificarVacaciones.fechaIni);
 			falloValidacion("", frmModificarVacaciones.fechaFin);
 			
-			var fechaInicio= new Date(frmModificarVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES"); console.log(fechaInicio);
-			var fechaFin= new Date(frmModificarVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES"); console.log(fechaFin);
+			var fechaInicio= new Date(frmModificarVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES"); //console.log(fechaInicio);
+			var fechaFin= new Date(frmModificarVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES"); //console.log(fechaFin);
 			var oNuevasVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaInicioParaComprobar,fechaFin,fechaFinParaComprobar,descripcion);
-			console.log(oNuevasVacaciones);
+			//console.log(oNuevasVacaciones);
 				
 			if(oGestion.modificarVacaciones(oNuevasVacaciones,dniConductor)==false){
 				document.frmModificarVacaciones.reset();

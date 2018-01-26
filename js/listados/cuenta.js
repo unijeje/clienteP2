@@ -144,7 +144,7 @@ function listadoCuentaPorFecha()
     {
         oFilasOrdenado[i].dataset.fecha=oFecha[i];
     }
-    console.log(oFilasOrdenado);
+    //console.log(oFilasOrdenado);
 
     var oBodyTable=document.querySelector("#resultadoListados table tbody");
     for(var i=0;i<oFilasOrdenado.length;i++) //insertar
