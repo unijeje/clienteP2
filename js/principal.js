@@ -285,7 +285,7 @@ function mostrarMenuMantenimientoAutobus()
 	document.frmAltaMantenimiento.style.display="none";
     document.frmBajaMantenimiento.style.display="none";
     document.frmModificarMantenimiento.style.display="none";
-	document.getElementById("rdMantenimientoSeleccion").checked=false;
+	document.getElementById("rdMantenimientoSeleccion0").checked=false;
 	document.getElementById("rdMantenimientoSeleccion1").checked=false;
 	document.getElementById("rdMantenimientoSeleccion2").checked=false;
 }

@@ -42,7 +42,6 @@ function listadoCuenta()
         oTexto=document.createTextNode(cabeceras[i]);
         
         oCelda.appendChild(oTexto);
-        oCelda.classList.add("bg-info");
         oCelda.classList.add("lead");
 		oFila.appendChild(oCelda);
     }

@@ -41,7 +41,7 @@ oComboModificaAutobus.addEventListener("change", rellenaCamposAutobus, false);
 oComboAutobusRevisado.addEventListener("change", rellenaCamposMantenimiento, false);
 oComboAutobusRevisado2.addEventListener("change", rellenaCamposMantenimiento, false);
 
-oRadioMantenimientoSeleccion=document.getElementById("rdMantenimientoSeleccion");
+oRadioMantenimientoSeleccion=document.getElementById("rdMantenimientoSeleccion0");
 oRadioMantenimientoSeleccion.addEventListener("click", muestraFormsMantenimiento, false);
 oRadioMantenimientoSeleccion1=document.getElementById("rdMantenimientoSeleccion1");
 oRadioMantenimientoSeleccion1.addEventListener("click", muestraFormsMantenimiento1, false);
@@ -143,7 +143,7 @@ function fAltaMantenimiento(oEvento)
         if(bInsercion){
             document.frmAltaMantenimiento.reset();
             document.frmAltaMantenimiento.style.display="none";
-            document.frmAutobusMantenimiento.style.display="none";
+			document.frmAutobusMantenimiento.rdMantenimientoSeleccion0.checked= false;
 
             comboEstadoInicialAutubuses(); 
             //oGestion.actualizaComboRevisado();
@@ -168,6 +168,8 @@ function fBajaMantenimiento()
     {
         mensaje("Mantenimiento anulado correctamente");
         comboEstadoInicialAutubuses();
+		document.frmBajaMantenimiento.style.display="none";
+		document.frmAutobusMantenimiento.rdMantenimientoSeleccion1.checked=false;
     }
     
     else
@@ -200,7 +202,7 @@ function fModificarMantenimiento(oEvento)
         {
             document.frmModificarMantenimiento.reset();
             document.frmModificarMantenimiento.style.display="none";
-            document.frmAutobusMantenimiento.style.display="none";
+			document.frmAutobusMantenimiento.rdMantenimientoSeleccion2.checked=false;
             mensaje("Mantenimiento modificado correctamente");
 
             comboEstadoInicialAutubuses();

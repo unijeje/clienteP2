@@ -392,6 +392,13 @@ class Gestion
 		for(var i=0;i<this._vacaciones.length && bEncontrado==false;i++){
 			if(this._vacaciones[i].dni==oVacaciones.dni){
 				bEncontrado=true;
+				frmAltaDeVacaciones.comboConductor.parentNode.parentNode.classList.add("has-error");
+				frmAltaDeVacaciones.comboConductor.focus();
+				var error= "Este conductor ya tiene vacaciones";
+				falloValidacion(error, frmAltaDeVacaciones.comboConductor);
+			} else{
+				frmAltaDeVacaciones.comboConductor.parentNode.parentNode.classList.remove("has-error");
+				falloValidacion("", frmAltaDeVacaciones.comboConductor);
 			}
 		}
 		
@@ -400,7 +407,7 @@ class Gestion
             this.actualizaComboVacaciones();
 		}
 		
-		return !bEncontrado;
+		return bEncontrado;
 	}
 	
 	bajaVacaciones(oVacaciones){

@@ -134,9 +134,7 @@ function altaVacaciones(oEvento){
 				document.frmConductorVacaciones.radioVacacionesAlta.checked= false;
 				mensaje("Vacaciones Aceptadas");
 				estadoInicialComboVacaciones();
-			} else{
-				mensaje("Ese conductor ya tiene vacaciones");
-			}			
+			}		
 		} else{
 			frmAltaDeVacaciones.fechaIni.parentNode.parentNode.classList.add("has-error");
 			frmAltaDeVacaciones.fechaFin.parentNode.parentNode.classList.add("has-error");

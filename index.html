@@ -155,7 +155,7 @@
 				<form name="frmBorraAlquiler" id="frmBorraAlquiler" class="form-horizontal"> <!--Formulario Borrar alquiler -->
 					<div class="row">
 						<div class="col-xs-12">
-							<h2 class="text-center">Borrar Alquiler</h2>
+							<h2 class="text-center">Baja de Alquiler</h2>
 						</div>
 					</div>
 						<br>
@@ -170,7 +170,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="comboCliente">Seleccione Cliente</label>
 						<div class="col-md-6 col-sm-8">
-							<select disabled readonly id="comboCliente" name="comboCliente" class="form-control ">
+							<select disabled id="comboCliente" name="comboCliente" class="form-control ">
 								<!--se rellenan con actualizaComboCliente al dar de alta uno nuevo -->
 							</select>
 						</div>
@@ -243,7 +243,7 @@
 						<br>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
-							<input type="button" id="btnBorrarAlquiler" name="btnBorrarAlquiler" class="btn btn-block btn-primary" value="Borrar Alquiler" />
+							<input type="button" id="btnBorrarAlquiler" name="btnBorrarAlquiler" class="btn btn-block btn-primary" value="Baja Alquiler" />
 						</div>
 					</div>
 				</form>
@@ -276,7 +276,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtAlquilerID">ID Alquiler:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input id="txtAlquilerID" readonly disabled name="txtAlquilerID" placeholder="123" class="form-control input-md" type="text">
+							<input id="txtAlquilerID" readonly name="txtAlquilerID" placeholder="123" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
@@ -340,12 +340,8 @@
 					</div>
 						<br>
 					<div class="form-group">
-						<div class="col-sm-offset-2 col-md-offset-4 col-md-2 col-sm-4">
-							<input type="button" id="btnModificarAlquiler" name="btnModificarAlquiler" class="btn btn-block btn-primary" value="Actualizar Alquiler" />
-						</div>
-			
-						<div class="col-md-2 col-sm-4">
-							<input type="reset" id="btnLimpiarCampos" name="btnLimpiarCampos" class="btn btn-block btn-danger" value="Limpiar Campos" />
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
+							<input type="button" id="btnModificarAlquiler" name="btnModificarAlquiler" class="btn btn-block btn-primary" value="Modificar Alquiler" />
 						</div>
 					</div>
 				</form>
@@ -478,31 +474,31 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusMatricula">Matrícula del Autobus:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtAutobusMatricula" name="txtAutobusMatricula" placeholder="Matrícula" class="form-control input-md" type="text">
+							<input readonly id="txtAutobusMatricula" name="txtAutobusMatricula" placeholder="Matrícula" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusAsientos">Nº de Asientos:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtAutobusAsientos" name="txtAutobusAsientos" placeholder="Nº Asientos" class="form-control input-md" type="text">
+							<input readonly id="txtAutobusAsientos" name="txtAutobusAsientos" placeholder="Nº Asientos" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusModelo">Modelo del Autobus:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
+							<input readonly id="txtAutobusModelo" name="txtAutobusModelo" placeholder="Marca" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtAutobusConsumo">Consumo del Autobus:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
+							<input readonly id="txtAutobusConsumo" name="txtAutobusConsumo" placeholder="Consumo" class="form-control input-md" type="text">
 						</div>
 					</div>
 						<br>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
-						<input type="button" id="btnBajaAutobus" name="btnBajaAutobus" class="btn btn-block btn-primary" value="Dar de Baja" />
+							<input type="button" id="btnBajaAutobus" name="btnBajaAutobus" class="btn btn-block btn-primary" value="Dar de Baja" />
 						</div>
 					</div>
 				</form>
@@ -546,7 +542,7 @@
 						<br>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
-						<input type="button" id="btnModificarAutobus" name="btnModificarAutobus" class="btn btn-block btn-primary" value="Modificar datos" />
+							<input type="button" id="btnModificarAutobus" name="btnModificarAutobus" class="btn btn-block btn-primary" value="Modificar Autobus" />
 						</div>
 					</div>
 				</form>
@@ -559,13 +555,13 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="rdMantenimientoSeleccion">¿Qué operación desea realizar?</label>  
 						<div class="col-md-6 col-sm-8">
-							<label class="radio-inline"><input id="rdMantenimientoSeleccion" name="rdMantenimientoSeleccion" value="Alta" type="radio" checked />Alta mantenimiento</label>
-							<label class="radio-inline"><input id="rdMantenimientoSeleccion1" name="rdMantenimientoSeleccion" value="Baja" type="radio"/>Baja mantenimiento</label>
-							<label class="radio-inline"><input id="rdMantenimientoSeleccion2" name="rdMantenimientoSeleccion" value="Modificar" type="radio"/>Modificar mantenimiento</label>
+							<label class="radio-inline"><input id="rdMantenimientoSeleccion0" name="rdMantenimientoSeleccion" value="Alta" type="radio"/>Alta mantenimiento &nbsp </label>
+							<label class="radio-inline"><input id="rdMantenimientoSeleccion1" name="rdMantenimientoSeleccion" value="Baja" type="radio"/>Baja mantenimiento &nbsp </label>
+							<label class="radio-inline"><input id="rdMantenimientoSeleccion2" name="rdMantenimientoSeleccion" value="Modificar" type="radio"/>Modificar mantenimiento &nbsp </label>
 						</div>
 					</div>
 				</form>
-
+					<br>
 
 				<!-- Alta Mantenimiento -->
 				<form name="frmAltaMantenimiento" id="frmAltaMantenimiento" class="form-horizontal"> 
@@ -598,14 +594,14 @@
 						</div>
 					</div>
 
-
+						<br>
 					<div class="form-group">
 						
-						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-2 col-sm-4 col-xs-12">
 							<input type="button" id="btnAltaMantenimiento" name="btnAltaMantenimiento" class="btn btn-block btn-primary" value="Dar de Alta" />
 						</div>
 			
-						<div class="col-md-3 col-sm-3">
+						<div class="col-md-2 col-sm-4 col-xs-12">
 							<input type="reset" id="btnLimpiarCampos" name="btnLimpiarCampos" class="btn btn-block btn-danger" value="Limpiar Campos" />
 						</div>
 					</div>
@@ -628,25 +624,25 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+							<input readonly id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtImporteMantenimiento">Importe:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtImporteMantenimiento" name="txtImporteMantenimiento" placeholder="Importe" class="form-control input-md" type="text">
+							<input readonly id="txtImporteMantenimiento" name="txtImporteMantenimiento" placeholder="Importe" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtMantenimientoFecha">Fecha:</label>
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="text">
+							<input readonly id="txtMantenimientoFecha" name="txtMantenimientoFecha" placeholder="yyyy-mm-dd" class="form-control input-md" type="text">
 						</div>
 					</div>
-					
+						<br>
 					<div class="form-group">
 						
-						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 							<input type="button" id="btnBajaMantenimiento" name="btnBajaMantenimiento" class="btn btn-block btn-primary" value="Dar de Baja" />
 						</div>
 
@@ -689,11 +685,11 @@
 							<input id="txtMantenimientoFechaN" name="txtMantenimientoFechaN" placeholder="mm/dd/yyyy" class="form-control input-md" type="date">
 						</div>
 					</div>
-
+						<br>
 					<div class="form-group">
 						
-						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
-							<input type="button" id="btnModificarMantenimiento" name="btnModificarMantenimiento" class="btn btn-block btn-primary" value="Modificar datos" />
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
+							<input type="button" id="btnModificarMantenimiento" name="btnModificarMantenimiento" class="btn btn-block btn-primary" value="Modificar Mantenimiento" />
 						</div>
 			
 					</div>
@@ -723,6 +719,13 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="radioClienteSexo">Sexo:</label>  
+						<div class="col-md-6 col-sm-8">
+							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Masculino" type="radio"/>Masculino</label>
+							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Femenino" type="radio"/>Femenino</label>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteTelefono">Teléfono del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
 							<input id="txtClienteTelefono" name="txtClienteTelefono" placeholder="Telefono" class="form-control input-md" type="text">
@@ -738,13 +741,6 @@
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteCuenta">Número de cuenta del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
 							<input id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label" for="radioClienteSexo">Sexo:</label>  
-						<div class="col-md-6 col-sm-8">
-							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Masculino" type="radio"/>Masculino</label>
-							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Femenino" type="radio"/>Femenino</label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -1084,11 +1080,13 @@
 				</form>
 				
 				<form name="frmConductorVacaciones" id="frmConductorVacaciones" class="form-horizontal"> <!-- Vacaciones Conductor -->
-					<div class="form-group">
-						<div class="col-md-4 col-sm-4 hidden-xs"></div>
-						<input type="radio" id="radioVacacionesAlta" name="radioVacaciones" value="alta" >Alta Vacaciones</input>&nbsp
-						<input type="radio" id="radioVacacionesBaja" name="radioVacaciones" value="baja" >Baja Vacaciones</input>&nbsp
-						<input type="radio" id="radioVacacionesModificar" name="radioVacaciones" value="modificar" >Modificar Vacaciones</input>
+					<div class="form-group">						
+						<label class="col-md-3 col-sm-3 control-label" for="rdMantenimientoSeleccion">¿Qué operación desea realizar?</label>  
+						<div class="col-md-6 col-sm-8">
+							<label class="radio-inline"><input type="radio" id="radioVacacionesAlta" name="radioVacaciones" value="alta" />Alta Vacaciones &nbsp </label>
+							<label class="radio-inline"><input type="radio" id="radioVacacionesBaja" name="radioVacaciones" value="baja" />Baja Vacaciones &nbsp </label>
+							<label class="radio-inline"><input type="radio" id="radioVacacionesModificar" name="radioVacaciones" value="modificar" />Modificar Vacaciones &nbsp </label>
+						</div>
 					</div>
 				</form>
 					<br>
