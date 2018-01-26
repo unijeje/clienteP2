@@ -233,7 +233,7 @@ function validarAlquiler(oForm)
     var iAlquilerFecha=oForm.txtAlquilerFecha.value.trim();
     oForm.txtAlquilerFecha.value=oForm.txtAlquilerFecha.value.trim();
 
-    if(!oExpRegDate.test(iAlquilerFecha))
+    if(iAlquilerFecha=="")
     {
         oForm.txtAlquilerFecha.parentNode.parentNode.classList.add("has-error");
         oForm.txtAlquilerFecha.focus();
