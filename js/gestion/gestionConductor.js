@@ -126,7 +126,7 @@ function altaVacaciones(oEvento){
 			var fechaInicio= new Date(frmAltaDeVacaciones.fechaIni.value.trim()).toLocaleDateString("es-ES");
 			var fechaFin= new Date(frmAltaDeVacaciones.fechaFin.value.trim()).toLocaleDateString("es-ES");
 			var oVacaciones= new Vacaciones(dniConductor,fechaInicio,fechaInicioParaComprobar,fechaFin,fechaFinParaComprobar,descripcion);
-			console.log(oVacaciones);
+			//console.log(oVacaciones);
 				
 			if(oGestion.altaVacaciones(oVacaciones)==false){
 				document.frmAltaDeVacaciones.reset();
