@@ -69,11 +69,10 @@ function listadoVacacionesPorApellidos(){
 	var oFilasOrdenado=[];
 	
 	for(var i=1;i<oFilas.length;i++){
-        oApellidos.push(oFilas[i]);
+        oApellidos.push(oFilas[i].cells[2].textContent);
     }
 	
-	oApellidos.sort;
-	console.log(oApellidos.sort(ordenadosApell));
+	oApellidos.sort(ordenadosApell);
 	
 	for(var i=0;i<oFilas.length;i++){		
 		oFilasOrdenado.push(oApellidos[i]);
