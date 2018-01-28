@@ -73,16 +73,31 @@ function listadoVacacionesPorApellidos(){
     }
 	
 	oApellidos.sort(ordenadosApell);
+<<<<<<< HEAD
+=======
+	//console.log(oApellidos.sort(ordenadosApell));
+>>>>>>> f954c9ef0de2b27d39940f46648bcd0b0cb14ff2
 	
-	for(var i=0;i<oFilas.length;i++){		
-		oFilasOrdenado.push(oApellidos[i]);
+	for(var i=0;i<oApellidos.length;i++){
+		var bMetido=false;
+		for(var j=0;j<oFilas.length && bMetido==false;j++)
+		{
+			if(oFilas[j].cells[2].textContent==oApellidos[i])
+			{
+				oFilasOrdenado.push(oFilas[j]);
+				bMetido=true
+			}
+			
+		}		
+		
 	}
 	
 	var oBodyTable=document.querySelector("#resultadoListados table tbody");
-	
+	console.log(oFilasOrdenado);
     for(var i=0;i<oFilasOrdenado.length;i++){        
         oBodyTable.appendChild(oFilasOrdenado[i]);
-    }
+	}
+	
 }
 
 var ordenadosApell= function(a,b){
