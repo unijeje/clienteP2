@@ -90,7 +90,7 @@ function listadoVacacionesPorApellidos(){
 	}
 	
 	var oBodyTable=document.querySelector("#resultadoListados table tbody");
-	console.log(oFilasOrdenado);
+	//console.log(oFilasOrdenado);
     for(var i=0;i<oFilasOrdenado.length;i++){        
         oBodyTable.appendChild(oFilasOrdenado[i]);
 	}
