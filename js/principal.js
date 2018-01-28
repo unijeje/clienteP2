@@ -715,7 +715,7 @@ function comboEstadoInicialClientes() //al iniciar el programa muestra los datos
             frmClienteBaja.txtClienteTelefono.value=oCliente.tlf;
             frmClienteBaja.txtClienteCorreo.value=oCliente.correo;
             frmClienteBaja.txtClienteCuenta.value=oCliente.numCuenta;
-            frmClienteBaja.txtClienteSexo.value=oCliente.sexo;
+            frmClienteBaja.radioClienteSexo.value=oCliente.sexo;
         }
 
     }  
@@ -727,7 +727,7 @@ function comboEstadoInicialClientes() //al iniciar el programa muestra los datos
         frmClienteModificar.txtClienteTelefono.value=null;
         frmClienteModificar.txtClienteCorreo.value=null;
         frmClienteModificar.txtClienteCuenta.value=null;
-        frmClienteModificar.txtClienteSexo.value=null;
+        frmClienteModificar.radioClienteSexo.value=null;
 
         frmClienteBaja.txtClienteDni.value=null;
         frmClienteBaja.txtClienteNombre.value=null;
@@ -735,7 +735,7 @@ function comboEstadoInicialClientes() //al iniciar el programa muestra los datos
         frmClienteBaja.txtClienteTelefono.value=null;
         frmClienteBaja.txtClienteCorreo.value=null;
         frmClienteBaja.txtClienteCuenta.value=null;
-        frmClienteBaja.txtClienteSexo.value=null;
+        frmClienteBaja.radioClienteSexo.value=null;
     }
 }
 

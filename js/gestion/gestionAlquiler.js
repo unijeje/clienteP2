@@ -91,8 +91,6 @@ function altaAlquiler(oEvento)
             mensaje("Alquiler insertado Correctamente");
 
         }
-        else
-            mensaje("Ya existe un alquiler con ese ID");
 
     }
     

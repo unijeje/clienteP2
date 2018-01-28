@@ -132,8 +132,16 @@ class Gestion
                 var numCuentaConductor=oAlquiler.conductor[i].numCuenta;
                 oGestion.gestionContabilidad("nomina", numCuentaConductor, fImporte, oAlquiler.fecha);
             }
+			
+			frmNuevoAlquiler.txtAlquilerID.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmNuevoAlquiler.txtAlquilerID);
 
-        }
+        } else{
+			frmNuevoAlquiler.txtAlquilerID.parentNode.parentNode.classList.add("has-error");
+			frmNuevoAlquiler.txtAlquilerID.focus();
+			error= "Ya existe un alquiler con ese id";
+			falloValidacion(error, frmNuevoAlquiler.txtAlquilerID);
+		}
         return res;
     }
     bajaAlquiler(oAlquiler)
@@ -210,6 +218,8 @@ class Gestion
             this._clientes.push(oCliente);
             res=true;
             this.actualizaComboCliente();
+			frmClienteAlta.txtClienteDni.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmClienteAlta.txtClienteDni);
         }
         else if(this.buscarCliente(oCliente.dni).estado==false) //si ya existe pero esta dado de baja lo da de alta otra vez
         {
@@ -220,7 +230,16 @@ class Gestion
                 res=true;
                 this.actualizaComboCliente();
             }
-        }        
+			
+			frmClienteAlta.txtClienteDni.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmClienteAlta.txtClienteDni);
+        } else{
+			frmClienteAlta.txtClienteDni.parentNode.parentNode.classList.add("has-error");
+			frmClienteAlta.txtClienteDni.focus();
+			var error= "Ese cliente ya existe";
+			falloValidacion(error, frmClienteAlta.txtClienteDni);
+		} 
+		
         return res;
     }
     
@@ -257,8 +276,14 @@ class Gestion
                 //console.log(i);                    
                 this._clientes[i]=oCliente;
                 this.actualizaComboCliente();
-                
-            }
+                frmClienteModificar.txtClienteDni.parentNode.parentNode.classList.remove("has-error");
+				falloValidacion("", frmClienteModificar.txtClienteDni);
+			} else{
+				frmClienteModificar.txtClienteDni.parentNode.parentNode.classList.add("has-error");
+				frmClienteModificar.txtClienteDni.focus();
+				var error= "Ya existe un cliente con ese DNI";
+				falloValidacion(error, frmClienteModificar.txtClienteDni);
+			} 
 
         }
         return res;
@@ -345,7 +370,13 @@ class Gestion
             
             //se crea una cuenta de banco para ese conductor
             this.añadirCuenta(oConductor.numCuenta);
-
+			frmConductorAlta.txtConductorDni.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmConductorAlta.txtConductorDni);
+        } else{
+			frmConductorAlta.txtConductorDni.parentNode.parentNode.classList.add("has-error");
+			frmConductorAlta.txtConductorDni.focus();
+			var error= "Ese conductor ya existe";
+			falloValidacion(error, frmConductorAlta.txtConductorDni);
 		}
 			
 		return !bEncontrado;
@@ -535,16 +566,24 @@ class Gestion
         var esta=false;
         var introducido=false;
 
-        for (var i=0;i<this._autobuses.length;i++)
-            if(this._autobuses[i].matricula == oAutobus.matricula )
+        for (var i=0;i<this._autobuses.length;i++){
+            if(this._autobuses[i].matricula == oAutobus.matricula ){
                 esta=true;
-        
+			}
+		}
 
         if(!esta){
             this._autobuses.push(oAutobus);
             this.actualizaComboAutobus();
             introducido=true;
-        }
+			frmAutobusAlta.txtAutobusMatricula.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmAutobusAlta.txtAutobusMatricula);
+        } else{
+			frmAutobusAlta.txtAutobusMatricula.parentNode.parentNode.classList.add("has-error");
+			frmAutobusAlta.txtAutobusMatricula.focus();
+			var error= "Ya existe un autobus con esa matrícula";
+			falloValidacion(error, frmAutobusAlta.txtAutobusMatricula);
+		}
 
         return introducido;
     }
@@ -680,8 +719,14 @@ class Gestion
 
             //hacer gestion de pago
             this.gestionContabilidad("mantenimiento", null, oMantenimiento.importe, oMantenimiento.fecha);
-
-        }
+			frmAltaMantenimiento.comboAutobus.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmAltaMantenimiento.comboAutobus);
+        } else{
+			frmAltaMantenimiento.comboAutobus.parentNode.parentNode.classList.add("has-error");
+			frmAltaMantenimiento.comboAutobus.focus();
+			var error= "Este autobus ya tiene un mantenimiento";
+			falloValidacion(error, frmAltaMantenimiento.comboAutobus);
+		}
 
         return introducido;
     }

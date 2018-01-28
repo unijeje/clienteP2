@@ -51,10 +51,6 @@ function altaCliente(oEvento)
             mensaje("Cliente Insertado Correctamente");
             comboEstadoInicialClientes(); //vuelve a seleccionar el primero del combo
         }
-        else
-        {
-            mensaje("Ese cliente ya existe");
-        }   
     }
 }
 
@@ -233,12 +229,11 @@ function actualizaCliente(oEvento)
         if(bActualizacion)
         {
             mensaje("Cliente actualizado correctamente");
-        
+			document.frmClienteModificar.style.display="none";
+			comboEstadoInicialClientes();
+			frmClienteModificar.txtClienteDni.parentNode.parentNode.classList.remove("has-error");
+			falloValidacion("", frmClienteModificar.txtClienteDni);
         }
-        else
-            mensaje("Ya existe un cliente con ese DNI");
-        
-        comboEstadoInicialClientes();
     }
     
     
@@ -253,11 +248,11 @@ function rellenaCamposCliente(oEvento) //actualiza
 
     oForm.txtClienteDni.value=oCliente.dni;
     oForm.txtClienteNombre.value=oCliente.nombre;
-    oForm.txtClienteApellidos.value=oCliente.apellidos;
+    oForm.txtClienteApellidos.value=oCliente.apellidos;	
+    oForm.radioClienteSexo.value=oCliente.sexo;
     oForm.txtClienteTelefono.value=oCliente.tlf;
     oForm.txtClienteCorreo.value=oCliente.correo;
     oForm.txtClienteCuenta.value=oCliente.numCuenta;
-    oForm.txtClienteSexo.value=oCliente.sexo;
 }
 
 

@@ -72,8 +72,6 @@ function fAltaAutobus(oEvento){
         	document.frmAutobusAlta.style.display="none";
         	mensaje("Autobus dado de alta correctamente");
         }
-        else
-        	mensaje("Ya existe un autobus con esa matrícula");
     }
 }
 
@@ -154,8 +152,6 @@ function fAltaMantenimiento(oEvento)
             mensaje("Mantenimiento añadido correctamente");
             //actualizar combo mantenimientos
         }
-        else
-            mensaje("El autobús seleccionado ya tiene pasado el mantenimiento");
     }
 }
 

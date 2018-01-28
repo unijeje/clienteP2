@@ -59,9 +59,7 @@ function altaConductor(oEvento){
 			mensaje("Conductor Dado de Alta Correctamente");
 			//crear cuenta con numCuentaConductor se hace en Gestion
 			
-		} else{
-			mensaje("Este conductor ya existe");
-		}
+		} 
 	}	
 }
 
@@ -99,8 +97,8 @@ function modificarConductor(oEvento){
 			mensaje("Conductor Modificado Correctamente");
 			comboEstadoInicialConductores();
 		/*} else{
-			mensaje("Este conductor ya existe");*/
-			comboEstadoInicialConductores();
+			mensaje("Este conductor ya existe");
+			comboEstadoInicialConductores();*/
 		}
 	}
 }

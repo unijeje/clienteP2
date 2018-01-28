@@ -709,7 +709,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteNombre">Nombre del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input id="txtClienteNombre" name="txtClienteNombre" placeholder="NOMBRE" class="form-control input-md" type="text">
+							<input id="txtClienteNombre" name="txtClienteNombre" placeholder="Nombre" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
@@ -743,13 +743,14 @@
 							<input id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
 						</div>
 					</div>
+					<br>
 					<div class="form-group">
 						
-						<div class="col-sm-offset-2 col-md-offset-4 col-md-3 col-sm-3">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-2 col-sm-4">
 							<input type="button" id="btnAltaCliente" name="btnAltaCliente" class="btn btn-block btn-primary" value="Dar de Alta" />
 						</div>
 			
-						<div class="col-md-3 col-sm-3">
+						<div class="col-md-2 col-sm-4">
 							<input type="reset" id="btnLimpiarCampos" name="btnLimpiarCampos" class="btn btn-block btn-danger" value="Limpiar Campos" />
 						</div>
 					</div>
@@ -766,43 +767,44 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteDni">Nif del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtClienteDni" name="txtClienteDni" placeholder="NIF" class="form-control input-md" type="text">
+							<input readonly id="txtClienteDni" name="txtClienteDni" placeholder="NIF" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteNombre">Nombre del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtClienteNombre" name="txtClienteNombre" placeholder="NOMBRE" class="form-control input-md" type="text">
+							<input readonly id="txtClienteNombre" name="txtClienteNombre" placeholder="Nombre" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteApellidos">Apellidos del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtClienteApellidos" name="txtClienteApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
+							<input readonly id="txtClienteApellidos" name="txtClienteApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="radioClienteSexo">Sexo:</label>  
+						<div class="col-md-6 col-sm-8">
+							<label class="radio-inline"><input disabled id="radioClienteSexo" name="radioClienteSexo" value="Masculino" type="radio"/>Masculino</label>
+							<label class="radio-inline"><input disabled id="radioClienteSexo" name="radioClienteSexo" value="Femenino" type="radio"/>Femenino</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteTelefono">Teléfono del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtClienteTelefono" name="txtClienteTelefono" placeholder="Telefono" class="form-control input-md" type="text">
+							<input readonly id="txtClienteTelefono" name="txtClienteTelefono" placeholder="Telefono" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteCorreo">Correo del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtClienteCorreo" name="txtClienteCorreo" placeholder="Correo" class="form-control input-md" type="text">
+							<input readonly id="txtClienteCorreo" name="txtClienteCorreo" placeholder="Correo" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteCuenta">Número de cuenta del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label" for="txtClienteSexo">Sexo del Cliente:</label>  
-						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtClienteSexo" name="txtClienteSexo" placeholder="Sexo" class="form-control input-md" type="text">
+							<input readonly id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<!--
@@ -813,9 +815,9 @@
 							<label class="radio-inline"><input id="txtClienteSexo" name="txtClienteSexo" value="Femenino" type="radio"/>Femenino</label>
 						</div>
 					</div>
-					-->
+					--> <br>
 					<div class="form-group">
-						<div class="col-md-12 col-sm-12">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 						<input type="button" id="btnBajaCliente" name="btnBajaCliente" class="btn btn-block btn-primary" value="Dar de Baja" />
 						</div>
 					</div>
@@ -838,13 +840,20 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteNombre">Nombre del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input id="txtClienteNombre" name="txtClienteNombre" placeholder="NOMBRE" class="form-control input-md" type="text">
+							<input id="txtClienteNombre" name="txtClienteNombre" placeholder="Nombre" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtClienteApellidos">Apellidos del Cliente:</label>  
 						<div class="col-md-6 col-sm-8">
 							<input id="txtClienteApellidos" name="txtClienteApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label" for="radioClienteSexo">Sexo:</label>  
+						<div class="col-md-6 col-sm-8">
+							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Masculino" type="radio"/>Masculino</label>
+							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Femenino" type="radio"/>Femenino</label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -865,16 +874,9 @@
 							<input id="txtClienteCuenta" name="txtClienteCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
 						</div>
 					</div>
+						<br>
 					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label" for="radioClienteSexo">Sexo:</label>  
-						<div class="col-md-6 col-sm-8">
-							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Masculino" type="radio"/>Masculino</label>
-							<label class="radio-inline"><input id="radioClienteSexo" name="radioClienteSexo" value="Femenino" type="radio"/>Femenino</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-md-12 col-sm-12">
+						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 						<input type="button" id="btnModificarCliente" name="btnModificarCliente" class="btn btn-block btn-primary" value="Modificar datos" />
 						</div>
 					</div>
@@ -955,19 +957,19 @@
 					</div><div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorDni">Nif:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtConductorDni" name="txtConductorDni" placeholder="NIF" class="form-control input-md" type="text">
+							<input readonly id="txtConductorDni" name="txtConductorDni" placeholder="NIF" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorNombre">Nombre:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtConductorNombre" name="txtConductorNombre" placeholder="Nombre" class="form-control input-md" type="text">
+							<input readonly id="txtConductorNombre" name="txtConductorNombre" placeholder="Nombre" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorApellidos">Apellidos:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtConductorApellidos" name="txtConductorApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
+							<input readonly id="txtConductorApellidos" name="txtConductorApellidos" placeholder="Apellidos" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
@@ -980,25 +982,25 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorTelefono">Teléfono:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtConductorTelefono" name="txtConductorTelefono" placeholder="Telefono" class="form-control input-md" type="text">
+							<input readonly id="txtConductorTelefono" name="txtConductorTelefono" placeholder="Telefono" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorCorreo">Correo Electrónico:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtConductorCorreo" name="txtConductorCorreo" placeholder="Email" class="form-control input-md" type="text">
+							<input readonly id="txtConductorCorreo" name="txtConductorCorreo" placeholder="Email" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorDireccion">Dirección:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtConductorDireccion" name="txtConductorDireccion" placeholder="Dirección" class="form-control input-md" type="text">
+							<input readonly id="txtConductorDireccion" name="txtConductorDireccion" placeholder="Dirección" class="form-control input-md" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtConductorCuenta">Número de cuenta:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input disabled id="txtConductorCuenta" name="txtConductorCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
+							<input readonly id="txtConductorCuenta" name="txtConductorCuenta" placeholder="Cuenta" class="form-control input-md" type="text">
 						</div>
 					</div>
 						<br>
@@ -1151,6 +1153,7 @@
 							<input type="text" name="descripcion" id="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" disabled></textarea>
 						</div>
 					</div>
+					<br>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 							<input type="button" id="btnBajaVacaciones" name="btnBajaVacaciones" class="btn btn-block btn-primary" value="Baja Vacaciones" />
@@ -1197,6 +1200,7 @@
 							<input type="text" name="descripcion" id="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" ></textarea>
 						</div>
 					</div>
+					<br>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 							<input type="button" id="btnMofificarVacaciones" name="btnMofificarVacaciones" class="btn btn-block btn-primary" value="Modificar Vacaciones" />
@@ -1239,7 +1243,7 @@
 
 			</div>
 			<br>
-
+			<br>			
 
 			<!--para elegir el cliente del que mostrar los alquileres -->
 			<div id="listadoAlquileres">
@@ -1257,11 +1261,18 @@
 
 
 			<div id="resultadoListados"> <!--para mostrar los listados -->
-				<div id="panelCuenta">
-					<input type="button" id="btnOrdenarCuentaFecha" name="btnOrdenarCuentaFecha" class="btn btn-primary" value="Ordenar por fecha"/>
-				</div>
-				<div id="panelConductor">
-					<button type="button" id="btnOrdenarConductoresActivos" name="btnOrdenarConductoresActivos" class="btn btn-primary btn-block">Mostrar solo activos</button>
+				<div class="row">
+					<div id="panelCuenta">
+						<input type="button" id="btnOrdenarCuentaFecha" name="btnOrdenarCuentaFecha" class="btn btn-primary" value="Ordenar por fecha"/>
+					</div>
+					<div class="form-group">
+						<div id="panelConductor">
+							<div  class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
+								<button type="button" id="btnOrdenarConductoresActivos" name="btnOrdenarConductoresActivos" class="btn btn-primary btn-block">Mostrar solo activos</button>
+								<br>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
