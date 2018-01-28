@@ -387,10 +387,10 @@ function validarVacaciones(formVacaciones){
 	var descripcionVacaciones= formVacaciones.descripcion.value.trim();
 	formVacaciones.descripcion.value= formVacaciones.descripcion.value.trim();
 		
-	if(descripcionVacaciones==""){
+	if(!oExpRegDescripcion.test(descripcionVacaciones)){
 		formVacaciones.descripcion.parentNode.parentNode.classList.add("has-error");
 		formVacaciones.descripcion.focus();
-		error= "Escriba el motivo de las vacaciones";
+		error= "Escriba el motivo de las vacaciones. Máximo 50 caracteres";
 		falloValidacion(error, formVacaciones.descripcion);
 		bValido= false;
 	} else{

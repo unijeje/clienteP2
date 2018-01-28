@@ -40,7 +40,7 @@ button{
     display:none;
 }
 /*OCULTAR Listados*/
-#panelCuenta, #panelConductor, #frmListadoAlquileres
+#panelCuenta, #panelConductor, #panelVacaciones, #frmListadoAlquileres
 {
     display:none;
     width:100%;

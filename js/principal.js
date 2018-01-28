@@ -359,6 +359,7 @@ function mostrarModificarVacaciones(){
 //Listados
 var campoCuenta=document.getElementById("panelCuenta");
 var campoConductor=document.getElementById("panelConductor");
+var campoVacaciones=document.getElementById("panelVacaciones");
 
 function mostrarListadoAutobuses()
 {
@@ -366,6 +367,7 @@ function mostrarListadoAutobuses()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="none";
+	campoVacaciones.style.display="none";
     oCapaListadoAlquileres.style.display="none";
 }
 
@@ -375,6 +377,7 @@ function mostrarListadoClientes()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="none";
+	campoVacaciones.style.display="none";
     oCapaListadoAlquileres.style.display="none";
 }
 
@@ -384,6 +387,7 @@ function mostrarListadoConductores()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="block";
+	campoVacaciones.style.display="none";
     oCapaListadoAlquileres.style.display="none";
 }
 
@@ -392,6 +396,7 @@ function mostrarListadoVacaciones(){
 	oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="none";
+	campoVacaciones.style.display="block";
     oCapaListadoAlquileres.style.display="none";
 }
 
@@ -401,6 +406,7 @@ function mostrarListadoAlquileres()
     oCapaListado.style.display="block";
     campoCuenta.style.display="none";
     campoConductor.style.display="none";
+	campoVacaciones.style.display="none";
     oCapaListadoAlquileres.style.display="block";
 }
 
@@ -410,6 +416,7 @@ function mostrarListadoCuenta()
     oCapaListado.style.display="block";
     campoCuenta.style.display="block";
     campoConductor.style.display="none";
+	campoVacaciones.style.display="none";
     oCapaListadoAlquileres.style.display="none";
 
 

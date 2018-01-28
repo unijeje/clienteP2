@@ -1,6 +1,8 @@
 //conductores con vacaciones
 
 //var btnListadoVacacionesConductores= document.getElementById("btnListadoVacacionesConductores");
+var oBtnOrdenarVacacionesPorApellidos= document.getElementById("btnOrdenarVacacionesPorApellidos");
+oBtnOrdenarVacacionesPorApellidos.addEventListener("click", listadoVacacionesPorApellidos, false);
 
 function listadoVacaciones(){
 	var tablaEliminar=document.querySelector("TABLE");
@@ -60,3 +62,36 @@ function listadoVacaciones(){
 	oTabla.classList.add("text-center");
 	oCapaListado.appendChild(oTabla);
 }
+
+function listadoVacacionesPorApellidos(){
+	var oFilas=document.querySelectorAll("#resultadoListados table tbody tr");
+	var oApellidos=[];
+	var oFilasOrdenado=[];
+	
+	for(var i=1;i<oFilas.length;i++){
+        oApellidos.push(oFilas[i]);
+    }
+	
+	oApellidos.sort;
+	console.log(oApellidos.sort(ordenadosApell));
+	
+	for(var i=0;i<oFilas.length;i++){		
+		oFilasOrdenado.push(oApellidos[i]);
+	}
+	
+	var oBodyTable=document.querySelector("#resultadoListados table tbody");
+	
+    for(var i=0;i<oFilasOrdenado.length;i++){        
+        oBodyTable.appendChild(oFilasOrdenado[i]);
+    }
+}
+
+var ordenadosApell= function(a,b){
+	  if (a > b) {
+		return 1;
+	  }
+	  if (a < b) {
+		return -1;
+	  }
+	  return 0;
+};

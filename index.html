@@ -578,7 +578,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+							<textarea id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="number"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -624,7 +624,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input readonly id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+							<textarea readonly id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="number"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -664,7 +664,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="txtDescripcionMantenimiento">Descripción:</label>  
 						<div class="col-md-6 col-sm-8">
-							<input id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="text">
+							<textarea id="txtDescripcionMantenimiento" name="txtDescripcionMantenimiento" placeholder="Descripcion" class="form-control input-md" type="number"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -1116,7 +1116,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="fechaFin">Descripción:</label>
 						<div class="col-md-6 col-sm-8">
-							<input type="text" name="descripcion" id="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" ></textarea>
+							<textarea id="descripcion" name="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" type="number"></textarea>
 						</div>
 					</div><br>
 					<div class="form-group">
@@ -1150,7 +1150,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="fechaFin">Descripción:</label>
 						<div class="col-md-6 col-sm-8">
-							<input type="text" name="descripcion" id="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" disabled></textarea>
+							<textarea id="descripcion" name="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" type="number" disabled></textarea>
 						</div>
 					</div>
 					<br>
@@ -1197,7 +1197,7 @@
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label" for="fechaFin">Descripción:</label>
 						<div class="col-md-6 col-sm-8">
-							<input type="text" name="descripcion" id="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" ></textarea>
+							<textarea id="descripcion" name="descripcion" placeholder="Motivo Vacaciones" class="form-control input-md" type="number"></textarea>
 						</div>
 					</div>
 					<br>
@@ -1269,6 +1269,14 @@
 						<div id="panelConductor">
 							<div  class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
 								<button type="button" id="btnOrdenarConductoresActivos" name="btnOrdenarConductoresActivos" class="btn btn-primary btn-block">Mostrar solo activos</button>
+								<br>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div id="panelVacaciones">
+							<div  class="col-sm-offset-2 col-md-offset-4 col-md-4 col-sm-6">
+								<button type="button" id="btnOrdenarVacacionesPorApellidos" name="btnOrdenarVacacionesPorApellidos" class="btn btn-primary btn-block">Ordenar por Apellidos</button>
 								<br>
 							</div>
 						</div>
