@@ -84,7 +84,7 @@ function listadoCuenta()
         else
             saldoMomento=parseFloat(saldoMomento-parseFloat(arrayCuenta[i].importe));
         oCelda=oFila.insertCell();
-        oTexto=document.createTextNode(saldoMomento); 
+        oTexto=document.createTextNode(saldoMomento+"€"); 
         oCelda.appendChild(oTexto);
 
 
